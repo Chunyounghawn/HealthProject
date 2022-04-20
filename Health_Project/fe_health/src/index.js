@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import imm from "./image/asas.jpg"
 
 import ReactFullpage from "@fullpage/react-fullpage";
 
@@ -12,9 +13,11 @@ class MySection extends React.Component {
     return (
       <div className="section">
         <h3>{this.props.content}</h3>
-          <video id="myVideo" loop muted playsInline data-autoplay >
-            <source src="video/aa.mp4" type="video/mp4"/>
-          </video>
+        <img src={imm}  alt='bb'/>
+          {/* <video id="myVideo" loop muted playsInline data-autoplay >
+            <source src="./video/aa.mp4" type="video/mp4"/>
+          </video> */}
+          <h2>hihihihihi</h2>
       </div>
 
     );
