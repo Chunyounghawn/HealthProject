@@ -9,8 +9,8 @@ h3 {
   font-weight: 700;
 }
 
-#section1 {
-  color: #fff;
+#section {
+  color: pink;
 }
 
 .fp-section {
@@ -21,4 +21,63 @@ button {
   top: 20px;
   left: 20px;
   z-index: 8;
+}
+
+#myVideo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  width: 90%;
+  height: 100%;
+  background-size: 0% 0%;
+  background-color: pink; /* in case the video doesn't fit the whole page*/
+  background-image: "./video/main_fisrt.mp4";
+  background-position: center center;
+  /*background-size: contain;*/
+  object-fit: cover; /*cover video background */
+  opacity: 0.2;
+}
+
+#menu li {
+  display: inline-block;
+  margin: 10px;
+  color: #000;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+#menu li.active {
+  background: #666;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+#menu li a {
+  text-decoration: none;
+  color: #000;
+}
+#menu li.active a:hover {
+  color: #000;
+}
+#menu li:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+#menu li a,
+#menu li.active a {
+  padding: 9px 18px;
+  display: block;
+}
+#menu li.active a {
+  color: #fff;
+}
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  z-index: 70;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
