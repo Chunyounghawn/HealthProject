@@ -7,6 +7,8 @@ import styled from "styled-components"
 
 import "./style.css"
 
+//import { options, fullpage_api } from "fullpage.js/dist/fullpage.extensions.min"
+
 function MainSection(props) {
   return (
     <div className="section">
@@ -84,6 +86,28 @@ function Cnavigation() {
   )
 }
 
+function Tnavigation(fullpageApi) {
+  return (
+    <button onClick={() => fullpageApi.moveSectionDown()} id="silentMoveTo">
+      Click
+    </button>
+  )
+}
+
+const TotalPage = (fullpageApi) => {
+  return (
+    <>
+      <MainSection content="Slide down!" />
+      <HealthKeyWordSection content="HealthKeyWordSection" />
+      <TotalStrengthSection content="TotalStrengthSection" />
+      <ReviewSection content="ReviewSection" />
+      <QuestionSection content="QuestionSection" />
+      <LocationSection content="LocationSection" />
+      <AppStrengthSection content="AppStrengthSection" />
+    </>
+  )
+}
+
 const anchors = [
   "firstPage",
   "secondPage",
@@ -97,8 +121,8 @@ const anchors = [
 const FullpageWrapper = () => (
   <ReactFullpage
     menu="#menu"
-    navigation
-    navigationTooltips={anchors}
+    //navigation
+    //navigationTooltips={anchors}
     //showActiveTooltip="true"
     slidesNavigation="true"
     slidesNavPosition="bottom"
@@ -119,13 +143,14 @@ const FullpageWrapper = () => (
 
       return (
         <div>
-          <MainSection content="Slide down!" />
-          <HealthKeyWordSection content="HealthKeyWordSection" />
-          <TotalStrengthSection content="TotalStrengthSection" />
-          <ReviewSection content="ReviewSection" />
-          <QuestionSection content="QuestionSection" />
-          <LocationSection content="LocationSection" />
-          <AppStrengthSection content="AppStrengthSection" />
+          <button
+            onClick={() => fullpageApi.moveSectionDown()}
+            id="silentMoveTo"
+          >
+            Click
+          </button>
+
+          <TotalPage fullpageApi={fullpageApi} />
           <Cnavigation />
         </div>
       )
