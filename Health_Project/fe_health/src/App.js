@@ -68,8 +68,6 @@ function AppStrengthSection(props) {
   )
 }
 
-wlsdnjs test
-
 function Tnavigation(fullpageApi) {
   return (
     <button onClick={() => fullpageApi.moveSectionDown()} id="silentMoveTo">
@@ -135,7 +133,6 @@ const FullpageWrapper = () => (
           </button>
 
           <TotalPage fullpageApi={fullpageApi} />
-          
         </div>
       )
     }}
