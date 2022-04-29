@@ -68,23 +68,7 @@ function AppStrengthSection(props) {
   )
 }
 
-function Cnavigation() {
-  return (
-    <div id="fullpage">
-      <ul id="menu">
-        <li data-anchor="firstPage">
-          <a href="#firstPage">First slide</a>
-        </li>
-        <li data-anchor="secondPage">
-          <a href="#secondPage">Second slide</a>
-        </li>
-        <li data-anchor="thirdPage">
-          <a href="#thirdPage">Third slide</a>
-        </li>
-      </ul>
-    </div>
-  )
-}
+
 
 function Tnavigation(fullpageApi) {
   return (
@@ -151,7 +135,7 @@ const FullpageWrapper = () => (
           </button>
 
           <TotalPage fullpageApi={fullpageApi} />
-          <Cnavigation />
+          
         </div>
       )
     }}
