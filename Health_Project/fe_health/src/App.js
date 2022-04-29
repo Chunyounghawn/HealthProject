@@ -32,6 +32,7 @@ function TotalStrengthSection(props) {
   return (
     <div className="section">
       <h3>{props.content}</h3>
+      <h3>JIN WON</h3>
     </div>
   )
 }
@@ -68,7 +69,7 @@ function AppStrengthSection(props) {
   )
 }
 
-wlsdnjs test
+
 
 function Tnavigation(fullpageApi) {
   return (
