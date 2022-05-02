@@ -11,6 +11,8 @@ h3 {
 
 #section {
   color: pink;
+  width: 1740px;
+  height: 100%;
 }
 
 .fp-section {
@@ -25,7 +27,21 @@ button {
 }
 #silentMoveTo {
   position: fixed;
-  top: 5%;
+  top: 250px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  font-size: 30px;
+  border: 4px solid black;
+  background-color: white;
+  color: black;
+  transition: 0.4s;
+}
+
+#silentMoveTo:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
 #myVideo {
@@ -33,7 +49,7 @@ button {
   left: 0;
   bottom: 0;
   top: 0;
-  width: 90%;
+  width: 1740px;
   height: 100%;
   background-size: 0% 0%;
   background-color: pink; /* in case the video doesn't fit the whole page*/
@@ -42,6 +58,19 @@ button {
   /*background-size: contain;*/
   object-fit: cover; /*cover video background */
   opacity: 0.2;
+}
+
+.navigation {
+  width: 180px;
+  height: 100%;
+  background-color: orange;
+  border: 4px solid black;
+  position: fixed;
+  top:0px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #menu li {
@@ -86,3 +115,10 @@ button {
   padding: 0;
   margin: 0;
 }
+
+
+
+
+
+
+
