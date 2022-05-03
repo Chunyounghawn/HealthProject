@@ -17,6 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react" // basic
 
 //import { options, fullpage_api } from "fullpage.js/dist/fullpage.extensions.min"
 
+// section6 style components
 const Container = styled.div`
   width: 1740px;
   height: 100%;
@@ -83,7 +84,7 @@ const ItemBox = styled.div`
   width: 200px;
   height: 200px;
   backface-visibility: hidden;
-  transition: 1.5s;
+  transition: 1s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,10 +113,16 @@ const Back1 = styled(ItemBox)`
 `
 
 const Front2 = styled(ItemBox)`
+  position: absolute;
+  top: 400px;
+  left: 950px;
   transform: rotateY(0deg);
 `
 
 const Back2 = styled(ItemBox)`
+  position: absolute;
+  top: 400px;
+  left: 950px;
   font-size: 15px;
   color: #fff;
   background-color: #333;
@@ -123,10 +130,16 @@ const Back2 = styled(ItemBox)`
 `
 
 const Front3 = styled(ItemBox)`
+  position: absolute;
+  top: 400px;
+  left: 1350px;
   transform: rotateY(0deg);
 `
 
 const Back3 = styled(ItemBox)`
+  position: absolute;
+  top: 400px;
+  left: 1350px;
   font-size: 15px;
   color: #fff;
   background-color: #333;
@@ -134,11 +147,17 @@ const Back3 = styled(ItemBox)`
 `
 
 const Front4 = styled(ItemBox)`
+  position: absolute;
+  top: 600px;
+  left: 1150px;
   font-size: 30px;
   transform: rotateY(0deg);
 `
 
 const Back4 = styled(ItemBox)`
+  position: absolute;
+  top: 600px;
+  left: 1150px;
   font-size: 15px;
   color: #fff;
   background-color: #333;
@@ -146,13 +165,7 @@ const Back4 = styled(ItemBox)`
 `
 
 // Selecter가 hover 되면 Selecter는 180도 회전하면 안되고 Front & Back 이 180도 회전 되야됨
-const Selecter = styled.div`
-  width: 200px;
-  height: 200px;
-  border: 2px solid #333;
-  border-radius: 50%;
-`
-const Selecter1 = styled(Selecter)`
+const Selecter1 = styled.div`
   &: hover ${Front1} {
     transform: rotateY(180deg);
   }
@@ -161,10 +174,7 @@ const Selecter1 = styled(Selecter)`
   }
 `
 
-const Selecter2 = styled(Selecter)`
-  position: absolute;
-  top: 400px;
-  left: 950px;
+const Selecter2 = styled.div`
   &: hover ${Front2} {
     transform: rotateY(180deg);
   }
@@ -173,10 +183,7 @@ const Selecter2 = styled(Selecter)`
   }
 `
 
-const Selecter3 = styled(Selecter)`
-  position: absolute;
-  top: 400px;
-  left: 1350px;
+const Selecter3 = styled.div`
   &: hover ${Front3} {
     transform: rotateY(180deg);
   }
@@ -185,10 +192,7 @@ const Selecter3 = styled(Selecter)`
   }
 `
 
-const Selecter4 = styled(Selecter)`
-  position: absolute;
-  top: 600px;
-  left: 1150px;
+const Selecter4 = styled.div`
   &: hover ${Front4} {
     transform: rotateY(180deg);
   }
@@ -196,6 +200,8 @@ const Selecter4 = styled(Selecter)`
     transform: rotateY(0deg);
   }
 `
+
+// section7 style components
 
 function MainSection(props) {
   return (
