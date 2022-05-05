@@ -9,199 +9,52 @@ import scheduling_image from "./image/scheduling.jpg"
 import water_alarm_image from "./image/water-alarm.jpg"
 
 import "./style.css"
-import "./css/section6.css"
-import "./css/section7.css"
-import "./js/section6.js"
+
+// Component-Basic
+import Container from "./component/Container"
+import Navigation_bar from "./component/Navigation_bar"
+import SilentMoveTo from "./component/SilentMoveTo"
+import SilentMoveTo2 from "./component/SilentMoveTo2"
+import SilentMoveTo3 from "./component/SilentMoveTo3"
+import SilentMoveTo4 from "./component/SilentMoveTo4"
+import SilentMoveTo5 from "./component/SilentMoveTo5"
+import Swiper_button from "./component/Swiper_button"
+import btn from "./component/btn"
+
+// Component-Section2
+import Swiper_phone from "./component/Swiper_phone"
+import Swiper_slide from "./component/Swiper_slide"
+import Swiper_prev from "./component/Swiper_prev"
+import Swiper_next from "./component/Swiper_next"
+import ItemBox from "./component/ItemBox"
+import Front1 from "./component/Front1"
+import Back1 from "./component/Back1"
+import Front2 from "./component/Front2"
+import Back2 from "./component/Back2"
+import Front3 from "./component/Front3"
+import Back3 from "./component/Back3"
+import Front4 from "./component/Front4"
+import Back4 from "./component/Back4"
+import Selecter1 from "./component/Selecter1"
+import Selecter2 from "./component/Selecter2"
+import Selecter3 from "./component/Selecter3"
+import Selecter4 from "./component/Selecter4"
+
+// Component-Section5
+import Information_Box from "./component/Information_Box"
+import Information1 from "./component/Information1"
+import Information2 from "./component/Information2"
+import Information3 from "./component/Information3"
+import Swiper_next2 from "./component/Swiper_next2"
+import Swiper_prev2 from "./component/Swiper_prev2"
+import Questions from "./component/Questions"
+import Answer from "./component/Answer"
+import Inquiry from "./component/Inquiry"
+import Inquiry_btn from "./component/Inquiry_btn"
 
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 
 //import { options, fullpage_api } from "fullpage.js/dist/fullpage.extensions.min"
-
-// section6 style components
-const Container = styled.div`
-  width: 1740px;
-  height: 100%;
-  position: relative;
-`
-
-const Swiper_phone = styled.div`
-  width: 350px;
-  height: 600px;
-  background-color: yellow;
-  border: 4px solid #333;
-  border-radius: 10%;
-  position: absolute;
-  top: 200px;
-  left: 250px;
-`
-
-const Swiper_slide = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-`
-
-const Swiper_prev = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 2px solid #333;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  position: absolute;
-  left: 160px;
-  top: 470px;
-  &: hover {
-    cursor: pointer;
-    background-color: #333;
-    color: #fff;
-  }
-`
-
-const Swiper_next = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 2px solid #333;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  position: absolute;
-  left: 650px;
-  top: 470px;
-  &: hover {
-    cursor: pointer;
-    background-color: #333;
-    color: #fff;
-  }
-`
-
-const ItemBox = styled.div`
-  width: 200px;
-  height: 200px;
-  backface-visibility: hidden;
-  transition: 1s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  border: 2px solid #333;
-  background-color: purple;
-  border-radius: 50%;
-  font-size: 30px;
-`
-
-const Front1 = styled(ItemBox)`
-  position: absolute;
-  top: 200px;
-  left: 1150px;
-  transform: rotateY(0deg);
-`
-
-const Back1 = styled(ItemBox)`
-  position: absolute;
-  top: 200px;
-  left: 1150px;
-  font-size: 15px;
-  background-color: #333;
-  color: #fff;
-  transform: rotateY(-180deg);
-`
-
-const Front2 = styled(ItemBox)`
-  position: absolute;
-  top: 400px;
-  left: 950px;
-  transform: rotateY(0deg);
-`
-
-const Back2 = styled(ItemBox)`
-  position: absolute;
-  top: 400px;
-  left: 950px;
-  font-size: 15px;
-  color: #fff;
-  background-color: #333;
-  transform: rotateY(-180deg);
-`
-
-const Front3 = styled(ItemBox)`
-  position: absolute;
-  top: 400px;
-  left: 1350px;
-  transform: rotateY(0deg);
-`
-
-const Back3 = styled(ItemBox)`
-  position: absolute;
-  top: 400px;
-  left: 1350px;
-  font-size: 15px;
-  color: #fff;
-  background-color: #333;
-  transform: rotateY(-180deg);
-`
-
-const Front4 = styled(ItemBox)`
-  position: absolute;
-  top: 600px;
-  left: 1150px;
-  font-size: 30px;
-  transform: rotateY(0deg);
-`
-
-const Back4 = styled(ItemBox)`
-  position: absolute;
-  top: 600px;
-  left: 1150px;
-  font-size: 15px;
-  color: #fff;
-  background-color: #333;
-  transform: rotateY(-180deg);
-`
-
-// Selecter가 hover 되면 Selecter는 180도 회전하면 안되고 Front & Back 이 180도 회전 되야됨
-const Selecter1 = styled.div`
-  &: hover ${Front1} {
-    transform: rotateY(180deg);
-  }
-  &: hover ${Back1} {
-    transform: rotateY(0deg);
-  }
-`
-
-const Selecter2 = styled.div`
-  &: hover ${Front2} {
-    transform: rotateY(180deg);
-  }
-  &: hover ${Back2} {
-    transform: rotateY(0deg);
-  }
-`
-
-const Selecter3 = styled.div`
-  &: hover ${Front3} {
-    transform: rotateY(180deg);
-  }
-  &: hover ${Back3} {
-    transform: rotateY(0deg);
-  }
-`
-
-const Selecter4 = styled.div`
-  &: hover ${Front4} {
-    transform: rotateY(180deg);
-  }
-  &: hover ${Back4} {
-    transform: rotateY(0deg);
-  }
-`
-
-// section7 style components
 
 function MainSection(props) {
   return (
@@ -211,52 +64,12 @@ function MainSection(props) {
         <source src={main_fisrt} type="video/mp4" />
       </video>
 
-      <div class="navigation"></div>
+      <Navigation_bar></Navigation_bar>
     </div>
   )
 }
 
 function HealthKeyWordSection(props) {
-  return (
-    <div className="section">
-      <h3>{props.content}</h3>
-
-      <div class="navigation"></div>
-    </div>
-  )
-}
-
-function TotalStrengthSection(props) {
-  return (
-    <div className="section">
-      <h3>{props.content}</h3>
-
-      <div class="navigation"></div>
-    </div>
-  )
-}
-
-function ReviewSection(props) {
-  return (
-    <div className="section">
-      <h3>{props.content}</h3>
-
-      <div class="navigation"></div>
-    </div>
-  )
-}
-
-function QuestionSection(props) {
-  return (
-    <div className="section">
-      <h3>{props.content}</h3>
-
-      <div class="navigation"></div>
-    </div>
-  )
-}
-
-function LocationSection(props) {
   return (
     <div className="section">
       <Container>
@@ -306,56 +119,71 @@ function LocationSection(props) {
         </Selecter4>
       </Container>
 
-      <div class="navigation"></div>
+      <Navigation_bar>
+        <SilentMoveTo2></SilentMoveTo2>
+      </Navigation_bar>
     </div>
   )
 }
 
-function AppStrengthSection(props) {
+function TotalStrengthSection(props) {
   return (
     <div className="section">
-      <div class="container">
+      <h3>{props.content}</h3>
+      <Navigation_bar></Navigation_bar>
+    </div>
+  )
+}
+
+function ReviewSection(props) {
+  return (
+    <div className="section">
+      <h3>{props.content}</h3>
+
+      <Navigation_bar></Navigation_bar>
+    </div>
+  )
+}
+
+function QuestionSection(props) {
+  return (
+    <div className="section">
+      <Container>
         <h3>자주 묻는 질문</h3>
 
-        <div class="information1">
-          <div class="questions">로그인은 어디서 하나요?</div>
-          <div class="answer">
-            오른쪽 상단 내정보 아이콘에서 로그인 가능 합니다.
-          </div>
-        </div>
+        <Information1>
+          <Questions>로그인은 어디서 하나요?</Questions>
+          <Answer>오른쪽 상단 내정보 아이콘에서 로그인 가능 합니다.</Answer>
+        </Information1>
 
-        <div class="information2">
-          <div class="questions">내 정보는 어디서 확인할 수 있나요?</div>
-          <div class="answer">
-            오른쪽 상단 내정보 아이콘에서 확인 가능 합니다.
-          </div>
-        </div>
+        <Information2>
+          <Questions>내 정보는 어디서 확인할 수 있나요?</Questions>
+          <Answer>오른쪽 상단 내정보 아이콘에서 확인 가능 합니다.</Answer>
+        </Information2>
 
-        <div class="information3">
-          <div class="questions">캘린더 수정은 어떻게 하나요?</div>
-          <div class="answer">
+        <Information3>
+          <Questions>캘린더 수정은 어떻게 하나요?</Questions>
+          <Answer>
             오른쪽 상단 내정보 아이콘에서 캘린더 탭 클릭하면 수정 가능 합니다.
-          </div>
-        </div>
+          </Answer>
+        </Information3>
 
-        <div class="swiper-prev2">
+        <Swiper_prev2>
           <div class="material-icons">arrow_back_ios</div>
-        </div>
+        </Swiper_prev2>
 
-        <div class="swiper-next2">
+        <Swiper_next2>
           <div class="material-icons">arrow_forward_ios</div>
-        </div>
+        </Swiper_next2>
 
-        <div class="admin">
-          <div class="inquiry">
-            자주 묻는 질문 외에 다른 질문을 문의 하고 싶다면 아래 버튼을
-            클릭하여 관리자에게 직접 문의 해주세요.
-          </div>
-          <div class="btn">관리자에게 문의</div>
-        </div>
-      </div>
+        <Inquiry>
+          자주 묻는 질문 외에 다른 질문을 문의 하고 싶다면 아래 버튼을 클릭하여
+          관리자에게 직접 문의 해주세요.
+        </Inquiry>
+        <Inquiry_btn>관리자에게 문의</Inquiry_btn>
+      </Container>
 
-      <div class="navigation"></div>
+      <Navigation_bar></Navigation_bar>
     </div>
   )
 }
@@ -376,8 +204,6 @@ const TotalPage = (fullpageApi) => {
       <TotalStrengthSection content="TotalStrengthSection" />
       <ReviewSection content="ReviewSection" />
       <QuestionSection content="QuestionSection" />
-      <LocationSection content="LocationSection" />
-      <AppStrengthSection content="AppStrengthSection" />
     </>
   )
 }
@@ -417,11 +243,21 @@ const FullpageWrapper = () => (
 
       return (
         <div>
-          <button onClick={() => fullpageApi.moveTo(6)} id="silentMoveTo">
-            {" "}
-            Click{" "}
+          <button onClick={() => fullpageApi.moveTo(2)}>
+            <SilentMoveTo2>Section2</SilentMoveTo2>
           </button>
 
+          <button onClick={() => fullpageApi.moveTo(3)}>
+            <SilentMoveTo3>Section3</SilentMoveTo3>
+          </button>
+
+          <button onClick={() => fullpageApi.moveTo(4)}>
+            <SilentMoveTo4>Section4</SilentMoveTo4>
+          </button>
+
+          <button onClick={() => fullpageApi.moveTo(5)}>
+            <SilentMoveTo5>Section5</SilentMoveTo5>
+          </button>
           <TotalPage fullpageApi={fullpageApi} />
         </div>
       )
