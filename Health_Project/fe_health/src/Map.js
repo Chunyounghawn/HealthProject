@@ -20,7 +20,7 @@ const Map = () => {
         top: "50px",
         left: "100px",
         width: "1540px",
-        height: "650px",
+        height: "651px",
       }}
     ></div>
   )
