@@ -16,7 +16,7 @@ export const ItemBox = styled.div`
   width: 200px;
   height: 200px;
   backface-visibility: hidden;
-  transition: 0.5s;
+  transition: 1s;
   display: flex;
   justify-content: center;
   align-items: center;
