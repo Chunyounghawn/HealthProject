@@ -1,4 +1,12 @@
 import React from "react"
+
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react" // basic
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
+import "swiper/scss"
+import "swiper/scss/navigation"
+import "swiper/scss/pagination"
+
 import main_fisrt from "./video/main_fisrt.mp4"
 import ReactFullpage from "@fullpage/react-fullpage"
 import styled from "styled-components"
@@ -10,61 +18,60 @@ import water_alarm_image from "./image/water-alarm.jpg"
 
 import "./style.css"
 
-// Component-Basic
-import Container from "./component/Container"
-import Navigation_bar from "./component/Navigation_bar"
-import SilentMoveTo from "./component/SilentMoveTo"
-import SilentMoveTo2 from "./component/SilentMoveTo2"
-import SilentMoveTo3 from "./component/SilentMoveTo3"
-import SilentMoveTo4 from "./component/SilentMoveTo4"
-import SilentMoveTo5 from "./component/SilentMoveTo5"
-import Swiper_button from "./component/Swiper_button"
-import btn from "./component/btn"
+import {
+  Container,
+  Navigation_bar,
+  SilentMoveTo,
+  SilentMoveTo2,
+  SilentMoveTo3,
+  SilentMoveTo4,
+  SilentMoveTo5,
+  Swiper_button,
+  btn,
+  Swiper_phone,
+  Swiper_slide,
+  Swiper_prev,
+  Swiper_next,
+  ItemBox,
+  Front1,
+  Back1,
+  Front2,
+  Back2,
+  Front3,
+  Back3,
+  Front4,
+  Back4,
+  Selecter1,
+  Selecter2,
+  Selecter3,
+  Selecter4,
+  Questions,
+  Answer,
+  Inquiry,
+  Inquiry_btn,
+} from "./component/style"
 
-// Component-Section2
-import Swiper_phone from "./component/Swiper_phone"
-import Swiper_slide from "./component/Swiper_slide"
-import Swiper_prev from "./component/Swiper_prev"
-import Swiper_next from "./component/Swiper_next"
-import ItemBox from "./component/ItemBox"
-import Front1 from "./component/Front1"
-import Back1 from "./component/Back1"
-import Front2 from "./component/Front2"
-import Back2 from "./component/Back2"
-import Front3 from "./component/Front3"
-import Back3 from "./component/Back3"
-import Front4 from "./component/Front4"
-import Back4 from "./component/Back4"
-import Selecter1 from "./component/Selecter1"
-import Selecter2 from "./component/Selecter2"
-import Selecter3 from "./component/Selecter3"
-import Selecter4 from "./component/Selecter4"
-
-// Component-Section5
-import Information_Box from "./component/Information_Box"
-import Information1 from "./component/Information1"
-import Information2 from "./component/Information2"
-import Information3 from "./component/Information3"
-import Swiper_next2 from "./component/Swiper_next2"
-import Swiper_prev2 from "./component/Swiper_prev2"
-import Questions from "./component/Questions"
-import Answer from "./component/Answer"
-import Inquiry from "./component/Inquiry"
-import Inquiry_btn from "./component/Inquiry_btn"
-
-import { Swiper, SwiperSlide } from "swiper/react" // basic
+import Map from "./Map"
 
 //import { options, fullpage_api } from "fullpage.js/dist/fullpage.extensions.min"
+
+SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 function MainSection(props) {
   return (
     <div className="section">
-      <h3>{props.content}</h3>
+      <h3>Ready to begin you health?</h3>
+      <p class="message">click on the button now</p>
+      <button class="btn">Click</button>
+
       <video id="myVideo" loop muted data-autoplay>
         <source src={main_fisrt} type="video/mp4" />
       </video>
-
       <Navigation_bar></Navigation_bar>
+      <SilentMoveTo2>2</SilentMoveTo2>
+      <SilentMoveTo3>3</SilentMoveTo3>
+      <SilentMoveTo4>4</SilentMoveTo4>
+      <SilentMoveTo5>5</SilentMoveTo5>
     </div>
   )
 }
@@ -74,23 +81,63 @@ function HealthKeyWordSection(props) {
     <div className="section">
       <Container>
         <Swiper_phone>
-          <Swiper_slide>
-            <img
-              src={Inbody_image}
-              alt="진단표 스캔"
-              width="300px"
-              height="520px"
-            ></img>
-          </Swiper_slide>
+          <Swiper
+            style={{
+              height: "680px",
+              width: "500px",
+              position: "relative",
+              left: "-80px",
+              top: "-30px",
+            }}
+            spaceBetween={10}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            loop={true}
+          >
+            <SwiperSlide>
+              <Swiper_slide>
+                <img
+                  src={Inbody_image}
+                  alt="진단표 스캔"
+                  width="300px"
+                  height="520px"
+                ></img>
+              </Swiper_slide>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Swiper_slide>
+                <img
+                  src={calender_image}
+                  alt="캘린더"
+                  width="300px"
+                  height="520px"
+                ></img>
+              </Swiper_slide>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Swiper_slide>
+                <img
+                  src={scheduling_image}
+                  alt="운동 스케줄링"
+                  width="300px"
+                  height="520px"
+                ></img>
+              </Swiper_slide>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Swiper_slide>
+                <img
+                  src={water_alarm_image}
+                  alt="물 알람"
+                  width="300px"
+                  height="520px"
+                ></img>
+              </Swiper_slide>
+            </SwiperSlide>
+          </Swiper>
         </Swiper_phone>
-
-        <Swiper_prev>
-          <div class="material-icons">arrow_back_ios</div>
-        </Swiper_prev>
-
-        <Swiper_next>
-          <div class="material-icons">arrow_forward_ios</div>
-        </Swiper_next>
 
         <Selecter1>
           <Front1>진단표 스캔</Front1>
@@ -119,9 +166,11 @@ function HealthKeyWordSection(props) {
         </Selecter4>
       </Container>
 
-      <Navigation_bar>
-        <SilentMoveTo2></SilentMoveTo2>
-      </Navigation_bar>
+      <Navigation_bar></Navigation_bar>
+      <SilentMoveTo2>2</SilentMoveTo2>
+      <SilentMoveTo3>3</SilentMoveTo3>
+      <SilentMoveTo4>4</SilentMoveTo4>
+      <SilentMoveTo5>5</SilentMoveTo5>
     </div>
   )
 }
@@ -129,8 +178,16 @@ function HealthKeyWordSection(props) {
 function TotalStrengthSection(props) {
   return (
     <div className="section">
-      <h3>{props.content}</h3>
+      <Container>
+        <h3>주변 운동 시설</h3>
+
+        <Map></Map>
+      </Container>
       <Navigation_bar></Navigation_bar>
+      <SilentMoveTo2>2</SilentMoveTo2>
+      <SilentMoveTo3>3</SilentMoveTo3>
+      <SilentMoveTo4>4</SilentMoveTo4>
+      <SilentMoveTo5>5</SilentMoveTo5>
     </div>
   )
 }
@@ -138,9 +195,13 @@ function TotalStrengthSection(props) {
 function ReviewSection(props) {
   return (
     <div className="section">
-      <h3>{props.content}</h3>
+      <Container></Container>
 
       <Navigation_bar></Navigation_bar>
+      <SilentMoveTo2>2</SilentMoveTo2>
+      <SilentMoveTo3>3</SilentMoveTo3>
+      <SilentMoveTo4>4</SilentMoveTo4>
+      <SilentMoveTo5>5</SilentMoveTo5>
     </div>
   )
 }
@@ -151,30 +212,49 @@ function QuestionSection(props) {
       <Container>
         <h3>자주 묻는 질문</h3>
 
-        <Information1>
-          <Questions>로그인은 어디서 하나요?</Questions>
-          <Answer>오른쪽 상단 내정보 아이콘에서 로그인 가능 합니다.</Answer>
-        </Information1>
+        <Swiper
+          style={{ height: "450px" }}
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 1000, disableOnInteraction: false }}
+          loop={true}
+        >
+          <SwiperSlide>
+            <Questions>로그인은 어디서 하나요?</Questions>
+            <Answer>오른쪽 상단 내정보 아이콘에서 로그인 가능 합니다.</Answer>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Questions>내 정보는 어디서 확인할 수 있나요?</Questions>
+            <Answer>오른쪽 상단 내정보 아이콘에서 확인 가능 합니다.</Answer>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Questions>캘린더 수정은 어떻게 하나요?</Questions>
+            <Answer>
+              오른쪽 상단 내정보 아이콘에서 캘린더 탭 클릭하면 수정 가능 합니다.
+            </Answer>
+          </SwiperSlide>
 
-        <Information2>
-          <Questions>내 정보는 어디서 확인할 수 있나요?</Questions>
-          <Answer>오른쪽 상단 내정보 아이콘에서 확인 가능 합니다.</Answer>
-        </Information2>
-
-        <Information3>
-          <Questions>캘린더 수정은 어떻게 하나요?</Questions>
-          <Answer>
-            오른쪽 상단 내정보 아이콘에서 캘린더 탭 클릭하면 수정 가능 합니다.
-          </Answer>
-        </Information3>
-
-        <Swiper_prev2>
-          <div class="material-icons">arrow_back_ios</div>
-        </Swiper_prev2>
-
-        <Swiper_next2>
-          <div class="material-icons">arrow_forward_ios</div>
-        </Swiper_next2>
+          <SwiperSlide>
+            <Questions>공지사항은 어디에 있나요?</Questions>
+            <Answer>
+              오른쪽 상단 내정보 아이콘에서 공지사항 확인 가능 합니다.
+            </Answer>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Questions>챌린지 참여는 어떻게 하나요?</Questions>
+            <Answer>
+              오른쪽 상단 내정보 아이콘에서 챌린지 참여 가능 합니다.
+            </Answer>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Questions>이 웹 사이트에서는 무엇을 제공하나요?</Questions>
+            <Answer>
+              저희 웹 사이트에서는 건강 및 헬스 관련 정보들을 제공 합니다.
+            </Answer>
+          </SwiperSlide>
+        </Swiper>
 
         <Inquiry>
           자주 묻는 질문 외에 다른 질문을 문의 하고 싶다면 아래 버튼을 클릭하여
@@ -184,13 +264,20 @@ function QuestionSection(props) {
       </Container>
 
       <Navigation_bar></Navigation_bar>
+      <SilentMoveTo2>2</SilentMoveTo2>
+      <SilentMoveTo3>3</SilentMoveTo3>
+      <SilentMoveTo4>4</SilentMoveTo4>
+      <SilentMoveTo5>5</SilentMoveTo5>
     </div>
   )
 }
 
 function Tnavigation(fullpageApi) {
   return (
-    <button onClick={() => fullpageApi.moveSectionDown()} id="silentMoveTo">
+    <button
+      onClick={() => fullpageApi.fullpageApi.moveSectionDown()}
+      id="silentMoveTo"
+    >
       Click
     </button>
   )
@@ -243,21 +330,10 @@ const FullpageWrapper = () => (
 
       return (
         <div>
-          <button onClick={() => fullpageApi.moveTo(2)}>
-            <SilentMoveTo2>Section2</SilentMoveTo2>
-          </button>
-
-          <button onClick={() => fullpageApi.moveTo(3)}>
-            <SilentMoveTo3>Section3</SilentMoveTo3>
-          </button>
-
-          <button onClick={() => fullpageApi.moveTo(4)}>
-            <SilentMoveTo4>Section4</SilentMoveTo4>
-          </button>
-
-          <button onClick={() => fullpageApi.moveTo(5)}>
-            <SilentMoveTo5>Section5</SilentMoveTo5>
-          </button>
+          <button onClick={() => fullpageApi.moveTo(2)}></button>
+          <button onClick={() => fullpageApi.moveTo(3)}></button>
+          <button onClick={() => fullpageApi.moveTo(4)}></button>
+          <button onClick={() => fullpageApi.moveTo(5)}></button>
           <TotalPage fullpageApi={fullpageApi} />
         </div>
       )
