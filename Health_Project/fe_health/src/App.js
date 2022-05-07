@@ -179,7 +179,7 @@ function TotalStrengthSection(props) {
   return (
     <div className="section">
       <Container>
-        <h3>주변 운동 시설</h3>
+        <h3>헬스장 찾기</h3>
 
         <Map></Map>
       </Container>
