@@ -22,6 +22,7 @@ import {
   Container,
   Navigation_bar,
   SilentMoveTo,
+  SilentMoveTo1,
   SilentMoveTo2,
   SilentMoveTo3,
   SilentMoveTo4,
@@ -51,27 +52,77 @@ import {
   Inquiry_btn,
 } from "./component/style"
 
+// kakao Map
 import Map from "./Map"
 
 //import { options, fullpage_api } from "fullpage.js/dist/fullpage.extensions.min"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
+/*
+function Tnavigation(fullpageApi) {
+  return (
+    <button
+      onClick={() => fullpageApi.fullpageApi.moveSectionDown()}
+      id="silentMoveTo"
+    >
+      Click
+    </button>
+  )
+}
+
+const TotalPage = (fullpageApi) => {
+  return (
+    <>
+      <MainSection content="Slide down!" />
+      <HealthKeyWordSection content="HealthKeyWordSection" />
+      <TotalStrengthSection content="TotalStrengthSection" />
+      <ReviewSection content="ReviewSection" />
+      <QuestionSection content="QuestionSection" />
+    </>
+  )
+}
+*/
+
 function MainSection(props) {
   return (
     <div className="section">
-      <h3>Ready to begin you health?</h3>
-      <p class="message">click on the button now</p>
-      <button class="btn">Click</button>
-
-      <video id="myVideo" loop muted data-autoplay>
-        <source src={main_fisrt} type="video/mp4" />
-      </video>
+      <Container>
+        <h2>Ready to begin you health?</h2>
+        <p class="message">click on the button now</p>
+        <button class="btn">Click</button>
+        <video id="myVideo" loop muted data-autoplay>
+          <source src={main_fisrt} type="video/mp4" />
+        </video>
+      </Container>
       <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+      <ul>
+        <li data-menuanchor="section1">
+          <a href="#section1">
+            <SilentMoveTo1>section1</SilentMoveTo1>
+          </a>
+        </li>
+        <li data-menuanchor="section2">
+          <a href="#section2">
+            <SilentMoveTo2>section2</SilentMoveTo2>
+          </a>
+        </li>
+        <li data-menuanchor="section3">
+          <a href="#section3">
+            <SilentMoveTo3>section3</SilentMoveTo3>
+          </a>
+        </li>
+        <li data-menuanchor="section4">
+          <a href="#section4">
+            <SilentMoveTo4>section4</SilentMoveTo4>
+          </a>
+        </li>
+        <li data-menuanchor="section5">
+          <a href="#section5">
+            <SilentMoveTo5>section5</SilentMoveTo5>
+          </a>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -167,10 +218,33 @@ function HealthKeyWordSection(props) {
       </Container>
 
       <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+      <ul>
+        <li data-menuanchor="section1">
+          <a href="#section1">
+            <SilentMoveTo1>section1</SilentMoveTo1>
+          </a>
+        </li>
+        <li data-menuanchor="section2">
+          <a href="#section2">
+            <SilentMoveTo2>section2</SilentMoveTo2>
+          </a>
+        </li>
+        <li data-menuanchor="section3">
+          <a href="#section3">
+            <SilentMoveTo3>section3</SilentMoveTo3>
+          </a>
+        </li>
+        <li data-menuanchor="section4">
+          <a href="#section4">
+            <SilentMoveTo4>section4</SilentMoveTo4>
+          </a>
+        </li>
+        <li data-menuanchor="section5">
+          <a href="#section5">
+            <SilentMoveTo5>section5</SilentMoveTo5>
+          </a>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -179,15 +253,38 @@ function TotalStrengthSection(props) {
   return (
     <div className="section">
       <Container>
-        <h3>헬스장 찾기</h3>
+        <h3 class="title">헬스장 찾기</h3>
 
         <Map></Map>
       </Container>
       <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+      <ul>
+        <li data-menuanchor="section1">
+          <a href="#section1">
+            <SilentMoveTo1>section1</SilentMoveTo1>
+          </a>
+        </li>
+        <li data-menuanchor="section2">
+          <a href="#section2">
+            <SilentMoveTo2>section2</SilentMoveTo2>
+          </a>
+        </li>
+        <li data-menuanchor="section3">
+          <a href="#section3">
+            <SilentMoveTo3>section3</SilentMoveTo3>
+          </a>
+        </li>
+        <li data-menuanchor="section4">
+          <a href="#section4">
+            <SilentMoveTo4>section4</SilentMoveTo4>
+          </a>
+        </li>
+        <li data-menuanchor="section5">
+          <a href="#section5">
+            <SilentMoveTo5>section5</SilentMoveTo5>
+          </a>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -198,10 +295,33 @@ function ReviewSection(props) {
       <Container></Container>
 
       <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+      <ul>
+        <li data-menuanchor="section1">
+          <a href="#section1">
+            <SilentMoveTo1>section1</SilentMoveTo1>
+          </a>
+        </li>
+        <li data-menuanchor="section2">
+          <a href="#section2">
+            <SilentMoveTo2>section2</SilentMoveTo2>
+          </a>
+        </li>
+        <li data-menuanchor="section3">
+          <a href="#section3">
+            <SilentMoveTo3>section3</SilentMoveTo3>
+          </a>
+        </li>
+        <li data-menuanchor="section4">
+          <a href="#section4">
+            <SilentMoveTo4>section4</SilentMoveTo4>
+          </a>
+        </li>
+        <li data-menuanchor="section5">
+          <a href="#section5">
+            <SilentMoveTo5>section5</SilentMoveTo5>
+          </a>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -210,7 +330,7 @@ function QuestionSection(props) {
   return (
     <div className="section">
       <Container>
-        <h3>자주 묻는 질문</h3>
+        <h3 class="title">자주 묻는 질문</h3>
 
         <Swiper
           style={{ height: "450px" }}
@@ -264,10 +384,33 @@ function QuestionSection(props) {
       </Container>
 
       <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+      <ul>
+        <li data-menuanchor="section1">
+          <a href="#section1">
+            <SilentMoveTo1>section1</SilentMoveTo1>
+          </a>
+        </li>
+        <li data-menuanchor="section2">
+          <a href="#section2">
+            <SilentMoveTo2>section2</SilentMoveTo2>
+          </a>
+        </li>
+        <li data-menuanchor="section3">
+          <a href="#section3">
+            <SilentMoveTo3>section3</SilentMoveTo3>
+          </a>
+        </li>
+        <li data-menuanchor="section4">
+          <a href="#section4">
+            <SilentMoveTo4>section4</SilentMoveTo4>
+          </a>
+        </li>
+        <li data-menuanchor="section5">
+          <a href="#section5">
+            <SilentMoveTo5>section5</SilentMoveTo5>
+          </a>
+        </li>
+      </ul>
     </div>
   )
 }
@@ -311,17 +454,11 @@ const FullpageWrapper = () => (
     //navigation
     //navigationTooltips={anchors}
     //showActiveTooltip="true"
-    slidesNavigation="true"
-    slidesNavPosition="bottom"
-    sectionsColor={[
-      "#282c34",
-      "#ff5f45",
-      "#0798ec",
-      "#0798ec",
-      "#0798ec",
-      "#0798ec",
-      "#0798ec",
-    ]}
+    //slidesNavigation="true"
+    //slidesNavPosition="bottom"
+    //navigation="true"
+    anchors={["section1", "section2", "section3", "section4", "section5"]}
+    sectionsColor={["#282c34", "#ff5f45", "#0798ec", "#0798ec", "#0798ec"]}
     onLeave={(origin, destination, direction) => {
       console.log("onLeave event", { origin, destination, direction })
     }}

@@ -4,10 +4,8 @@ import styled from "styled-components"
 export const Container = styled.div`
   width: 1740px;
   height: 100%;
-  position: relative;
   h3 {
-    color: black;
-    margin-top: 300px;
+    margin-top: 200px;
     font-style: italic;
   }
 `
@@ -126,24 +124,24 @@ export const Front4 = styled(ItemBox)`
   transform: rotateY(0deg);
 `
 
-export const Inquiry_btn = styled(btn)`
-  position: absolute;
-  bottom: 220px;
-  left: 800px;
-`
-
 export const Inquiry = styled.div`
   width: 1400px;
   height: 200px;
   background-color: gray;
   color: #fff;
   position: absolute;
-  bottom: 200px;
+  bottom: 100px;
   left: 170px;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const Inquiry_btn = styled(btn)`
+  position: absolute;
+  bottom: 130px;
+  left: 800px;
 `
 
 export const Navigation_bar = styled.div`
@@ -212,8 +210,9 @@ export const Selecter4 = styled.div`
 
 export const SilentMoveTo = styled.div`
   position: absolute;
-  width: 130px;
-  height: 130px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   font-size: 20px;
   border: 4px solid black;
@@ -231,24 +230,24 @@ export const SilentMoveTo = styled.div`
   }
 `
 
-export const SilentMoveTo2 = styled(SilentMoveTo)`
+export const SilentMoveTo1 = styled(SilentMoveTo)`
   top: 200px;
-  right: 25px;
+`
+
+export const SilentMoveTo2 = styled(SilentMoveTo)`
+  top: 350px;
 `
 
 export const SilentMoveTo3 = styled(SilentMoveTo)`
-  top: 400px;
-  right: 25px;
+  top: 500px;
 `
 
 export const SilentMoveTo4 = styled(SilentMoveTo)`
-  top: 600px;
-  right: 25px;
+  top: 650px;
 `
 
 export const SilentMoveTo5 = styled(SilentMoveTo)`
   top: 800px;
-  right: 25px;
 `
 
 export const Swiper_button = styled.div`
