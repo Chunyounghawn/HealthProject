@@ -1,6 +1,6 @@
 import MainSection from './pages/Main'
-import HealthKeyWordSection from './pages/HealthKeyWord'
-import TotalStrengthSection from './pages/TotalStrength'
+import HealthKeyWordSection from './pages/Strength'
+import TotalStrengthSection from './pages/Map'
 import ReviewSection from './pages/Review'
 import QuestionSection from './pages/Question'
 

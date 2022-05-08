@@ -29,21 +29,9 @@ const ItemBox = styled.div`
   font-size: 30px;
 `
 
-const Swiper_button = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 2px solid #333;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  position: absolute;
-`
 
 
-
-const Swiper_phone = styled.div`
+const SwiperPhone = styled.div`
   width: 350px;
   height: 600px;
   background-color: yellow;
@@ -56,7 +44,7 @@ const Swiper_phone = styled.div`
 
 
 
-const Swiper_slide = styled.div`
+const SwiperSlideStyle = styled.div`
   width: 300px;
   height: 550px;
   display: flex;
@@ -184,7 +172,7 @@ function HealthKeyWordSection() {
   return (
     <div className="section">
 
-      <Swiper_phone>
+      <SwiperPhone>
         <Swiper
           style={{
             height: "680px",
@@ -201,47 +189,47 @@ function HealthKeyWordSection() {
           loop={true}
         >
           <SwiperSlide>
-            <Swiper_slide>
+            <SwiperSlideStyle>
               <img
                 src={Calender}
                 alt="진단표 스캔"
                 width="300px"
                 height="520px"
               ></img>
-            </Swiper_slide>
+            </SwiperSlideStyle>
           </SwiperSlide>
           <SwiperSlide>
-            <Swiper_slide>
+            <SwiperSlideStyle>
               <img
                 src={In_body}
                 alt="캘린더"
                 width="300px"
                 height="520px"
               ></img>
-            </Swiper_slide>
+            </SwiperSlideStyle>
           </SwiperSlide>
           <SwiperSlide>
-            <Swiper_slide>
+            <SwiperSlideStyle>
               <img
                 src={Scheduling}
                 alt="운동 스케줄링"
                 width="300px"
                 height="520px"
               ></img>
-            </Swiper_slide>
+            </SwiperSlideStyle>
           </SwiperSlide>
           <SwiperSlide>
-            <Swiper_slide>
+            <SwiperSlideStyle>
               <img
                 src={Water_alarm}
                 alt="물 알람"
                 width="300px"
                 height="520px"
               ></img>
-            </Swiper_slide>
+            </SwiperSlideStyle>
           </SwiperSlide>
         </Swiper>
-      </Swiper_phone>
+      </SwiperPhone>
 
       <Selecter1>
         <Front1>진단표 스캔</Front1>
