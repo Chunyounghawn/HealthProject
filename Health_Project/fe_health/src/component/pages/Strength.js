@@ -6,13 +6,12 @@ import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 
 import styled from "styled-components"
-
 import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
-  width: 90%;
+  width: 1740px;
   height: 100%;
   position: relative;
 `
@@ -25,7 +24,7 @@ const SwiperPhone = styled.div`
   border-radius: 10%;
   position: absolute;
   top: 20%;
-  left: 15%;
+  left: 13%;
 `
 
 const SwiperSlideStyle = styled.div`
@@ -44,6 +43,7 @@ const ItemBox = styled.div`
   height: 200px;
   backface-visibility: hidden;
   transition: 1s;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,6 +88,7 @@ const Back1 = styled(ItemBox)`
   top: 20%;
   left: 65%;
   font-size: 15px;
+  line-height: 30px;
   background-color: #333;
   color: #fff;
   transform: rotateY(-180deg);
@@ -98,6 +99,7 @@ const Back2 = styled(ItemBox)`
   top: 40%;
   left: 50%;
   font-size: 15px;
+  line-height: 30px;
   color: #fff;
   background-color: #333;
   transform: rotateY(-180deg);
@@ -108,6 +110,7 @@ const Back3 = styled(ItemBox)`
   top: 40%;
   left: 80%;
   font-size: 15px;
+  line-height: 30px;
   color: #fff;
   background-color: #333;
   transform: rotateY(-180deg);
@@ -118,6 +121,7 @@ const Back4 = styled(ItemBox)`
   top: 60%;
   left: 65%;
   font-size: 15px;
+  line-height: 30px;
   color: #fff;
   background-color: #333;
   transform: rotateY(-180deg);
@@ -168,9 +172,9 @@ function StrengthSection() {
             style={{
               height: "680px",
               width: "500px",
-              position: "relative",
-              left: "-80px",
-              top: "-30px",
+              position: "absolute",
+              top: "-5%",
+              left: "-23%",
             }}
             spaceBetween={10}
             slidesPerView={1}

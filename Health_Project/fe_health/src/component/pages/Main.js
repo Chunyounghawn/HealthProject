@@ -2,7 +2,7 @@ import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
 
 const Container = styled.div`
-  width: 90%;
+  width: 1740px;
   height: 100%;
   position: relative;
 `
@@ -25,9 +25,9 @@ const Video = styled.video`
 
 const MainTitle = styled.div`
   position: absolute;
-  top: 35%;
-  left: 25%;
-  font-size: 5em;
+  top: 30%;
+  left: 20%;
+  font-size: 80px;
   text-align: center;
   color: #fff;
   font-weight: 700;
@@ -36,8 +36,8 @@ const MainTitle = styled.div`
 const Message = styled.div`
   position: absolute;
   top: 45%;
-  left: 35%;
-  font-size: 40px;
+  left: 30%;
+  font-size: 60px;
   text-align: center;
   color: #fff;
   font-weight: 500;
@@ -47,10 +47,11 @@ const Main_btn = styled.div`
   width: 150px;
   height: 40px;
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 43%;
   background-color: #333;
   color: #fff;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

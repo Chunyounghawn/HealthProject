@@ -7,12 +7,12 @@ import "swiper/scss/pagination"
 import styled from "styled-components"
 
 const Container = styled.div`
-  width: 90%;
+  width: 1740px;
   height: 100%;
   position: relative;
 `
 
-const Message = styled.div`
+const Title = styled.div`
   position: absolute;
   top: 15%;
   left: 42%;
@@ -93,12 +93,12 @@ function QuestionSection() {
   return (
     <div className="section">
       <Container>
-        <Message>자주 묻는 질문</Message>
+        <Title>자주 묻는 질문</Title>
 
         <Swiper
           style={{
             width: "1700px",
-            height: "600px",
+            height: "500px",
             position: "absolute",
             top: "15%",
             left: "1%",
