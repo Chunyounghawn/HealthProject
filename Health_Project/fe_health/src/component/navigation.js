@@ -1,5 +1,6 @@
 
 import {
+  Light, User,
   Main, Thumbs_up, Reviews, Headphone, Placeholder
 } from '../image/index.js'
 
@@ -27,14 +28,45 @@ img{
 img.attrs{
   src:${props => props.src}
 }
+
 `
 
+
+const ThemeButton = styled.img`
+
+position: fixed;
+top: 10px;
+right: 100px;
+&:hover{
+  cursor: pointer;
+}
+`
+const UserButton = styled.img`
+position: fixed;
+width: 5px;
+height: 5px;
+top: 10px;
+right: 20px;
+&:hover{
+  cursor: pointer;
+}
+`
+
+const handleClick = (e) => {
+  e.preventDefault();
+  console.log("asdfasdfasd");
+}
 
 
 const Navigation = () => {
   return (
     <>
       <NavigationStyle>
+        <ThemeButton src={Light} onClick={handleClick} />
+        <UserButton src={User} onClick={handleClick} />
+
+
+
         <ul>
           <li data-menuanchor="MainPage">
             <a href="#MainPage">
