@@ -16,11 +16,11 @@ const Map = () => {
     <div
       id="myMap"
       style={{
-        position: "relative",
-        top: "50px",
-        left: "100px",
+        position: "absolute",
+        top: "20%",
+        left: "5%",
         width: "1540px",
-        height: "650px",
+        height: "700px",
       }}
     ></div>
   )

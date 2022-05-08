@@ -1,20 +1,10 @@
 import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
 
-const Message = styled.div`
- margin-top: 50px;
-  font-size: 40px;
-  text-align: center;
-  color: #fff;
-  font-weight: 500;
-`
-
-const MainTitle = styled.div`
-font-size: 5em;
-  text-align: center;
-  margin-top: -100px;
-  color: #fff;
-  font-weight: 700;
+const Container = styled.div`
+  width: 1740px;
+  height: 100%;
+  position: relative;
 `
 
 const Video = styled.video`
@@ -33,15 +23,56 @@ const Video = styled.video`
   opacity: 0.2;
 `
 
+const MainTitle = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  font-size: 5em;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+`
+
+const Message = styled.div`
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  font-size: 40px;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+`
+
+const Main_btn = styled.div`
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  top: 55%;
+  left: 43%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  border-radius: 5px;
+  &:hover {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+  }
+`
 function MainSection() {
   return (
     <div className="section">
-      <MainTitle>Ready to begin you health?</MainTitle>
-      <Message>click on the button now</Message>
-      <Video id="myVideo" loop muted data-autoplay>
-        <source src={main_fisrt} type="video/mp4" />
-      </Video>
-
+      <Container>
+        <MainTitle>Ready to begin you health?</MainTitle>
+        <Message>click on the button now</Message>
+        <Video id="myVideo" loop muted data-autoplay>
+          <source src={main_fisrt} type="video/mp4" />
+        </Video>
+        <Main_btn>Click</Main_btn>
+      </Container>
     </div>
   )
 }

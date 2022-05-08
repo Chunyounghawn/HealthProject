@@ -1,8 +1,16 @@
 import styled from "styled-components"
 import Map from "../Map"
 
+const Container = styled.div`
+  width: 1740px;
+  height: 100%;
+  position: relative;
+`
+
 const Message = styled.div`
- margin-top: 50px;
+  position: absolute;
+  top: 10%;
+  left: 45%;
   font-size: 40px;
   text-align: center;
   color: #fff;
@@ -12,8 +20,10 @@ const Message = styled.div`
 function MapSection() {
   return (
     <div className="section">
-      <Message>헬스장 찾기</Message>
-      <Map />
+      <Container>
+        <Message>헬스장 찾기</Message>
+        <Map />
+      </Container>
     </div>
   )
 }
