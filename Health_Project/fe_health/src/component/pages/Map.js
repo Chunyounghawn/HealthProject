@@ -9,7 +9,7 @@ const Message = styled.div`
   font-weight: 500;
 `
 
-function TotalStrengthSection() {
+function MapSection() {
   return (
     <div className="section">
       <Message>헬스장 찾기</Message>
@@ -18,4 +18,4 @@ function TotalStrengthSection() {
   )
 }
 
-export default TotalStrengthSection
+export default MapSection

@@ -71,7 +71,6 @@ const Inquiry_btn = styled(btn)`
 function QuestionSection() {
   return (
     <div className="section">
-
       <h3>자주 묻는 질문</h3>
 
       <Swiper
@@ -123,7 +122,6 @@ function QuestionSection() {
         관리자에게 직접 문의 해주세요.
       </Inquiry>
       <Inquiry_btn>관리자에게 문의</Inquiry_btn>
-
     </div>
   )
 }

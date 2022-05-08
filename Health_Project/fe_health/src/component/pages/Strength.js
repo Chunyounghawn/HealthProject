@@ -168,7 +168,7 @@ const Selecter4 = styled.div`
 
 
 
-function HealthKeyWordSection() {
+function StrengthSection() {
   return (
     <div className="section">
 
@@ -261,4 +261,4 @@ function HealthKeyWordSection() {
   )
 }
 
-export default HealthKeyWordSection
+export default StrengthSection

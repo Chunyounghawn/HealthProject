@@ -1,6 +1,6 @@
 
 import {
-  Main, Thumbs_up, Placeholder, Headphone, Smartphone
+  Main, Thumbs_up, Reviews, Headphone, Placeholder
 } from '../image/index.js'
 
 import styled from "styled-components"
@@ -54,7 +54,7 @@ const Navigation = () => {
         <ul>
           <li data-menuanchor="ReviewPage" >
             <a href="#ReviewPage">
-              <img src={Placeholder} alt="리뷰" />
+              <img src={Reviews} alt="리뷰" />
             </a>
           </li>
         </ul>
@@ -62,7 +62,7 @@ const Navigation = () => {
         <ul>
           <li data-menuanchor="MapPage" >
             <a href="#MapPage">
-              <img src={Headphone} alt="지도" />
+              <img src={Placeholder} alt="지도" />
             </a>
           </li>
         </ul>
@@ -70,7 +70,7 @@ const Navigation = () => {
         <ul>
           <li data-menuanchor="QuestionPage" >
             <a href="#QuestionPage">
-              <img src={Smartphone} alt="고객센터" />
+              <img src={Headphone} alt="고객센터" />
             </a>
           </li>
         </ul>
