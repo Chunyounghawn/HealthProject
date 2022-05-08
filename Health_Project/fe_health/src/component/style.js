@@ -90,10 +90,10 @@ export const btn = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.4s;
-  &: hover {
+  &:hover {
     background-color: #fff;
-    color: #333;
-    cursor: pointer;
+    color:#333;
+    cursor:pointer;
   }
 `
 
@@ -175,37 +175,37 @@ export const Questions = styled.div`
 `
 
 export const Selecter1 = styled.div`
-  &: hover ${Front1} {
+  &:hover ${Front1} {
     transform: rotateY(180deg);
   }
-  &: hover ${Back1} {
+  &:hover ${Back1} {
     transform: rotateY(0deg);
   }
 `
 
 export const Selecter2 = styled.div`
-  &: hover ${Front2} {
+  &:hover ${Front2} {
     transform: rotateY(180deg);
   }
-  &: hover ${Back2} {
+  &:hover ${Back2} {
     transform: rotateY(0deg);
   }
 `
 
 export const Selecter3 = styled.div`
-  &: hover ${Front3} {
+  &:hover ${Front3} {
     transform: rotateY(180deg);
   }
-  &: hover ${Back3} {
+  &:hover ${Back3} {
     transform: rotateY(0deg);
   }
 `
 
 export const Selecter4 = styled.div`
-  &: hover ${Front4} {
+  &:hover ${Front4} {
     transform: rotateY(180deg);
   }
-  &: hover ${Back4} {
+  &:hover ${Back4} {
     transform: rotateY(0deg);
   }
 `
@@ -266,7 +266,7 @@ export const Swiper_button = styled.div`
 export const Swiper_next = styled(Swiper_button)`
   left: 650px;
   top: 470px;
-  &: hover {
+  &:hover {
     cursor: pointer;
     background-color: #333;
     color: #fff;
@@ -287,7 +287,7 @@ export const Swiper_phone = styled.div`
 export const Swiper_prev = styled(Swiper_button)`
   left: 160px;
   top: 470px;
-  &: hover {
+  &:hover {
     cursor: pointer;
     background-color: #333;
     color: #fff;
