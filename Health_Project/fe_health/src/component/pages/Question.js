@@ -19,7 +19,7 @@ const Title = styled.div`
   font-size: 40px;
   text-align: center;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 `
 
 const Questions = styled.div`
@@ -29,6 +29,7 @@ const Questions = styled.div`
   position: absolute;
   top: 25%;
   left: 10%;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +45,7 @@ const Answer = styled.div`
   position: absolute;
   top: 40%;
   left: 10%;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -14,7 +14,7 @@ const Title = styled.div`
   font-size: 40px;
   text-align: center;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 `
 
 function MapSection() {

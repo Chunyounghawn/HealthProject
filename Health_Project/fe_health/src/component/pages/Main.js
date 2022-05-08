@@ -48,7 +48,7 @@ const Main_btn = styled.div`
   height: 40px;
   position: absolute;
   top: 60%;
-  left: 43%;
+  left: 45%;
   background-color: #333;
   color: #fff;
   font-size: 20px;
