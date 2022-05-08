@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Map from "../Map"
 
 const Container = styled.div`
-  width: 1740px;
+  width: 100%;
   height: 100%;
   position: relative;
 `

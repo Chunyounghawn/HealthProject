@@ -2,7 +2,7 @@ import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
 
 const Container = styled.div`
-  width: 1740px;
+  width: 90%;
   height: 100%;
   position: relative;
 `

@@ -7,7 +7,7 @@ import "swiper/scss/pagination"
 import styled from "styled-components"
 
 const Container = styled.div`
-  width: 1740px;
+  width: 90%;
   height: 100%;
   position: relative;
 `

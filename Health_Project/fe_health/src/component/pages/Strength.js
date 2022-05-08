@@ -12,7 +12,7 @@ import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
-  width: 1740px;
+  width: 90%;
   height: 100%;
   position: relative;
 `
