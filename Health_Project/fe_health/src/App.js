@@ -15,6 +15,7 @@ import calender_image from "./image/calender.jpg"
 import Inbody_image from "./image/in-body.jpg"
 import scheduling_image from "./image/scheduling.jpg"
 import water_alarm_image from "./image/water-alarm.jpg"
+import map_icon from "./image/map_icon.png"
 
 import "./style.css"
 
@@ -59,30 +60,76 @@ import Map from "./Map"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
-/*
-function Tnavigation(fullpageApi) {
-  return (
-    <button
-      onClick={() => fullpageApi.fullpageApi.moveSectionDown()}
-      id="silentMoveTo"
-    >
-      Click
-    </button>
-  )
-}
+const Headdercss = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: gray;
+  z-index: 100;
+  }
+  img{
+    width: 50px;
+    height: 50px;
+  }
+  
+  img.attrs{
+    src:${(props) => props.src}
+  }
+`
 
-const TotalPage = (fullpageApi) => {
+const PPP = () => {
   return (
     <>
-      <MainSection content="Slide down!" />
-      <HealthKeyWordSection content="HealthKeyWordSection" />
-      <TotalStrengthSection content="TotalStrengthSection" />
-      <ReviewSection content="ReviewSection" />
-      <QuestionSection content="QuestionSection" />
+      <Headdercss>
+        <ul>
+          <li data-menuanchor="section1">
+            <a href="#section1">
+              <SilentMoveTo1>section1</SilentMoveTo1>
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section2">
+            <a href="#section2">
+              <SilentMoveTo2>section2</SilentMoveTo2>
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section3">
+            <a href="#section3">
+              <img src={map_icon}></img>
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section4">
+            <a href="#section4">
+              <SilentMoveTo4>section4</SilentMoveTo4>
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section5">
+            <a href="#section5">
+              <SilentMoveTo5>section5</SilentMoveTo5>
+            </a>
+          </li>
+        </ul>
+      </Headdercss>
     </>
   )
 }
-*/
 
 function MainSection(props) {
   return (
@@ -95,34 +142,6 @@ function MainSection(props) {
           <source src={main_fisrt} type="video/mp4" />
         </video>
       </Container>
-      <Navigation_bar></Navigation_bar>
-      <ul>
-        <li data-menuanchor="section1">
-          <a href="#section1">
-            <SilentMoveTo1>section1</SilentMoveTo1>
-          </a>
-        </li>
-        <li data-menuanchor="section2">
-          <a href="#section2">
-            <SilentMoveTo2>section2</SilentMoveTo2>
-          </a>
-        </li>
-        <li data-menuanchor="section3">
-          <a href="#section3">
-            <SilentMoveTo3>section3</SilentMoveTo3>
-          </a>
-        </li>
-        <li data-menuanchor="section4">
-          <a href="#section4">
-            <SilentMoveTo4>section4</SilentMoveTo4>
-          </a>
-        </li>
-        <li data-menuanchor="section5">
-          <a href="#section5">
-            <SilentMoveTo5>section5</SilentMoveTo5>
-          </a>
-        </li>
-      </ul>
     </div>
   )
 }
@@ -216,35 +235,6 @@ function HealthKeyWordSection(props) {
           </Back4>
         </Selecter4>
       </Container>
-
-      <Navigation_bar></Navigation_bar>
-      <ul>
-        <li data-menuanchor="section1">
-          <a href="#section1">
-            <SilentMoveTo1>section1</SilentMoveTo1>
-          </a>
-        </li>
-        <li data-menuanchor="section2">
-          <a href="#section2">
-            <SilentMoveTo2>section2</SilentMoveTo2>
-          </a>
-        </li>
-        <li data-menuanchor="section3">
-          <a href="#section3">
-            <SilentMoveTo3>section3</SilentMoveTo3>
-          </a>
-        </li>
-        <li data-menuanchor="section4">
-          <a href="#section4">
-            <SilentMoveTo4>section4</SilentMoveTo4>
-          </a>
-        </li>
-        <li data-menuanchor="section5">
-          <a href="#section5">
-            <SilentMoveTo5>section5</SilentMoveTo5>
-          </a>
-        </li>
-      </ul>
     </div>
   )
 }
@@ -257,34 +247,6 @@ function TotalStrengthSection(props) {
 
         <Map></Map>
       </Container>
-      <Navigation_bar></Navigation_bar>
-      <ul>
-        <li data-menuanchor="section1">
-          <a href="#section1">
-            <SilentMoveTo1>section1</SilentMoveTo1>
-          </a>
-        </li>
-        <li data-menuanchor="section2">
-          <a href="#section2">
-            <SilentMoveTo2>section2</SilentMoveTo2>
-          </a>
-        </li>
-        <li data-menuanchor="section3">
-          <a href="#section3">
-            <SilentMoveTo3>section3</SilentMoveTo3>
-          </a>
-        </li>
-        <li data-menuanchor="section4">
-          <a href="#section4">
-            <SilentMoveTo4>section4</SilentMoveTo4>
-          </a>
-        </li>
-        <li data-menuanchor="section5">
-          <a href="#section5">
-            <SilentMoveTo5>section5</SilentMoveTo5>
-          </a>
-        </li>
-      </ul>
     </div>
   )
 }
@@ -293,35 +255,6 @@ function ReviewSection(props) {
   return (
     <div className="section">
       <Container></Container>
-
-      <Navigation_bar></Navigation_bar>
-      <ul>
-        <li data-menuanchor="section1">
-          <a href="#section1">
-            <SilentMoveTo1>section1</SilentMoveTo1>
-          </a>
-        </li>
-        <li data-menuanchor="section2">
-          <a href="#section2">
-            <SilentMoveTo2>section2</SilentMoveTo2>
-          </a>
-        </li>
-        <li data-menuanchor="section3">
-          <a href="#section3">
-            <SilentMoveTo3>section3</SilentMoveTo3>
-          </a>
-        </li>
-        <li data-menuanchor="section4">
-          <a href="#section4">
-            <SilentMoveTo4>section4</SilentMoveTo4>
-          </a>
-        </li>
-        <li data-menuanchor="section5">
-          <a href="#section5">
-            <SilentMoveTo5>section5</SilentMoveTo5>
-          </a>
-        </li>
-      </ul>
     </div>
   )
 }
@@ -382,35 +315,6 @@ function QuestionSection(props) {
         </Inquiry>
         <Inquiry_btn>관리자에게 문의</Inquiry_btn>
       </Container>
-
-      <Navigation_bar></Navigation_bar>
-      <ul>
-        <li data-menuanchor="section1">
-          <a href="#section1">
-            <SilentMoveTo1>section1</SilentMoveTo1>
-          </a>
-        </li>
-        <li data-menuanchor="section2">
-          <a href="#section2">
-            <SilentMoveTo2>section2</SilentMoveTo2>
-          </a>
-        </li>
-        <li data-menuanchor="section3">
-          <a href="#section3">
-            <SilentMoveTo3>section3</SilentMoveTo3>
-          </a>
-        </li>
-        <li data-menuanchor="section4">
-          <a href="#section4">
-            <SilentMoveTo4>section4</SilentMoveTo4>
-          </a>
-        </li>
-        <li data-menuanchor="section5">
-          <a href="#section5">
-            <SilentMoveTo5>section5</SilentMoveTo5>
-          </a>
-        </li>
-      </ul>
     </div>
   )
 }
@@ -449,33 +353,36 @@ const anchors = [
 ]
 
 const FullpageWrapper = () => (
-  <ReactFullpage
-    menu="#menu"
-    //navigation
-    //navigationTooltips={anchors}
-    //showActiveTooltip="true"
-    //slidesNavigation="true"
-    //slidesNavPosition="bottom"
-    //navigation="true"
-    anchors={["section1", "section2", "section3", "section4", "section5"]}
-    sectionsColor={["#282c34", "#ff5f45", "#0798ec", "#0798ec", "#0798ec"]}
-    onLeave={(origin, destination, direction) => {
-      console.log("onLeave event", { origin, destination, direction })
-    }}
-    render={({ state, fullpageApi }) => {
-      console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
+  <>
+    <PPP />
+    <ReactFullpage
+      menu="#menu"
+      //navigation
+      //navigationTooltips={anchors}
+      //showActiveTooltip="true"
+      //slidesNavigation="true"
+      //slidesNavPosition="bottom"
+      //navigation="true"
+      anchors={["section1", "section2", "section3", "section4", "section5"]}
+      sectionsColor={["#282c34", "#ff5f45", "#0798ec", "#0798ec", "#0798ec"]}
+      onLeave={(origin, destination, direction) => {
+        console.log("onLeave event", { origin, destination, direction })
+      }}
+      render={({ state, fullpageApi }) => {
+        console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
 
-      return (
-        <div>
-          <button onClick={() => fullpageApi.moveTo(2)}></button>
-          <button onClick={() => fullpageApi.moveTo(3)}></button>
-          <button onClick={() => fullpageApi.moveTo(4)}></button>
-          <button onClick={() => fullpageApi.moveTo(5)}></button>
-          <TotalPage fullpageApi={fullpageApi} />
-        </div>
-      )
-    }}
-  />
+        return (
+          <div>
+            <button onClick={() => fullpageApi.moveTo(2)}></button>
+            <button onClick={() => fullpageApi.moveTo(3)}></button>
+            <button onClick={() => fullpageApi.moveTo(4)}></button>
+            <button onClick={() => fullpageApi.moveTo(5)}></button>
+            <TotalPage fullpageApi={fullpageApi} />
+          </div>
+        )
+      }}
+    />
+  </>
 )
 
 function App() {
