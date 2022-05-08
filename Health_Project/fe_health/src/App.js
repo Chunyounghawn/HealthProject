@@ -11,12 +11,17 @@ import main_fisrt from "./video/main_fisrt.mp4"
 import ReactFullpage from "@fullpage/react-fullpage"
 import styled from "styled-components"
 
-import calender_image from "./image/calender.jpg"
-import Inbody_image from "./image/in-body.jpg"
-import scheduling_image from "./image/scheduling.jpg"
-import water_alarm_image from "./image/water-alarm.jpg"
+import calender_image from "./image/app/calender.jpg"
+import Inbody_image from "./image/app/in_body.jpg"
+import scheduling_image from "./image/app/scheduling.jpg"
+import water_alarm_image from "./image/app/water_alarm.jpg"
 
 import "./style.css"
+import thumbs_up from "./image/icon/thumbs_up.png"
+
+
+import TotalPage from "./component"
+
 
 import {
   Container,
@@ -51,7 +56,74 @@ import {
   Inquiry_btn,
 } from "./component/style"
 
-import Map from "./Map"
+import Map from "./component/Map"
+
+const Headdercss = styled.div`
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  right: 0;
+  top: 0;
+  height: 100% ;
+  background: gray;
+  z-index: 100;
+
+  img{
+    width: 50px;
+    height: 50px;
+  }
+
+  img.attrs{
+    src:${props => props.src}
+  }
+
+`
+
+
+
+const PPP = () => {
+  return (
+    <>
+      <Headdercss>
+        <ul>
+          <li data-menuanchor="section1">
+            <a href="#firstPage">
+              <img src={thumbs_up} />
+
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section2" >
+            <a href="#secondPage">
+              <img src={thumbs_up} />
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section3" >
+            <a href="#thirdPage">
+              <img src={thumbs_up} />
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          <li data-menuanchor="section4" >
+            <a href="#fouthPage">
+              <img src={thumbs_up} />
+            </a>
+          </li>
+        </ul>
+      </Headdercss>
+    </>
+  )
+}
 
 //import { options, fullpage_api } from "fullpage.js/dist/fullpage.extensions.min"
 
@@ -62,16 +134,10 @@ function MainSection(props) {
     <div className="section">
       <h3>Ready to begin you health?</h3>
       <p class="message">click on the button now</p>
-      <button class="btn">Click</button>
-
       <video id="myVideo" loop muted data-autoplay>
         <source src={main_fisrt} type="video/mp4" />
       </video>
-      <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+
     </div>
   )
 }
@@ -166,11 +232,7 @@ function HealthKeyWordSection(props) {
         </Selecter4>
       </Container>
 
-      <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+
     </div>
   )
 }
@@ -183,11 +245,7 @@ function TotalStrengthSection(props) {
 
         <Map></Map>
       </Container>
-      <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+
     </div>
   )
 }
@@ -195,13 +253,8 @@ function TotalStrengthSection(props) {
 function ReviewSection(props) {
   return (
     <div className="section">
-      <Container></Container>
 
-      <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+
     </div>
   )
 }
@@ -263,11 +316,7 @@ function QuestionSection(props) {
         <Inquiry_btn>관리자에게 문의</Inquiry_btn>
       </Container>
 
-      <Navigation_bar></Navigation_bar>
-      <SilentMoveTo2>2</SilentMoveTo2>
-      <SilentMoveTo3>3</SilentMoveTo3>
-      <SilentMoveTo4>4</SilentMoveTo4>
-      <SilentMoveTo5>5</SilentMoveTo5>
+
     </div>
   )
 }
@@ -283,62 +332,62 @@ function Tnavigation(fullpageApi) {
   )
 }
 
-const TotalPage = (fullpageApi) => {
-  return (
-    <>
-      <MainSection content="Slide down!" />
-      <HealthKeyWordSection content="HealthKeyWordSection" />
-      <TotalStrengthSection content="TotalStrengthSection" />
-      <ReviewSection content="ReviewSection" />
-      <QuestionSection content="QuestionSection" />
-    </>
-  )
-}
+// const TotalPage = (fullpageApi) => {
+//   return (
+//     <>
+//       <MainSection content="Slide down!" />
+//       <HealthKeyWordSection content="HealthKeyWordSection" />
+//       <TotalStrengthSection content="TotalStrengthSection" />
+//       <ReviewSection content="ReviewSection" />
+//       <QuestionSection content="QuestionSection" />
+//     </>
+//   )
+// }
 
 const anchors = [
   "firstPage",
   "secondPage",
   "thirdPage",
-  "fourPage",
+  "fourthPage",
   "fifthPage",
   "sixthPage",
   "seventhPage",
 ]
 
 const FullpageWrapper = () => (
-  <ReactFullpage
-    menu="#menu"
-    //navigation
-    //navigationTooltips={anchors}
-    //showActiveTooltip="true"
-    slidesNavigation="true"
-    slidesNavPosition="bottom"
-    sectionsColor={[
-      "#282c34",
-      "#ff5f45",
-      "#0798ec",
-      "#0798ec",
-      "#0798ec",
-      "#0798ec",
-      "#0798ec",
-    ]}
-    onLeave={(origin, destination, direction) => {
-      console.log("onLeave event", { origin, destination, direction })
-    }}
-    render={({ state, fullpageApi }) => {
-      console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
+  <>
+    <PPP />
+    <ReactFullpage
+      menu="#menu"
+      //navigation
+      //navigationTooltips={anchors}
+      //showActiveTooltip="true"
+      slidesNavigation="true"
+      slidesNavPosition="bottom"
+      anchors={anchors}
+      sectionsColor={[
+        "#282c34",
+        "#ff5f45",
+        "#0798ec",
+        "#0798ec",
+        "#0798ec",
+        "#0798ec",
+        "#0798ec",
+      ]}
+      onLeave={(origin, destination, direction) => {
+        console.log("onLeave event", { origin, destination, direction })
+      }}
+      render={({ state, fullpageApi }) => {
+        console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
 
-      return (
-        <div>
-          <button onClick={() => fullpageApi.moveTo(2)}></button>
-          <button onClick={() => fullpageApi.moveTo(3)}></button>
-          <button onClick={() => fullpageApi.moveTo(4)}></button>
-          <button onClick={() => fullpageApi.moveTo(5)}></button>
+        return (
+
+
           <TotalPage fullpageApi={fullpageApi} />
-        </div>
-      )
-    }}
-  />
+
+        )
+      }} />
+  </>
 )
 
 function App() {
