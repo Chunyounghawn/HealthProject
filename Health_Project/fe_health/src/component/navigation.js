@@ -21,8 +21,12 @@ z-index: 100;
 
 img{
   margin: 12px;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
+  &:last-child{
+    width: 80px;
+    height: 80px;
+  }
 }
 
 img.attrs{
