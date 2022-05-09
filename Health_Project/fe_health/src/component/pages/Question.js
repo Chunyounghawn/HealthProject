@@ -1,10 +1,18 @@
 import { Swiper, SwiperSlide } from "swiper/react" // basic
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Autoplay,
+  Keyboard,
+  Mousewheel,
+} from "swiper"
 import "swiper/scss"
 import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 
 import styled from "styled-components"
+
+SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]) // Swiper
 
 const Container = styled.div`
   width: 1740px;
@@ -89,7 +97,6 @@ const Inquiry_btn = styled(btn)`
   bottom: 12%;
   left: 45%;
 `
-SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 function QuestionSection() {
   return (
@@ -109,6 +116,8 @@ function QuestionSection() {
           slidesPerView={3}
           navigation
           pagination={{ clickable: true }}
+          // mousewheel={true}
+          // keyboard={{ enabled: true }}
           autoplay={{ delay: 1000, disableOnInteraction: false }}
           loop={true}
         >
