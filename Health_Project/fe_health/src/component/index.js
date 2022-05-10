@@ -1,16 +1,16 @@
 import MainSection from './pages/Main'
-import HealthKeyWordSection from './pages/HealthKeyWord'
-import TotalStrengthSection from './pages/TotalStrength'
+import StrengthSection from './pages/Strength'
 import ReviewSection from './pages/Review'
 import QuestionSection from './pages/Question'
+import MapSection from './pages/Map'
 
 const TotalPage = (fullpageApi) => {
   return (
     <>
       <MainSection content="Slide down!" />
-      <HealthKeyWordSection content="HealthKeyWordSection" />
-      <TotalStrengthSection content="TotalStrengthSection" />
+      <StrengthSection content="StrengthSection" />
       <ReviewSection content="ReviewSection" />
+      <MapSection content="MapSection" />
       <QuestionSection content="QuestionSection" />
     </>
   )
