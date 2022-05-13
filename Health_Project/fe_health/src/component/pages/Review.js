@@ -39,41 +39,47 @@ const Comments = styled.div`
   text-align: right;
   color: #fff;
   font-weight: 400;
-  background-color: gray;
 `
 
 const Comments1 = styled(Comments)`
   top: 10%;
   right: 10%;
+  color: #b4b4b4;
 `
 
 const Comments2 = styled(Comments)`
   top: 20%;
   right: 40%;
+  color: #32aaff;
 `
 
 const Comments3 = styled(Comments)`
   top: 30%;
   right: 15%;
+  color: #ef904c;
 `
 const Comments4 = styled(Comments)`
   top: 40%;
   right: 40%;
+  color: #505050;
 `
 
 const Comments5 = styled(Comments)`
   top: 50%;
   right: 10%;
+  color: #ffc300;
 `
 
 const Comments6 = styled(Comments)`
   top: 60%;
   right: 40%;
+  color: #d151b7;
 `
 
 const Comments7 = styled(Comments)`
   top: 70%;
   right: 15%;
+  color: #5ec75e;
 `
 
 const Review = styled.div`

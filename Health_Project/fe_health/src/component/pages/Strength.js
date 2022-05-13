@@ -16,7 +16,7 @@ const Container = styled.div`
   position: relative;
 `
 
-const SwiperPhone = styled.div`
+const PhoneIcon = styled.div`
   width: 350px;
   height: 600px;
   background-color: yellow;
@@ -167,7 +167,7 @@ function StrengthSection() {
   return (
     <div className="section">
       <Container>
-        <SwiperPhone>
+        <PhoneIcon>
           <Swiper
             style={{
               height: "680px",
@@ -224,7 +224,7 @@ function StrengthSection() {
               </SwiperSlideStyle>
             </SwiperSlide>
           </Swiper>
-        </SwiperPhone>
+        </PhoneIcon>
 
         <Selecter1>
           <Front1>진단표 스캔</Front1>
