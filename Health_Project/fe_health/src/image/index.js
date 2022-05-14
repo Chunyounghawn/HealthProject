@@ -15,6 +15,8 @@ const Water_alarm = require("../image/app/water_alarm.jpg")
 const Review1 = require("../image/review/review1.jpg")
 const Review2 = require("../image/review/review2.jpg")
 const Review3 = require("../image/review/review3.jpg")
+const Review4 = require("../image/review/review4.jpg")
+const Review5 = require("../image/review/review5.jpg")
 
 export {
   //상단 버튼두개
@@ -35,4 +37,6 @@ export {
   Review1,
   Review2,
   Review3,
+  Review4,
+  Review5,
 }

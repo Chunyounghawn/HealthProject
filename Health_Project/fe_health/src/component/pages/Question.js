@@ -118,7 +118,7 @@ function QuestionSection() {
           pagination={{ clickable: true }}
           // mousewheel={true}
           // keyboard={{ enabled: true }}
-          autoplay={{ delay: 1000, disableOnInteraction: false }}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
           loop={true}
         >
           <SwiperSlide>
@@ -142,6 +142,7 @@ function QuestionSection() {
               오른쪽 상단 내정보 아이콘에서 공지사항 확인 가능 합니다.
             </Answer>
           </SwiperSlide>
+
           <SwiperSlide>
             <Questions>챌린지 참여는 어떻게 하나요?</Questions>
             <Answer>
