@@ -18,7 +18,6 @@ const Map = () => {
       style={{
         position: "absolute",
         top: "20%",
-        left: "5%",
         width: "1540px",
         height: "700px",
       }}

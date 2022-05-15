@@ -39,14 +39,19 @@ SwiperCore.use([
 
 const Container = styled.div`
   width: 1740px;
-  height: 1000px;
+  height: 970px;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1920px) {
+    width: 90%;
+  }
 `
 
 const Title = styled.div`
   position: absolute;
   top: 10%;
-  left: 45%;
   font-size: 60px;
   text-align: center;
   color: #fff;
@@ -120,7 +125,11 @@ function ReviewSection() {
             height: "520px",
             position: "absolute",
             top: "30%",
-            left: "7%",
+            breakpoints: {
+              1920: {
+                //브라우저가 1920보다 클 때
+              },
+            },
           }}
           effect={"cube"}
           autoplay={{ delay: 2000, disableOnInteraction: false }}

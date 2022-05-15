@@ -3,16 +3,20 @@ import Map from "../Map"
 
 const Container = styled.div`
   width: 1740px;
-  height: 100%;
+  height: 970px;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1920px) {
+    width: 90%;
+  }
 `
 
 const Title = styled.div`
   position: absolute;
   top: 10%;
-  left: 45%;
   font-size: 40px;
-  text-align: center;
   color: #fff;
   font-weight: 600;
 `

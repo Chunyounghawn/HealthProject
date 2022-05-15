@@ -5,13 +5,19 @@ const Container = styled.div`
   width: 1740px;
   height: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1920px) {
+    width: 90%;
+  }
 `
 
 const Video = styled.video`
   position: absolute;
-  left: 0;
-  bottom: 0;
-  top: 0;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
   width: 1740px;
   height: 100%;
   background-size: 0% 0%;
@@ -21,12 +27,15 @@ const Video = styled.video`
   /*background-size: contain;*/
   object-fit: cover; /*cover video background */
   opacity: 0.2;
+
+  @media screen and (min-width: 1920px) {
+    width: 100%;
+  }
 `
 
 const MainTitle = styled.div`
   position: absolute;
   top: 30%;
-  left: 20%;
   font-size: 80px;
   text-align: center;
   color: #fff;
@@ -36,7 +45,6 @@ const MainTitle = styled.div`
 const Message = styled.div`
   position: absolute;
   top: 45%;
-  left: 30%;
   font-size: 60px;
   text-align: center;
   color: #fff;
@@ -48,7 +56,6 @@ const Main_btn = styled.div`
   height: 40px;
   position: absolute;
   top: 60%;
-  left: 45%;
   background-color: #333;
   color: #fff;
   font-size: 20px;
