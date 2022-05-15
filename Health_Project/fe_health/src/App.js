@@ -2,12 +2,8 @@ import React from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
-
-
 import TotalPage from "./component"
 import Navigation from "./component/navigation"
-
-
 
 const anchors = [
   "MainPage",
@@ -24,23 +20,16 @@ const FullpageWrapper = () => (
       slidesNavigation="true"
       slidesNavPosition="bottom"
       anchors={anchors}
-      sectionsColor={[
-        "#E3E2B4",
-        "#E3E2B4",
-        "#E3E2B4",
-        "#E3E2B4",
-        "#E3E2B4",
-      ]}
+      sectionsColor={["#E3E2B4", "#E3E2B4", "#E3E2B4", "#E3E2B4", "#E3E2B4"]}
       onLeave={(origin, destination, direction) => {
         console.log("onLeave event", { origin, destination, direction })
       }}
       render={({ state, fullpageApi }) => {
         console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
 
-        return (
-          <TotalPage fullpageApi={fullpageApi} />
-        )
-      }} />
+        return <TotalPage fullpageApi={fullpageApi} />
+      }}
+    />
   </>
 )
 
