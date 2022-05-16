@@ -16,16 +16,20 @@ SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]) // Swip
 
 const Container = styled.div`
   width: 1740px;
-  height: 100%;
+  height: 970px;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1920px) {
+    width: 90%;
+  }
 `
 
 const Title = styled.div`
   position: absolute;
-  top: 15%;
-  left: 42%;
+  top: 10%;
   font-size: 40px;
-  text-align: center;
   color: #fff;
   font-weight: 600;
 `
@@ -36,7 +40,7 @@ const Questions = styled.div`
   background-color: gray;
   position: absolute;
   top: 25%;
-  left: 10%;
+  left: 12%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -52,7 +56,7 @@ const Answer = styled.div`
   background-color: orange;
   position: absolute;
   top: 40%;
-  left: 10%;
+  left: 12%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -69,7 +73,6 @@ const Inquiry = styled.div`
   color: #fff;
   position: absolute;
   bottom: 10%;
-  left: 10%;
   font-size: 20px;
   display: flex;
   justify-content: center;
@@ -95,7 +98,6 @@ const btn = styled.div`
 const Inquiry_btn = styled(btn)`
   position: absolute;
   bottom: 12%;
-  left: 45%;
 `
 
 function QuestionSection() {
@@ -110,7 +112,6 @@ function QuestionSection() {
             height: "500px",
             position: "absolute",
             top: "15%",
-            left: "1%",
           }}
           spaceBetween={50}
           slidesPerView={3}
@@ -118,7 +119,7 @@ function QuestionSection() {
           pagination={{ clickable: true }}
           // mousewheel={true}
           // keyboard={{ enabled: true }}
-          autoplay={{ delay: 1000, disableOnInteraction: false }}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
           loop={true}
         >
           <SwiperSlide>
@@ -142,6 +143,7 @@ function QuestionSection() {
               오른쪽 상단 내정보 아이콘에서 공지사항 확인 가능 합니다.
             </Answer>
           </SwiperSlide>
+
           <SwiperSlide>
             <Questions>챌린지 참여는 어떻게 하나요?</Questions>
             <Answer>

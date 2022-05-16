@@ -12,11 +12,17 @@ SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
   width: 1740px;
-  height: 100%;
+  height: 970px;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1920px) {
+    width: 90%;
+  }
 `
 
-const SwiperPhone = styled.div`
+const PhoneIcon = styled.div`
   width: 350px;
   height: 600px;
   background-color: yellow;
@@ -167,7 +173,7 @@ function StrengthSection() {
   return (
     <div className="section">
       <Container>
-        <SwiperPhone>
+        <PhoneIcon>
           <Swiper
             style={{
               height: "680px",
@@ -224,7 +230,7 @@ function StrengthSection() {
               </SwiperSlideStyle>
             </SwiperSlide>
           </Swiper>
-        </SwiperPhone>
+        </PhoneIcon>
 
         <Selecter1>
           <Front1>진단표 스캔</Front1>
