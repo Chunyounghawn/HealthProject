@@ -18,6 +18,10 @@ const Review3 = require("../image/review/review3.jpg")
 const Review4 = require("../image/review/review4.jpg")
 const Review5 = require("../image/review/review5.jpg")
 
+const Good = require("../image/review/good.png")
+const Click = require("../image/review/click.png")
+const Chat = require("../image/review/chat.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -39,4 +43,7 @@ export {
   Review3,
   Review4,
   Review5,
+  Good,
+  Click,
+  Chat,
 }

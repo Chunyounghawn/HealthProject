@@ -1,7 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Review1, Review2, Review3, Review4, Review5 } from "../../image/index"
+import {
+  Review1,
+  Review2,
+  Review3,
+  Review4,
+  Review5,
+  Good,
+  Click,
+  Chat,
+} from "../../image/index"
 
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, {
@@ -49,21 +58,35 @@ const Container = styled.div`
   }
 `
 
-const Title = styled.div`
+const Best = styled.img`
+  position: absolute;
+  left: 3%;
+  bottom: 2%;
+  widht: 70px;
+  height: 70px;
+`
+
+const Vist = styled.img`
+  position: absolute;
+  left: 20%;
+  bottom: 2%;
+  widht: 70px;
+  height: 70px;
+`
+
+const MessageIcon = styled.img`
   position: absolute;
   top: 10%;
-  font-size: 60px;
-  text-align: center;
-  color: #fff;
-  font-weight: 600;
+  right: 10%;
 `
 
 const Comments = styled.div`
   position: absolute;
-  font-size: 20px;
   text-align: right;
-  color: #fff;
-  font-weight: 400;
+  font-size: 20px;
+  background-image: url(${Chat});
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 
 const Comments1 = styled(Comments)`
@@ -74,18 +97,18 @@ const Comments1 = styled(Comments)`
 
 const Comments2 = styled(Comments)`
   top: 20%;
-  right: 40%;
+  right: 30%;
   color: #32aaff;
 `
 
 const Comments3 = styled(Comments)`
   top: 30%;
-  right: 15%;
+  right: 10%;
   color: #ef904c;
 `
 const Comments4 = styled(Comments)`
   top: 40%;
-  right: 40%;
+  right: 30%;
   color: #505050;
 `
 
@@ -97,7 +120,7 @@ const Comments5 = styled(Comments)`
 
 const Comments6 = styled(Comments)`
   top: 60%;
-  right: 40%;
+  right: 35%;
   color: #d151b7;
 `
 
@@ -107,31 +130,36 @@ const Comments7 = styled(Comments)`
   color: #5ec75e;
 `
 
-const Review = styled.div`
+const Review = styled.img`
 position: absolute;
 top:10%
 left: 10%;
+width: 600px;
+height: 720px;
 `
 
 function ReviewSection() {
   return (
     <div className="section">
       <Container>
-        <Title>Review</Title>
         <Swiper
           // onSlideChange={(Swiper) => console.log(Swiper.realIndex + 1)}
           style={{
-            width: "1500px",
-            height: "520px",
+            width: "1600px",
+            height: "820px",
             position: "absolute",
-            top: "30%",
+            top: "10%",
+            borderRadius: "30px",
+            borderWidth: "thick",
+            borderStyle: "solid",
+            borderColor: "pink",
             breakpoints: {
               1920: {
                 //브라우저가 1920보다 클 때
               },
             },
           }}
-          effect={"cube"}
+          effect={"coverflow"}
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           loop={true}
           speed={3000}
@@ -140,14 +168,9 @@ function ReviewSection() {
           mousewheel={true}
         >
           <SwiperSlide>
-            <Review>
-              <img
-                src={Review1}
-                alt="Review1"
-                width="400px"
-                height="520px"
-              ></img>
-            </Review>
+            <Review src={Review1} />
+            <Best src={Good}></Best>
+            <Vist src={Click}></Vist>
             <Comments1>오늘부터 시작합니다!</Comments1>
             <Comments2>
               이런 웹을 이제야 알았다니... 인생 손해봤습니다...
@@ -164,14 +187,9 @@ function ReviewSection() {
           </SwiperSlide>
 
           <SwiperSlide>
-            <Review>
-              <img
-                src={Review2}
-                alt="Review2"
-                width="400px"
-                height="520px"
-              ></img>
-            </Review>
+            <Review src={Review2} />
+            <Best src={Good}></Best>
+            <Vist src={Click}></Vist>
             <Comments1>여로모로 잘 사용중 이예요~</Comments1>
             <Comments2>친구 추전받고 오늘 알았습니다.</Comments2>
             <Comments3>좋아요 꾹!~</Comments3>
@@ -186,14 +204,9 @@ function ReviewSection() {
           </SwiperSlide>
 
           <SwiperSlide>
-            <Review>
-              <img
-                src={Review3}
-                alt="Review3"
-                width="400px"
-                height="520px"
-              ></img>
-            </Review>
+            <Review src={Review3} />
+            <Best src={Good}></Best>
+            <Vist src={Click}></Vist>
             <Comments1>오늘부터 시작합니다!</Comments1>
             <Comments2>
               이런 웹을 이제야 알았다니... 인생 손해봤습니다...
@@ -210,14 +223,9 @@ function ReviewSection() {
           </SwiperSlide>
 
           <SwiperSlide>
-            <Review>
-              <img
-                src={Review4}
-                alt="Review4"
-                width="400px"
-                height="520px"
-              ></img>
-            </Review>
+            <Review src={Review4} />
+            <Best src={Good}></Best>
+            <Vist src={Click}></Vist>
             <Comments1>여로모로 잘 사용중 이예요~</Comments1>
             <Comments2>친구 추전받고 오늘 알았습니다.</Comments2>
             <Comments3>좋아요 꾹!~</Comments3>
@@ -232,14 +240,9 @@ function ReviewSection() {
           </SwiperSlide>
 
           <SwiperSlide>
-            <Review>
-              <img
-                src={Review5}
-                alt="Review5"
-                width="400px"
-                height="520px"
-              ></img>
-            </Review>
+            <Review src={Review5} />
+            <Best src={Good}></Best>
+            <Vist src={Click}></Vist>
             <Comments1>오늘부터 시작합니다!</Comments1>
             <Comments2>
               이런 웹을 이제야 알았다니... 인생 손해봤습니다...
