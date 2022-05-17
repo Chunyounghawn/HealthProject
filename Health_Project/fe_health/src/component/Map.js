@@ -17,10 +17,13 @@ const Map = () => {
       id="myMap"
       style={{
         position: "absolute",
-        top: "20%",
-        left: "5%",
+        top: "10%",
         width: "1540px",
-        height: "700px",
+        height: "800px",
+        borderRadius: "30px",
+        borderWidth: "thick",
+        borderStyle: "solid",
+        borderColor: "pink",
       }}
     ></div>
   )

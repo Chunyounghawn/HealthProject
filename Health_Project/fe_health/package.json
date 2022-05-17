@@ -8,9 +8,14 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "http-proxy-middleware": "^2.0.4",
+    "lodash": "^4.17.21",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+<<<<<<< HEAD
     "react-modal": "^3.15.1",
+=======
+    "react-gsap": "^3.2.1",
+>>>>>>> 5b71ed78a516f8a9ba65e655e431020c0138c918
     "react-scripts": "5.0.0",
     "sass": "^1.51.0",
     "styled-component": "^2.8.0",
