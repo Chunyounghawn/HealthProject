@@ -22,6 +22,9 @@ const Good = require("../image/review/good.png")
 const Click = require("../image/review/click.png")
 const Chat = require("../image/review/chat.png")
 
+const Close = require("../image/modal/close.png")
+const UserImg = require("../image/modal/user.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -46,4 +49,7 @@ export {
   Good,
   Click,
   Chat,
+  // 모달창
+  Close,
+  UserImg,
 }

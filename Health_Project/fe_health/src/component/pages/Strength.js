@@ -8,6 +8,8 @@ import "swiper/scss/pagination"
 import styled from "styled-components"
 import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
 
+import React from "react"
+
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
@@ -42,6 +44,28 @@ const SwiperSlideStyle = styled.div`
   position: absolute;
   top: 8%;
   left: 21%;
+`
+
+const Btn = styled.div`
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  &:hover {
+    background-color: gray;
+    color: #fff;
+    cursor: pointer;
+  }
+`
+const Back1Btn = styled(Btn)`
+  position: absolute;
+  top: 75%;
+  left: 30%;
 `
 
 const ItemBox = styled.div`
@@ -236,6 +260,7 @@ function StrengthSection() {
           <Front1>진단표 스캔</Front1>
           <Back1>
             카메라로 진단표를 스캔하여 나의 인다비 정보를 확인할 수 있습니다.
+            <Back1Btn>바로가기</Back1Btn>
           </Back1>
         </Selecter1>
 

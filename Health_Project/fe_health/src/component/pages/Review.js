@@ -57,36 +57,49 @@ const Container = styled.div`
     width: 90%;
   }
 `
+const ReviewBottom = styled.div`
+  position: relative;
+  left: 0.5%;
+  top: 89%;
+  width: 1580px;
+  height: 85px;
+  background-color: skyblue;
+  border-radius: 30px;
+`
 
 const Best = styled.img`
   position: absolute;
   left: 3%;
-  bottom: 2%;
+  bottom: 5%;
   widht: 70px;
   height: 70px;
+`
+
+const BestText = styled.div`
+  position: absolute;
+  left: 9%;
+  bottom: 25%;
+  font-size: 30px;
 `
 
 const Vist = styled.img`
   position: absolute;
-  left: 20%;
-  bottom: 2%;
+  left: 17%;
+  bottom: 5%;
   widht: 70px;
   height: 70px;
 `
-
-const MessageIcon = styled.img`
+const VistText = styled.div`
   position: absolute;
-  top: 10%;
-  right: 10%;
+  left: 23%;
+  bottom: 25%;
+  font-size: 30px;
 `
 
 const Comments = styled.div`
   position: absolute;
-  text-align: right;
+  text-align: center;
   font-size: 20px;
-  background-image: url(${Chat});
-  background-repeat: no-repeat;
-  background-size: cover;
 `
 
 const Comments1 = styled(Comments)`
@@ -169,8 +182,14 @@ function ReviewSection() {
         >
           <SwiperSlide>
             <Review src={Review1} />
-            <Best src={Good}></Best>
-            <Vist src={Click}></Vist>
+
+            <ReviewBottom>
+              <Best src={Good}></Best>
+              <BestText>1,500</BestText>
+              <Vist src={Click}></Vist>
+              <VistText>조회수 2,782회</VistText>
+            </ReviewBottom>
+
             <Comments1>오늘부터 시작합니다!</Comments1>
             <Comments2>
               이런 웹을 이제야 알았다니... 인생 손해봤습니다...
@@ -188,8 +207,14 @@ function ReviewSection() {
 
           <SwiperSlide>
             <Review src={Review2} />
-            <Best src={Good}></Best>
-            <Vist src={Click}></Vist>
+
+            <ReviewBottom>
+              <Best src={Good}></Best>
+              <BestText>700</BestText>
+              <Vist src={Click}></Vist>
+              <VistText>조회수 1,352회</VistText>
+            </ReviewBottom>
+
             <Comments1>여로모로 잘 사용중 이예요~</Comments1>
             <Comments2>친구 추전받고 오늘 알았습니다.</Comments2>
             <Comments3>좋아요 꾹!~</Comments3>
@@ -205,8 +230,14 @@ function ReviewSection() {
 
           <SwiperSlide>
             <Review src={Review3} />
-            <Best src={Good}></Best>
-            <Vist src={Click}></Vist>
+
+            <ReviewBottom>
+              <Best src={Good}></Best>
+              <BestText>1,002</BestText>
+              <Vist src={Click}></Vist>
+              <VistText>조회수 1,385회</VistText>
+            </ReviewBottom>
+
             <Comments1>오늘부터 시작합니다!</Comments1>
             <Comments2>
               이런 웹을 이제야 알았다니... 인생 손해봤습니다...
@@ -224,8 +255,14 @@ function ReviewSection() {
 
           <SwiperSlide>
             <Review src={Review4} />
-            <Best src={Good}></Best>
-            <Vist src={Click}></Vist>
+
+            <ReviewBottom>
+              <Best src={Good}></Best>
+              <BestText>1.2만</BestText>
+              <Vist src={Click}></Vist>
+              <VistText>조회수 22,782회</VistText>
+            </ReviewBottom>
+
             <Comments1>여로모로 잘 사용중 이예요~</Comments1>
             <Comments2>친구 추전받고 오늘 알았습니다.</Comments2>
             <Comments3>좋아요 꾹!~</Comments3>
@@ -241,8 +278,14 @@ function ReviewSection() {
 
           <SwiperSlide>
             <Review src={Review5} />
-            <Best src={Good}></Best>
-            <Vist src={Click}></Vist>
+
+            <ReviewBottom>
+              <Best src={Good}></Best>
+              <BestText>3.2만</BestText>
+              <Vist src={Click}></Vist>
+              <VistText>조회수 42,782회</VistText>
+            </ReviewBottom>
+
             <Comments1>오늘부터 시작합니다!</Comments1>
             <Comments2>
               이런 웹을 이제야 알았다니... 인생 손해봤습니다...
