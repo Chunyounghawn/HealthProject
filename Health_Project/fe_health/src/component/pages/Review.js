@@ -9,7 +9,6 @@ import {
   Review5,
   Good,
   Click,
-  Chat,
 } from "../../image/index"
 
 import { Swiper, SwiperSlide } from "swiper/react" // basic

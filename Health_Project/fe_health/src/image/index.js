@@ -24,6 +24,7 @@ const Chat = require("../image/review/chat.png")
 
 const Close = require("../image/modal/close.png")
 const UserImg = require("../image/modal/user.png")
+const Logo = require("../image/modal/logo.png")
 
 export {
   //상단 버튼두개
@@ -52,4 +53,5 @@ export {
   // 모달창
   Close,
   UserImg,
+  Logo,
 }
