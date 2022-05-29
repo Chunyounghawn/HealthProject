@@ -6,7 +6,19 @@ import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 
 import styled from "styled-components"
-import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
+import {
+  Calender,
+  In_body,
+  Scheduling,
+  Water_alarm,
+  Close,
+} from "../../image/index"
+
+import React from "react"
+import ScanModal from "react-modal"
+import AlarmModal from "react-modal"
+import ScheduleModal from "react-modal"
+import CalendarModal from "react-modal"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -42,6 +54,57 @@ const SwiperSlideStyle = styled.div`
   position: absolute;
   top: 8%;
   left: 21%;
+`
+
+const Btn = styled.div`
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  &:hover {
+    background-color: gray;
+    color: #fff;
+    cursor: pointer;
+  }
+`
+
+const Back1Btn = styled(Btn)`
+  position: absolute;
+  top: 75%;
+  left: 30%;
+`
+
+const Back2Btn = styled(Btn)`
+  position: absolute;
+  top: 75%;
+  left: 30%;
+`
+
+const Back3Btn = styled(Btn)`
+  position: absolute;
+  top: 75%;
+  left: 30%;
+`
+
+const Back4Btn = styled(Btn)`
+  position: absolute;
+  top: 75%;
+  left: 30%;
+`
+const Closebtn = styled.img`
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const ItemBox = styled.div`
@@ -170,6 +233,11 @@ const Selecter4 = styled.div`
 `
 
 function StrengthSection() {
+  const [ScanmodalIsOpen, setScanModalOpen] = React.useState(false)
+  const [AlarmmodalIsOpen, setAlarmModalOpen] = React.useState(false)
+  const [SchedulemodalIsOpen, setScheduleModalOpen] = React.useState(false)
+  const [CalendarmodalIsOpen, setCalendarModalOpen] = React.useState(false)
+
   return (
     <div className="section">
       <Container>
@@ -236,27 +304,103 @@ function StrengthSection() {
           <Front1>진단표 스캔</Front1>
           <Back1>
             카메라로 진단표를 스캔하여 나의 인다비 정보를 확인할 수 있습니다.
+            <Back1Btn onClick={() => setScanModalOpen(true)}>바로가기</Back1Btn>
           </Back1>
         </Selecter1>
+
+        <ScanModal
+          isOpen={ScanmodalIsOpen}
+          onRequestClose={() => setScanModalOpen(false)}
+          ariaHideApp={false}
+          style={{
+            content: {
+              left: "2%",
+              right: "12%",
+              backgroundColor: "#7FFFD4",
+            },
+          }}
+        >
+          ScanModal
+          <Closebtn src={Close} onClick={() => setScanModalOpen(false)} />
+        </ScanModal>
 
         <Selecter2>
           <Front2>물 알람</Front2>
           <Back2>
             알람 기능을 이용하여 사용자가 직접 물 알람을 설정할 수 있습니다.
+            <Back2Btn onClick={() => setAlarmModalOpen(true)}>
+              바로가기
+            </Back2Btn>
           </Back2>
         </Selecter2>
 
+        <AlarmModal
+          isOpen={AlarmmodalIsOpen}
+          onRequestClose={() => setAlarmModalOpen(false)}
+          ariaHideApp={false}
+          style={{
+            content: {
+              left: "2%",
+              right: "12%",
+              backgroundColor: "#7FFFD4",
+            },
+          }}
+        >
+          AlarmModal
+          <Closebtn src={Close} onClick={() => setAlarmModalOpen(false)} />
+        </AlarmModal>
+
         <Selecter3>
           <Front3>운동 스케줄링</Front3>
-          <Back3>사용자가 직접 운동 스케줄을 추가 및 삭제할 수 있습니다.</Back3>
+          <Back3>
+            사용자가 직접 운동 스케줄을 추가 및 삭제할 수 있습니다.
+            <Back3Btn onClick={() => setScheduleModalOpen(true)}>
+              바로가기
+            </Back3Btn>
+          </Back3>
         </Selecter3>
+
+        <ScheduleModal
+          isOpen={SchedulemodalIsOpen}
+          onRequestClose={() => setScheduleModalOpen(false)}
+          ariaHideApp={false}
+          style={{
+            content: {
+              left: "2%",
+              right: "12%",
+              backgroundColor: "#7FFFD4",
+            },
+          }}
+        >
+          ScheduleModal
+          <Closebtn src={Close} onClick={() => setScheduleModalOpen(false)} />
+        </ScheduleModal>
 
         <Selecter4>
           <Front4>캘린더</Front4>
           <Back4>
             사용자는 캘린더를 통해 해당 날짜의 운동 달성량을 파악할 수 있습니다.
+            <Back4Btn onClick={() => setCalendarModalOpen(true)}>
+              바로가기
+            </Back4Btn>
           </Back4>
         </Selecter4>
+
+        <CalendarModal
+          isOpen={CalendarmodalIsOpen}
+          onRequestClose={() => setCalendarModalOpen(false)}
+          ariaHideApp={false}
+          style={{
+            content: {
+              left: "2%",
+              right: "12%",
+              backgroundColor: "#7FFFD4",
+            },
+          }}
+        >
+          CalendarModal
+          <Closebtn src={Close} onClick={() => setCalendarModalOpen(false)} />
+        </CalendarModal>
       </Container>
     </div>
   )

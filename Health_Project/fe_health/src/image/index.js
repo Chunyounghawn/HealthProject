@@ -22,6 +22,15 @@ const Good = require("../image/review/good.png")
 const Click = require("../image/review/click.png")
 const Chat = require("../image/review/chat.png")
 
+const Close = require("../image/modal/close.png")
+const UserImg = require("../image/modal/user.png")
+const Logo = require("../image/modal/logo.png")
+
+const PushUp = require("../image/challenge/push-up.png")
+const SitUp = require("../image/challenge/sit-up.png")
+const Squat = require("../image/challenge/squat.png")
+const Trophy = require("../image/challenge/trophy.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -46,4 +55,13 @@ export {
   Good,
   Click,
   Chat,
+  // 모달창
+  Close,
+  UserImg,
+  Logo,
+  // 첼린지
+  PushUp,
+  SitUp,
+  Squat,
+  Trophy,
 }
