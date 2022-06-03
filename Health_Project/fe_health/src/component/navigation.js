@@ -33,6 +33,7 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
 import "swiper/scss"
 import "swiper/scss/navigation"
 import "swiper/scss/pagination"
+import ThemeSelector from "./themeSelector"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -439,6 +440,7 @@ const Navigations = () => {
   return (
     <>
       <NavigationStyle>
+        <ThemeSelector />
         <ThemeButton src={Light} onClick={handleClick} />
         <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
 
@@ -864,8 +866,7 @@ const Navigations = () => {
               position: "relative",
               width: "1610px",
               height: "850px",
-              left: "2%",
-              right: "10%",
+
               backgroundColor: "#7FFFD4",
             },
           }}
