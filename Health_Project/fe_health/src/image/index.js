@@ -24,6 +24,7 @@ const Chat = require("../image/review/chat.png")
 
 const Close = require("../image/modal/close.png")
 const UserImg = require("../image/modal/user.png")
+const SignupImg = require("../image/modal/signup.png")
 const Logo = require("../image/modal/logo.png")
 
 const PushUp = require("../image/challenge/push-up.png")
@@ -64,4 +65,6 @@ export {
   SitUp,
   Squat,
   Trophy,
+  // 회원가입
+  SignupImg,
 }

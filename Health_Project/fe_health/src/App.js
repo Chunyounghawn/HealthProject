@@ -5,6 +5,24 @@ import ReactFullpage from "@fullpage/react-fullpage"
 import TotalPage from "./component"
 import Navigation from "./component/navigation"
 
+import { ThemeProvider, createGlobalStyle } from "styled-components"
+
+import { darkTheme } from './themes'
+import Theme from "./component/themeSelector"
+import { useSelector } from "react-redux"
+
+
+// export const backgroundColor = theme("theme", {
+//   light: "#fff",
+//   dark: "#2d2d2d"
+// })
+
+// export const textColor = theme("theme", {
+//   light: "#fff",
+//   dark: "#2d2d2d"
+// })
+
+
 const anchors = [
   "MainPage",
   "StrengthPage",
@@ -13,28 +31,48 @@ const anchors = [
   "QuestionPage",
 ]
 
-const FullpageWrapper = () => (
-  <>
-    <Navigation />
-    <ReactFullpage
-      slidesNavigation="true"
-      slidesNavPosition="bottom"
-      anchors={anchors}
-      sectionsColor={["#E3E2B4", "#E3E2B4", "#E3E2B4", "#E3E2B4", "#E3E2B4"]}
-      onLeave={(origin, destination, direction) => {
-        console.log("onLeave event", { origin, destination, direction })
-      }}
-      render={({ state, fullpageApi }) => {
-        console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
 
-        return <TotalPage fullpageApi={fullpageApi} />
-      }}
-    />
-  </>
-)
+
+const FullpageWrapper = () => {
+  const theme = useSelector(state => state.theme);
+  console.log("erewrwerwerw");
+  console.log(theme);
+  return (
+    <>
+      <Navigation />
+      <ReactFullpage
+        slidesNavigation="true"
+        slidesNavPosition="bottom"
+        anchors={anchors}
+        sectionsColor={[
+          `green`,
+          `green`,
+          `${props => props.theme.backgroundColor}`,
+          `${props => props.theme.backgroundColor}`,
+          `${props => props.theme.backgroundColor}`]}
+        onLeave={(origin, destination, direction) => {
+          console.log("onLeave event", { origin, destination, direction })
+        }}
+        render={({ state, fullpageApi }) => {
+          console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
+
+          return <TotalPage fullpageApi={fullpageApi} />
+        }}
+      />
+    </>)
+
+}
+
 
 function App() {
-  return <FullpageWrapper />
+
+  return (
+    <ThemeProvider theme={darkTheme}>
+
+      <FullpageWrapper />
+
+    </ThemeProvider>
+  )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");
 

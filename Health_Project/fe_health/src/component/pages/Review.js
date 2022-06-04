@@ -70,7 +70,7 @@ const Best = styled.img`
   position: absolute;
   left: 3%;
   bottom: 5%;
-  widht: 70px;
+  width: 70px;
   height: 70px;
 `
 
@@ -85,7 +85,7 @@ const Vist = styled.img`
   position: absolute;
   left: 17%;
   bottom: 5%;
-  widht: 70px;
+  width: 70px;
   height: 70px;
 `
 const VistText = styled.div`
@@ -144,7 +144,7 @@ const Comments7 = styled(Comments)`
 
 const Review = styled.img`
 position: absolute;
-top:10%
+top:10%;
 left: 10%;
 width: 600px;
 height: 720px;
