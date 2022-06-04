@@ -6,19 +6,15 @@ import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 
 import styled from "styled-components"
-import {
-  Calender,
-  In_body,
-  Scheduling,
-  Water_alarm,
-  Close,
-} from "../../image/index"
+import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
 
 import React from "react"
-import ScanModal from "react-modal"
-import AlarmModal from "react-modal"
-import ScheduleModal from "react-modal"
-import CalendarModal from "react-modal"
+
+// modal
+import ScanModal from "../../modal/Scan.js"
+import AlarmModal from "../../modal/Alarm.js"
+import ScheduleModal from "../../modal/Schedule.js"
+import CalendarModal from "../../modal/Calendar.js"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -95,16 +91,6 @@ const Back4Btn = styled(Btn)`
   position: absolute;
   top: 75%;
   left: 30%;
-`
-const Closebtn = styled.img`
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 3%;
-  right: 3%;
-  &:hover {
-    cursor: pointer;
-  }
 `
 
 const ItemBox = styled.div`
@@ -308,21 +294,7 @@ function StrengthSection() {
           </Back1>
         </Selecter1>
 
-        <ScanModal
-          isOpen={ScanmodalIsOpen}
-          onRequestClose={() => setScanModalOpen(false)}
-          ariaHideApp={false}
-          style={{
-            content: {
-              left: "2%",
-              right: "12%",
-              backgroundColor: "#7FFFD4",
-            },
-          }}
-        >
-          ScanModal
-          <Closebtn src={Close} onClick={() => setScanModalOpen(false)} />
-        </ScanModal>
+        <ScanModal isModal={ScanmodalIsOpen} setModal={setScanModalOpen} />
 
         <Selecter2>
           <Front2>물 알람</Front2>
@@ -334,21 +306,7 @@ function StrengthSection() {
           </Back2>
         </Selecter2>
 
-        <AlarmModal
-          isOpen={AlarmmodalIsOpen}
-          onRequestClose={() => setAlarmModalOpen(false)}
-          ariaHideApp={false}
-          style={{
-            content: {
-              left: "2%",
-              right: "12%",
-              backgroundColor: "#7FFFD4",
-            },
-          }}
-        >
-          AlarmModal
-          <Closebtn src={Close} onClick={() => setAlarmModalOpen(false)} />
-        </AlarmModal>
+        <AlarmModal isModal={AlarmmodalIsOpen} setModal={setAlarmModalOpen} />
 
         <Selecter3>
           <Front3>운동 스케줄링</Front3>
@@ -361,20 +319,9 @@ function StrengthSection() {
         </Selecter3>
 
         <ScheduleModal
-          isOpen={SchedulemodalIsOpen}
-          onRequestClose={() => setScheduleModalOpen(false)}
-          ariaHideApp={false}
-          style={{
-            content: {
-              left: "2%",
-              right: "12%",
-              backgroundColor: "#7FFFD4",
-            },
-          }}
-        >
-          ScheduleModal
-          <Closebtn src={Close} onClick={() => setScheduleModalOpen(false)} />
-        </ScheduleModal>
+          isModal={SchedulemodalIsOpen}
+          setModal={setScheduleModalOpen}
+        />
 
         <Selecter4>
           <Front4>캘린더</Front4>
@@ -387,20 +334,9 @@ function StrengthSection() {
         </Selecter4>
 
         <CalendarModal
-          isOpen={CalendarmodalIsOpen}
-          onRequestClose={() => setCalendarModalOpen(false)}
-          ariaHideApp={false}
-          style={{
-            content: {
-              left: "2%",
-              right: "12%",
-              backgroundColor: "#7FFFD4",
-            },
-          }}
-        >
-          CalendarModal
-          <Closebtn src={Close} onClick={() => setCalendarModalOpen(false)} />
-        </CalendarModal>
+          isModal={CalendarmodalIsOpen}
+          setModal={setCalendarModalOpen}
+        />
       </Container>
     </div>
   )
