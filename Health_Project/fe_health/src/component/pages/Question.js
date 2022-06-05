@@ -30,7 +30,7 @@ const Title = styled.div`
   position: absolute;
   top: 10%;
   font-size: 40px;
-  color: #fff;
+  color: #333;
   font-weight: 600;
 `
 
