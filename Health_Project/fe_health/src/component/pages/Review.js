@@ -143,11 +143,9 @@ const Comments7 = styled(Comments)`
 `
 
 const Review = styled.img`
-position: absolute;
-top:10%;
-left: 10%;
-width: 600px;
-height: 720px;
+  position: absolute;
+  width: 600px;
+  height: 720px;
 `
 
 function ReviewSection() {

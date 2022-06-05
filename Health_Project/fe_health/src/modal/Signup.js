@@ -94,7 +94,7 @@ const Btn = styled.button`
   transition: 0.4s;
   border-radius: 10px;
   &:hover {
-    background-color: #df75db;
+    background-color: #fff;
     color: #333;
     cursor: pointer;
   }
@@ -135,7 +135,7 @@ const WomanBtn = styled(GenderBtn)`
 `
 
 const Certified = styled(GenderBtn)`
-  width: 190px;
+  width: 200px;
   height: 55px;
   position: absolute;
   top: 0px;
@@ -149,9 +149,30 @@ const SignupBtn = styled(Btn)`
   height: 50px;
   position: absolute;
   bottom: 20px;
+  font-size: 30px;
+`
+
+const Birthdate = styled.div`
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 2px solid black;
+  font-size: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
 `
 
 const Signup = ({ isModal, setModal }) => {
+  const [Month, setMonth] = React.useState("")
+  const [Date, setDate] = React.useState("")
+
+  const onChange = React.useCallback((e) => {
+    setMonth(e.target.Month)
+    setDate(e.target.Date)
+  }, [])
+
   return (
     <SignupModal
       isOpen={isModal}
@@ -229,17 +250,7 @@ const Signup = ({ isModal, setModal }) => {
             <ManBtn>남자</ManBtn>
             <WomanBtn>여자</WomanBtn>
 
-            <input
-              type="text"
-              name="userBirthday"
-              value={"생년월일"}
-              style={{
-                width: "130px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
+            <Birthdate>생년월일</Birthdate>
 
             <input
               type="text"
@@ -248,8 +259,9 @@ const Signup = ({ isModal, setModal }) => {
               style={{
                 width: "120px",
                 height: "50px",
-                position: "relative",
-                top: "-3px",
+                position: "absolute",
+                top: "105px",
+                left: "135px",
                 fontSize: "30px",
                 borderRadius: "10px",
               }}
@@ -257,10 +269,15 @@ const Signup = ({ isModal, setModal }) => {
             <input
               type="text"
               name="month"
-              value={"월"}
+              defaultValue={Month}
+              placeholder="월"
+              onChange={onChange}
               style={{
                 width: "363px",
                 height: "50px",
+                position: "absolute",
+                top: "105px",
+                left: "265px",
                 fontSize: "30px",
                 borderRadius: "10px",
               }}
@@ -269,10 +286,15 @@ const Signup = ({ isModal, setModal }) => {
             <input
               type="text"
               name="date"
-              value={"일"}
+              defaultValue={Date}
+              onChange={onChange}
+              placeholder="일"
               style={{
                 width: "363px",
                 height: "50px",
+                position: "absolute",
+                top: "105px",
+                right: "2px",
                 fontSize: "30px",
                 borderRadius: "10px",
               }}
@@ -294,21 +316,10 @@ const Signup = ({ isModal, setModal }) => {
           <SignupBottom>
             <input
               type="text"
-              value={"+82"}
-              style={{
-                width: "100px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-            <input
-              type="text"
               placeholder="Phone Number"
               style={{
-                width: "700px",
+                width: "800px",
                 height: "50px",
-                marginLeft: "3px",
                 fontSize: "30px",
                 borderRadius: "10px",
               }}
@@ -334,7 +345,7 @@ const Signup = ({ isModal, setModal }) => {
               LoginTrue()
             }}
           >
-            Sign Up
+            Login
           </SignupBtn>
         </ModalBody>
 
