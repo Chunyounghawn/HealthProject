@@ -52,9 +52,14 @@ const Closebtn = styled.img`
   }
 `
 
+const UserLabel = styled.label``
+
 const UserIcon = styled.img`
   width: 100px;
   height: 100px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const SignupTop = styled.div`
@@ -168,6 +173,27 @@ const Signup = ({ isModal, setModal }) => {
   const [Month, setMonth] = React.useState("")
   const [Date, setDate] = React.useState("")
 
+  //파일 미리볼 url을 저장해줄 state
+  const ImageFile = `${SignupImg}`
+  const setImageFile = React.useState("")
+
+  /*
+  // 파일 저장
+  const saveFileImage = (e) => {
+    //    setImageFile(URL.createObjectURL(e.target.ImageFile))
+  }
+
+  // 파일 삭제
+  const deleteFileImage = () => {
+    URL.revokeObjectURL(ImageFile)
+    //    setImageFile("")
+  }
+
+  const onImageChange = (e) => {
+    setImageFile(e.target.ImageFile)
+  }
+*/
+
   const onChange = React.useCallback((e) => {
     setMonth(e.target.Month)
     setDate(e.target.Date)
@@ -193,7 +219,17 @@ const Signup = ({ isModal, setModal }) => {
 
       <ModalContainer>
         <ModalHead>
-          <UserIcon src={SignupImg}></UserIcon>
+          <UserLabel htmlFor="UserImg">
+            <UserIcon src={ImageFile} />
+          </UserLabel>
+          <input
+            type="file"
+            accept="image/*"
+            id="UserImg"
+            style={{
+              display: "none",
+            }}
+          />
           <Closebtn src={Close} onClick={() => setModal(false)} />
         </ModalHead>
 
