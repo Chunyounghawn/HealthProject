@@ -7,8 +7,8 @@ import Navigation from "./component/navigation"
 
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import { darkTheme } from './themes'
-import Theme from "./component/themeSelector"
+import { defaultTheme, lightTheme } from './defaultTheme'
+
 import { useSelector } from "react-redux"
 
 
@@ -35,6 +35,7 @@ const anchors = [
 
 const FullpageWrapper = () => {
   const theme = useSelector(state => state.theme);
+
   return (
     <>
       <Navigation />
@@ -44,8 +45,8 @@ const FullpageWrapper = () => {
         anchors={anchors}
         licenseKey='4E25228B-7C8B4585-A791A885-52CF92B7'
         sectionsColor={[
-          `green`,
-          `green`,
+          `black`,
+          `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`
@@ -68,11 +69,9 @@ const FullpageWrapper = () => {
 function App() {
 
   return (
-    <ThemeProvider theme={darkTheme}>
 
-      <FullpageWrapper />
+    <FullpageWrapper />
 
-    </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");

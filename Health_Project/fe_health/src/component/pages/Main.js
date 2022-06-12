@@ -38,7 +38,7 @@ const MainTitle = styled.div`
   top: 30%;
   font-size: 80px;
   text-align: center;
-  color: #fff;
+  color: #fff22f;
   font-weight: 700;
 `
 
