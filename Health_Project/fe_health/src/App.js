@@ -7,7 +7,7 @@ import Navigation from "./component/navigation"
 
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import { defaultTheme, lightTheme } from './defaultTheme'
+import { Theme } from './theme'
 
 import { useSelector } from "react-redux"
 
@@ -70,8 +70,11 @@ function App() {
 
   return (
 
-    <FullpageWrapper />
+    <ThemeProvider theme={Theme}>
 
+      <FullpageWrapper />
+
+    </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");
