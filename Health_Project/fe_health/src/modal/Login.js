@@ -5,7 +5,7 @@ import { Close, UserImg } from "../image/index.js"
 import Menubar from "./Menubar.js"
 import LoginModal from "react-modal"
 
-import { SignupTrue } from "../component/navigation.js"
+import { SignupTrue } from "../component/navigation.jsx"
 
 const ModalContainer = styled.div`
   position: absolute;

@@ -6,6 +6,6 @@ export const darkTheme = {
 
 export const lightTheme = {
   backgroundColor: "pink",
-  textColor: "#green",
+  textColor: "green",
   primary: "#55aacc"
 }

@@ -35,8 +35,6 @@ const anchors = [
 
 const FullpageWrapper = () => {
   const theme = useSelector(state => state.theme);
-  console.log("erewrwerwerw");
-  console.log(theme);
   return (
     <>
       <Navigation />
@@ -44,17 +42,20 @@ const FullpageWrapper = () => {
         slidesNavigation="true"
         slidesNavPosition="bottom"
         anchors={anchors}
+        licenseKey='4E25228B-7C8B4585-A791A885-52CF92B7'
         sectionsColor={[
           `green`,
           `green`,
-          `${props => props.theme.backgroundColor}`,
-          `${props => props.theme.backgroundColor}`,
-          `${props => props.theme.backgroundColor}`]}
+          `${theme.backgroundColor}`,
+          `${theme.backgroundColor}`,
+          `${theme.backgroundColor}`
+        ]}
         onLeave={(origin, destination, direction) => {
-          console.log("onLeave event", { origin, destination, direction })
+          //console.log("onLeave event", { origin, destination, direction })
+
         }}
         render={({ state, fullpageApi }) => {
-          console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
+          //console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
 
           return <TotalPage fullpageApi={fullpageApi} />
         }}

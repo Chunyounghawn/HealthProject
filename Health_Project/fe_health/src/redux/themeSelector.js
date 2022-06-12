@@ -8,15 +8,12 @@ export const themeSlice = createSlice({
   reducers: {
     darkTheme: (state) => {
       state.backgroundColor = "black"
-      console.log("aaaaaaaa");
-      console.log(state.backgroundColor);
-      console.log("dark");
+
+
     },
     lightTheme: (state) => {
       state.backgroundColor = "blue"
-      console.log("aaaaaaaa");
-      console.log(state.backgroundColor);
-      console.log("light");
+
     }
   }
 

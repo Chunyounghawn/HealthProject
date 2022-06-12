@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux"
+import { darkTheme, lightTheme } from "../redux/themeSelector"
+
 import {
   Light,
   User,
@@ -75,11 +78,6 @@ const UserButton = styled.img`
     cursor: pointer;
   }
 `
-
-const handleClick = (e) => {
-  //  e.preventDefault();
-  console.log("asdfasdfasd")
-}
 
 export let LoginTrue,
   NoticeTrue,
@@ -212,12 +210,20 @@ const Navigations = () => {
     setSquatModalOpen(false)
     setSignupModalOpen(true)
   }
-
+  const { theme } = useSelector((state) => state.theme)
+  const dispatch = useDispatch()
   return (
     <>
       <NavigationStyle>
         <ThemeSelector />
-        <ThemeButton src={Light} onClick={handleClick} />
+        {!theme === "darkTheme"
+          ? (console.log(theme),
+            (<ThemeButton src={Light} onClick={() => dispatch(darkTheme())} />))
+          : (console.log(theme),
+            (
+              <ThemeButton src={Light} onClick={() => dispatch(lightTheme())} />
+            ))}
+
         <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
 
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
