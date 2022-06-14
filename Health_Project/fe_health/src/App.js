@@ -7,8 +7,8 @@ import Navigation from "./component/navigation"
 
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import { darkTheme } from './themes'
-import Theme from "./component/themeSelector"
+import { Theme } from './theme'
+
 import { useSelector } from "react-redux"
 
 
@@ -35,6 +35,7 @@ const anchors = [
 
 const FullpageWrapper = () => {
   const theme = useSelector(state => state.theme);
+
   return (
     <>
       <Navigation />
@@ -44,8 +45,8 @@ const FullpageWrapper = () => {
         anchors={anchors}
         licenseKey='4E25228B-7C8B4585-A791A885-52CF92B7'
         sectionsColor={[
-          `green`,
-          `green`,
+          `black`,
+          `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`
@@ -68,7 +69,8 @@ const FullpageWrapper = () => {
 function App() {
 
   return (
-    <ThemeProvider theme={darkTheme}>
+
+    <ThemeProvider theme={Theme}>
 
       <FullpageWrapper />
 

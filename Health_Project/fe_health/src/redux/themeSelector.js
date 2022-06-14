@@ -7,13 +7,13 @@ export const themeSlice = createSlice({
   },
   reducers: {
     darkTheme: (state) => {
-      state.backgroundColor = "black"
-
+      state.backgroundColor = "green"
+      state.darkmode = true;
 
     },
     lightTheme: (state) => {
       state.backgroundColor = "blue"
-
+      state.darkmode = false;
     }
   }
 
