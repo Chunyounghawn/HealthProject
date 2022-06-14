@@ -22,8 +22,6 @@ const Container = styled.div`
   width: 1740px;
   height: 970px;
   position: relative;
-  display: flex;
-  justify-content: center;
   background-color: ${(props) => props.theme.backgroundColor};
 
   @media screen and (min-width: 1920px) {
@@ -104,8 +102,8 @@ const ItemBox = styled.div`
   justify-content: center;
   align-items: center;
   color: #fff;
-  border: 2px solid #333;
-  background-color: purple;
+  border: 2px solid #ff4646;
+  background-color: #ff4646;
   border-radius: 50%;
   font-size: 30px;
 `
@@ -145,6 +143,7 @@ const Back1 = styled(ItemBox)`
   left: 65%;
   font-size: 15px;
   line-height: 30px;
+  border: 2px solid #333;
   background-color: #333;
   color: #fff;
   transform: rotateY(-180deg);
@@ -157,6 +156,7 @@ const Back2 = styled(ItemBox)`
   font-size: 15px;
   line-height: 30px;
   color: #fff;
+  border: 2px solid #333;
   background-color: #333;
   transform: rotateY(-180deg);
 `
@@ -168,6 +168,7 @@ const Back3 = styled(ItemBox)`
   font-size: 15px;
   line-height: 30px;
   color: #fff;
+  border: 2px solid #333;
   background-color: #333;
   transform: rotateY(-180deg);
 `
@@ -179,6 +180,7 @@ const Back4 = styled(ItemBox)`
   font-size: 15px;
   line-height: 30px;
   color: #fff;
+  border: 2px solid #333;
   background-color: #333;
   transform: rotateY(-180deg);
 `

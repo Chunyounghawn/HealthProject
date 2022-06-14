@@ -4,6 +4,7 @@ import { Close } from "../image/index.js"
 
 import ScanModal from "react-modal"
 
+// Chart
 import {
   ResponsiveContainer,
   LineChart,
@@ -23,32 +24,31 @@ import {
   Cell,
 } from "recharts"
 
-const ModalContainer = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 10px;
-  width: 1610px;
-  height: 1900px;
-`
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react" // basic
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
+import "swiper/scss"
+import "swiper/scss/navigation"
+import "swiper/scss/pagination"
+
+SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const ModalHead = styled.div`
   width: 1610px;
   height: 150px;
-  display: flex;
   position: absolute;
+  top: 0px;
+  display: flex;
   justify-content: center;
   align-items: center;
 `
 
 const ModalBody = styled.div`
   width: 1610px;
-  height: 1700px;
+  height: 700px;
   position: absolute;
   top: 150px;
   border-radius: 30px;
-  background-color: #9986ee;
-  display: flex;
-  justify-content: center;
 `
 
 const ModalFooter = styled.div`
@@ -124,7 +124,7 @@ const BottomText2 = styled(MenuText)`
 `
 
 const BottomText3 = styled(MenuText)`
-  left: 900px;
+  left: 905px;
 `
 
 const BottomText4 = styled(MenuText)`
@@ -132,31 +132,30 @@ const BottomText4 = styled(MenuText)`
 `
 
 const HeadContainer = styled.div`
-  width: 1600px;
-  height: 690px;
+  width: 1550px;
+  height: 500px;
   position: absolute;
-  top: 200px;
-  left: 5px;
+  top: 180px;
   background-color: #d2d2d2;
   border-radius: 50px;
 `
 
 const LeftContainer = styled.div`
-  width: 780px;
-  height: 690px;
+  width: 750px;
+  height: 580px;
   position: absolute;
-  top: 1000px;
-  left: 5px;
+  top: 100px;
+  left: 30px;
   background-color: #d2d2d2;
   border-radius: 50px;
 `
 
 const RightContainer = styled.div`
-  width: 780px;
-  height: 690px;
+  width: 750px;
+  height: 580px;
   position: absolute;
-  top: 1000px;
-  right: 5px;
+  top: 100px;
+  right: 30px;
   background-color: #d2d2d2;
   border-radius: 50px;
 `
@@ -169,20 +168,20 @@ const Titles = styled.div`
 `
 const HeadTitle = styled(Titles)`
   position: absolute;
-  top: 140px;
+  top: 130px;
   color: #3c3c3c;
 `
 
 const LeftTitle = styled(Titles)`
   position: absolute;
-  top: 940px;
-  left: 350px;
+  top: 50px;
+  left: 330px;
   color: #3c3c3c;
 `
 
 const RightTitle = styled(Titles)`
   position: absolute;
-  top: 940px;
+  top: 50px;
   right: 350px;
   color: #3c3c3c;
 `
@@ -311,92 +310,114 @@ const Scan = ({ isModal, setModal }) => {
         },
       }}
     >
-      <ModalContainer>
-        <ModalHead>
-          <Title>My InBody Information</Title>
-          <Closebtn src={Close} onClick={() => setModal(false)} />
-        </ModalHead>
-        <ModalBody>
-          <MenuTop>
-            <TopText1>성별</TopText1>
-            <TopText2>나이</TopText2>
-            <TopText3>신장</TopText3>
-            <TopText4>체중</TopText4>
-          </MenuTop>
-          <MenuBottom>
-            <BottomText1>남자</BottomText1>
-            <BottomText2>24</BottomText2>
-            <BottomText3>173.0</BottomText3>
-            <BottomText4>60</BottomText4>
-          </MenuBottom>
-          <HeadTitle>월별 체지방 및 골격근 분석</HeadTitle>
-          <HeadContainer>
-            <ResponsiveContainer width="95%" aspect={2.5}>
-              <LineChart data={InBodyData} margin={{ top: 100, bottom: -10 }}>
-                <CartesianGrid />
-                <XAxis dataKey="name" interval={"preserveStartEnd"} />
-                <YAxis></YAxis>
-                <Legend wrapperStyle={{ top: 30, left: 30, fontSize: 20 }} />
-                <Tooltip />
-                <Line dataKey="체지방" stroke="blue" activeDot={{ r: 8 }} />
-                <Line dataKey="골격근량" stroke="red" activeDot={{ r: 8 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </HeadContainer>
+      <ModalHead>
+        <Title>My InBody Information</Title>
+        <Closebtn src={Close} onClick={() => setModal(false)} />
+      </ModalHead>
 
-          <LeftTitle>체성분 분석</LeftTitle>
-          <LeftContainer>
-            <RadarChart
-              outerRadius={300}
-              width={780}
-              height={800}
-              data={expData}
-            >
-              <PolarGrid stroke="black" />
-              <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis angle={30} domain={[0, 150]} />
-              <Radar
-                name="표준"
-                dataKey="A"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.6}
-              />
-              <Radar
-                name="나"
-                dataKey="B"
-                stroke="#82ca9d"
-                fill="#82ca9d"
-                fillOpacity={0.6}
-              />
-              <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
-              <Tooltip />
-            </RadarChart>
-          </LeftContainer>
+      <ModalBody>
+        <Swiper
+          direction="vertical"
+          spaceBetween={10}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          style={{
+            width: "1610px",
+            height: "700px",
+            borderRadius: "30px",
+            backgroundColor: "#9986ee",
+          }}
+        >
+          <SwiperSlide
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <MenuTop>
+              <TopText1>성별</TopText1>
+              <TopText2>나이</TopText2>
+              <TopText3>신장</TopText3>
+              <TopText4>체중</TopText4>
+            </MenuTop>
+            <MenuBottom>
+              <BottomText1>남자</BottomText1>
+              <BottomText2>24</BottomText2>
+              <BottomText3>173.0</BottomText3>
+              <BottomText4>60</BottomText4>
+            </MenuBottom>
 
-          <RightTitle>?</RightTitle>
-          <RightContainer>
-            <PieChart width={800} height={750}>
-              <Pie
-                data={expData2}
-                dataKey="value"
+            <HeadTitle>월별 체지방 및 골격근 분석</HeadTitle>
+            <HeadContainer>
+              <ResponsiveContainer width="95%" aspect={3}>
+                <LineChart data={InBodyData} margin={{ top: 100, bottom: -10 }}>
+                  <CartesianGrid />
+                  <XAxis dataKey="name" interval={"preserveStartEnd"} />
+                  <YAxis></YAxis>
+                  <Legend wrapperStyle={{ top: 30, left: 30, fontSize: 20 }} />
+                  <Tooltip />
+                  <Line dataKey="체지방" stroke="blue" activeDot={{ r: 8 }} />
+                  <Line dataKey="골격근량" stroke="red" activeDot={{ r: 8 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </HeadContainer>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <LeftTitle>체성분 분석</LeftTitle>
+            <LeftContainer>
+              <RadarChart
                 outerRadius={250}
-                fill="green"
+                width={750}
+                height={700}
+                data={expData}
               >
-                {expData2.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
-              <Tooltip />
-            </PieChart>
-          </RightContainer>
-        </ModalBody>
-        <ModalFooter />
-      </ModalContainer>
+                <PolarGrid stroke="black" />
+                <PolarAngleAxis dataKey="subject" />
+                <PolarRadiusAxis angle={30} domain={[0, 150]} />
+                <Radar
+                  name="표준"
+                  dataKey="A"
+                  stroke="#8884d8"
+                  fill="#8884d8"
+                  fillOpacity={0.6}
+                />
+                <Radar
+                  name="나"
+                  dataKey="B"
+                  stroke="#82ca9d"
+                  fill="#82ca9d"
+                  fillOpacity={0.6}
+                />
+                <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
+                <Tooltip />
+              </RadarChart>
+            </LeftContainer>
+
+            <RightTitle>?</RightTitle>
+            <RightContainer>
+              <PieChart width={800} height={650}>
+                <Pie
+                  data={expData2}
+                  dataKey="value"
+                  outerRadius={230}
+                  fill="green"
+                >
+                  {expData2.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
+                <Tooltip />
+              </PieChart>
+            </RightContainer>
+          </SwiperSlide>
+        </Swiper>
+      </ModalBody>
+      <ModalFooter />
     </ScanModal>
   )
 }
