@@ -23,8 +23,7 @@ const Container = styled.div`
   width: 1740px;
   height: 970px;
   position: relative;
-  background-color: ${(props) => props.theme.backgroundColor};
-  //{console.log(theme.Theme.dd.backgroundColor)}
+  background-color:  ${(props) => props.theme.strengthPage.backgroundColor};
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -102,11 +101,12 @@ const ItemBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  border: 2px solid #ff4646;
-  background-color: #ff4646;
+  color: ${(props) => props.theme.strengthPage.textColor};
+  border: 2px solid #F2D1D1;
+  background-color: ${(props) => props.theme.strengthPage.btnColor};
   border-radius: 50%;
   font-size: 30px;
+  font-family:${(props) => props.theme.font}, sans-serif;
 `
 
 const Front1 = styled(ItemBox)`
@@ -223,7 +223,6 @@ const Selecter4 = styled.div`
 `
 
 function StrengthSection() {
-  const theme = useSelector((state) => state.theme)
   const [ScanmodalIsOpen, setScanModalOpen] = React.useState(false)
   const [AlarmmodalIsOpen, setAlarmModalOpen] = React.useState(false)
   const [SchedulemodalIsOpen, setScheduleModalOpen] = React.useState(false)
@@ -233,7 +232,6 @@ function StrengthSection() {
     <div className="section">
       <Container>
         <PhoneIcon>
-          {console.log(theme.Theme.dd.backgroundColor)}
           <Swiper
             style={{
               height: "680px",

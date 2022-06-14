@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -11,6 +11,8 @@ import { darkTheme, lightTheme } from './theme'
 
 import { useDispatch, useSelector } from "react-redux"
 
+
+import axios from 'axios';
 
 // export const backgroundColor = theme("theme", {
 //   light: "#fff",
@@ -67,16 +69,49 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
+  const [users, setUsers] = useState(null);   //결과값
+  const [loading, setLoading] = useState(false); // 로딩되는지 여부
+  const [error, setError] = useState(null); //에러
+
+  const fetchUsers = async () => {
+    try {
+      setUsers(null);
+      setError(null);
+      setLoading(true); //로딩이 시작됨
+      const response = await axios.get('https://http://localhost:3000/test/');
+      setUsers(response.data);
+    } catch (e) {
+      setError(e);
+    }
+    setLoading(false);
+  };
+
+
+
+  useEffect(() => {
+
+    fetchUsers();
+  }, [])
+
+
+  if (loading) return <div>로딩중..</div>
+  if (error) return <div>에러 발생!!</div>
+  if (!users) return null;  //users값이 유효하지 않는 경우
 
 
 
   return (
+    <>
 
-    <ThemeProvider theme={theme.darkmode === true ? lightTheme : darkTheme}>
+      <h1>{users}</h1>
+      <button onClick={fetchUsers}>다시 불러오기</button>
+    </>
 
-      <FullpageWrapper />
+    // <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
 
-    </ThemeProvider>
+    //   <FullpageWrapper />
+
+    // </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");

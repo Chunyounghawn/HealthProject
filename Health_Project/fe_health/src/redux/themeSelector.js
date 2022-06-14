@@ -8,7 +8,6 @@ export const themeSlice = createSlice({
   },
   reducers: {
     darkTheme: (state) => {
-
       state.darkmode = true;
 
 

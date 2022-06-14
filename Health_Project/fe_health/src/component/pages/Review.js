@@ -51,7 +51,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
+  background-color: red;
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -155,6 +155,7 @@ function ReviewSection() {
         <Swiper
           // onSlideChange={(Swiper) => console.log(Swiper.realIndex + 1)}
           style={{
+            backgroundColor: "white",
             width: "1600px",
             height: "820px",
             position: "absolute",
