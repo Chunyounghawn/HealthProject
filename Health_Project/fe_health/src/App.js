@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -7,9 +7,9 @@ import Navigation from "./component/navigation"
 
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import { darkTheme } from './themes'
-import Theme from "./component/themeSelector"
-import { useSelector } from "react-redux"
+import { darkTheme, lightTheme } from './theme'
+
+import { useDispatch, useSelector } from "react-redux"
 
 
 // export const backgroundColor = theme("theme", {
@@ -35,8 +35,7 @@ const anchors = [
 
 const FullpageWrapper = () => {
   const theme = useSelector(state => state.theme);
-  console.log("erewrwerwerw");
-  console.log(theme);
+
   return (
     <>
       <Navigation />
@@ -44,17 +43,20 @@ const FullpageWrapper = () => {
         slidesNavigation="true"
         slidesNavPosition="bottom"
         anchors={anchors}
+        licenseKey='4E25228B-7C8B4585-A791A885-52CF92B7'
         sectionsColor={[
-          `green`,
-          `green`,
-          `${props => props.theme.backgroundColor}`,
-          `${props => props.theme.backgroundColor}`,
-          `${props => props.theme.backgroundColor}`]}
+          `black`,
+          `${theme.backgroundColor}`,
+          `${theme.backgroundColor}`,
+          `${theme.backgroundColor}`,
+          `${theme.backgroundColor}`
+        ]}
         onLeave={(origin, destination, direction) => {
-          console.log("onLeave event", { origin, destination, direction })
+          //console.log("onLeave event", { origin, destination, direction })
+
         }}
         render={({ state, fullpageApi }) => {
-          console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
+          //console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
 
           return <TotalPage fullpageApi={fullpageApi} />
         }}
@@ -65,9 +67,14 @@ const FullpageWrapper = () => {
 
 
 function App() {
+  const theme = useSelector((state) => state.theme)
+  const dispatch = useDispatch()
+  console.log("qfqfq");
+  console.log(theme.darkmode);
 
   return (
-    <ThemeProvider theme={darkTheme}>
+
+    <ThemeProvider theme={theme.darkmode === true ? lightTheme : darkTheme}>
 
       <FullpageWrapper />
 

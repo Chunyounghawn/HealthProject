@@ -3,20 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const themeSlice = createSlice({
   name: "themeSelector",
   initialState: {
-    backgroundColor: "pink"
+
   },
   reducers: {
     darkTheme: (state) => {
-      state.backgroundColor = "black"
-      console.log("aaaaaaaa");
-      console.log(state.backgroundColor);
-      console.log("dark");
+
+      state.darkmode = true;
+      console.log("aaaaaa");
+
     },
     lightTheme: (state) => {
-      state.backgroundColor = "blue"
-      console.log("aaaaaaaa");
-      console.log(state.backgroundColor);
-      console.log("light");
+
+      state.darkmode = false;
+      console.log("wwwwww");
     }
   }
 

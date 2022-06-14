@@ -24,6 +24,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  background-color: ${(props) => props.theme.backgroundColor};
 
   @media screen and (min-width: 1920px) {
     width: 90%;

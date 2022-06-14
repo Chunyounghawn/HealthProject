@@ -5,7 +5,7 @@ import { Close, PushUp, SitUp, Squat } from "../image/index.js"
 import Menubar from "./Menubar.js"
 import ChallengeModal from "react-modal"
 
-import { PushUpTrue, SitUpTrue, SquatTrue } from "../component/navigation.js"
+import { PushUpTrue, SitUpTrue, SquatTrue } from "../component/navigation.jsx"
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic

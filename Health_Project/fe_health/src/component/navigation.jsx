@@ -1,3 +1,7 @@
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { darkTheme, lightTheme } from "../redux/themeSelector"
+
 import {
   Light,
   User,
@@ -10,8 +14,6 @@ import {
 
 import styled from "styled-components"
 
-import React from "react"
-
 // Modal
 import LoginModal from "../modal/Login.js"
 import NoticeModal from "../modal/Notice.js"
@@ -23,7 +25,7 @@ import SitupModal from "../modal/Situp.js"
 import SquatModal from "../modal/Squat.js"
 import SignupModal from "../modal/Signup.js"
 
-import ThemeSelector from "./themeSelector"
+import { useState } from "react"
 
 const NavigationStyle = styled.div`
   position: fixed;
@@ -75,11 +77,6 @@ const UserButton = styled.img`
     cursor: pointer;
   }
 `
-
-const handleClick = (e) => {
-  //  e.preventDefault();
-  console.log("asdfasdfasd")
-}
 
 export let LoginTrue,
   NoticeTrue,
@@ -212,12 +209,18 @@ const Navigations = () => {
     setSquatModalOpen(false)
     setSignupModalOpen(true)
   }
+  const theme = useSelector((state) => state.theme)
+  const dispatch = useDispatch()
 
   return (
     <>
       <NavigationStyle>
-        <ThemeSelector />
-        <ThemeButton src={Light} onClick={handleClick} />
+        {!theme.darkmode ? (
+          <ThemeButton src={Light} onClick={() => dispatch(darkTheme())} />
+        ) : (
+          <ThemeButton src={Light} onClick={() => dispatch(lightTheme())} />
+        )}
+
         <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
 
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
