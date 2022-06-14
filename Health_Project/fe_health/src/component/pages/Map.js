@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Map from "../Map"
+import Map from "./api/Map"
 
 const Container = styled.div`
   width: 1740px;

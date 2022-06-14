@@ -7,7 +7,7 @@ import {
   InformationTrue,
   ChallengeTrue,
   BoardTrue,
-} from "../component/navigation.js"
+} from "../component/navigation.jsx"
 
 import { Logo } from "../image/index.js"
 
