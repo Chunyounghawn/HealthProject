@@ -15,7 +15,6 @@ const ModalContainer = styled.div`
 const ModalHead = styled.div`
   width: 1610px;
   height: 100px;
-  background-color: red;
 `
 
 const ModalBody = styled.div`
@@ -23,7 +22,6 @@ const ModalBody = styled.div`
   height: 690px;
   position: absolute;
   top: 100px;
-  background-color: orange;
 `
 
 const ModalFooter = styled.div`
@@ -31,7 +29,6 @@ const ModalFooter = styled.div`
   width: 1610px;
   height: 100px;
   bottom: 0px;
-  background-color: blue;
 `
 
 const Closebtn = styled.img`
@@ -66,6 +63,7 @@ const Schedule = ({ isModal, setModal }) => {
           height: "850px",
           left: "2%",
           right: "10%",
+          borderRadius: "30px",
           backgroundColor: "#7FFFD4",
         },
       }}

@@ -9,6 +9,19 @@ import moment from "moment"
 
 // import "react-calendar/dist/Calendar.css"
 
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 1920px) {
+    width: 90%;
+  }
+`
+
 const ModalContainer = styled.div`
   position: absolute;
   top: 0px;
@@ -35,7 +48,7 @@ const ModalBody = styled.div`
 const ModalFooter = styled.div`
   position: absolute;
   width: 1610px;
-  height: 100px;
+  height: 50px;
   bottom: 0px;
 `
 
@@ -151,6 +164,10 @@ const Calendar = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           backgroundColor: "#7FFFD4",
+          borderRadius: "30px",
+          "@media screen and (min-width: 1920px)": {
+            width: "90%",
+          },
         },
       }}
     >
