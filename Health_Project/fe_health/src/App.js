@@ -108,8 +108,8 @@ function App() {
     // </div>
 
 
-    //여기 theme 위치랑 리덕스에 임포트부분 lightTheme으로 바꿔놓기, darkTheme제작중
-    <ThemeProvider theme={theme.darkmode === true ? lightTheme : darkTheme}>
+
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
 
       <FullpageWrapper />
 

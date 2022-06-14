@@ -150,7 +150,7 @@ const Calendar = ({ isModal, setModal }) => {
           height: "850px",
           left: "2%",
           right: "10%",
-          backgroundColor: "#7FFFD4",
+          backgroundColor: "#FBF8F1",
           borderRadius: "30px",
           "@media screen and (min-width: 1920px)": {
             width: "90%",

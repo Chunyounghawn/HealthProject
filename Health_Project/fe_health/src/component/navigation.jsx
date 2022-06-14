@@ -25,8 +25,6 @@ import SitupModal from "../modal/Situp.js"
 import SquatModal from "../modal/Squat.js"
 import SignupModal from "../modal/Signup.js"
 
-import { useState } from "react"
-
 const NavigationStyle = styled.div`
   position: fixed;
   display: flex;
@@ -37,7 +35,7 @@ const NavigationStyle = styled.div`
   right: 0;
   top: 0;
   height: 100%;
-  background: #f9d9ca;
+  background: ${(props) => props.theme.navColor};
   z-index: 100;
 
   @media screen and (min-width: 1920px) {

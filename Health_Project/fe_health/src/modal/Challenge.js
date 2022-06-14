@@ -120,7 +120,7 @@ const Challenge = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#7FFFD4",
+          backgroundColor: "#FBF8F1",
         },
       }}
     >

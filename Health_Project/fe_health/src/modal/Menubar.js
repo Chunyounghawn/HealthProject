@@ -17,7 +17,7 @@ const MenuBar = styled.div`
   left: 0%;
   width: 300px;
   height: 890px;
-  background-color: #ffa887;
+  background-color: #EFDAD7;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -34,11 +34,11 @@ const Symbol = styled.img`
 const MenuBtn = styled.button`
   width: 300px;
   height: 100px;
-  background-color: #e47ae0;
+  background-color: #886F6F;
   color: #fff;
   font-size: 30px;
-  border-color: #333;
-  font-family: cursive;
+  border-color: #C1A3A3;
+  font-family: ${(props) => props.theme.font};
   &:hover {
     background-color: #fff;
     color: #808080;

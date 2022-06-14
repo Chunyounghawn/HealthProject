@@ -24,6 +24,10 @@ export const darkTheme = {
     answerAreaColor: "#D1D1D1",
     font: 'Dongle'
   },
+  modal: {
+    backgroundColor: "#FBF8F1"
+  },
+  navColor: "#7882A4",
   font: 'Jua',
   backgroundColor: "292A2D",
   textColor: "green",
@@ -60,6 +64,10 @@ export const lightTheme = {
     answerAreaColor: "#FEE2C5",
     font: 'Dongle'
   },
+  modal: {
+    backgroundColor: "#FBF8F1"
+  },
+  navColor: "#f9d9ca",
   font: 'Jua',
   backgroundColor: "green",
   textColor: "green",
