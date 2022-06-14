@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
 import TotalPage from "./component"
 import Navigation from "./component/navigation"
 
-import { ThemeProvider, createGlobalStyle } from "styled-components"
+import { ThemeProvider } from "styled-components"
 
 import { darkTheme, lightTheme } from './theme'
 
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 
 import axios from 'axios';
 
-// export const backgroundColor = theme("theme", {
-//   light: "#fff",
-//   dark: "#2d2d2d"
-// })
 
-// export const textColor = theme("theme", {
-//   light: "#fff",
-//   dark: "#2d2d2d"
-// })
 
 
 const anchors = [
@@ -69,49 +61,59 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
-  const [users, setUsers] = useState(null);   //결과값
-  const [loading, setLoading] = useState(false); // 로딩되는지 여부
-  const [error, setError] = useState(null); //에러
 
-  const fetchUsers = async () => {
-    try {
-      setUsers(null);
-      setError(null);
-      setLoading(true); //로딩이 시작됨
-      const response = await axios.get('https://http://localhost:3000/test/');
-      setUsers(response.data);
-    } catch (e) {
-      setError(e);
-    }
-    setLoading(false);
+  const [message, setMessage] = useState('');
+
+  const responseHandler = ({ data }) => {
+    setMessage(data);
+    return data;
   };
 
+  const errorHandler = ({ message }) => {
+    setMessage(message);
+    return message;
+  };
 
+  const onNonCorsHeaderHandler = () => {
+    axios.get('http://localhost:8080/not-cors')
+      .then(responseHandler)
+      .catch(errorHandler);
+  };
 
-  useEffect(() => {
+  const onCorsHeaderHandler = () => {
+    axios.get('http://localhost:8080/cors').then(responseHandler);
+  };
 
-    fetchUsers();
-  }, [])
+  const onNonProxyHandler = () => {
+    axios.get('/not-proxy')
+      .then(responseHandler)
+      .catch(errorHandler);
+  };
 
-
-  if (loading) return <div>로딩중..</div>
-  if (error) return <div>에러 발생!!</div>
-  if (!users) return null;  //users값이 유효하지 않는 경우
-
-
+  const onProxyHandler = () => {
+    axios.get('/proxy').then(responseHandler);
+  };
 
   return (
-    <>
+    // <div className="App">
+    //   <p>
+    //     {message}
+    //   </p>
+    //   <div>
+    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
+    //     <button onClick={onCorsHeaderHandler}>cors header</button>
+    //     <button onClick={onNonProxyHandler}>nonProxy</button>
+    //     <button onClick={onProxyHandler}>proxy</button>
+    //   </div>
+    // </div>
 
-      <h1>{users}</h1>
-      <button onClick={fetchUsers}>다시 불러오기</button>
-    </>
 
-    // <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+    //여기 theme 위치랑 리덕스에 임포트부분 lightTheme으로 바꿔놓기, darkTheme제작중
+    <ThemeProvider theme={theme.darkmode === true ? lightTheme : darkTheme}>
 
-    //   <FullpageWrapper />
+      <FullpageWrapper />
 
-    // </ThemeProvider>
+    </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");

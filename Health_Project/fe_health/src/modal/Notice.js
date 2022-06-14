@@ -136,7 +136,7 @@ const Notice = ({ isModal, setModal }) => {
   return (
     <NoticeModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {

@@ -55,7 +55,7 @@ const Board = ({ isModal, setModal }) => {
   return (
     <BoardModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {

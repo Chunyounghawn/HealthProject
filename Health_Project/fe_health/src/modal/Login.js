@@ -101,7 +101,7 @@ const Login = ({ isModal, setModal }) => {
   return (
     <LoginModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {

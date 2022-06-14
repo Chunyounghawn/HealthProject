@@ -55,7 +55,7 @@ const Information = ({ isModal, setModal }) => {
   return (
     <InformationModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {

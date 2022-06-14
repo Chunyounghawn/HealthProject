@@ -110,7 +110,7 @@ const Challenge = ({ isModal, setModal }) => {
   return (
     <ChallengeModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {

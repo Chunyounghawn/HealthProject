@@ -20,7 +20,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
+  background-color: ${(props) => props.theme.questionPage.backgroundColor};
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -29,15 +29,16 @@ const Container = styled.div`
 const Title = styled.div`
   position: absolute;
   top: 10%;
-  font-size: 40px;
-  color: #333;
+  font-size: 70px;
+  color: ${(props) => props.theme.questionPage.mainTitleColor};
   font-weight: 600;
+  font-family:  ${(props) => props.theme.font};
 `
 
 const Questions = styled.div`
   width: 400px;
-  height: 100px;
-  background-color: gray;
+  height: 80px;
+  background-color:  ${(props) => props.theme.questionPage.questionAreaColor};
   position: absolute;
   top: 25%;
   left: 12%;
@@ -45,15 +46,17 @@ const Questions = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
-  font-family: serif;
+  color: ${(props) => props.theme.questionPage.questionColor};
+  font-family: ${(props) => props.theme.questionPage.font};
+  border-radius: 70px 70px 0px 0px;
 `
 
 const Answer = styled.div`
   width: 400px;
   height: 200px;
-  background-color: orange;
+  background-color: ${(props) => props.theme.questionPage.answerAreaColor};;
   position: absolute;
   top: 40%;
   left: 12%;
@@ -61,9 +64,9 @@ const Answer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 60px;
-  font-family: serif;
+  font-family: ${(props) => props.theme.questionPage.font};
 `
 
 const Inquiry = styled.div`

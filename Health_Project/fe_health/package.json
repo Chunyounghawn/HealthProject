@@ -57,4 +57,5 @@
     "@types/fullpage.js": "^2.9.3",
     "@types/styled-components": "^5.1.25"
   }
+  
 }
