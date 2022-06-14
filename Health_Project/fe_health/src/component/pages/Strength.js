@@ -32,7 +32,7 @@ const Container = styled.div`
 const PhoneIcon = styled.div`
   width: 350px;
   height: 600px;
-  background-color: yellow;
+  background-color:  ${(props) => props.theme.strengthPage.phoneBackgroundColor};
   border: 4px solid #333;
   border-radius: 10%;
   position: absolute;

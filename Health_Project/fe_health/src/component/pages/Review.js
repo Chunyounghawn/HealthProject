@@ -62,7 +62,7 @@ const ReviewBottom = styled.div`
   top: 89%;
   width: 1580px;
   height: 85px;
-  background-color: skyblue;
+  background-color:${(props) => props.theme.reviewPage.bottomBackgroundColor};
   border-radius: 30px;
 `
 
@@ -161,7 +161,7 @@ function ReviewSection() {
         <Swiper
           // onSlideChange={(Swiper) => console.log(Swiper.realIndex + 1)}
           style={{
-            backgroundColor: "white",
+            backgroundColor: "#F0F0F0",
             width: "1600px",
             height: "820px",
             position: "absolute",
