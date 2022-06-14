@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -7,9 +7,9 @@ import Navigation from "./component/navigation"
 
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import { Theme } from './theme'
+import { darkTheme, lightTheme } from './theme'
 
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 
 // export const backgroundColor = theme("theme", {
@@ -67,10 +67,14 @@ const FullpageWrapper = () => {
 
 
 function App() {
+  const theme = useSelector((state) => state.theme)
+  const dispatch = useDispatch()
+  console.log("qfqfq");
+  console.log(theme.darkmode);
 
   return (
 
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme.darkmode === true ? lightTheme : darkTheme}>
 
       <FullpageWrapper />
 

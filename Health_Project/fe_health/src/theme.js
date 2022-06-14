@@ -1,7 +1,13 @@
-
-
-export const Theme = {
+export const darkTheme = {
   backgroundColor: "pink",
   textColor: "green",
-  primary: "#55aacc"
+  darkmode: true,
+
+}
+
+export const lightTheme = {
+  backgroundColor: "green",
+  textColor: "green",
+  darkmode: false,
+
 }
