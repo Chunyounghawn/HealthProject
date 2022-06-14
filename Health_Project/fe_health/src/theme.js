@@ -2,7 +2,6 @@ export const darkTheme = {
   backgroundColor: "gray",
   textColor: "green",
   darkmode: true,
-
 }
 
 export const lightTheme = {
@@ -14,5 +13,4 @@ export const lightTheme = {
 
   textColor: "green",
   darkmode: false,
-
 }

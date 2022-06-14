@@ -51,7 +51,7 @@ const Message = styled.div`
   font-weight: 500;
 `
 
-const Main_btn = styled.div`
+const MainBtn = styled.div`
   width: 150px;
   height: 40px;
   position: absolute;
@@ -79,7 +79,7 @@ function MainSection() {
         <Video id="myVideo" loop muted data-autoplay>
           <source src={main_fisrt} type="video/mp4" />
         </Video>
-        <Main_btn>Click</Main_btn>
+        <MainBtn>Click</MainBtn>
       </Container>
     </div>
   )

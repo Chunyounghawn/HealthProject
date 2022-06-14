@@ -48,9 +48,13 @@ const Btn = styled.button`
   border-color: black;
   border-radius: 20px;
   background-color: #dcdcdc;
-  font-size: 20px;
   color: black;
-  cursor: pointer;
+  font-size: 20px;
+  &:hover {
+    cursor: pointer;
+    background-color: black;
+    color: #dcdcdc;
+  }
 `
 
 const Line = styled.div`
