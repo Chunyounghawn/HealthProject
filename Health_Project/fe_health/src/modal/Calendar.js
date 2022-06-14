@@ -35,7 +35,7 @@ const ModalBody = styled.div`
 const ModalFooter = styled.div`
   position: absolute;
   width: 1610px;
-  height: 100px;
+  height: 50px;
   bottom: 0px;
 `
 
@@ -151,6 +151,10 @@ const Calendar = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           backgroundColor: "#7FFFD4",
+          borderRadius: "30px",
+          "@media screen and (min-width: 1920px)": {
+            width: "90%",
+          },
         },
       }}
     >

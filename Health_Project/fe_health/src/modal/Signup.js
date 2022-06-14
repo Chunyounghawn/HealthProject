@@ -211,6 +211,7 @@ const Signup = ({ isModal, setModal }) => {
           height: "850px",
           left: "2%",
           right: "10%",
+          borderRadius: "30px",
           backgroundColor: "#7FFFD4",
         },
       }}

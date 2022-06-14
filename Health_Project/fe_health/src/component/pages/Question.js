@@ -73,10 +73,14 @@ const Inquiry = styled.div`
   color: #fff;
   position: absolute;
   bottom: 10%;
-  font-size: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+`
+
+const InquiryText = styled.div`
+  font-size: 25px;
+  position: absolute;
+  top: 35%;
 `
 
 const btn = styled.div`
@@ -84,6 +88,7 @@ const btn = styled.div`
   height: 40px;
   background-color: #333;
   color: #fff;
+  font-size: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +100,7 @@ const btn = styled.div`
   }
 `
 
-const Inquiry_btn = styled(btn)`
+const InquiryBtn = styled(btn)`
   position: absolute;
   bottom: 12%;
 `
@@ -111,7 +116,7 @@ function QuestionSection() {
             width: "1700px",
             height: "500px",
             position: "absolute",
-            top: "15%",
+            top: "10%",
           }}
           spaceBetween={50}
           slidesPerView={3}
@@ -159,10 +164,12 @@ function QuestionSection() {
         </Swiper>
 
         <Inquiry>
-          자주 묻는 질문 외에 다른 질문을 문의 하고 싶다면 아래 버튼을 클릭하여
-          관리자에게 직접 문의 해주세요.
+          <InquiryText>
+            자주 묻는 질문 외에 다른 질문을 문의 하고 싶다면 아래 버튼을
+            클릭하여 관리자에게 직접 문의 해주세요.
+          </InquiryText>
         </Inquiry>
-        <Inquiry_btn>관리자에게 문의</Inquiry_btn>
+        <InquiryBtn>관리자에게 문의</InquiryBtn>
       </Container>
     </div>
   )
