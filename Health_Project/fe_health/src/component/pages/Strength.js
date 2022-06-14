@@ -15,6 +15,7 @@ import ScanModal from "../../modal/Scan.js"
 import AlarmModal from "../../modal/Alarm.js"
 import ScheduleModal from "../../modal/Schedule.js"
 import CalendarModal from "../../modal/Calendar.js"
+import { useSelector } from "react-redux"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -25,7 +26,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${(props) => props.theme.backgroundColor};
-
+  //{console.log(theme.Theme.dd.backgroundColor)}
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -220,6 +221,7 @@ const Selecter4 = styled.div`
 `
 
 function StrengthSection() {
+  const theme = useSelector((state) => state.theme)
   const [ScanmodalIsOpen, setScanModalOpen] = React.useState(false)
   const [AlarmmodalIsOpen, setAlarmModalOpen] = React.useState(false)
   const [SchedulemodalIsOpen, setScheduleModalOpen] = React.useState(false)
@@ -229,6 +231,7 @@ function StrengthSection() {
     <div className="section">
       <Container>
         <PhoneIcon>
+          {console.log(theme.Theme.dd.backgroundColor)}
           <Swiper
             style={{
               height: "680px",
@@ -338,6 +341,7 @@ function StrengthSection() {
           isModal={CalendarmodalIsOpen}
           setModal={setCalendarModalOpen}
         />
+
       </Container>
     </div>
   )
