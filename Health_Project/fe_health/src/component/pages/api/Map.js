@@ -9,35 +9,42 @@ const Divstyle = styled.div`
 `
 
 const ResultStyle = styled.div`
-  width: 60%;
-  height: 500px;
-  overflow: auto;
+  width: 350px;
+  height: 730px;
+  overflow: scroll;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  border-radius: 30px 0px 0px 0px;
+  background-color: gray;
+  opacity: 0.7;
+  z-index: 1;
+  font-size: 17px;
+  color: #000000;
 `
 
 const Pagination = styled.div`
-margin-top: 3rem;
-a {
-  color: black;
-  font-size: 20px;
-  text-decoration: none;
-  margin: 0 10px;
-  &on{
-    color: lightblue;
-  font-weight: bold;
+  margin-top: 3rem;
+  a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    margin: 0 10px;
+    &on {
+      color: lightblue;
+      font-weight: bold;
+    }
   }
-}
 `
 
-
 const Map = ({ searchPlace }) => {
-
   // 검색결과 배열에 담아줌
   const [Places, setPlaces] = useState([])
 
   useEffect(() => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
     var markers = []
-    const container = document.getElementById('myMap')
+    const container = document.getElementById("myMap")
     const options = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
@@ -66,7 +73,7 @@ const Map = ({ searchPlace }) => {
 
     // 검색결과 목록 하단에 페이지 번호 표시
     function displayPagination(pagination) {
-      var paginationEl = document.getElementById('pagination'),
+      var paginationEl = document.getElementById("pagination"),
         fragment = document.createDocumentFragment(),
         i
 
@@ -76,12 +83,12 @@ const Map = ({ searchPlace }) => {
       }
 
       for (i = 1; i <= pagination.last; i++) {
-        var el = document.createElement('a')
-        el.href = '#'
+        var el = document.createElement("a")
+        el.href = "#"
         el.innerHTML = i
 
         if (i === pagination.current) {
-          el.className = 'on'
+          el.className = "on"
         } else {
           el.onclick = (function (i) {
             return function () {
@@ -101,8 +108,12 @@ const Map = ({ searchPlace }) => {
         position: new kakao.maps.LatLng(place.y, place.x),
       })
 
-      kakao.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
+      kakao.maps.event.addListener(marker, "click", function () {
+        infowindow.setContent(
+          '<div style="padding:5px;font-size:12px;">' +
+            place.place_name +
+            "</div>"
+        )
         infowindow.open(map, marker)
       })
     }
@@ -113,13 +124,17 @@ const Map = ({ searchPlace }) => {
       <div
         id="myMap"
         style={{
-          width: '800px',
-          height: '700px',
+          width: "1600px",
+          height: "820px",
+          borderRadius: "30px",
+          position: "absolute",
+          bottom: "0px",
+          left: "0px",
         }}
       ></div>
       <ResultStyle>
         {Places.map((item, i) => (
-          <div key={i} style={{ marginTop: '20px' }}>
+          <div key={i} style={{ marginTop: "20px" }}>
             <span>{i + 1}</span>
             <div>
               <h5>{item.place_name}</h5>
