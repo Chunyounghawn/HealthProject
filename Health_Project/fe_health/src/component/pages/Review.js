@@ -51,7 +51,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
+  background-color: ${(props) => props.theme.reviewPage.backgroundColor};
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -62,7 +62,7 @@ const ReviewBottom = styled.div`
   top: 89%;
   width: 1580px;
   height: 85px;
-  background-color: skyblue;
+  background-color:${(props) => props.theme.reviewPage.bottomBackgroundColor};
   border-radius: 30px;
 `
 
@@ -99,18 +99,22 @@ const Comments = styled.div`
   position: absolute;
   text-align: center;
   font-size: 20px;
+  font-family: 'Jua', sans-serif;
 `
 
 const Comments1 = styled(Comments)`
   top: 10%;
   right: 10%;
   color: #b4b4b4;
+  font-size: 40px;
+  
 `
 
 const Comments2 = styled(Comments)`
   top: 20%;
   right: 30%;
   color: #32aaff;
+  font-size: 25px;
 `
 
 const Comments3 = styled(Comments)`
@@ -128,6 +132,7 @@ const Comments5 = styled(Comments)`
   top: 50%;
   right: 10%;
   color: #ffc300;
+  font-size: 35px;
 `
 
 const Comments6 = styled(Comments)`
@@ -137,9 +142,10 @@ const Comments6 = styled(Comments)`
 `
 
 const Comments7 = styled(Comments)`
-  top: 70%;
+  top: 80%;
   right: 15%;
   color: #5ec75e;
+  font-size: 35px;
 `
 
 const Review = styled.img`
@@ -155,6 +161,7 @@ function ReviewSection() {
         <Swiper
           // onSlideChange={(Swiper) => console.log(Swiper.realIndex + 1)}
           style={{
+            backgroundColor: "#F0F0F0",
             width: "1600px",
             height: "820px",
             position: "absolute",

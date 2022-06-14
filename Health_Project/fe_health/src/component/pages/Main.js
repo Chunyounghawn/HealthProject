@@ -21,7 +21,7 @@ const Video = styled.video`
   width: 1740px;
   height: 100%;
   background-size: 0% 0%;
-  background-color: pink; /* in case the video doesn't fit the whole page*/
+ 
   background-image: "./video/main_fisrt.mp4";
   background-position: center center;
   /*background-size: contain;*/
@@ -38,7 +38,7 @@ const MainTitle = styled.div`
   top: 30%;
   font-size: 80px;
   text-align: center;
-  color: #fff22f;
+  color:  ${(props) => props.theme.mainPage.mainTitle};
   font-weight: 700;
 `
 

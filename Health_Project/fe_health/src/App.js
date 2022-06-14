@@ -5,22 +5,16 @@ import ReactFullpage from "@fullpage/react-fullpage"
 import TotalPage from "./component"
 import Navigation from "./component/navigation"
 
-import { ThemeProvider, createGlobalStyle } from "styled-components"
+import { ThemeProvider } from "styled-components"
 
 import { darkTheme, lightTheme } from './theme'
 
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 
-// export const backgroundColor = theme("theme", {
-//   light: "#fff",
-//   dark: "#2d2d2d"
-// })
+import axios from 'axios';
 
-// export const textColor = theme("theme", {
-//   light: "#fff",
-//   dark: "#2d2d2d"
-// })
+
 
 
 const anchors = [
@@ -43,7 +37,7 @@ const FullpageWrapper = () => {
         slidesNavigation="true"
         slidesNavPosition="bottom"
         anchors={anchors}
-        licenseKey='4E25228B-7C8B4585-A791A885-52CF92B7'
+        licenseKey='1EB53BF6-00984973-A88B8092-A6220857'
         sectionsColor={[
           `black`,
           `${theme.backgroundColor}`,
@@ -57,7 +51,6 @@ const FullpageWrapper = () => {
         }}
         render={({ state, fullpageApi }) => {
           //console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
-
           return <TotalPage fullpageApi={fullpageApi} />
         }}
       />
@@ -68,13 +61,55 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
-  const dispatch = useDispatch()
-  console.log("qfqfq");
-  console.log(theme.darkmode);
+
+  const [message, setMessage] = useState('');
+
+  const responseHandler = ({ data }) => {
+    setMessage(data);
+    return data;
+  };
+
+  const errorHandler = ({ message }) => {
+    setMessage(message);
+    return message;
+  };
+
+  const onNonCorsHeaderHandler = () => {
+    axios.get('http://localhost:8080/not-cors')
+      .then(responseHandler)
+      .catch(errorHandler);
+  };
+
+  const onCorsHeaderHandler = () => {
+    axios.get('http://localhost:8080/cors').then(responseHandler);
+  };
+
+  const onNonProxyHandler = () => {
+    axios.get('/not-proxy')
+      .then(responseHandler)
+      .catch(errorHandler);
+  };
+
+  const onProxyHandler = () => {
+    axios.get('/proxy').then(responseHandler);
+  };
 
   return (
+    // <div className="App">
+    //   <p>
+    //     {message}
+    //   </p>
+    //   <div>
+    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
+    //     <button onClick={onCorsHeaderHandler}>cors header</button>
+    //     <button onClick={onNonProxyHandler}>nonProxy</button>
+    //     <button onClick={onProxyHandler}>proxy</button>
+    //   </div>
+    // </div>
 
-    <ThemeProvider theme={theme.darkmode === true ? lightTheme : darkTheme}>
+
+
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
 
       <FullpageWrapper />
 

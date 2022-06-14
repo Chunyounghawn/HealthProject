@@ -101,7 +101,7 @@ const Login = ({ isModal, setModal }) => {
   return (
     <LoginModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {
@@ -111,7 +111,7 @@ const Login = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#7FFFD4",
+          backgroundColor: "#FBF8F1",
         },
       }}
     >

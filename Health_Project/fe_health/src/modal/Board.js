@@ -51,11 +51,12 @@ const Text = styled.div`
   font-size: 30px;
 `
 
-const Board = ({ isModal, setModal }) => {
+const Board = ({ isModal, setModal }, props) => {
+
   return (
     <BoardModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {
@@ -65,7 +66,7 @@ const Board = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#7FFFD4",
+          backgroundColor: "#FBF8F1",
         },
       }}
     >

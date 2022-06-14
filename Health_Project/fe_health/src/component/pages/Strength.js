@@ -15,6 +15,7 @@ import ScanModal from "../../modal/Scan.js"
 import AlarmModal from "../../modal/Alarm.js"
 import ScheduleModal from "../../modal/Schedule.js"
 import CalendarModal from "../../modal/Calendar.js"
+import { useSelector } from "react-redux"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -22,8 +23,7 @@ const Container = styled.div`
   width: 1740px;
   height: 970px;
   position: relative;
-  background-color: ${(props) => props.theme.backgroundColor};
-
+  background-color:  ${(props) => props.theme.strengthPage.backgroundColor};
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -32,7 +32,7 @@ const Container = styled.div`
 const PhoneIcon = styled.div`
   width: 350px;
   height: 600px;
-  background-color: yellow;
+  background-color:  ${(props) => props.theme.strengthPage.phoneBackgroundColor};
   border: 4px solid #333;
   border-radius: 10%;
   position: absolute;
@@ -101,11 +101,12 @@ const ItemBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  border: 2px solid #ff4646;
-  background-color: #ff4646;
+  color: ${(props) => props.theme.strengthPage.textColor};
+  border: 2px solid #F2D1D1;
+  background-color: ${(props) => props.theme.strengthPage.btnColor};
   border-radius: 50%;
   font-size: 30px;
+  font-family:${(props) => props.theme.font}, sans-serif;
 `
 
 const Front1 = styled(ItemBox)`
@@ -340,6 +341,7 @@ function StrengthSection() {
           isModal={CalendarmodalIsOpen}
           setModal={setCalendarModalOpen}
         />
+
       </Container>
     </div>
   )

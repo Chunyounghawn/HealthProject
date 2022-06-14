@@ -110,7 +110,7 @@ const Challenge = ({ isModal, setModal }) => {
   return (
     <ChallengeModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {
@@ -120,7 +120,7 @@ const Challenge = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#7FFFD4",
+          backgroundColor: "#FBF8F1",
         },
       }}
     >
