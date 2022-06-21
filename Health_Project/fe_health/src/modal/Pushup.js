@@ -73,7 +73,7 @@ const PushUpBg2 = styled.div`
   height: 530px;
   position: absolute;
   top: 50px;
-  background-color: #ffa0ff;
+  background-color: #F2EBE9
 `
 
 const PushUpBg3 = styled.div`
