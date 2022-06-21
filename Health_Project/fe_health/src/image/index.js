@@ -32,6 +32,10 @@ const SitUp = require("../image/challenge/sit-up.png")
 const Squat = require("../image/challenge/squat.png")
 const Trophy = require("../image/challenge/trophy.png")
 
+const Water = require("../image/alarm/water.png")
+const Timer = require("../image/alarm/timer.png")
+const WaterCup = require("../image/alarm/water_cup.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -67,4 +71,8 @@ export {
   Trophy,
   // 회원가입
   SignupImg,
+  // 믈 알람
+  Water,
+  Timer,
+  WaterCup,
 }
