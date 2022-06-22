@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, Trophy } from "../image/index.js"
+import { Close, Trophy } from "../../../../image/index.js"
 
-import Menubar from "./Menubar.js"
+import Menubar from "../Menubar.js"
 import SitupModal from "react-modal"
 
 const ModalContainer = styled.div`

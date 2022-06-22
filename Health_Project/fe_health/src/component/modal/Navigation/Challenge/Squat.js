@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, Trophy } from "../image/index.js"
+import { Close, Trophy } from "../../../../image/index.js"
 
-import Menubar from "./Menubar.js"
-import PushUpModal from "react-modal"
+import Menubar from "../Menubar.js"
+import SquatModal from "react-modal"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -73,7 +73,7 @@ const PushUpBg2 = styled.div`
   height: 530px;
   position: absolute;
   top: 50px;
-  background-color: #F2EBE9
+  background-color: #F2EBE9;
 `
 
 const PushUpBg3 = styled.div`
@@ -184,9 +184,9 @@ const MissionFailText = styled.div`
   left: 200px;
 `
 
-const Pushup = ({ isModal, setModal }) => {
+const Squat = ({ isModal, setModal }) => {
   return (
-    <PushUpModal
+    <SquatModal
       isOpen={isModal}
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
@@ -197,7 +197,6 @@ const Pushup = ({ isModal, setModal }) => {
           height: "850px",
           left: "2%",
           right: "10%",
-          borderRadius: "30px",
           backgroundColor: "#FBF8F1",
         },
       }}
@@ -217,19 +216,19 @@ const Pushup = ({ isModal, setModal }) => {
                 <TrophyImage src={Trophy} />
               </PushUpBg3>
               <Mission1>
-                팔굽혀피기 연속 150개
+                스쿼트 연속 150개
                 <MissionSuccessBtn>성공</MissionSuccessBtn>
               </Mission1>
               <Mission2>
-                팔굽혀피기 30분
+                스쿼트 30분
                 <MissionFailBtn>실패</MissionFailBtn>
               </Mission2>
               <Mission3>
-                팔굽혀피기 20분
+                스쿼트 20분
                 <MissionSuccessBtn>성공</MissionSuccessBtn>
               </Mission3>
               <Mission4>
-                팔굽혀피기 연속 300개
+                스쿼트 연속 300개
                 <MissionFailBtn>실패</MissionFailBtn>
               </Mission4>
             </PushUpBg2>
@@ -245,8 +244,8 @@ const Pushup = ({ isModal, setModal }) => {
           </MissionResult>
         </ModalFooter>
       </ModalContainer>
-    </PushUpModal>
+    </SquatModal>
   )
 }
 
-export default Pushup
+export default Squat

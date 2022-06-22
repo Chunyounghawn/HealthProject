@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../image/index.js"
+import { Close } from "../../../image/index.js"
 
 import ScanModal from "react-modal"
 

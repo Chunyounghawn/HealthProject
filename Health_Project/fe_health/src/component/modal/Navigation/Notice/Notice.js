@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../image/index.js"
+import { Close } from "../../../../image/index.js"
 
-import Menubar from "./Menubar.js"
+import Menubar from "../Menubar.js"
 import NoticeModal from "react-modal"
 
 // Swiper

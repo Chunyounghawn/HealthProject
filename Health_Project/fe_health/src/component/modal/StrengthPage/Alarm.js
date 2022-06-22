@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../image/index.js"
+import { Close } from "../../../image/index.js"
 
 import AlarmModal from "react-modal"
 
-import { Water, Timer, WaterCup } from "../image/index.js"
+import { Water, Timer, WaterCup } from "../../../image/index.js"
 
 import {
   PieChart,
@@ -153,7 +153,7 @@ const data2 = [
   { name: "9월", 월평균물섭취량: 133 },
   { name: "10월", 월평균물섭취량: 222 },
   { name: "11월", 월평균물섭취량: 332 },
-  { name: "12월", 월평균물섭취량: 554 },
+  { name: "12월", 월평균물섭취량: 545 },
 ]
 
 const COLORS = ["#3232FF", "#b4b4b4"]
