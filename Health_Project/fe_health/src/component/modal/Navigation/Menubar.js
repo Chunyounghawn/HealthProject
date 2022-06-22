@@ -7,9 +7,9 @@ import {
   InformationTrue,
   ChallengeTrue,
   BoardTrue,
-} from "../component/navigation.jsx"
+} from "../../navigation.jsx"
 
-import { Logo } from "../image/index.js"
+import { Logo } from "../../../image/index.js"
 
 const MenuBar = styled.div`
   position: absolute;

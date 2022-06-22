@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, SignupImg } from "../image/index.js"
+import { Close, SignupImg } from "../../../../image/index.js"
 
-import Menubar from "./Menubar.js"
+import Menubar from "../Menubar.js"
 import SignupModal from "react-modal"
 
-import { LoginTrue } from "../component/navigation.jsx"
+import { LoginTrue } from "../../../navigation.jsx"
 
 const ModalContainer = styled.div`
   position: absolute;

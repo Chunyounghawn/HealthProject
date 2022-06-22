@@ -11,10 +11,10 @@ import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
 import React from "react"
 
 // modal
-import ScanModal from "../../modal/Scan.js"
-import AlarmModal from "../../modal/Alarm.js"
-import ScheduleModal from "../../modal/Schedule.js"
-import CalendarModal from "../../modal/Calendar.js"
+import ScanModal from "../modal/StrengthPage/Scan.js"
+import AlarmModal from "../modal/StrengthPage/Alarm.js"
+import ScheduleModal from "../modal/StrengthPage/Schedule.js"
+import CalendarModal from "../modal/StrengthPage/Calendar.js"
 import { useSelector } from "react-redux"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper

@@ -15,15 +15,15 @@ import {
 import styled from "styled-components"
 
 // Modal
-import LoginModal from "../modal/Login.js"
-import NoticeModal from "../modal/Notice.js"
-import InformationModal from "../modal/Information.js"
-import ChallengeModal from "../modal/Challenge.js"
-import BoardModal from "../modal/Board.js"
-import PushUpModal from "../modal/Pushup.js"
-import SitupModal from "../modal/Situp.js"
-import SquatModal from "../modal/Squat.js"
-import SignupModal from "../modal/Signup.js"
+import LoginModal from "./modal/Navigation/Login/Login.js"
+import NoticeModal from "./modal/Navigation/Notice/Notice.js"
+import InformationModal from "./modal/Navigation/MyInfo/Information.js"
+import ChallengeModal from "./modal/Navigation/Challenge/Challenge.js"
+import BoardModal from "./modal/Navigation/Board/Board.js"
+import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
+import SitupModal from "./modal/Navigation/Challenge/Situp.js"
+import SquatModal from "./modal/Navigation/Challenge/Squat.js"
+import SignupModal from "./modal/Navigation/Login/Signup.js"
 
 const NavigationStyle = styled.div`
   position: fixed;

@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../image/index.js"
+import { Close } from "../../../image/index.js"
 
 import CalendarModal from "react-modal"
 
@@ -8,6 +8,7 @@ import HealthCalendar from "react-calendar"
 import moment from "moment"
 
 // import "react-calendar/dist/Calendar.css"
+import CCalendar from "../../../test/containers/Calendar"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -135,13 +136,95 @@ const MyCalendar = styled(HealthCalendar)`
   }
 `
 
+const StyleCalendar = styled.div`
+.Calendar {
+    width: 100%;
+    font-family: "Lucida Console", Helvetica, sans-serif;
+    //padding-left: 3rem;
+    //min-height: 100vh;
+    //height: 100%;
+    //padding: 1rem;
+    .navSpace {
+        display: flex;
+        .nav {
+            //background: blueviolet;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 4rem;
+            margin-right: 1rem;
+        }
+        .body {
+            margin-top: 1.75rem;
+            margin-right: 8rem;
+            margin-left: 7rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            flex: 1;
+            background: white;
+            border: 1px solid white;
+            border-radius: 12px;
+            // background: linear-gradient(
+            // to right,
+            // rgba(255, 255, 255, 0.9) 40%,
+            // rgba(255, 255, 255, 0.8) 60%,
+            // rgba(255, 255, 255, 0.9)
+            // );
+            .daysArray {
+                display: flex;
+                margin-top: 1rem;
+                padding-bottom: 0.5rem;
+                font-size: 1.25rem;
+                font-weight: bold;
+                color: #c890ff;
+                //border-bottom: 3px solid white;
+                .days {
+                    width: calc(100% / 7);
+                    &:nth-child(7n + 1) {
+                        color: #f17070;
+                    }
+                    &:nth-child(7n) {
+                        color: #6c97f5;
+                    }
+                }
+            }
+        }   
+    }
+}
+
+`
+
+const Background = styled.div`
+.Background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  //background-color: #AA68A6;
+  background-color: #fbf8f1;
+  opacity: 0.8;
+  // background: linear-gradient(
+  //     to right,
+  //     rgba(20, 20, 20, 0.1) 10%,
+  //     rgba(20, 20, 20, 0.7) 60%,
+  //     rgba(20, 20, 20, 0.8)
+  // );
+}
+
+`
+
+
+
+
 const Calendar = ({ isModal, setModal }) => {
   const [value, onChange] = React.useState(new Date())
 
   return (
     <CalendarModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {
@@ -151,14 +234,23 @@ const Calendar = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           backgroundColor: "#FBF8F1",
-          borderRadius: "30px",
-          "@media screen and (min-width: 1920px)": {
-            width: "90%",
-          },
+
         },
       }}
     >
-      <ModalContainer>
+
+
+
+      <Closebtn src={Close} onClick={() => setModal(false)} />
+
+
+
+
+
+
+
+
+      {/* 
         <ModalHead>
           <Title>My Health Calendar</Title>
           <Closebtn src={Close} onClick={() => setModal(false)} />
@@ -169,8 +261,10 @@ const Calendar = ({ isModal, setModal }) => {
             formatDay={(locale, date) => moment(date).format("D")} // 날'일' 제외하고 숫자만 보이도록 설정
           />
         </ModalBody>
-        <ModalFooter />
-      </ModalContainer>
+        <ModalFooter />*/}
+
+
+
     </CalendarModal>
   )
 }

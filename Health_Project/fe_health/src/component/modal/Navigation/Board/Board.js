@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../image/index.js"
+import { Close } from "../../../../image/index.js"
 
-import Menubar from "./Menubar.js"
-import InformationModal from "react-modal"
+import Menubar from "../Menubar.js"
+import BoardModal from "react-modal"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -51,9 +51,10 @@ const Text = styled.div`
   font-size: 30px;
 `
 
-const Information = ({ isModal, setModal }) => {
+const Board = ({ isModal, setModal }, props) => {
+
   return (
-    <InformationModal
+    <BoardModal
       isOpen={isModal}
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
@@ -76,12 +77,12 @@ const Information = ({ isModal, setModal }) => {
           <Closebtn src={Close} onClick={() => setModal(false)} />
         </ModalHead>
         <ModalBody>
-          <Text>InformationModal</Text>
+          <Text>BoardModal</Text>
         </ModalBody>
         <ModalFooter />
       </ModalContainer>
-    </InformationModal>
+    </BoardModal>
   )
 }
 
-export default Information
+export default Board

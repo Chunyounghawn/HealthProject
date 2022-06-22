@@ -1,24 +1,25 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../image/index.js"
+import { Close } from "../../../../image/index.js"
 
-import ScheduleModal from "react-modal"
+import Menubar from "../Menubar.js"
+import InformationModal from "react-modal"
 
 const ModalContainer = styled.div`
   position: absolute;
   top: 0px;
-  right: 20px;
-  width: 1610px;
+  right: 0px;
+  width: 1350px;
   height: 890px;
 `
 
 const ModalHead = styled.div`
-  width: 1610px;
+  width: 1350px;
   height: 100px;
 `
 
 const ModalBody = styled.div`
-  width: 1610px;
+  width: 1350px;
   height: 690px;
   position: absolute;
   top: 100px;
@@ -26,7 +27,7 @@ const ModalBody = styled.div`
 
 const ModalFooter = styled.div`
   position: absolute;
-  width: 1610px;
+  width: 1350px;
   height: 100px;
   bottom: 0px;
 `
@@ -50,11 +51,11 @@ const Text = styled.div`
   font-size: 30px;
 `
 
-const Schedule = ({ isModal, setModal }) => {
+const Information = ({ isModal, setModal }) => {
   return (
-    <ScheduleModal
+    <InformationModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
         content: {
@@ -68,17 +69,19 @@ const Schedule = ({ isModal, setModal }) => {
         },
       }}
     >
+      <Menubar />
+
       <ModalContainer>
         <ModalHead>
           <Closebtn src={Close} onClick={() => setModal(false)} />
         </ModalHead>
         <ModalBody>
-          <Text>ScheduleModal</Text>
+          <Text>InformationModal</Text>
         </ModalBody>
         <ModalFooter />
       </ModalContainer>
-    </ScheduleModal>
+    </InformationModal>
   )
 }
 
-export default Schedule
+export default Information
