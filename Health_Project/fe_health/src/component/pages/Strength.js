@@ -14,7 +14,7 @@ import React from "react"
 import ScanModal from "../modal/StrengthPage/Scan.js"
 import AlarmModal from "../modal/StrengthPage/Alarm.js"
 import ScheduleModal from "../modal/StrengthPage/Schedule.js"
-import CalendarModal from "../modal/StrengthPage/Calendar.js"
+import CalendarModal from "../modal/StrengthPage/Calendar/Calendar.js"
 import { useSelector } from "react-redux"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
