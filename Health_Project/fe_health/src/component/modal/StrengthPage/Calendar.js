@@ -137,7 +137,7 @@ const MyCalendar = styled(HealthCalendar)`
 `
 
 const StyleCalendar = styled.div`
-.Calendar {
+  .Calendar {
     width: 100%;
     font-family: "Lucida Console", Helvetica, sans-serif;
     //padding-left: 3rem;
@@ -145,78 +145,73 @@ const StyleCalendar = styled.div`
     //height: 100%;
     //padding: 1rem;
     .navSpace {
+      display: flex;
+      .nav {
+        //background: blueviolet;
         display: flex;
-        .nav {
-            //background: blueviolet;
-            display: flex;
-            align-items: center;
-            color: white;
-            font-size: 4rem;
-            margin-right: 1rem;
-        }
-        .body {
-            margin-top: 1.75rem;
-            margin-right: 8rem;
-            margin-left: 7rem;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            flex: 1;
-            background: white;
-            border: 1px solid white;
-            border-radius: 12px;
-            // background: linear-gradient(
-            // to right,
-            // rgba(255, 255, 255, 0.9) 40%,
-            // rgba(255, 255, 255, 0.8) 60%,
-            // rgba(255, 255, 255, 0.9)
-            // );
-            .daysArray {
-                display: flex;
-                margin-top: 1rem;
-                padding-bottom: 0.5rem;
-                font-size: 1.25rem;
-                font-weight: bold;
-                color: #c890ff;
-                //border-bottom: 3px solid white;
-                .days {
-                    width: calc(100% / 7);
-                    &:nth-child(7n + 1) {
-                        color: #f17070;
-                    }
-                    &:nth-child(7n) {
-                        color: #6c97f5;
-                    }
-                }
+        align-items: center;
+        color: white;
+        font-size: 4rem;
+        margin-right: 1rem;
+      }
+      .body {
+        margin-top: 1.75rem;
+        margin-right: 8rem;
+        margin-left: 7rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        flex: 1;
+        background: white;
+        border: 1px solid white;
+        border-radius: 12px;
+        // background: linear-gradient(
+        // to right,
+        // rgba(255, 255, 255, 0.9) 40%,
+        // rgba(255, 255, 255, 0.8) 60%,
+        // rgba(255, 255, 255, 0.9)
+        // );
+        .daysArray {
+          display: flex;
+          margin-top: 1rem;
+          padding-bottom: 0.5rem;
+          font-size: 1.25rem;
+          font-weight: bold;
+          color: #c890ff;
+          //border-bottom: 3px solid white;
+          .days {
+            width: calc(100% / 7);
+            &:nth-child(7n + 1) {
+              color: #f17070;
             }
-        }   
+            &:nth-child(7n) {
+              color: #6c97f5;
+            }
+          }
+        }
+      }
     }
-}
-
+  }
 `
 
 const Background = styled.div`
-.Background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  //background-color: #AA68A6;
-  background-color: #fbf8f1;
-  opacity: 0.8;
-  // background: linear-gradient(
-  //     to right,
-  //     rgba(20, 20, 20, 0.1) 10%,
-  //     rgba(20, 20, 20, 0.7) 60%,
-  //     rgba(20, 20, 20, 0.8)
-  // );
-}
-
+  .Background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    //background-color: #AA68A6;
+    background-color: #fbf8f1;
+    opacity: 0.8;
+    // background: linear-gradient(
+    //     to right,
+    //     rgba(20, 20, 20, 0.1) 10%,
+    //     rgba(20, 20, 20, 0.7) 60%,
+    //     rgba(20, 20, 20, 0.8)
+    // );
+  }
 `
-
-
-
 
 const Calendar = ({ isModal, setModal }) => {
   const [value, onChange] = React.useState(new Date())
@@ -234,25 +229,11 @@ const Calendar = ({ isModal, setModal }) => {
           left: "2%",
           right: "10%",
           backgroundColor: "#FBF8F1",
-<<<<<<< HEAD:Health_Project/fe_health/src/modal/Calendar.js
           borderRadius: "30px",
-=======
-
->>>>>>> c95c621eea615382a0de0640a6fbe7f742f13606:Health_Project/fe_health/src/component/modal/StrengthPage/Calendar.js
         },
       }}
     >
-
-
-
       <Closebtn src={Close} onClick={() => setModal(false)} />
-
-
-
-
-
-
-
 
       {/* 
         <ModalHead>
@@ -266,9 +247,6 @@ const Calendar = ({ isModal, setModal }) => {
           />
         </ModalBody>
         <ModalFooter />*/}
-
-
-
     </CalendarModal>
   )
 }
