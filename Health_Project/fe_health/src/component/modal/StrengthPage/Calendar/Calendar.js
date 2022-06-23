@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from "react-redux"
 
 import MakeCalendar from "./MakeCalendar.js"
 
+import { CalModalTrue } from "../../../navigation.jsx"
+import { DECREMENT, INCREMENT } from "../../../../redux/Calendar.js"
+
 const ModalContainer = styled.div`
   position: absolute;
   top: 0px;
@@ -198,16 +201,19 @@ const Calendar = ({ isModal, setModal }) => {
   const firstDay = parseInt(new Date(year, month, 1).getDay());
 
   // 일정
-  const todo = state.schedul
+  const todo = state.schedule
+
 
   // Month 감소
   const onDecreases = () => {
-    dispatch({ type: 'DECREMENT' })
+    dispatch(DECREMENT())
+    console.log("back");
   }
 
   // Month 증가
   const onIncreases = () => {
-    dispatch({ type: 'INCREMENT' })
+    dispatch(INCREMENT())
+    console.log("front");
   }
   // Modal Active
   const changeVisible = (key) => {
@@ -231,6 +237,8 @@ const Calendar = ({ isModal, setModal }) => {
   const onCancel = () => {
     dispatch({ type: "MODAL" })
   }
+
+
 
 
   return (
@@ -274,6 +282,9 @@ const Calendar = ({ isModal, setModal }) => {
 
             {MakeCalendar({ year, month, firstDay, lastDate, changeVisible, todo, })}
           </tbody>
+
+
+          {/* <button style={{ width: 70, height: 70 }} onClick={() => { CalModalTrue() }} /> */}
         </TableStyle>
 
 

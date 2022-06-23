@@ -1,5 +1,5 @@
 import React from 'react';
-import Schedule from './Schedule';
+import Schedule from "./Schedule";
 import { transString } from "./CalcDate";
 
 /*
@@ -39,20 +39,23 @@ const MakeCalendar = ({ year, month, firstDay, lastDate, changeVisible, todo, })
         if (week == 1) {
             const prevLastDate = parseInt(new Date(year, month, 0).getDate());
             for (let i = 1; i <= 7; i++) {
-                console.log(firstDay);
                 // 저번 달 날짜 
                 if (i <= firstDay) {
                     const now = prevLastDate - firstDay + i
                     const idx = returnIdx('PREV', year, month, now)
+                    //console.log(now);
+                    // console.log(idx);
 
                     result.push(
                         <td className="diff" onClick={() => changeVisible(idx)} key={idx}>
                             {now}
+
                             <div className="todo">
                                 {Schedule(idx, todo)}
 
                             </div>
                         </td>)
+                    //console.log(result);
 
                 }
                 // 현재 달 날짜
@@ -72,6 +75,7 @@ const MakeCalendar = ({ year, month, firstDay, lastDate, changeVisible, todo, })
         }
         else {
             const startDate = ((week - 1) * 7)
+
             for (let i = startDate; i <= week * 7 - 1; i++) {
                 // 현재 달 날짜
                 if (i - firstDay < lastDate) {
@@ -106,6 +110,7 @@ const MakeCalendar = ({ year, month, firstDay, lastDate, changeVisible, todo, })
 
     // 주 계산
     const week = Math.ceil((firstDay + lastDate) / 7)
+
     for (let i = 1; i <= week; i++) {
         result.push(<tr key={week + i}>{makeDay(i)}</tr>);
     }

@@ -24,6 +24,7 @@ import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
+import CalModal from "./modal/StrengthPage/Calendar/CalModal"
 
 const NavigationStyle = styled.div`
   position: fixed;
@@ -84,7 +85,8 @@ export let LoginTrue,
   PushUpTrue,
   SitUpTrue,
   SquatTrue,
-  SignupTrue
+  SignupTrue,
+  CalModalTrue
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
@@ -100,6 +102,8 @@ const Navigations = () => {
 
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
 
+  const [CalModalIsOpen, setCalModalIsOpen] = React.useState(false)
+
   LoginTrue = function LoginModalTrue() {
     setLoginModalOpen(true)
     setNoticeModalOpen(false)
@@ -110,6 +114,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   NoticeTrue = function NoteiceModalTrue() {
@@ -122,6 +127,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   InformationTrue = function InformationModalTrue() {
@@ -134,6 +140,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   ChallengeTrue = function ChallengeModalTrue() {
@@ -146,6 +153,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   BoardTrue = function BoardModalTrue() {
@@ -158,6 +166,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   PushUpTrue = function PushUpModalTrue() {
@@ -170,6 +179,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   SitUpTrue = function SitUpModalTrue() {
@@ -182,6 +192,7 @@ const Navigations = () => {
     setSitUpModalOpen(true)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   SquatTrue = function SquatModalTrue() {
@@ -194,6 +205,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(true)
     setSignupModalOpen(false)
+    setCalModalIsOpen(false)
   }
 
   SignupTrue = function SignupModalTrue() {
@@ -206,6 +218,20 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(true)
+    setCalModalIsOpen(false)
+  }
+
+  CalModalTrue = function SignupModalTrue() {
+    setLoginModalOpen(false)
+    setNoticeModalOpen(false)
+    setInformationModalOpen(false)
+    setChallengeModalOpen(false)
+    setBoardModalOpen(false)
+    setPushUpModalOpen(false)
+    setSitUpModalOpen(false)
+    setSquatModalOpen(false)
+    setSignupModalOpen(false)
+    setCalModalIsOpen(true)
   }
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
@@ -253,6 +279,8 @@ const Navigations = () => {
           isModal={SignupModalIsOpen}
           setModal={setSignupModalOpen}
         />
+
+        <CalModal isModal={CalModalIsOpen} setModal={setCalModalIsOpen} />
 
         <ul>
           <li data-menuanchor="MainPage">
