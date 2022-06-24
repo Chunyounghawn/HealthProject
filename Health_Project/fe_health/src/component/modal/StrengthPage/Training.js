@@ -11,7 +11,7 @@ import {
 
 import TrainingModal from "react-modal"
 
-import { PushUpTrue } from "../../pages/Strength.js"
+import { PushUpTrue, PullUpTrue } from "../../pages/Strength.js"
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
@@ -161,9 +161,15 @@ const Training = ({ isModal, setModal }) => {
 
             <SwiperSlide>
               <TrainingContainer>
-                <TrainingTitle>풀업</TrainingTitle>
+                <TrainingTitle>턱걸이</TrainingTitle>
                 <TrainingImage src={PullUp} />
-                <TrainingBtn>학습하기</TrainingBtn>
+                <TrainingBtn
+                  onClick={() => {
+                    PullUpTrue()
+                  }}
+                >
+                  학습하기
+                </TrainingBtn>
               </TrainingContainer>
             </SwiperSlide>
 
@@ -179,7 +185,7 @@ const Training = ({ isModal, setModal }) => {
               <TrainingContainer>
                 <TrainingTitle>크런치</TrainingTitle>
                 <TrainingImage src={Crunch} />
-                <TrainingBtn>학습하기</TrainingBtn>\{" "}
+                <TrainingBtn>학습하기</TrainingBtn>
               </TrainingContainer>
             </SwiperSlide>
 

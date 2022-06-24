@@ -17,8 +17,9 @@ import TrainingModal from "../modal/StrengthPage/Training.js"
 import CalendarModal from "../modal/StrengthPage/Calendar.js"
 import { useSelector } from "react-redux"
 
+// Training modal
 import PushUpModal from "../modal/Training/PushUp.js"
-// import { PushUpTrue } from "../navigation"
+import PullUpModal from "../modal/Training/PullUp.js"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -225,19 +226,27 @@ const Selecter4 = styled.div`
   }
 `
 
-export let PushUpTrue
+export let PushUpTrue, PullUpTrue
 
 function StrengthSection() {
-  const [ScanmodalIsOpen, setScanModalOpen] = React.useState(false)
-  const [AlarmmodalIsOpen, setAlarmModalOpen] = React.useState(false)
-  const [TrainingmodalIsOpen, setTrainingModalOpen] = React.useState(false)
-  const [CalendarmodalIsOpen, setCalendarModalOpen] = React.useState(false)
+  const [ScanModalIsOpen, setScanModalOpen] = React.useState(false)
+  const [AlarmModalIsOpen, setAlarmModalOpen] = React.useState(false)
+  const [TrainingModalIsOpen, setTrainingModalOpen] = React.useState(false)
+  const [CalendarModalIsOpen, setCalendarModalOpen] = React.useState(false)
 
-  const [PushUpmodalIsOpen, setPushUpModalOpen] = React.useState(false)
+  const [PushUpModalIsOpen, setPushUpModalOpen] = React.useState(false)
+  const [PullUpModalIsOpen, setPullUpModalOpen] = React.useState(false)
 
   PushUpTrue = function PushUpModalTrue() {
     setTrainingModalOpen(false)
     setPushUpModalOpen(true)
+    setPullUpModalOpen(false)
+  }
+
+  PullUpTrue = function PullUpModalTrue() {
+    setTrainingModalOpen(false)
+    setPushUpModalOpen(false)
+    setPullUpModalOpen(true)
   }
 
   return (
@@ -310,7 +319,7 @@ function StrengthSection() {
           </Back1>
         </Selecter1>
 
-        <ScanModal isModal={ScanmodalIsOpen} setModal={setScanModalOpen} />
+        <ScanModal isModal={ScanModalIsOpen} setModal={setScanModalOpen} />
 
         <Selecter2>
           <Front2>물 알람</Front2>
@@ -322,7 +331,7 @@ function StrengthSection() {
           </Back2>
         </Selecter2>
 
-        <AlarmModal isModal={AlarmmodalIsOpen} setModal={setAlarmModalOpen} />
+        <AlarmModal isModal={AlarmModalIsOpen} setModal={setAlarmModalOpen} />
 
         <Selecter3>
           <Front3>홈 트레이닝</Front3>
@@ -336,13 +345,18 @@ function StrengthSection() {
         </Selecter3>
 
         <TrainingModal
-          isModal={TrainingmodalIsOpen}
+          isModal={TrainingModalIsOpen}
           setModal={setTrainingModalOpen}
         />
 
         <PushUpModal
-          isModal={PushUpmodalIsOpen}
+          isModal={PushUpModalIsOpen}
           setModal={setPushUpModalOpen}
+        />
+
+        <PullUpModal
+          isModal={PullUpModalIsOpen}
+          setModal={setPullUpModalOpen}
         />
 
         <Selecter4>
@@ -356,7 +370,7 @@ function StrengthSection() {
         </Selecter4>
 
         <CalendarModal
-          isModal={CalendarmodalIsOpen}
+          isModal={CalendarModalIsOpen}
           setModal={setCalendarModalOpen}
         />
       </Container>
