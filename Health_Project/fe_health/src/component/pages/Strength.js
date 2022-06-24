@@ -22,6 +22,7 @@ import PushUpModal from "../modal/Training/PushUp.js"
 import PullUpModal from "../modal/Training/PullUp.js"
 import DipsModal from "../modal/Training/Dips.js"
 import CrunchModal from "../modal/Training/Crunch.js"
+import PlankModal from "../modal/Training/Plank.js"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -228,7 +229,16 @@ const Selecter4 = styled.div`
   }
 `
 
-export let PushUpTrue, PullUpTrue, DipsTrue, CrunchTrue
+export let PushUpTrue,
+  PushUpFalse,
+  PullUpTrue,
+  PullUpFalse,
+  DipsTrue,
+  DipsFalse,
+  CrunchTrue,
+  CrunchFalse,
+  PlankTrue,
+  PlankFalse
 
 function StrengthSection() {
   const [ScanModalIsOpen, setScanModalOpen] = React.useState(false)
@@ -240,10 +250,16 @@ function StrengthSection() {
   const [PullUpModalIsOpen, setPullUpModalOpen] = React.useState(false)
   const [DipsModalIsOpen, setDipsModalOpen] = React.useState(false)
   const [CrunchModalIsOpen, setCrunchModalOpen] = React.useState(false)
+  const [PlankModalIsOpen, setPlankModalOpen] = React.useState(false)
 
   PushUpTrue = function PushUpModalTrue() {
     setTrainingModalOpen(false)
     setPushUpModalOpen(true)
+  }
+
+  PushUpFalse = function PushUpModalfalse() {
+    setTrainingModalOpen(true)
+    setPushUpModalOpen(false)
   }
 
   PullUpTrue = function PullUpModalTrue() {
@@ -251,14 +267,39 @@ function StrengthSection() {
     setPullUpModalOpen(true)
   }
 
+  PullUpFalse = function PullUpModalFalse() {
+    setTrainingModalOpen(true)
+    setPullUpModalOpen(false)
+  }
+
   DipsTrue = function DipsModalTrue() {
     setTrainingModalOpen(false)
     setDipsModalOpen(true)
   }
 
+  DipsFalse = function DipsModalFalse() {
+    setTrainingModalOpen(true)
+    setDipsModalOpen(false)
+  }
+
   CrunchTrue = function CrunchModalTrue() {
     setTrainingModalOpen(false)
     setCrunchModalOpen(true)
+  }
+
+  CrunchFalse = function CrunchModalFalse() {
+    setTrainingModalOpen(true)
+    setCrunchModalOpen(false)
+  }
+
+  PlankTrue = function PlankModalTrue() {
+    setTrainingModalOpen(false)
+    setPlankModalOpen(true)
+  }
+
+  PlankFalse = function PlankModalFalse() {
+    setTrainingModalOpen(true)
+    setPlankModalOpen(false)
   }
 
   return (
@@ -377,6 +418,8 @@ function StrengthSection() {
           isModal={CrunchModalIsOpen}
           setModal={setCrunchModalOpen}
         />
+
+        <PlankModal isModal={PlankModalIsOpen} setModal={setPlankModalOpen} />
 
         <Selecter4>
           <Front4>캘린더</Front4>

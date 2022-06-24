@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import { Close } from "../../../image/index.js"
 
+import { CrunchFalse } from "../../pages/Strength.js"
+
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
@@ -96,7 +98,7 @@ const Dips = ({ isModal, setModal }) => {
   return (
     <CrunchModal
       isOpen={isModal}
-      onRequestClose={() => setModal(false)}
+      onRequestClose={() => CrunchFalse()}
       ariaHideApp={false}
       style={{
         content: {
@@ -112,7 +114,7 @@ const Dips = ({ isModal, setModal }) => {
     >
       <ModalHead>
         <Title>크런치 트레이닝 학습</Title>
-        <Closebtn src={Close} onClick={() => setModal(false)} />
+        <Closebtn src={Close} onClick={() => CrunchFalse()} />
       </ModalHead>
       <ModalBody>
         <Iframe
@@ -156,9 +158,17 @@ const Dips = ({ isModal, setModal }) => {
           <SwiperSlide>
             <SwiperContainer>
               <SwiperTitle>크런치 운동 중 저지르는 흔한 실수</SwiperTitle>
-              <SwiperText1></SwiperText1>
-              <SwiperText2></SwiperText2>
-              <SwiperText3></SwiperText3>
+              <SwiperText1>
+                크런치만 하기보다는 하복부를 위해 모션이 큰 복부 운동을 해주는
+                게 골고루 발달된 복근을 만들 수 있습니다.
+              </SwiperText1>
+              <SwiperText2>
+                허리를 아치형으로 바닥에 약간 떨어진채로 운동을 한다면
+                허리부상을 야기할 수 있습니다.
+              </SwiperText2>
+              <SwiperText3>
+                손으러 머리를 땡기면서 크런치를 하면 목부상을 야기할 수 있다.
+              </SwiperText3>
             </SwiperContainer>
           </SwiperSlide>
 

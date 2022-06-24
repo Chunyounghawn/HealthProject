@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import { Close } from "../../../image/index.js"
 
+import { PushUpFalse } from "../../pages/Strength.js"
+
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
@@ -92,11 +94,11 @@ const SwiperText2 = styled(SwiperText)`
 const SwiperText3 = styled(SwiperText)`
   top: 240px;
 `
-const PushUp = ({ isModal, setModal }) => {
+const PushUp = ({ isModal }) => {
   return (
     <PushUpModal
       isOpen={isModal}
-      onRequestClose={() => setModal(false)}
+      onRequestClose={() => PushUpFalse()}
       ariaHideApp={false}
       style={{
         content: {
@@ -112,7 +114,7 @@ const PushUp = ({ isModal, setModal }) => {
     >
       <ModalHead>
         <Title>팔굽혀펴기 트레이닝 학습</Title>
-        <Closebtn src={Close} onClick={() => setModal(false)} />
+        <Closebtn src={Close} onClick={() => PushUpFalse()} />
       </ModalHead>
       <ModalBody>
         <Iframe
@@ -156,13 +158,11 @@ const PushUp = ({ isModal, setModal }) => {
           <SwiperSlide>
             <SwiperContainer>
               <SwiperTitle>팔굽혀펴기 운동 중 저지르는 흔한 실수</SwiperTitle>
-              <SwiperText1>
-                1.엉덩이가 밑으로 내려앉거나 높이 들린다.
-              </SwiperText1>
+              <SwiperText1>엉덩이가 밑으로 내려앉거나 높이 들린다.</SwiperText1>
               <SwiperText2>
-                2.손바닥을 어깨 옆이나 머리 밑에 위치 시킨다.
+                손바닥을 어깨 옆이나 머리 밑에 위치 시킨다.
               </SwiperText2>
-              <SwiperText3>3.밑으로 내려얼 때 턱만 내려온다.</SwiperText3>
+              <SwiperText3>밑으로 내려얼 때 턱만 내려온다.</SwiperText3>
             </SwiperContainer>
           </SwiperSlide>
 

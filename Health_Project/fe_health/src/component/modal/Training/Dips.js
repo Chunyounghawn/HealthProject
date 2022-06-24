@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import { Close } from "../../../image/index.js"
 
+import { DipsFalse } from "../../pages/Strength.js"
+
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
@@ -96,7 +98,7 @@ const Dips = ({ isModal, setModal }) => {
   return (
     <DipsModal
       isOpen={isModal}
-      onRequestClose={() => setModal(false)}
+      onRequestClose={() => DipsFalse()}
       ariaHideApp={false}
       style={{
         content: {
@@ -112,7 +114,7 @@ const Dips = ({ isModal, setModal }) => {
     >
       <ModalHead>
         <Title>딥스 트레이닝 학습</Title>
-        <Closebtn src={Close} onClick={() => setModal(false)} />
+        <Closebtn src={Close} onClick={() => DipsFalse()} />
       </ModalHead>
       <ModalBody>
         <Iframe
@@ -157,13 +159,13 @@ const Dips = ({ isModal, setModal }) => {
             <SwiperContainer>
               <SwiperTitle>딥스 운동 중 저지르는 흔한 실수</SwiperTitle>
               <SwiperText1>
-                1.딥스 운동시 어깨가 팔꿈치보다 내려가지 않도록 해야 합니다.
+                딥스 운동시 어깨가 팔꿈치보다 내려가지 않도록 해야 합니다.
               </SwiperText1>
               <SwiperText2>
-                2.팔은 거의 굽히지 않은채 승모근만 내려갔다 올라갔다 하는 경우
+                팔은 거의 굽히지 않은채 승모근만 내려갔다 올라갔다 하는 자세
               </SwiperText2>
               <SwiperText3>
-                3.자신의 어깨 폭에 맞지 않는 딥스바로 운동하지 말 것
+                자신의 어깨 폭에 맞지 않는 딥스바로 운동하지 말 것
               </SwiperText3>
             </SwiperContainer>
           </SwiperSlide>
