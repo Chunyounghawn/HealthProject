@@ -11,11 +11,18 @@ import { Calender, In_body, Scheduling, Water_alarm } from "../../image/index"
 import React from "react"
 
 // modal
-import ScanModal from "../../modal/Scan.js"
-import AlarmModal from "../../modal/Alarm.js"
-import ScheduleModal from "../../modal/Schedule.js"
-import CalendarModal from "../../modal/Calendar.js"
+import ScanModal from "../modal/StrengthPage/Scan.js"
+import AlarmModal from "../modal/StrengthPage/Alarm.js"
+import TrainingModal from "../modal/StrengthPage/Training.js"
+import CalendarModal from "../modal/StrengthPage/Calendar.js"
 import { useSelector } from "react-redux"
+
+// Training modal
+import PushUpModal from "../modal/Training/PushUp.js"
+import PullUpModal from "../modal/Training/PullUp.js"
+import DipsModal from "../modal/Training/Dips.js"
+import CrunchModal from "../modal/Training/Crunch.js"
+import PlankModal from "../modal/Training/Plank.js"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -23,7 +30,7 @@ const Container = styled.div`
   width: 1740px;
   height: 970px;
   position: relative;
-  background-color:  ${(props) => props.theme.strengthPage.backgroundColor};
+  background-color: ${(props) => props.theme.strengthPage.backgroundColor};
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -32,7 +39,7 @@ const Container = styled.div`
 const PhoneIcon = styled.div`
   width: 350px;
   height: 600px;
-  background-color:  ${(props) => props.theme.strengthPage.phoneBackgroundColor};
+  background-color: ${(props) => props.theme.strengthPage.phoneBackgroundColor};
   border: 4px solid #333;
   border-radius: 10%;
   position: absolute;
@@ -102,11 +109,11 @@ const ItemBox = styled.div`
   justify-content: center;
   align-items: center;
   color: ${(props) => props.theme.strengthPage.textColor};
-  border: 2px solid #F2D1D1;
+  border: 2px solid #f2d1d1;
   background-color: ${(props) => props.theme.strengthPage.btnColor};
   border-radius: 50%;
   font-size: 30px;
-  font-family:${(props) => props.theme.font}, sans-serif;
+  font-family: ${(props) => props.theme.font}, sans-serif;
 `
 
 const Front1 = styled(ItemBox)`
@@ -222,11 +229,78 @@ const Selecter4 = styled.div`
   }
 `
 
+export let PushUpTrue,
+  PushUpFalse,
+  PullUpTrue,
+  PullUpFalse,
+  DipsTrue,
+  DipsFalse,
+  CrunchTrue,
+  CrunchFalse,
+  PlankTrue,
+  PlankFalse
+
 function StrengthSection() {
-  const [ScanmodalIsOpen, setScanModalOpen] = React.useState(false)
-  const [AlarmmodalIsOpen, setAlarmModalOpen] = React.useState(false)
-  const [SchedulemodalIsOpen, setScheduleModalOpen] = React.useState(false)
-  const [CalendarmodalIsOpen, setCalendarModalOpen] = React.useState(false)
+  const [ScanModalIsOpen, setScanModalOpen] = React.useState(false)
+  const [AlarmModalIsOpen, setAlarmModalOpen] = React.useState(false)
+  const [TrainingModalIsOpen, setTrainingModalOpen] = React.useState(false)
+  const [CalendarModalIsOpen, setCalendarModalOpen] = React.useState(false)
+
+  const [PushUpModalIsOpen, setPushUpModalOpen] = React.useState(false)
+  const [PullUpModalIsOpen, setPullUpModalOpen] = React.useState(false)
+  const [DipsModalIsOpen, setDipsModalOpen] = React.useState(false)
+  const [CrunchModalIsOpen, setCrunchModalOpen] = React.useState(false)
+  const [PlankModalIsOpen, setPlankModalOpen] = React.useState(false)
+
+  PushUpTrue = function PushUpModalTrue() {
+    setTrainingModalOpen(false)
+    setPushUpModalOpen(true)
+  }
+
+  PushUpFalse = function PushUpModalfalse() {
+    setTrainingModalOpen(true)
+    setPushUpModalOpen(false)
+  }
+
+  PullUpTrue = function PullUpModalTrue() {
+    setTrainingModalOpen(false)
+    setPullUpModalOpen(true)
+  }
+
+  PullUpFalse = function PullUpModalFalse() {
+    setTrainingModalOpen(true)
+    setPullUpModalOpen(false)
+  }
+
+  DipsTrue = function DipsModalTrue() {
+    setTrainingModalOpen(false)
+    setDipsModalOpen(true)
+  }
+
+  DipsFalse = function DipsModalFalse() {
+    setTrainingModalOpen(true)
+    setDipsModalOpen(false)
+  }
+
+  CrunchTrue = function CrunchModalTrue() {
+    setTrainingModalOpen(false)
+    setCrunchModalOpen(true)
+  }
+
+  CrunchFalse = function CrunchModalFalse() {
+    setTrainingModalOpen(true)
+    setCrunchModalOpen(false)
+  }
+
+  PlankTrue = function PlankModalTrue() {
+    setTrainingModalOpen(false)
+    setPlankModalOpen(true)
+  }
+
+  PlankFalse = function PlankModalFalse() {
+    setTrainingModalOpen(true)
+    setPlankModalOpen(false)
+  }
 
   return (
     <div className="section">
@@ -271,7 +345,7 @@ function StrengthSection() {
               <SwiperSlideStyle>
                 <img
                   src={Scheduling}
-                  alt="운동 스케줄링"
+                  alt="홈 트레이닝"
                   width="300px"
                   height="520px"
                 ></img>
@@ -298,7 +372,7 @@ function StrengthSection() {
           </Back1>
         </Selecter1>
 
-        <ScanModal isModal={ScanmodalIsOpen} setModal={setScanModalOpen} />
+        <ScanModal isModal={ScanModalIsOpen} setModal={setScanModalOpen} />
 
         <Selecter2>
           <Front2>물 알람</Front2>
@@ -310,22 +384,42 @@ function StrengthSection() {
           </Back2>
         </Selecter2>
 
-        <AlarmModal isModal={AlarmmodalIsOpen} setModal={setAlarmModalOpen} />
+        <AlarmModal isModal={AlarmModalIsOpen} setModal={setAlarmModalOpen} />
 
         <Selecter3>
-          <Front3>운동 스케줄링</Front3>
+          <Front3>홈 트레이닝</Front3>
           <Back3>
-            사용자가 직접 운동 스케줄을 추가 및 삭제할 수 있습니다.
-            <Back3Btn onClick={() => setScheduleModalOpen(true)}>
+            사용자는 홈 트레이닝 영상을 보며 올바른 운동 자세와 방법을 학습할 수
+            있습니다.
+            <Back3Btn onClick={() => setTrainingModalOpen(true)}>
               바로가기
             </Back3Btn>
           </Back3>
         </Selecter3>
 
-        <ScheduleModal
-          isModal={SchedulemodalIsOpen}
-          setModal={setScheduleModalOpen}
+        <TrainingModal
+          isModal={TrainingModalIsOpen}
+          setModal={setTrainingModalOpen}
         />
+
+        <PushUpModal
+          isModal={PushUpModalIsOpen}
+          setModal={setPushUpModalOpen}
+        />
+
+        <PullUpModal
+          isModal={PullUpModalIsOpen}
+          setModal={setPullUpModalOpen}
+        />
+
+        <DipsModal isModal={DipsModalIsOpen} setModal={setDipsModalOpen} />
+
+        <CrunchModal
+          isModal={CrunchModalIsOpen}
+          setModal={setCrunchModalOpen}
+        />
+
+        <PlankModal isModal={PlankModalIsOpen} setModal={setPlankModalOpen} />
 
         <Selecter4>
           <Front4>캘린더</Front4>
@@ -338,10 +432,9 @@ function StrengthSection() {
         </Selecter4>
 
         <CalendarModal
-          isModal={CalendarmodalIsOpen}
+          isModal={CalendarModalIsOpen}
           setModal={setCalendarModalOpen}
         />
-
       </Container>
     </div>
   )
