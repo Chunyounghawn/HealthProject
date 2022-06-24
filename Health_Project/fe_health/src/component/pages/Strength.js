@@ -13,9 +13,12 @@ import React from "react"
 // modal
 import ScanModal from "../modal/StrengthPage/Scan.js"
 import AlarmModal from "../modal/StrengthPage/Alarm.js"
-import ScheduleModal from "../modal/StrengthPage/Schedule.js"
+import TrainingModal from "../modal/StrengthPage/Training.js"
 import CalendarModal from "../modal/StrengthPage/Calendar.js"
 import { useSelector } from "react-redux"
+
+import PushUpModal from "../modal/Training/PushUp.js"
+// import { PushUpTrue } from "../navigation"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -23,7 +26,7 @@ const Container = styled.div`
   width: 1740px;
   height: 970px;
   position: relative;
-  background-color:  ${(props) => props.theme.strengthPage.backgroundColor};
+  background-color: ${(props) => props.theme.strengthPage.backgroundColor};
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -32,7 +35,7 @@ const Container = styled.div`
 const PhoneIcon = styled.div`
   width: 350px;
   height: 600px;
-  background-color:  ${(props) => props.theme.strengthPage.phoneBackgroundColor};
+  background-color: ${(props) => props.theme.strengthPage.phoneBackgroundColor};
   border: 4px solid #333;
   border-radius: 10%;
   position: absolute;
@@ -102,11 +105,11 @@ const ItemBox = styled.div`
   justify-content: center;
   align-items: center;
   color: ${(props) => props.theme.strengthPage.textColor};
-  border: 2px solid #F2D1D1;
+  border: 2px solid #f2d1d1;
   background-color: ${(props) => props.theme.strengthPage.btnColor};
   border-radius: 50%;
   font-size: 30px;
-  font-family:${(props) => props.theme.font}, sans-serif;
+  font-family: ${(props) => props.theme.font}, sans-serif;
 `
 
 const Front1 = styled(ItemBox)`
@@ -222,11 +225,20 @@ const Selecter4 = styled.div`
   }
 `
 
+export let PushUpTrue
+
 function StrengthSection() {
   const [ScanmodalIsOpen, setScanModalOpen] = React.useState(false)
   const [AlarmmodalIsOpen, setAlarmModalOpen] = React.useState(false)
-  const [SchedulemodalIsOpen, setScheduleModalOpen] = React.useState(false)
+  const [TrainingmodalIsOpen, setTrainingModalOpen] = React.useState(false)
   const [CalendarmodalIsOpen, setCalendarModalOpen] = React.useState(false)
+
+  const [PushUpmodalIsOpen, setPushUpModalOpen] = React.useState(false)
+
+  PushUpTrue = function PushUpModalTrue() {
+    setTrainingModalOpen(false)
+    setPushUpModalOpen(true)
+  }
 
   return (
     <div className="section">
@@ -271,7 +283,7 @@ function StrengthSection() {
               <SwiperSlideStyle>
                 <img
                   src={Scheduling}
-                  alt="운동 스케줄링"
+                  alt="홈 트레이닝"
                   width="300px"
                   height="520px"
                 ></img>
@@ -313,18 +325,24 @@ function StrengthSection() {
         <AlarmModal isModal={AlarmmodalIsOpen} setModal={setAlarmModalOpen} />
 
         <Selecter3>
-          <Front3>운동 스케줄링</Front3>
+          <Front3>홈 트레이닝</Front3>
           <Back3>
-            사용자가 직접 운동 스케줄을 추가 및 삭제할 수 있습니다.
-            <Back3Btn onClick={() => setScheduleModalOpen(true)}>
+            사용자는 홈 트레이닝 영상을 보며 올바른 운동 자세와 방법을 학습할 수
+            있습니다.
+            <Back3Btn onClick={() => setTrainingModalOpen(true)}>
               바로가기
             </Back3Btn>
           </Back3>
         </Selecter3>
 
-        <ScheduleModal
-          isModal={SchedulemodalIsOpen}
-          setModal={setScheduleModalOpen}
+        <TrainingModal
+          isModal={TrainingmodalIsOpen}
+          setModal={setTrainingModalOpen}
+        />
+
+        <PushUpModal
+          isModal={PushUpmodalIsOpen}
+          setModal={setPushUpModalOpen}
         />
 
         <Selecter4>
@@ -341,7 +359,6 @@ function StrengthSection() {
           isModal={CalendarmodalIsOpen}
           setModal={setCalendarModalOpen}
         />
-
       </Container>
     </div>
   )

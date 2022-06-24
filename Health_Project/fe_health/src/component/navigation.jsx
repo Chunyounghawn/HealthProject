@@ -207,6 +207,7 @@ const Navigations = () => {
     setSquatModalOpen(false)
     setSignupModalOpen(true)
   }
+  
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
 
@@ -253,6 +254,7 @@ const Navigations = () => {
           isModal={SignupModalIsOpen}
           setModal={setSignupModalOpen}
         />
+
 
         <ul>
           <li data-menuanchor="MainPage">

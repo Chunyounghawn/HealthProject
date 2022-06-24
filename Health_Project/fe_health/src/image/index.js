@@ -36,6 +36,11 @@ const Water = require("../image/alarm/water.png")
 const Timer = require("../image/alarm/timer.png")
 const WaterCup = require("../image/alarm/water_cup.png")
 
+const PullUp = require("../image/training/pull_up.png")
+const Plank = require("../image/training/plank.png")
+const Dips = require("../image/training/dips.png")
+const Crunch = require("../image/training/crunch.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -75,4 +80,9 @@ export {
   Water,
   Timer,
   WaterCup,
+  // 홈 트레이닝
+  PullUp,
+  Plank,
+  Dips,
+  Crunch,
 }
