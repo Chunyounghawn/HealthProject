@@ -114,19 +114,18 @@ function App() {
   }, []);
   return (
 
-    <><p>
-      {message}
-    </p><div>
-        <button onClick={onNonCorsHeaderHandler}>non cors header</button>
-        <button onClick={onCorsHeaderHandler}>cors header</button>
-        <button onClick={onNonProxyHandler}>nonProxy</button>
-        <button onClick={onProxyHandler}>proxy</button>
-      </div>
-      {/* // <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
-      //   <FullpageWrapper />
-      // </ThemeProvider> */}
+    // <><p>
+    //   {message}
+    // </p><div>
+    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
+    //     <button onClick={onCorsHeaderHandler}>cors header</button>
+    //     <button onClick={onNonProxyHandler}>nonProxy</button>
+    //     <button onClick={onProxyHandler}>proxy</button>
+    //   </div>
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+      <FullpageWrapper />
+    </ThemeProvider>
 
-    </>
 
 
 

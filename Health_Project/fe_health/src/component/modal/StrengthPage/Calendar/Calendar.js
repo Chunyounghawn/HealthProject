@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux"
 import MakeCalendar from "./MakeCalendar.js"
 
 import { CalModalTrue } from "../../../navigation.jsx"
-import { DECREMENT, INCREMENT } from "../../../../redux/Calendar.js"
+import { DECREMENT, INCREMENT } from "../../../../redux/calendar.js"
 
 const ModalContainer = styled.div`
   position: absolute;
