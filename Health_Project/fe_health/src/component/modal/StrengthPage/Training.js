@@ -16,6 +16,7 @@ import {
   PullUpTrue,
   DipsTrue,
   CrunchTrue,
+  PlankTrue,
 } from "../../pages/Strength.js"
 
 // Swiper
@@ -210,7 +211,13 @@ const Training = ({ isModal, setModal }) => {
               <TrainingContainer>
                 <TrainingTitle>플랭크</TrainingTitle>
                 <TrainingImage src={Plank} />
-                <TrainingBtn>학습하기</TrainingBtn>
+                <TrainingBtn
+                  onClick={() => {
+                    PlankTrue()
+                  }}
+                >
+                  학습하기
+                </TrainingBtn>
               </TrainingContainer>
             </SwiperSlide>
           </Swiper>
