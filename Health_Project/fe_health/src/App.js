@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -13,7 +13,6 @@ import { useSelector } from "react-redux"
 
 
 import axios from 'axios';
-
 
 
 
@@ -62,7 +61,7 @@ const FullpageWrapper = () => {
 function App() {
   const theme = useSelector((state) => state.theme)
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('df');
 
   const responseHandler = ({ data }) => {
     setMessage(data);
@@ -94,26 +93,43 @@ function App() {
     axios.get('/proxy').then(responseHandler);
   };
 
+  //-------
+
+  const form = new FormData();
+  form.append('name', 'veneas');
+  form.append('food', 'cake');
+
+  useEffect(() => {
+    axios({
+      url: '/test',
+      method: 'post',
+      data: form
+    })
+      .then(function a(response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
   return (
-    // <div className="App">
-    //   <p>
-    //     {message}
-    //   </p>
-    //   <div>
-    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
-    //     <button onClick={onCorsHeaderHandler}>cors header</button>
-    //     <button onClick={onNonProxyHandler}>nonProxy</button>
-    //     <button onClick={onProxyHandler}>proxy</button>
-    //   </div>
-    // </div>
+
+    <><p>
+      {message}
+    </p><div>
+        <button onClick={onNonCorsHeaderHandler}>non cors header</button>
+        <button onClick={onCorsHeaderHandler}>cors header</button>
+        <button onClick={onNonProxyHandler}>nonProxy</button>
+        <button onClick={onProxyHandler}>proxy</button>
+      </div>
+      {/* // <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+      //   <FullpageWrapper />
+      // </ThemeProvider> */}
+
+    </>
 
 
 
-    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
-
-      <FullpageWrapper />
-
-    </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");
