@@ -20,6 +20,7 @@ import { useSelector } from "react-redux"
 // Training modal
 import PushUpModal from "../modal/Training/PushUp.js"
 import PullUpModal from "../modal/Training/PullUp.js"
+import DipsModal from "../modal/Training/Dips.js"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
@@ -226,7 +227,7 @@ const Selecter4 = styled.div`
   }
 `
 
-export let PushUpTrue, PullUpTrue
+export let PushUpTrue, PullUpTrue, DipsTrue
 
 function StrengthSection() {
   const [ScanModalIsOpen, setScanModalOpen] = React.useState(false)
@@ -236,17 +237,21 @@ function StrengthSection() {
 
   const [PushUpModalIsOpen, setPushUpModalOpen] = React.useState(false)
   const [PullUpModalIsOpen, setPullUpModalOpen] = React.useState(false)
+  const [DipsModalIsOpen, setDipsModalOpen] = React.useState(false)
 
   PushUpTrue = function PushUpModalTrue() {
     setTrainingModalOpen(false)
     setPushUpModalOpen(true)
-    setPullUpModalOpen(false)
   }
 
   PullUpTrue = function PullUpModalTrue() {
     setTrainingModalOpen(false)
-    setPushUpModalOpen(false)
     setPullUpModalOpen(true)
+  }
+
+  DipsTrue = function DipsModalTrue() {
+    setTrainingModalOpen(false)
+    setDipsModalOpen(true)
   }
 
   return (
@@ -358,6 +363,8 @@ function StrengthSection() {
           isModal={PullUpModalIsOpen}
           setModal={setPullUpModalOpen}
         />
+
+        <DipsModal isModal={DipsModalIsOpen} setModal={setDipsModalOpen} />
 
         <Selecter4>
           <Front4>캘린더</Front4>
