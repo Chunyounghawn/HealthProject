@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Close, SignupImg } from "../../../../image/index.js"
 
@@ -50,6 +50,50 @@ const Closebtn = styled.img`
   &:hover {
     cursor: pointer;
   }
+`
+
+const GenderBtn = styled.button`
+  color: #333;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const ManBtn = styled(GenderBtn)`
+  background-color: ${(props) => props.color};
+  width: 500px;
+  height: 50px;
+  margin-left: 5px;
+  font-size: 30px;
+  borderradius: 10px;
+`
+
+const WomanBtn = styled(GenderBtn)`
+  background-color: ${(props) => props.color};
+  width: 500px;
+  height: 50px;
+  position: absolute;
+  left: 505px;
+  top: 55px;
+  font-size: 30px;
+  borderradius: 10px;
+`
+
+const Certified = styled(GenderBtn)`
+  background-color: ${(props) => props.color};
+  width: 200px;
+  height: 55px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 30px;
+  borderradius: 10px;
 `
 
 const UserLabel = styled.label``
@@ -105,50 +149,6 @@ const Btn = styled.button`
   }
 `
 
-const GenderBtn = styled.button`
-  background-color: #fff;
-  color: #333;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  border-radius: 10px;
-  &:hover {
-    background-color: #b4b4b4;
-    color: #fff;
-    cursor: pointer;
-  }
-`
-
-const ManBtn = styled(GenderBtn)`
-  width: 500px;
-  height: 50px;
-  margin-left: 5px;
-  font-size: 30px;
-  borderradius: 10px;
-`
-
-const WomanBtn = styled(GenderBtn)`
-  width: 500px;
-  height: 50px;
-  position: absolute;
-  left: 505px;
-  top: 55px;
-  font-size: 30px;
-  borderradius: 10px;
-`
-
-const Certified = styled(GenderBtn)`
-  width: 200px;
-  height: 55px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 30px;
-  borderradius: 10px;
-`
-
 const SignupBtn = styled(Btn)`
   width: 150px;
   height: 50px;
@@ -168,10 +168,33 @@ const Birthdate = styled.div`
   flex-wrap: wrap;
   align-content: center;
 `
+let ManCheck,
+  WomanCheck = false
 
 const Signup = ({ isModal, setModal }) => {
   const [Month, setMonth] = React.useState("")
   const [Date, setDate] = React.useState("")
+
+  const [ManColor, setManColor] = useState("#fff")
+  const [WomanColor, setWomanColor] = useState("#fff")
+
+  const ManChoice = () =>
+    ManColor === "#fff"
+      ? (setManColor("#3CFBFF"),
+        setWomanColor("#fff"),
+        ((ManCheck = true), (WomanCheck = false)))
+      : (setManColor("#fff"),
+        setWomanColor("#fff"),
+        ((ManCheck = false), (WomanCheck = false)))
+
+  const WomanChoice = () =>
+    WomanColor === "#fff"
+      ? (setWomanColor("#FFB4B9"),
+        setManColor("#fff"),
+        ((WomanCheck = true), (ManCheck = false)))
+      : (setWomanColor("#fff"),
+        setManColor("#fff"),
+        ((WomanCheck = false), (ManCheck = false)))
 
   //파일 미리볼 url을 저장해줄 state
   const ImageFile = `${SignupImg}`
@@ -284,8 +307,12 @@ const Signup = ({ isModal, setModal }) => {
               }}
             />
 
-            <ManBtn>남자</ManBtn>
-            <WomanBtn>여자</WomanBtn>
+            <ManBtn color={ManColor} onClick={ManChoice}>
+              남자
+            </ManBtn>
+            <WomanBtn color={WomanColor} onClick={WomanChoice}>
+              여자
+            </WomanBtn>
 
             <Birthdate>생년월일</Birthdate>
 
