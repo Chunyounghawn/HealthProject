@@ -41,6 +41,15 @@ const Plank = require("../image/training/plank.png")
 const Dips = require("../image/training/dips.png")
 const Crunch = require("../image/training/crunch.png")
 
+const Logout = require("../image/mainpage/log-out.png")
+const Poster1 = require("../image/mainpage/poster1.png")
+const Poster2 = require("../image/mainpage/poster2.png")
+const Poster3 = require("../image/mainpage/poster3.png")
+const Poster4 = require("../image/mainpage/poster4.png")
+const Poster5 = require("../image/mainpage/poster5.png")
+const Poster6 = require("../image/mainpage/poster6.png")
+const Poster7 = require("../image/mainpage/poster7.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -76,6 +85,15 @@ export {
   Trophy,
   // 회원가입
   SignupImg,
+  // 메인 페이지
+  Logout,
+  Poster1,
+  Poster2,
+  Poster3,
+  Poster4,
+  Poster5,
+  Poster6,
+  Poster7,
   // 믈 알람
   Water,
   Timer,
