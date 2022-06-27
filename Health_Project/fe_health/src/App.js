@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux"
 
 
 import axios from 'axios';
+
 
 
 
@@ -62,7 +63,7 @@ function App() {
   const theme = useSelector((state) => state.theme)
   const modal = useSelector((state) => state.modal)
 
-  const [message, setMessage] = useState('df');
+  const [message, setMessage] = useState('');
 
   const responseHandler = ({ data }) => {
     setMessage(data);
@@ -94,6 +95,7 @@ function App() {
     axios.get('/proxy').then(responseHandler);
   };
 
+<<<<<<< HEAD
   //-------
 
   // const form = new FormData();
@@ -118,18 +120,35 @@ function App() {
     // <><p>
     //   {message}
     // </p><div>
+=======
+  return (
+    // <div className="App">
+    //   <p>
+    //     {message}
+    //   </p>
+    //   <div>
+>>>>>>> parent of 6ba4473 (석원씨 가져가요~)
     //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
     //     <button onClick={onCorsHeaderHandler}>cors header</button>
     //     <button onClick={onNonProxyHandler}>nonProxy</button>
     //     <button onClick={onProxyHandler}>proxy</button>
     //   </div>
+<<<<<<< HEAD
     <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
       <FullpageWrapper />
     </ThemeProvider>
 
+=======
+    // </div>
+>>>>>>> parent of 6ba4473 (석원씨 가져가요~)
 
 
 
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+
+      <FullpageWrapper />
+
+    </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");
