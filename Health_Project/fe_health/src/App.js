@@ -60,6 +60,7 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
+  const modal = useSelector((state) => state.modal)
 
   const [message, setMessage] = useState('df');
 
@@ -95,23 +96,23 @@ function App() {
 
   //-------
 
-  const form = new FormData();
-  form.append('name', 'veneas');
-  form.append('food', 'cake');
+  // const form = new FormData();
+  // form.append('name', 'veneas');
+  // form.append('food', 'cake');
 
-  useEffect(() => {
-    axios({
-      url: '/test',
-      method: 'post',
-      data: form
-    })
-      .then(function a(response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios({
+  //     url: '/test',
+  //     method: 'post',
+  //     data: form
+  //   })
+  //     .then(function a(response) {
+  //       console.log(response)
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
   return (
 
     // <><p>

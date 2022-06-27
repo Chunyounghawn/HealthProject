@@ -1,53 +1,68 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { createSlice } from "@reduxjs/toolkit";
+import NoticeModal from "../component/modal/Navigation/Notice/Notice.js"
+import Notice from '../component/modal/Navigation/Notice/Notice';
 
-const today = new Date()
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
 
 export const modalSelector = createSlice({
   name: "modalSelector",
   initialState: {
-    LoginModalIsOpen: false,
-    NoticeModalIsOpen: false,
-    InformationModalIsOpen: false,
-    ChallengeModalIsOpen: false,
-    BoardModalIsOpen: false,
-    PushUpModalIsOpen: false,
-    SitUpModalIsOpen: false,
-    SquatModalIsOpen: false,
-    SignupModalIsOpen: false,
-    CalModalIsOpen: false,
+    modal: {
+      LoginModalIsOpen: false,
+      NoticeModalIsOpen: false,
+      InformationModalIsOpen: false,
+      ChallengeModalIsOpen: false,
+      BoardModalIsOpen: false,
+      PushUpModalIsOpen: false,
+      SitUpModalIsOpen: false,
+      SquatModalIsOpen: false,
+      SignupModalIsOpen: false,
+      CalModalIsOpen: false,
+    },
+    nowModal: {
+      nowModal: true
+    }
   },
   reducers: {
-    INCREMENT: (state) => {
-      console.log(state);
-      if (state.month < 11) {
-        return { ...state, "month": state.month + 1 }
-      }
-      // 12월을 넘길 경우 Year + 1
-      else {
-        return { ...state, "year": state.year + 1, "month": 0 }
-      }
 
+    ModalChange: (state, pp) => {
+      //console.log(state.modal.NoticeModalIsOpen);
+      //console.log(pp.payload);
+
+      //console.log(getKeyByValue(state.modal, true));
+
+
+
+      //나머지 false처리 해줘야됨
+
+
+
+      if (pp.payload == "NoticeModal") {
+        state.modal.NoticeModalIsOpen = !state.modal.NoticeModalIsOpen
+
+
+      }
+      console.log(state.modal.NoticeModalIsOpen);
 
     },
-    DECREMENT: (state) => {
-      console.log("de");
-      if (state.month > 0) {
-        return { ...state, "month": state.month - 1 }
-      }
-      // 1월 보다 작을 경우 Year - 1
-      else {
-        return { ...state, "year": state.year - 1, "month": 11 }
+    default: (state) => {
+      return {
+        ...state
       }
 
     }
+
+
 
   }
 
 })
 
 
-export const { INCREMENT, DECREMENT } = Calendar.actions;
+export const { ModalChange } = modalSelector.actions;
 
 
-export default Calendar.reducer;
+export default modalSelector.reducer;

@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
+import { ModalChange } from "../redux/modalSelector"
 
 import {
   Light,
@@ -25,6 +26,7 @@ import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
 import CalModal from "./modal/StrengthPage/Calendar/CalModal"
+import { useState } from "react"
 
 const NavigationStyle = styled.div`
   position: fixed;
@@ -87,6 +89,10 @@ export let LoginTrue,
   SquatTrue,
   SignupTrue,
   CalModalTrue
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key] === value)
+}
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
@@ -236,6 +242,19 @@ const Navigations = () => {
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
 
+  const modal = useSelector((state) => state.modal.modal)
+
+  console.log(modal)
+  useEffect(() => {
+    console.log("변화------------")
+    console.log(getKeyByValue(modal, true))
+    if (modal.NoticeModalIsOpen == true) {
+      setopen(true)
+    }
+  }, [modal])
+
+  const [open, setopen] = useState(false)
+
   return (
     <>
       <NavigationStyle>
@@ -245,14 +264,14 @@ const Navigations = () => {
           <ThemeButton src={Light} onClick={() => dispatch(lightTheme())} />
         )}
 
-        <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
+        <UserButton
+          src={User}
+          onClick={() => dispatch(ModalChange("NoticeModal"))}
+        />
 
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
 
-        <NoticeModal
-          isModal={NoticeModalIsOpen}
-          setModal={setNoticeModalOpen}
-        />
+        <NoticeModal isModal={open} setModal={setopen} />
 
         <InformationModal
           isModal={InformationModalIsOpen}

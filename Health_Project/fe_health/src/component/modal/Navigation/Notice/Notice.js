@@ -133,6 +133,7 @@ const ContentDate = styled.div`
 `
 
 const Notice = ({ isModal, setModal }) => {
+
   return (
     <NoticeModal
       isOpen={isModal}
