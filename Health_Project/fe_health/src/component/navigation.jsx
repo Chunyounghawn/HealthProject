@@ -262,7 +262,7 @@ const Navigations = () => {
     //setCalModalIsOpen(false)
     setCalInModalIsOpen(true)
   }
-
+  //,
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
 
