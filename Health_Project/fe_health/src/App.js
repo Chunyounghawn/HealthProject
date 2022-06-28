@@ -95,7 +95,6 @@ function App() {
     axios.get('/proxy').then(responseHandler);
   };
 
-<<<<<<< HEAD
   //-------
 
   // const form = new FormData();
@@ -116,44 +115,6 @@ function App() {
   //     });
   // }, []);
   return (
-
-<<<<<<< HEAD
-    // <p>
-    //   {message}
-    // </p><div>
-=======
-    // <><p>
-    //   {message}
-    // </p><div>
-=======
-  return (
-    // <div className="App">
-    //   <p>
-    //     {message}
-    //   </p>
-    //   <div>
->>>>>>> parent of 6ba4473 (석원씨 가져가요~)
->>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
-    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
-    //     <button onClick={onCorsHeaderHandler}>cors header</button>
-    //     <button onClick={onNonProxyHandler}>nonProxy</button>
-    //     <button onClick={onProxyHandler}>proxy</button>
-    //   </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
-    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
-      <FullpageWrapper />
-    </ThemeProvider>
-
-<<<<<<< HEAD
-=======
-=======
-    // </div>
->>>>>>> parent of 6ba4473 (석원씨 가져가요~)
->>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
-
 
 
     <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
