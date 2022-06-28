@@ -17,7 +17,7 @@ import { CalModalTrue } from "../../../navigation.jsx"
 import { DECREMENT, INCREMENT } from "../../../../redux/calendar.js"
 
 import CalInModal from "react-modal"
-import { CalInModalTrue } from "../../../navigation.jsx"
+import { CalInModalTrue } from "../../../pages/Strength.js"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -28,11 +28,12 @@ const ModalContainer = styled.div`
 `
 
 const ModalHead = styled.div`
-  width: 1610px;
+  width: 100%;
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+
 `
 
 const ModalBody = styled.div`
@@ -84,6 +85,7 @@ body {
 }
 
 .header {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -131,61 +133,50 @@ const MoveButton = styled.button`
 `
 
 const TableStyle = styled.table`
-width: 80%;
-    height: 900px;
-    table-layout: fixed;
-    text-align: center;
-    border-collapse: collapse;
-    font-size: 19px;
-    tbody{
-      tr{
-        border-top: 0.5px solid #c4c9d0;
-      }
-      td{
-        width: 10%;
-    height: 10%;
-    overflow:hidden;
-    white-space : nowrap;
-    text-overflow: ellipsis;
-      }
-      tr, td{
-        margin-left: 20px;
-      }
+  width: 100%;
+  height: 670px;
+  table-layout: fixed;
+  text-align: center;
+  border-collapse: collapse;
+
+  font-size: 19px;
+  tbody {
+    tr {
+      border-top: 0.5px solid #c4c9d0;
     }
-    td:first-child, td:last-child {
+    td {
+      width: 10%;
+      height: 10%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    tr,
+    td {
+      margin-left: 20px;
+    }
+  }
+  td:first-child,
+  td:last-child {
     color: red;
-}
-    th,td{
-      vertical-align: top;
-    }
-    
-div::-webkit-scrollbar {
-    width: 10px;
-}
-div::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-}
-div::-webkit-scrollbar-track {
-    background-color: grey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
-}
-table tbody td:hover{
+  }
+  th,
+  td {
+    vertical-align: top;
+  }
+
+  table tbody td:hover {
     font-weight: bold;
-}
-
-li {
+  }
+  li {
     list-style: none;
-}
+  }
 
-.diff {
-    color:rgba(0, 0, 0, 0.3 ) !important;
-}
-    
+  .diff {
+    color: rgba(0, 0, 0, 0.3) !important;
+  }
 `
+
 
 
 
@@ -205,7 +196,7 @@ const Calendar = ({ isModal, setModal }) => {
 
   // 일정
   const todo = state.schedule
-  console.log(todo);
+  //console.log(todo);
 
 
   // Month 감소
@@ -256,9 +247,9 @@ const Calendar = ({ isModal, setModal }) => {
       style={{
         content: {
           position: "relative",
-          width: "1610px",
+          width: "1500px",
           height: "850px",
-          left: "2%",
+          left: "10%",
           right: "10%",
           backgroundColor: "#FBF8F1",
 

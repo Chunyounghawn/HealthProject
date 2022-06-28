@@ -8,10 +8,6 @@ export const Calendar = createSlice({
   initialState: {
     year: today.getFullYear(),
     month: today.getMonth(),
-    modal: {
-      visible: false,
-      index: '',
-    },
     schedule: []
   },
   reducers: {

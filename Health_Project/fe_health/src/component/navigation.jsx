@@ -25,7 +25,7 @@ import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
 import CalModal from "./modal/StrengthPage/Calendar/CalModal"
-import CalInModal from "./modal/StrengthPage/Calendar/CalInModal"
+
 import { useState } from "react"
 import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
 
@@ -89,8 +89,7 @@ export let LoginTrue,
   SitUpTrue,
   SquatTrue,
   SignupTrue,
-  MainPageTrue,
-  CalInModalTrue
+  MainPageTrue
 
 function getKeyByValue(object, value) {
   return Object.keys(object).find((key) => object[key] === value)
@@ -110,8 +109,6 @@ const Navigations = () => {
 
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
   const [MainPageModalIsOpen, setMainPageModalOpen] = React.useState(false)
-
-  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
 
   LoginTrue = function LoginModalTrue() {
     // 로그인 화면
@@ -242,12 +239,8 @@ const Navigations = () => {
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
-    setCalInModalIsOpen(false)
-    setSignupModalOpen(true)
-  }
 
-  CalInModalTrue = function CalInModalTrue() {
-    setMainPageModalOpen(false)
+    setSignupModalOpen(true)
   }
 
   MainPageTrue = function MainPageModalTrue() {
@@ -262,8 +255,6 @@ const Navigations = () => {
     setSquatModalOpen(false)
     setSignupModalOpen(false)
     setMainPageModalOpen(true)
-
-    setCalInModalIsOpen(false)
   }
   //,
   const theme = useSelector((state) => state.theme)
@@ -313,7 +304,6 @@ const Navigations = () => {
           setModal={setSignupModalOpen}
         />
 
-        <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
         <MainPageModal
           isModal={MainPageModalIsOpen}
           setModal={setMainPageModalOpen}

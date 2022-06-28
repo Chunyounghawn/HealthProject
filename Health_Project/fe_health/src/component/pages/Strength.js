@@ -26,6 +26,8 @@ import DipsModal from "../modal/Training/Dips.js"
 import CrunchModal from "../modal/Training/Crunch.js"
 import PlankModal from "../modal/Training/Plank.js"
 
+import CalInModal from "../modal/StrengthPage/Calendar/CalInModal.js"
+
 SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
@@ -240,7 +242,8 @@ export let PushUpTrue,
   CrunchTrue,
   CrunchFalse,
   PlankTrue,
-  PlankFalse
+  PlankFalse,
+  CalInModalTrue
 
 function StrengthSection() {
   const [ScanModalIsOpen, setScanModalOpen] = React.useState(false)
@@ -253,6 +256,9 @@ function StrengthSection() {
   const [DipsModalIsOpen, setDipsModalOpen] = React.useState(false)
   const [CrunchModalIsOpen, setCrunchModalOpen] = React.useState(false)
   const [PlankModalIsOpen, setPlankModalOpen] = React.useState(false)
+
+  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
+
 
   PushUpTrue = function PushUpModalTrue() {
     setTrainingModalOpen(false)
@@ -302,6 +308,13 @@ function StrengthSection() {
   PlankFalse = function PlankModalFalse() {
     setTrainingModalOpen(true)
     setPlankModalOpen(false)
+  }
+
+
+
+  CalInModalTrue = function CalInModalTrue() {
+    setCalendarModalOpen(true)
+    setCalInModalIsOpen(true)
   }
 
   return (
@@ -437,6 +450,9 @@ function StrengthSection() {
           isModal={CalendarModalIsOpen}
           setModal={setCalendarModalOpen}
         />
+
+        <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
+
       </Container>
     </div>
   )
