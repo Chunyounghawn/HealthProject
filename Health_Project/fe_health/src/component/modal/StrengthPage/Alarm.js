@@ -136,8 +136,8 @@ const CupIcon = styled.img`
 
 // Sample data
 const data = [
-  { name: "오늘 나의 물 섭취량", students: 300 },
-  { name: "하루 권장 물 섭취량", students: 700 },
+  { name: "잔여 물 섭취량", students: 300 },
+  { name: "오늘 나의 물 섭취량", students: 1700 },
 ]
 
 const data2 = [
@@ -156,7 +156,7 @@ const data2 = [
   { name: "12월", 월평균물섭취량: 545 },
 ]
 
-const COLORS = ["#3232FF", "#b4b4b4"]
+const COLORS = ["#FFB399", "#289AFF"]
 
 const Alarm = ({ isModal, setModal }) => {
   return (
@@ -204,6 +204,7 @@ const Alarm = ({ isModal, setModal }) => {
                 }}
               >
                 <Pie
+                  startAngle={-270}
                   data={data}
                   dataKey="students"
                   outerRadius={250}

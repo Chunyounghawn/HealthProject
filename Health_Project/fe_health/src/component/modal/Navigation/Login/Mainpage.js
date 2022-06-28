@@ -83,19 +83,34 @@ const LogoutIcon = styled.img`
   }
 `
 
-const NameText = styled.div`
-  font-size: 30px;
+const Text = styled.div`
+  font-size: 25px;
   font-weight: bold;
   position: absolute;
-  top: 80px;
+`
+
+const NameText = styled(Text)`
+  top: 60px;
   left: 250px;
 `
 
-const EmailText = styled.div`
-  font-size: 30px;
-  font-weight: bold;
-  position: absolute;
+const AgeText = styled(Text)`
+  top: 100px;
+  left: 250px;
+`
+
+const GenderText = styled(Text)`
+  top: 100px;
+  left: 320px;
+`
+
+const EmailText = styled(Text)`
   top: 140px;
+  left: 250px;
+`
+
+const PhoneText = styled(Text)`
+  top: 180px;
   left: 250px;
 `
 
@@ -133,7 +148,10 @@ const MainPage = ({ isModal, setModal }) => {
         <ModalHead>
           <UserIcon src={SignupImg}></UserIcon>
           <NameText>홍길동</NameText>
+          <AgeText>24세</AgeText>
+          <GenderText>남자</GenderText>
           <EmailText>wlsdnjs156@naver.com</EmailText>
+          <PhoneText>010-3690-7822</PhoneText>
           <LogoutIcon src={Logout} onClick={() => LoginTrue()} />
         </ModalHead>
 
