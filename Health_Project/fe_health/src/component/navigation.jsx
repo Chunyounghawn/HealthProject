@@ -25,6 +25,7 @@ import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
 import CalModal from "./modal/StrengthPage/Calendar/CalModal"
+import CalInModal from "./modal/StrengthPage/Calendar/CalInModal"
 
 const NavigationStyle = styled.div`
   position: fixed;
@@ -86,7 +87,7 @@ export let LoginTrue,
   SitUpTrue,
   SquatTrue,
   SignupTrue,
-  CalModalTrue
+  CalInModalTrue
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
@@ -102,7 +103,7 @@ const Navigations = () => {
 
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
 
-  const [CalModalIsOpen, setCalModalIsOpen] = React.useState(false)
+  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
 
   LoginTrue = function LoginModalTrue() {
     setLoginModalOpen(true)
@@ -114,7 +115,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   NoticeTrue = function NoteiceModalTrue() {
@@ -127,7 +129,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   InformationTrue = function InformationModalTrue() {
@@ -140,7 +143,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   ChallengeTrue = function ChallengeModalTrue() {
@@ -153,7 +157,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   BoardTrue = function BoardModalTrue() {
@@ -166,7 +171,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   PushUpTrue = function PushUpModalTrue() {
@@ -179,7 +185,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   SitUpTrue = function SitUpModalTrue() {
@@ -192,7 +199,8 @@ const Navigations = () => {
     setSitUpModalOpen(true)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   SquatTrue = function SquatModalTrue() {
@@ -205,7 +213,8 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(true)
     setSignupModalOpen(false)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
   SignupTrue = function SignupModalTrue() {
@@ -218,10 +227,11 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(true)
-    setCalModalIsOpen(false)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(false)
   }
 
-  CalModalTrue = function SignupModalTrue() {
+  CalInModalTrue = function CalInModalTrue() {
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -231,8 +241,10 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setCalModalIsOpen(true)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(true)
   }
+
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
 
@@ -280,7 +292,7 @@ const Navigations = () => {
           setModal={setSignupModalOpen}
         />
 
-        <CalModal isModal={CalModalIsOpen} setModal={setCalModalIsOpen} />
+        <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
 
         <ul>
           <li data-menuanchor="MainPage">

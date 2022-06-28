@@ -14,7 +14,10 @@ import { useDispatch, useSelector } from "react-redux"
 import MakeCalendar from "./MakeCalendar.js"
 
 import { CalModalTrue } from "../../../navigation.jsx"
-import { DECREMENT, INCREMENT } from "../../../../redux/Calendar.js"
+import { DECREMENT, INCREMENT } from "../../../../redux/calendar.js"
+
+import CalInModal from "react-modal"
+import { CalInModalTrue } from "../../../navigation.jsx"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -202,6 +205,7 @@ const Calendar = ({ isModal, setModal }) => {
 
   // 일정
   const todo = state.schedule
+  console.log(todo);
 
 
   // Month 감소
@@ -217,7 +221,10 @@ const Calendar = ({ isModal, setModal }) => {
   }
   // Modal Active
   const changeVisible = (key) => {
-    dispatch({ type: 'MODAL', value: key })
+
+    setModal(false)
+    CalInModalTrue()
+
   }
 
   // 일정 입력
@@ -230,7 +237,7 @@ const Calendar = ({ isModal, setModal }) => {
     else {
       dispatch({ type: 'INSERT', index: index, todo: todo, color: color })
     }
-    //dispatch({ type: "MODAL"})
+    //dispatch({type: "MODAL"})
   }
 
   // 일정 입력 취소 모달꺼라 굳이필요없음 아직

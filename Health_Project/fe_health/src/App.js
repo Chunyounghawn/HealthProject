@@ -99,34 +99,33 @@ function App() {
   form.append('name', 'veneas');
   form.append('food', 'cake');
 
-  useEffect(() => {
-    axios({
-      url: '/test',
-      method: 'post',
-      data: form
-    })
-      .then(function a(response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios({
+  //     url: '/test',
+  //     method: 'post',
+  //     data: form
+  //   })
+  //     .then(function a(response) {
+  //       console.log(response)
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
   return (
 
-    <><p>
-      {message}
-    </p><div>
-        <button onClick={onNonCorsHeaderHandler}>non cors header</button>
-        <button onClick={onCorsHeaderHandler}>cors header</button>
-        <button onClick={onNonProxyHandler}>nonProxy</button>
-        <button onClick={onProxyHandler}>proxy</button>
-      </div>
-      {/* // <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
-      //   <FullpageWrapper />
-      // </ThemeProvider> */}
+    // <p>
+    //   {message}
+    // </p><div>
+    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
+    //     <button onClick={onCorsHeaderHandler}>cors header</button>
+    //     <button onClick={onNonProxyHandler}>nonProxy</button>
+    //     <button onClick={onProxyHandler}>proxy</button>
+    //   </div>
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+      <FullpageWrapper />
+    </ThemeProvider>
 
-    </>
 
 
 

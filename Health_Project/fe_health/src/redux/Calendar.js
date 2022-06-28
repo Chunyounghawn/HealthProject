@@ -16,7 +16,7 @@ export const Calendar = createSlice({
   },
   reducers: {
     INCREMENT: (state) => {
-      console.log(state);
+
       if (state.month < 11) {
         return { ...state, "month": state.month + 1 }
       }
@@ -28,7 +28,7 @@ export const Calendar = createSlice({
 
     },
     DECREMENT: (state) => {
-      console.log("de");
+
       if (state.month > 0) {
         return { ...state, "month": state.month - 1 }
       }
@@ -37,8 +37,13 @@ export const Calendar = createSlice({
         return { ...state, "year": state.year - 1, "month": 11 }
       }
 
-    }
+    },
+    INSERT: (state) => {
+      console.log("fefefS");
+      console.log(state);
 
+
+    }
   }
 
 })
