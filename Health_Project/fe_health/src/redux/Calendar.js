@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const today = new Date()
 
-export const themeSlice = createSlice({
-  name: "themeSelector",
+export const Calendar = createSlice({
+  name: "Calendar",
   initialState: {
     year: today.getFullYear(),
     month: today.getMonth(),
@@ -16,6 +16,7 @@ export const themeSlice = createSlice({
   },
   reducers: {
     INCREMENT: (state) => {
+
       if (state.month < 11) {
         return { ...state, "month": state.month + 1 }
       }
@@ -36,13 +37,19 @@ export const themeSlice = createSlice({
         return { ...state, "year": state.year - 1, "month": 11 }
       }
 
-    }
+    },
+    INSERT: (state) => {
+      console.log("fefefS");
+      console.log(state);
 
+
+    }
   }
 
 })
 
 
-export const { INCREMENT, DECREMENT } = themeSlice.actions;
+export const { INCREMENT, DECREMENT } = Calendar.actions;
 
-export default themeSlice.reducer;
+
+export default Calendar.reducer;

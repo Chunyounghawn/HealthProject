@@ -13,8 +13,10 @@ import React from "react"
 // modal
 import ScanModal from "../modal/StrengthPage/Scan.js"
 import AlarmModal from "../modal/StrengthPage/Alarm.js"
+//import ScheduleModal from "../modal/StrengthPage/Schedule.js"
+import CalendarModal from "../modal/StrengthPage/Calendar/Calendar.js"
 import TrainingModal from "../modal/StrengthPage/Training.js"
-import CalendarModal from "../modal/StrengthPage/Calendar.js"
+
 import { useSelector } from "react-redux"
 
 // Training modal
