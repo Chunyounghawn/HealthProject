@@ -5,7 +5,7 @@ import { Close, UserImg } from "../../../../image/index.js"
 import Menubar from "../Menubar.js"
 import LoginModal from "react-modal"
 
-import { SignupTrue } from "../../../navigation.jsx"
+import { SignupTrue, MainPageTrue } from "../../../navigation.jsx"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -154,7 +154,14 @@ const Login = ({ isModal, setModal }) => {
                 }}
               />
               <br />
-              <LoginBtn>Login</LoginBtn>
+              <LoginBtn
+                onClick={() => {
+                  setModal(false)
+                  MainPageTrue()
+                }}
+              >
+                Login
+              </LoginBtn>
               <SignupBtn
                 onClick={() => {
                   setModal(false)
