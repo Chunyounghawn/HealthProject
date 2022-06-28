@@ -53,6 +53,7 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
+  const modal = useSelector((state) => state.modal)
 
   const [message, setMessage] = useState("")
 
@@ -85,18 +86,27 @@ function App() {
     axios.get("/proxy").then(responseHandler)
   }
 
+  //-------
+
+  // const form = new FormData();
+  // form.append('name', 'veneas');
+  // form.append('food', 'cake');
+
+  // useEffect(() => {
+  //   axios({
+  //     url: '/test',
+  //     method: 'post',
+  //     data: form
+  //   })
+  //     .then(function a(response) {
+  //       console.log(response)
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
   return (
-    // <div className="App">
-    //   <p>
-    //     {message}
-    //   </p>
-    //   <div>
-    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
-    //     <button onClick={onCorsHeaderHandler}>cors header</button>
-    //     <button onClick={onNonProxyHandler}>nonProxy</button>
-    //     <button onClick={onProxyHandler}>proxy</button>
-    //   </div>
-    // </div>
+
 
     <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
       <FullpageWrapper />

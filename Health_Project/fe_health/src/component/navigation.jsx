@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
 
@@ -24,6 +24,9 @@ import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
+import CalModal from "./modal/StrengthPage/Calendar/CalModal"
+import CalInModal from "./modal/StrengthPage/Calendar/CalInModal"
+import { useState } from "react"
 import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
 
 const NavigationStyle = styled.div`
@@ -86,7 +89,12 @@ export let LoginTrue,
   SitUpTrue,
   SquatTrue,
   SignupTrue,
-  MainPageTrue
+  MainPageTrue,
+  CalInModalTrue
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key] === value)
+}
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
@@ -103,20 +111,23 @@ const Navigations = () => {
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
   const [MainPageModalIsOpen, setMainPageModalOpen] = React.useState(false)
 
-  LoginTrue = function LoginModalTrue() { // 로그인 화면
-    setLoginModalOpen(true)
+  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
+
+  LoginTrue = function LoginModalTrue() {
+    // 로그인 화면
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  NoticeTrue = function NoteiceModalTrue() { // 공지사항 화면
+  NoticeTrue = function NoteiceModalTrue() {
+    // 공지사항 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(true)
     setInformationModalOpen(false)
@@ -126,10 +137,12 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  InformationTrue = function InformationModalTrue() { // 내정보 화면
+  InformationTrue = function InformationModalTrue() {
+    // 내정보 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(true)
@@ -139,10 +152,12 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  ChallengeTrue = function ChallengeModalTrue() { // 첼린지 화면
+  ChallengeTrue = function ChallengeModalTrue() {
+    // 첼린지 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -152,10 +167,12 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  BoardTrue = function BoardModalTrue() { // 게시판 화면
+  BoardTrue = function BoardModalTrue() {
+    // 게시판 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -165,10 +182,12 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  PushUpTrue = function PushUpModalTrue() { // 팔굽혀펴기 화면
+  PushUpTrue = function PushUpModalTrue() {
+    // 팔굽혀펴기 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -178,10 +197,12 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  SitUpTrue = function SitUpModalTrue() { // 윗몸일으키기 화면
+  SitUpTrue = function SitUpModalTrue() {
+    // 윗몸일으키기 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -191,10 +212,12 @@ const Navigations = () => {
     setSitUpModalOpen(true)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  SquatTrue = function SquatModalTrue() { // 스쿼트 화면
+  SquatTrue = function SquatModalTrue() {
+    // 스쿼트 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -204,10 +227,12 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(true)
     setSignupModalOpen(false)
+
     setMainPageModalOpen(false)
   }
 
-  SignupTrue = function SignupModalTrue() { // 회원가입 화면
+  SignupTrue = function SignupModalTrue() {
+    // 회원가입 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -216,11 +241,15 @@ const Navigations = () => {
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
-    setSignupModalOpen(true)
+    setCalInModalIsOpen(false)
+  }
+
+  CalInModalTrue = function CalInModalTrue() {
     setMainPageModalOpen(false)
   }
 
-  MainPageTrue = function MainPageModalTrue() { // 메인 페이지 화면
+  MainPageTrue = function MainPageModalTrue() {
+    // 메인 페이지 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
     setInformationModalOpen(false)
@@ -230,11 +259,14 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    setMainPageModalOpen(true)
+    //setCalModalIsOpen(false)
+    setCalInModalIsOpen(true)
   }
-  
+  //,
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
+
+  const [open, setopen] = useState(false)
 
   return (
     <>
@@ -249,10 +281,7 @@ const Navigations = () => {
 
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
 
-        <NoticeModal
-          isModal={NoticeModalIsOpen}
-          setModal={setNoticeModalOpen}
-        />
+        <NoticeModal isModal={open} setModal={setopen} />
 
         <InformationModal
           isModal={InformationModalIsOpen}
@@ -280,6 +309,7 @@ const Navigations = () => {
           setModal={setSignupModalOpen}
         />
 
+        <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
         <MainPageModal
           isModal={MainPageModalIsOpen}
           setModal={setMainPageModalOpen}
