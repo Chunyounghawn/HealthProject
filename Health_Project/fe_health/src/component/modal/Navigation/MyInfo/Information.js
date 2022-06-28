@@ -17,7 +17,6 @@ import Menubar from "../Menubar.js"
 import InformationModal from "react-modal"
 
 import BatteryGauge from "react-battery-gauge"
-import Value from "../Challenge/Squat.js"
 
 // Chart
 import {
