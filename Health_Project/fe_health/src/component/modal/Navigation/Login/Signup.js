@@ -366,8 +366,7 @@ const Signup = ({ isModal, setModal }) => {
 
             <input
               type="text"
-              name="userEmail"
-              placeholder="Email Address"
+              placeholder="Phone Number"
               style={{
                 width: "1000px",
                 height: "50px",
@@ -380,7 +379,8 @@ const Signup = ({ isModal, setModal }) => {
           <SignupBottom>
             <input
               type="text"
-              placeholder="Phone Number"
+              name="userEmail"
+              placeholder="Email Address"
               style={{
                 width: "800px",
                 height: "50px",

@@ -50,6 +50,11 @@ const Poster5 = require("../image/mainpage/poster5.png")
 const Poster6 = require("../image/mainpage/poster6.png")
 const Poster7 = require("../image/mainpage/poster7.png")
 
+const Age = require("../image/myinfo/age.png")
+const Gender = require("../image/myinfo/gender.png")
+const Email = require("../image/myinfo/email.png")
+const Phone = require("../image/myinfo/phone-call.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -103,4 +108,9 @@ export {
   Plank,
   Dips,
   Crunch,
+  // 내정보
+  Age,
+  Gender,
+  Email,
+  Phone,
 }
