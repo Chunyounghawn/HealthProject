@@ -15,9 +15,12 @@ import MakeCalendar from "./MakeCalendar.js"
 
 import { CalModalTrue } from "../../../navigation.jsx"
 import { DECREMENT, INCREMENT } from "../../../../redux/calendar.js"
+<<<<<<< HEAD
 
 import CalInModal from "react-modal"
 import { CalInModalTrue } from "../../../navigation.jsx"
+=======
+>>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
 
 const ModalContainer = styled.div`
   position: absolute;

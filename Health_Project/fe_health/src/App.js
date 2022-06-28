@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux"
 
 
 import axios from 'axios';
+
 
 
 
@@ -60,8 +61,9 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
+  const modal = useSelector((state) => state.modal)
 
-  const [message, setMessage] = useState('df');
+  const [message, setMessage] = useState('');
 
   const responseHandler = ({ data }) => {
     setMessage(data);
@@ -93,11 +95,12 @@ function App() {
     axios.get('/proxy').then(responseHandler);
   };
 
+<<<<<<< HEAD
   //-------
 
-  const form = new FormData();
-  form.append('name', 'veneas');
-  form.append('food', 'cake');
+  // const form = new FormData();
+  // form.append('name', 'veneas');
+  // form.append('food', 'cake');
 
   // useEffect(() => {
   //   axios({
@@ -114,21 +117,50 @@ function App() {
   // }, []);
   return (
 
+<<<<<<< HEAD
     // <p>
     //   {message}
     // </p><div>
+=======
+    // <><p>
+    //   {message}
+    // </p><div>
+=======
+  return (
+    // <div className="App">
+    //   <p>
+    //     {message}
+    //   </p>
+    //   <div>
+>>>>>>> parent of 6ba4473 (석원씨 가져가요~)
+>>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
     //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
     //     <button onClick={onCorsHeaderHandler}>cors header</button>
     //     <button onClick={onNonProxyHandler}>nonProxy</button>
     //     <button onClick={onProxyHandler}>proxy</button>
     //   </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
     <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
       <FullpageWrapper />
     </ThemeProvider>
 
+<<<<<<< HEAD
+=======
+=======
+    // </div>
+>>>>>>> parent of 6ba4473 (석원씨 가져가요~)
+>>>>>>> 09cc02652f10d0588a0ac085fddeaf476820a414
 
 
 
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+
+      <FullpageWrapper />
+
+    </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");
