@@ -122,6 +122,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setLoginModalOpen(true)
 
     setMainPageModalOpen(false)
   }
@@ -242,6 +243,7 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setCalInModalIsOpen(false)
+    setSignupModalOpen(true)
   }
 
   CalInModalTrue = function CalInModalTrue() {
@@ -259,14 +261,13 @@ const Navigations = () => {
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-    //setCalModalIsOpen(false)
-    setCalInModalIsOpen(true)
+    setMainPageModalOpen(true)
+
+    setCalInModalIsOpen(false)
   }
   //,
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
-
-  const [open, setopen] = useState(false)
 
   return (
     <>
@@ -281,7 +282,10 @@ const Navigations = () => {
 
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
 
-        <NoticeModal isModal={open} setModal={setopen} />
+        <NoticeModal
+          isModal={NoticeModalIsOpen}
+          setModal={setNoticeModalOpen}
+        />
 
         <InformationModal
           isModal={InformationModalIsOpen}

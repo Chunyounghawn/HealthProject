@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, Trophy } from "../../../../image/index.js"
+import { Close } from "../../../../image/index.js"
 
 import Menubar from "../Menubar.js"
 import PushUpModal from "react-modal"
@@ -89,11 +89,6 @@ const PushUpBg3 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
-
-const TrophyImage = styled.img`
-  width: 300px;
-  height: 400px;
 `
 
 const Mission = styled.div`

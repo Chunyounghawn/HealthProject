@@ -1,3 +1,4 @@
+import React from "react"
 import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
 
@@ -7,7 +8,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  
+
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -21,7 +22,7 @@ const Video = styled.video`
   width: 1740px;
   height: 100%;
   background-size: 0% 0%;
- 
+
   background-image: "./video/main_fisrt.mp4";
   background-position: center center;
   /*background-size: contain;*/
@@ -38,7 +39,7 @@ const MainTitle = styled.div`
   top: 30%;
   font-size: 80px;
   text-align: center;
-  color:  ${(props) => props.theme.mainPage.mainTitle};
+  color: ${(props) => props.theme.mainPage.mainTitle};
   font-weight: 700;
 `
 
