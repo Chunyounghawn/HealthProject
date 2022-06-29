@@ -71,7 +71,7 @@ const ManBtn = styled(GenderBtn)`
   height: 50px;
   margin-left: 5px;
   font-size: 30px;
-  borderradius: 10px;
+  border-radius: 10px;
 `
 
 const WomanBtn = styled(GenderBtn)`
@@ -82,7 +82,7 @@ const WomanBtn = styled(GenderBtn)`
   left: 505px;
   top: 55px;
   font-size: 30px;
-  borderradius: 10px;
+  border-radius: 10px;
 `
 
 const Certified = styled(GenderBtn)`
@@ -93,7 +93,7 @@ const Certified = styled(GenderBtn)`
   top: 0px;
   right: 0px;
   font-size: 30px;
-  borderradius: 10px;
+  border-radius: 10px;
 `
 
 const UserLabel = styled.label``
