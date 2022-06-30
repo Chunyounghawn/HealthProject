@@ -1,5 +1,3 @@
-import React from 'react';
-
 
 export const transString = (year, month, day) => {
     return year + '.' + month + '.' + day

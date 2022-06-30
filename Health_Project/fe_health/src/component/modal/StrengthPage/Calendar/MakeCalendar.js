@@ -8,16 +8,16 @@ import { transString } from "./CalcDate";
  */
 const returnIdx = (order, year, month, day) => {
 
-    if (order == 'PREV') {
-        if (month == 0) {
+    if (order === 'PREV') {
+        if (month === 0) {
             return transString(year - 1, 12, day)
         }
         else {
             return transString(year, month, day)
         }
     }
-    else if (order == 'NEXT') {
-        if (month == 11) {
+    else if (order === 'NEXT') {
+        if (month === 11) {
             return transString(year + 1, 1, day)
         }
         else {
@@ -36,15 +36,14 @@ const MakeCalendar = ({ year, month, firstDay, lastDate, changeVisible, todo, })
 
         const result = []
         // 첫 주 
-        if (week == 1) {
+        if (week === 1) {
             const prevLastDate = parseInt(new Date(year, month, 0).getDate());
             for (let i = 1; i <= 7; i++) {
                 // 저번 달 날짜 
                 if (i <= firstDay) {
                     const now = prevLastDate - firstDay + i
                     const idx = returnIdx('PREV', year, month, now)
-                    //console.log(now);
-                    // console.log(idx);
+
 
                     result.push(
                         <td className="diff" onClick={() => changeVisible(idx)} key={idx}>
@@ -55,7 +54,7 @@ const MakeCalendar = ({ year, month, firstDay, lastDate, changeVisible, todo, })
 
                             </div>
                         </td>)
-                    //console.log(result);
+
 
                 }
                 // 현재 달 날짜

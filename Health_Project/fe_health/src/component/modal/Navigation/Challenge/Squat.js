@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, Trophy } from "../../../../image/index.js"
+import { Close } from "../../../../image/index.js"
 
 import Menubar from "../Menubar.js"
 import SquatModal from "react-modal"
@@ -91,10 +91,6 @@ const PushUpBg3 = styled.div`
   align-items: center;
 `
 
-const TrophyImage = styled.img`
-  width: 300px;
-  height: 400px;
-`
 
 const Mission = styled.div`
   width: 750px;
@@ -221,11 +217,6 @@ const MissionFailText = styled.div`
   position: absolute;
   left: 200px;
 `
-
-// let Success = [];
-// Success[0]=0; Success[1] = 0; Success[2] = 0; Success[3] = 0;
-// let  Fail = [];
-// Fail[0]=0; Fail[1] = 0; Fail[2] = 0; Fail[3] = 0;
 
 export let Value = 10
 let Success = 0,
