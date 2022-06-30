@@ -6,6 +6,8 @@ import Menubar from "../Menubar.js"
 import LoginModal from "react-modal"
 
 import { SignupTrue, MainPageTrue } from "../../../navigation.jsx"
+import { useEffect } from "react"
+import axios from "axios"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -93,9 +95,14 @@ const Login = ({ isModal, setModal }) => {
   const [ID, setID] = React.useState("")
   const [PW, setPW] = React.useState("")
 
-  const onChange = React.useCallback((e) => {
-    setID(e.target.ID)
-    setPW(e.target.PW)
+  const IDOnChange = React.useCallback((e) => {
+    console.log(e);
+    setID(e.target.value)
+  }, [])
+
+  const PASSOnChange = React.useCallback((e) => {
+    console.log(e);
+    setPW(e.target.value)
   }, [])
 
   return (
@@ -129,8 +136,8 @@ const Login = ({ isModal, setModal }) => {
               <input
                 type="text"
                 name="userId"
-                value={ID}
-                onChange={onChange}
+                value={ID || ""}
+                onChange={IDOnChange}
                 style={{
                   width: "200px",
                   height: "30px",
@@ -143,8 +150,8 @@ const Login = ({ isModal, setModal }) => {
               <input
                 type="password"
                 name="userPW"
-                value={PW}
-                onChange={onChange}
+                value={PW || ''}
+                onChange={PASSOnChange}
                 style={{
                   width: "200px",
                   height: "30px",
@@ -156,8 +163,48 @@ const Login = ({ isModal, setModal }) => {
               <br />
               <LoginBtn
                 onClick={() => {
-                  setModal(false)
-                  MainPageTrue()
+
+                  //나중에 setState로 일정조건 안될시 버튼 안눌리게 변경해야함
+
+
+                  if (PW == "" || ID == "") {
+                    alert("빈칸 채워주세요")
+                    console.log(ID);
+                    console.log(PW);
+                  } else {
+                    const LoginDataForm = new FormData();
+                    LoginDataForm.append('user_id', ID);
+                    LoginDataForm.append('user_pw', PW);
+                    axios({
+                      url: '/test',
+                      method: 'post',
+                      data: LoginDataForm
+                    })
+                      .then(function a(response) {
+
+                        setID("")
+                        setPW("")
+
+                        if (response.data == "TestLoginTrue") {
+                          console.log(response)
+                          setModal(false)
+                          MainPageTrue()
+                          console.log("성공인듯?");
+                        } else {
+                          console.log(response)
+                          alert("스프링에서 아이디 없다함")
+                        }
+
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                        alert("서버통신에러")
+                      });
+                  }
+
+
+
+
                 }}
               >
                 Login

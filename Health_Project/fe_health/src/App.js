@@ -12,6 +12,7 @@ import { darkTheme, lightTheme } from "./theme"
 import { useSelector } from "react-redux"
 
 import axios from "axios"
+import { useEffect } from "react"
 
 const anchors = [
   "MainPage",
@@ -105,6 +106,7 @@ function App() {
   //       console.log(error);
   //     });
   // }, []);
+  // console.log("pp");
   return (
 
 

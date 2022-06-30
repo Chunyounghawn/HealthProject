@@ -282,7 +282,7 @@ const Calendar = ({ isModal, setModal }) => {
           </tbody>
 
 
-          {/* <button style={{ width: 70, height: 70 }} onClick={() => { CalModalTrue() }} /> */}
+
         </TableStyle>
 
 

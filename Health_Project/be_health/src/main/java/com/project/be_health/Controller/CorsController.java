@@ -1,6 +1,5 @@
 package com.project.be_health.Controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,18 +35,28 @@ public class CorsController {
 
     @CrossOrigin("http://localhost:3000")
     @PostMapping("/test")
-    public ArrayList<HashMap<String, Object>> test(HttpServletRequest req) throws Exception{
-
+    public String test(HttpServletRequest req) throws Exception{
+        System.out.println("res");
         //response Data
         ArrayList<HashMap<String, Object>> rtnArray = new ArrayList<HashMap<String, Object>>();
         HashMap<String, Object> rtnMap = new HashMap<String, Object>();
 
-        rtnMap.put("requestData1", req.getParameter("name"));
-        rtnMap.put("requestData2", req.getParameter("food"));
+        rtnMap.put("requestData1", req.getParameter("user_id"));
+        rtnMap.put("requestData2", req.getParameter("user_pw"));
         rtnArray.add(rtnMap);
         System.out.println(rtnArray);
 
-        return rtnArray;
+        String succes="su";
+        String fail="fa";
+
+        if(rtnMap.get("requestData1").equals("testID")){
+            System.out.println("테스트아이디 확인성공");
+            return "TestLoginTrue";
+        }else{
+            return "TestLoginFalse";
+        }
+
+        //return rtnArray;
     }
 
     @PostMapping(value = "/test2")

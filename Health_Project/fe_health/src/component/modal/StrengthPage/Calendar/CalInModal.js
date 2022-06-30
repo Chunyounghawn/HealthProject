@@ -19,25 +19,26 @@ const ModalHead = styled.div`
 
 const SettingComponent = styled.div`
 position: absolute;
-top: 3%;
-left: 5%;
-  width: 300px;
-  height: 300px;
+top: 15%;
+left: 2%;
+  width: 480px;
+  height: 430px;
   background-color: purple;
 `
 
 const ScheduleComponent = styled.div`
 position: absolute;
-top: 3%;
-right: 5%;
-width: 300px;
-  height: 300px;
+top: 15%;
+right: 2%;
+width: 480px;
+  height: 430px;
   background-color: purple;
 `
 
 const CalInModal = ({ isModal, setModal }) => {
 
   const date = useSelector((state) => state.calendar)
+  console.log("dddd");
   console.log(date);
   const yearMonth = date.year + "." + (date.month + 1);
 
