@@ -17,7 +17,7 @@ import styled from "styled-components"
 // Modal
 import LoginModal from "./modal/Navigation/Login/Login.js"
 import NoticeModal from "./modal/Navigation/Notice/Notice.js"
-import InformationModal from "./modal/Navigation/MyInfo/Information.js"
+import MyInformationModal from "./modal/Navigation/MyInfo/MyInformation.js"
 import ChallengeModal from "./modal/Navigation/Challenge/Challenge.js"
 import BoardModal from "./modal/Navigation/Board/Board.js"
 import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
@@ -92,7 +92,7 @@ export let LoginTrue,
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
-  const [InformationModalIsOpen, setInformationModalOpen] =
+  const [MyInformationModalIsOpen, setMyInformationModalOpen] =
     React.useState(false)
   const [ChallengeModalIsOpen, setChallengeModalOpen] = React.useState(false)
   const [BoardModalIsOpen, setBoardModalOpen] = React.useState(false)
@@ -122,7 +122,7 @@ const Navigations = () => {
     // 공지사항 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(true)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -137,7 +137,7 @@ const Navigations = () => {
     // 내정보 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(true)
+    setMyInformationModalOpen(true)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -152,7 +152,7 @@ const Navigations = () => {
     // 첼린지 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(true)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -167,7 +167,7 @@ const Navigations = () => {
     // 게시판 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(true)
     setPushUpModalOpen(false)
@@ -182,7 +182,7 @@ const Navigations = () => {
     // 팔굽혀펴기 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(true)
@@ -197,7 +197,7 @@ const Navigations = () => {
     // 윗몸일으키기 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -212,7 +212,7 @@ const Navigations = () => {
     // 스쿼트 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -227,7 +227,7 @@ const Navigations = () => {
     // 회원가입 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -241,7 +241,7 @@ const Navigations = () => {
     // 메인 페이지 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
@@ -272,9 +272,9 @@ const Navigations = () => {
           setModal={setNoticeModalOpen}
         />
 
-        <InformationModal
-          isModal={InformationModalIsOpen}
-          setModal={setInformationModalOpen}
+        <MyInformationModal
+          isModal={MyInformationModalIsOpen}
+          setModal={setMyInformationModalOpen}
         />
 
         <ChallengeModal

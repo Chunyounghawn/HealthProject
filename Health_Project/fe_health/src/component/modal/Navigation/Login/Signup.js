@@ -93,7 +93,7 @@ const Certified = styled(GenderBtn)`
   top: 0px;
   right: 0px;
   font-size: 30px;
-  borderradius: 10px;
+  border-radius: 10px;
 `
 
 const UserLabel = styled.label``

@@ -91,7 +91,6 @@ const PushUpBg3 = styled.div`
   align-items: center;
 `
 
-
 const Mission = styled.div`
   width: 750px;
   height: 80px;

@@ -1,3 +1,4 @@
+import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, {
   Navigation,
@@ -11,6 +12,9 @@ import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 
 import styled from "styled-components"
+
+// Chatbot
+import Chatbot from "../modal/chat/Chatbot"
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]) // Swiper
 
@@ -32,13 +36,13 @@ const Title = styled.div`
   font-size: 70px;
   color: ${(props) => props.theme.questionPage.mainTitleColor};
   font-weight: 600;
-  font-family:  ${(props) => props.theme.font};
+  font-family: ${(props) => props.theme.font};
 `
 
 const Questions = styled.div`
   width: 400px;
   height: 80px;
-  background-color:  ${(props) => props.theme.questionPage.questionAreaColor};
+  background-color: ${(props) => props.theme.questionPage.questionAreaColor};
   position: absolute;
   top: 25%;
   left: 12%;
@@ -56,7 +60,7 @@ const Questions = styled.div`
 const Answer = styled.div`
   width: 400px;
   height: 200px;
-  background-color: ${(props) => props.theme.questionPage.answerAreaColor};;
+  background-color: ${(props) => props.theme.questionPage.answerAreaColor};
   position: absolute;
   top: 40%;
   left: 12%;
@@ -109,6 +113,8 @@ const InquiryBtn = styled(btn)`
 `
 
 function QuestionSection() {
+  const [ChatModalIsOpen, setChatModalOpen] = React.useState(false)
+
   return (
     <div className="section">
       <Container>
@@ -171,7 +177,10 @@ function QuestionSection() {
             클릭하여 관리자에게 직접 문의 해주세요.
           </InquiryText>
         </Inquiry>
-        <InquiryBtn>관리자에게 문의</InquiryBtn>
+        <InquiryBtn onClick={() => setChatModalOpen(true)}>
+          관리자에게 문의
+        </InquiryBtn>
+        <Chatbot isModal={ChatModalIsOpen} setModal={setChatModalOpen} />
       </Container>
     </div>
   )

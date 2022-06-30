@@ -39,13 +39,13 @@ const Closebtn = styled.img`
 
 
 const CalendarStyle = styled.div`
-body {
+  body {
     height: 100%;
     width: 100%;
     background: #d8dbe0;
-}
+  }
 
-.Calendar {
+  .Calendar {
     height: 100%;
     width: 100%;
     font-size: 1.5rem;
@@ -53,23 +53,21 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+  }
 
 .header {
 
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
+  }
 
-.header p {
+  .header p {
     margin-top: 45px;
-    font-size:30px;
-}
+    font-size: 30px;
+  }
 
-
-
-.choice{
+  .choice {
     align-items: center;
     border: none;
     border-radius: 4px;
@@ -81,26 +79,24 @@ body {
     cursor: pointer;
     background: #d8dbe0;
     margin: 30px;
-}
-.choice:hover {
+  }
+  .choice:hover {
     background: black;
-}
+  }
 
-input {
+  input {
     padding: 3px;
     border-radius: 5px;
     border: 1px solid black;
     height: 25px;
-}
-
+  }
 `
 
 const MoveButton = styled.button`
-    margin: 50px;
-    background: #d8dbe0;
-    border: none;
-    font-size: 30px;
-
+  margin: 50px;
+  background: #d8dbe0;
+  border: none;
+  font-size: 30px;
 `
 
 const TableStyle = styled.table`
@@ -109,7 +105,6 @@ const TableStyle = styled.table`
   table-layout: fixed;
   text-align: center;
   border-collapse: collapse;
-
   font-size: 19px;
   tbody {
     tr {
@@ -152,18 +147,17 @@ const TableStyle = styled.table`
 
 
 const Calendar = ({ isModal, setModal }) => {
-
-  const state = useSelector(state => state.calendar)
+  const state = useSelector((state) => state.calendar)
   const dispatch = useDispatch()
 
   //지금까지 state값 가져오기함. 이제 날짜 관련 << 이거해야함
 
   //날짜 관련
-  const year = state.year;
-  const month = state.month;
-  const yearMonth = year + "." + (month + 1);
-  const lastDate = parseInt(new Date(year, month + 1, 0).getDate());
-  const firstDay = parseInt(new Date(year, month, 1).getDay());
+  const year = state.year
+  const month = state.month
+  const yearMonth = year + "." + (month + 1)
+  const lastDate = parseInt(new Date(year, month + 1, 0).getDate())
+  const firstDay = parseInt(new Date(year, month, 1).getDay())
 
   // 일정
   const todo = state.schedule
@@ -176,17 +170,16 @@ const Calendar = ({ isModal, setModal }) => {
   // Month 감소
   const onDecreases = () => {
     dispatch(DECREMENT())
-    console.log("back");
+    console.log("back")
   }
 
   // Month 증가
   const onIncreases = () => {
     dispatch(INCREMENT())
-    console.log("front");
+    console.log("front")
   }
   // Modal Active
   const changeVisible = (key) => {
-
     setModal(false)
     CalInModalTrue()
     dispatch(MODAL(key))
@@ -196,11 +189,10 @@ const Calendar = ({ isModal, setModal }) => {
   const onConfirm = ({ index, todo, color, todos }) => {
     if (todos.length != 0) {
       todos.map((item) => {
-        dispatch({ type: 'INSERT', index: item, todo: todo, color: color })
+        dispatch({ type: "INSERT", index: item, todo: todo, color: color })
       })
-    }
-    else {
-      dispatch({ type: 'INSERT', index: index, todo: todo, color: color })
+    } else {
+      dispatch({ type: "INSERT", index: index, todo: todo, color: color })
     }
     //dispatch({type: "MODAL"})
   }
@@ -209,9 +201,6 @@ const Calendar = ({ isModal, setModal }) => {
   const onCancel = () => {
     dispatch({ type: "MODAL" })
   }
-
-
-
 
   return (
     <CalendarModal
@@ -226,7 +215,6 @@ const Calendar = ({ isModal, setModal }) => {
           left: "10%",
           right: "10%",
           backgroundColor: "#FBF8F1",
-
         },
       }}
     >
@@ -251,28 +239,20 @@ const Calendar = ({ isModal, setModal }) => {
             </tr>
           </thead>
           <tbody>
-
-            {MakeCalendar({ year, month, firstDay, lastDate, changeVisible, todo, })}
+            {MakeCalendar({
+              year,
+              month,
+              firstDay,
+              lastDate,
+              changeVisible,
+              todo,
+            })}
           </tbody>
 
 
 
         </TableStyle>
-
-
-
       </CalendarStyle>
-
-
-
-
-
-
-
-
-
-
-
 
       {/* 
         <ModalHead>
@@ -286,9 +266,6 @@ const Calendar = ({ isModal, setModal }) => {
           />
         </ModalBody>
         <ModalFooter />*/}
-
-
-
     </CalendarModal>
   )
 }
