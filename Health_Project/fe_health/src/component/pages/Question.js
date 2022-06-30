@@ -13,7 +13,8 @@ import "swiper/scss/pagination"
 
 import styled from "styled-components"
 
-import Chatbot from "./chat/Chatbot.js"
+// Chatbot
+import Chatbot from "../modal/chat/Chatbot"
 
 SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]) // Swiper
 
