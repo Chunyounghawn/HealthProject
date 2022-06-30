@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'events_example.dart';
+import 'water.dart';
 
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Health",
-      home: MainPage(),
+      home: const MainPage(),
       initialRoute: '/login',
       onGenerateRoute: _getRoute,
     );
@@ -24,12 +25,14 @@ class MyApp extends StatelessWidget {
       return null;
     }
 
-    return MaterialPageRoute(builder: (BuildContext context) => Loginpage(),
+    return MaterialPageRoute(builder: (BuildContext context) => const Loginpage(),
         fullscreenDialog: true);
   }
 }
 
 class Loginpage extends StatefulWidget{
+  const Loginpage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -43,28 +46,28 @@ class _LoginPageState extends State<Loginpage>{
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           children: [
-            SizedBox(height: 80,),
+            const SizedBox(height: 80,),
             Column(
               children: [
                 Image.asset('name'),
-                SizedBox(height: 16,),
-                Text('테스트'),
+                const SizedBox(height: 16,),
+                const Text('테스트'),
               ],
             ),
-            SizedBox(height: 120,),
+            const SizedBox(height: 120,),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   filled: true,
                   labelText: 'ID'
               ),
             ),
-            SizedBox(height: 12,),
+            const SizedBox(height: 12,),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Password',
               ),
@@ -73,11 +76,11 @@ class _LoginPageState extends State<Loginpage>{
             ButtonBar(
               children: [
                 TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SingUpPage()));
-                }, child: Text('Sing Up')),
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const SingUpPage()));
+                }, child: const Text('Sing Up')),
                 ElevatedButton(onPressed: (){
                   Navigator.pop(context);
-                }, child: Text('NEXT'))
+                }, child: const Text('NEXT'))
               ],
             )
           ],
@@ -103,29 +106,29 @@ class _SingUpPageState extends State<SingUpPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           children: [
-            SizedBox(height: 120,),
+            const SizedBox(height: 120,),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   filled: true,
                   labelText: 'ID'
               ),
             ),
-            SizedBox(height: 12,),
+            const SizedBox(height: 12,),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Password',
               ),
               obscureText: true,
             ),
-            SizedBox(height: 12,),
+            const SizedBox(height: 12,),
             TextField(
               controller: _emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Email',
               ),
@@ -134,7 +137,7 @@ class _SingUpPageState extends State<SingUpPage> {
               children: [
                 ElevatedButton(onPressed: (){
                   Navigator.pop(context);
-                }, child: Text('Sing Up'))
+                }, child: const Text('Sing Up'))
               ],
             )
           ],
@@ -161,9 +164,9 @@ class _MainPageState extends State<MainPage> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Health Togetehr"),
+            title: const Text("Health Togetehr"),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               Home(),
               Challenge(),
@@ -175,7 +178,7 @@ class _MainPageState extends State<MainPage> {
             color: Colors.white,
             child: Container(
               height: 70,
-              padding: EdgeInsets.only(bottom: 10, top: 5),
+              padding: const EdgeInsets.only(bottom: 10, top: 5),
               child: const TabBar(
                   labelColor: Colors.grey,
                   indicatorColor: Colors.grey,
@@ -219,30 +222,36 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: (
           Padding(
-              padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
+              padding: const EdgeInsets.fromLTRB(30, 40, 30, 0),
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    title: Text('루틴'),
+                    title: const Text('루틴'),
                     onTap: (){},
                   ),
                   ListTile(
-                    title: Text('물'),
+                    title: const Text('물'),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => const Water()
+                      )
+                      );
+                    },
+
+                  ),
+                  ListTile(
+                    title: const Text('영양제'),
                     onTap: (){},
                   ),
                   ListTile(
-                    title: Text('영양제'),
+                    title: const Text('수면'),
                     onTap: (){},
                   ),
                   ListTile(
-                    title: Text('수면'),
-                    onTap: (){},
-                  ),
-                  ListTile(
-                    title: Text('인바디'),
+                    title: const Text('인바디'),
                     onTap: (){},
                   ),ListTile(
-                    title: Text('만보계'),
+                    title: const Text('만보계'),
                     onTap: (){
                       //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => pedometers()));
                     },
@@ -263,9 +272,9 @@ class Challenge extends StatelessWidget {
     return Scaffold(
       body: (
           Padding(
-            padding: EdgeInsets.fromLTRB(30, 40, 0, 0),
+            padding: const EdgeInsets.fromLTRB(30, 40, 0, 0),
             child: Column(
-              children: [
+              children: const [
                 Text("hi",style: TextStyle(
                   letterSpacing: 10,
                   fontSize: 30,
@@ -289,7 +298,7 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
-    return TableEventsExample();
+    return const TableEventsExample();
   }
 }
 
@@ -302,9 +311,9 @@ class Settings extends StatelessWidget {
     return Scaffold(
       body: (
           Padding(
-            padding: EdgeInsets.fromLTRB(30, 40, 0, 0),
+            padding: const EdgeInsets.fromLTRB(30, 40, 0, 0),
             child: Column(
-              children: [
+              children: const [
                 Text("테스트",style: TextStyle(
                   letterSpacing: 10,
                   fontSize: 30,
@@ -317,3 +326,7 @@ class Settings extends StatelessWidget {
     );
   }
 }
+
+
+
+
