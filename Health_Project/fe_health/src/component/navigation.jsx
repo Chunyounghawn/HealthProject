@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
 
@@ -15,15 +15,19 @@ import {
 import styled from "styled-components"
 
 // Modal
-import LoginModal from "../modal/Login.js"
-import NoticeModal from "../modal/Notice.js"
-import InformationModal from "../modal/Information.js"
-import ChallengeModal from "../modal/Challenge.js"
-import BoardModal from "../modal/Board.js"
-import PushUpModal from "../modal/Pushup.js"
-import SitupModal from "../modal/Situp.js"
-import SquatModal from "../modal/Squat.js"
-import SignupModal from "../modal/Signup.js"
+import LoginModal from "./modal/Navigation/Login/Login.js"
+import NoticeModal from "./modal/Navigation/Notice/Notice.js"
+import MyInformationModal from "./modal/Navigation/MyInfo/MyInformation.js"
+import ChallengeModal from "./modal/Navigation/Challenge/Challenge.js"
+import BoardModal from "./modal/Navigation/Board/Board.js"
+import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
+import SitupModal from "./modal/Navigation/Challenge/Situp.js"
+import SquatModal from "./modal/Navigation/Challenge/Squat.js"
+import SignupModal from "./modal/Navigation/Login/Signup.js"
+import CalModal from "./modal/StrengthPage/Calendar/CalModal"
+import CalInModal from "./modal/StrengthPage/Calendar/CalInModal"
+import { useState } from "react"
+import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
 
 const NavigationStyle = styled.div`
   position: fixed;
@@ -84,13 +88,20 @@ export let LoginTrue,
   PushUpTrue,
   SitUpTrue,
   SquatTrue,
-  SignupTrue
+  SignupTrue,
+  MainPageTrue,
+  CalInModalTrue
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key] === value)
+}
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
-  const [InformationModalIsOpen, setInformationModalOpen] =
-    React.useState(false)
+  const [MyInformationModalIsOpen, setMyInformationModalOpen] = React.useState(
+    false
+  )
   const [ChallengeModalIsOpen, setChallengeModalOpen] = React.useState(false)
   const [BoardModalIsOpen, setBoardModalOpen] = React.useState(false)
 
@@ -99,114 +110,163 @@ const Navigations = () => {
   const [SquatModalIsOpen, setSquatModalOpen] = React.useState(false)
 
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
+  const [MainPageModalIsOpen, setMainPageModalOpen] = React.useState(false)
+
+  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
 
   LoginTrue = function LoginModalTrue() {
-    setLoginModalOpen(true)
+    // 로그인 화면
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setLoginModalOpen(true)
+
+    setMainPageModalOpen(false)
   }
 
   NoticeTrue = function NoteiceModalTrue() {
+    // 공지사항 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(true)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   InformationTrue = function InformationModalTrue() {
+    // 내정보 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(true)
+    setMyInformationModalOpen(true)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   ChallengeTrue = function ChallengeModalTrue() {
+    // 첼린지 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(true)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   BoardTrue = function BoardModalTrue() {
+    // 게시판 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(true)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   PushUpTrue = function PushUpModalTrue() {
+    // 팔굽혀펴기 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(true)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   SitUpTrue = function SitUpModalTrue() {
+    // 윗몸일으키기 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(true)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   SquatTrue = function SquatModalTrue() {
+    // 스쿼트 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(true)
     setSignupModalOpen(false)
+
+    setMainPageModalOpen(false)
   }
 
   SignupTrue = function SignupModalTrue() {
+    // 회원가입 화면
     setLoginModalOpen(false)
     setNoticeModalOpen(false)
-    setInformationModalOpen(false)
+    setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
+    setCalInModalIsOpen(false)
     setSignupModalOpen(true)
   }
+
+  CalInModalTrue = function CalInModalTrue() {
+    setMainPageModalOpen(false)
+  }
+
+  MainPageTrue = function MainPageModalTrue() {
+    // 메인 페이지 화면
+    setLoginModalOpen(false)
+    setNoticeModalOpen(false)
+    setMyInformationModalOpen(false)
+    setChallengeModalOpen(false)
+    setBoardModalOpen(false)
+    setPushUpModalOpen(false)
+    setSitUpModalOpen(false)
+    setSquatModalOpen(false)
+    setSignupModalOpen(false)
+    setMainPageModalOpen(true)
+
+    setCalInModalIsOpen(false)
+  }
+  //,
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
 
@@ -228,9 +288,9 @@ const Navigations = () => {
           setModal={setNoticeModalOpen}
         />
 
-        <InformationModal
-          isModal={InformationModalIsOpen}
-          setModal={setInformationModalOpen}
+        <MyInformationModal
+          isModal={MyInformationModalIsOpen}
+          setModal={setMyInformationModalOpen}
         />
 
         <ChallengeModal
@@ -252,6 +312,12 @@ const Navigations = () => {
         <SignupModal
           isModal={SignupModalIsOpen}
           setModal={setSignupModalOpen}
+        />
+
+        <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
+        <MainPageModal
+          isModal={MainPageModalIsOpen}
+          setModal={setMainPageModalOpen}
         />
 
         <ul>

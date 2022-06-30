@@ -53,7 +53,9 @@ const Map = ({ searchPlace }) => {
 
     const ps = new kakao.maps.services.Places()
 
-    ps.keywordSearch(searchPlace, placesSearchCB)
+    if (searchPlace != null)
+      ps.keywordSearch(searchPlace, placesSearchCB)
+
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -111,8 +113,8 @@ const Map = ({ searchPlace }) => {
       kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
           '<div style="padding:5px;font-size:12px;">' +
-            place.place_name +
-            "</div>"
+          place.place_name +
+          "</div>"
         )
         infowindow.open(map, marker)
       })

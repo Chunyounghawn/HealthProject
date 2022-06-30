@@ -58,7 +58,7 @@ const SearchBtn = styled.button`
 
 function MapSection() {
   const [InputText, setInputText] = useState("")
-  const [Place, setPlace] = useState("")
+  const [Place, setPlace] = useState()
 
   const onChange = (e) => {
     setInputText(e.target.value)

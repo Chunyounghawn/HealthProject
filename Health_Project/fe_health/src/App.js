@@ -7,15 +7,11 @@ import Navigation from "./component/navigation"
 
 import { ThemeProvider } from "styled-components"
 
-import { darkTheme, lightTheme } from './theme'
+import { darkTheme, lightTheme } from "./theme"
 
 import { useSelector } from "react-redux"
 
-
-import axios from 'axios';
-
-
-
+import axios from "axios"
 
 const anchors = [
   "MainPage",
@@ -25,10 +21,8 @@ const anchors = [
   "QuestionPage",
 ]
 
-
-
 const FullpageWrapper = () => {
-  const theme = useSelector(state => state.theme);
+  const theme = useSelector((state) => state.theme)
 
   return (
     <>
@@ -37,82 +31,85 @@ const FullpageWrapper = () => {
         slidesNavigation="true"
         slidesNavPosition="bottom"
         anchors={anchors}
-        licenseKey='1EB53BF6-00984973-A88B8092-A6220857'
+        licenseKey="1EB53BF6-00984973-A88B8092-A6220857"
         sectionsColor={[
           `black`,
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
-          `${theme.backgroundColor}`
+          `${theme.backgroundColor}`,
         ]}
         onLeave={(origin, destination, direction) => {
           //console.log("onLeave event", { origin, destination, direction })
-
         }}
         render={({ state, fullpageApi }) => {
           //console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
           return <TotalPage fullpageApi={fullpageApi} />
         }}
       />
-    </>)
-
+    </>
+  )
 }
-
 
 function App() {
   const theme = useSelector((state) => state.theme)
+  const modal = useSelector((state) => state.modal)
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("")
 
   const responseHandler = ({ data }) => {
-    setMessage(data);
-    return data;
-  };
+    setMessage(data)
+    return data
+  }
 
   const errorHandler = ({ message }) => {
-    setMessage(message);
-    return message;
-  };
+    setMessage(message)
+    return message
+  }
 
   const onNonCorsHeaderHandler = () => {
-    axios.get('http://localhost:8080/not-cors')
+    axios
+      .get("http://localhost:8080/not-cors")
       .then(responseHandler)
-      .catch(errorHandler);
-  };
+      .catch(errorHandler)
+  }
 
   const onCorsHeaderHandler = () => {
-    axios.get('http://localhost:8080/cors').then(responseHandler);
-  };
+    axios.get("http://localhost:8080/cors").then(responseHandler)
+  }
 
   const onNonProxyHandler = () => {
-    axios.get('/not-proxy')
-      .then(responseHandler)
-      .catch(errorHandler);
-  };
+    axios.get("/not-proxy").then(responseHandler).catch(errorHandler)
+  }
 
   const onProxyHandler = () => {
-    axios.get('/proxy').then(responseHandler);
-  };
+    axios.get("/proxy").then(responseHandler)
+  }
 
+  //-------
+
+  // const form = new FormData();
+  // form.append('name', 'veneas');
+  // form.append('food', 'cake');
+
+  // useEffect(() => {
+  //   axios({
+  //     url: '/test',
+  //     method: 'post',
+  //     data: form
+  //   })
+  //     .then(function a(response) {
+  //       console.log(response)
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
   return (
-    // <div className="App">
-    //   <p>
-    //     {message}
-    //   </p>
-    //   <div>
-    //     <button onClick={onNonCorsHeaderHandler}>non cors header</button>
-    //     <button onClick={onCorsHeaderHandler}>cors header</button>
-    //     <button onClick={onNonProxyHandler}>nonProxy</button>
-    //     <button onClick={onProxyHandler}>proxy</button>
-    //   </div>
-    // </div>
-
 
 
     <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
-
       <FullpageWrapper />
-
     </ThemeProvider>
   )
   //   // message 초기값 설정 (""로 설정)
