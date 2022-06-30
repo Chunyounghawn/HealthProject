@@ -4,28 +4,14 @@ import { Close } from "../../../../image/index.js"
 
 import CalendarModal from "react-modal"
 
-import HealthCalendar from "react-calendar"
-import moment from "moment"
-
-// import "react-calendar/dist/Calendar.css"
-import CCalendar from "../../../../test/containers/Calendar"
 import { useDispatch, useSelector } from "react-redux"
 
 import MakeCalendar from "./MakeCalendar.js"
 
-import { CalModalTrue } from "../../../navigation.jsx"
-import { DECREMENT, INCREMENT } from "../../../../redux/calendar.js"
+import { DECREMENT, INCREMENT, MODAL } from "../../../../redux/calendar.js"
 
-import CalInModal from "react-modal"
 import { CalInModalTrue } from "../../../pages/Strength.js"
 
-const ModalContainer = styled.div`
-  position: absolute;
-  top: 0px;
-  right: 20px;
-  width: 1610px;
-  height: 890px;
-`
 
 const ModalHead = styled.div`
   width: 100%;
@@ -36,19 +22,8 @@ const ModalHead = styled.div`
 
 `
 
-const ModalBody = styled.div`
-  width: 1610px;
-  height: 690px;
-  position: absolute;
-  top: 150px;
-`
 
-const ModalFooter = styled.div`
-  position: absolute;
-  width: 1610px;
-  height: 50px;
-  bottom: 0px;
-`
+
 
 const Closebtn = styled.img`
   width: 35px;
@@ -62,10 +37,6 @@ const Closebtn = styled.img`
   }
 `
 
-const Title = styled.div`
-  font-size: 50px;
-  color: #ff4646;
-`
 
 const CalendarStyle = styled.div`
 body {
@@ -199,6 +170,9 @@ const Calendar = ({ isModal, setModal }) => {
   //console.log(todo);
 
 
+  const index = state.modal.index
+  console.log(index);
+
   // Month 감소
   const onDecreases = () => {
     dispatch(DECREMENT())
@@ -215,7 +189,7 @@ const Calendar = ({ isModal, setModal }) => {
 
     setModal(false)
     CalInModalTrue()
-
+    dispatch(MODAL(key))
   }
 
   // 일정 입력

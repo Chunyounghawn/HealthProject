@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const today = new Date()
@@ -8,6 +8,9 @@ export const Calendar = createSlice({
   initialState: {
     year: today.getFullYear(),
     month: today.getMonth(),
+    modal: {
+      index: ''
+    },
     schedule: []
   },
   reducers: {
@@ -34,18 +37,40 @@ export const Calendar = createSlice({
       }
 
     },
-    INSERT: (state) => {
-      console.log("fefefS");
-      console.log(state);
+    MODAL: (state, key) => {
+
+      return {
+        ...state, modal: {
+          ...state.modal,
+          index: key.payload
+        }
+      }
+    },
+    MODALCOLOR: (state) => {
+      return {
+        ...state, checked: true
+      }
+
+    },
+    MODALTODO: (state) => {
 
 
-    }
+    },
+    MODALCHECK: (state) => {
+
+
+    },
+    MODALENDDATE: (state) => {
+
+
+    },
+
   }
 
 })
 
 
-export const { INCREMENT, DECREMENT } = Calendar.actions;
+export const { INCREMENT, DECREMENT, MODAL, MODALCHECK } = Calendar.actions;
 
 
 export default Calendar.reducer;

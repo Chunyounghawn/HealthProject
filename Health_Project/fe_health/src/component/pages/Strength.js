@@ -17,7 +17,6 @@ import AlarmModal from "../modal/StrengthPage/Alarm.js"
 import CalendarModal from "../modal/StrengthPage/Calendar/Calendar.js"
 import TrainingModal from "../modal/StrengthPage/Training.js"
 
-import { useSelector } from "react-redux"
 
 // Training modal
 import PushUpModal from "../modal/Training/PushUp.js"

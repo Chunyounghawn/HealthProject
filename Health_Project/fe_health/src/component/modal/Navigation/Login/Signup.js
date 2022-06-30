@@ -71,7 +71,7 @@ const ManBtn = styled(GenderBtn)`
   height: 50px;
   margin-left: 5px;
   font-size: 30px;
-  borderradius: 10px;
+  border-radius: 10px;
 `
 
 const WomanBtn = styled(GenderBtn)`
@@ -82,7 +82,7 @@ const WomanBtn = styled(GenderBtn)`
   left: 505px;
   top: 55px;
   font-size: 30px;
-  borderradius: 10px;
+  border-radius: 10px;
 `
 
 const Certified = styled(GenderBtn)`
@@ -168,8 +168,7 @@ const Birthdate = styled.div`
   flex-wrap: wrap;
   align-content: center;
 `
-let ManCheck,
-  WomanCheck = false
+
 
 const Signup = ({ isModal, setModal }) => {
   const [Month, setMonth] = React.useState("")
@@ -177,6 +176,9 @@ const Signup = ({ isModal, setModal }) => {
 
   const [ManColor, setManColor] = useState("#fff")
   const [WomanColor, setWomanColor] = useState("#fff")
+
+  let ManCheck,
+    WomanCheck = false
 
   const ManChoice = () =>
     ManColor === "#fff"
@@ -196,7 +198,6 @@ const Signup = ({ isModal, setModal }) => {
         setManColor("#fff"),
         ((WomanCheck = false), (ManCheck = false)))
 
-  //파일 미리볼 url을 저장해줄 state
   const ImageFile = `${SignupImg}`
   const setImageFile = React.useState("")
 

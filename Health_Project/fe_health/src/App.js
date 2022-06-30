@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 import ReactFullpage from "@fullpage/react-fullpage"
 
@@ -11,8 +11,7 @@ import { darkTheme, lightTheme } from "./theme"
 
 import { useSelector } from "react-redux"
 
-import axios from "axios"
-import { useEffect } from "react"
+
 
 const anchors = [
   "MainPage",
@@ -41,10 +40,10 @@ const FullpageWrapper = () => {
           `${theme.backgroundColor}`,
         ]}
         onLeave={(origin, destination, direction) => {
-          //console.log("onLeave event", { origin, destination, direction })
+
         }}
         render={({ state, fullpageApi }) => {
-          //console.log("render prop change", state, fullpageApi) // eslint-disable-line no-console
+
           return <TotalPage fullpageApi={fullpageApi} />
         }}
       />
@@ -54,40 +53,19 @@ const FullpageWrapper = () => {
 
 function App() {
   const theme = useSelector((state) => state.theme)
-  const modal = useSelector((state) => state.modal)
 
-  const [message, setMessage] = useState("")
 
-  const responseHandler = ({ data }) => {
-    setMessage(data)
-    return data
-  }
 
-  const errorHandler = ({ message }) => {
-    setMessage(message)
-    return message
-  }
 
-  const onNonCorsHeaderHandler = () => {
-    axios
-      .get("http://localhost:8080/not-cors")
-      .then(responseHandler)
-      .catch(errorHandler)
-  }
+  return (
 
-  const onCorsHeaderHandler = () => {
-    axios.get("http://localhost:8080/cors").then(responseHandler)
-  }
 
-  const onNonProxyHandler = () => {
-    axios.get("/not-proxy").then(responseHandler).catch(errorHandler)
-  }
+    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
+      <FullpageWrapper />
+    </ThemeProvider>
+  )
 
-  const onProxyHandler = () => {
-    axios.get("/proxy").then(responseHandler)
-  }
-
-  //-------
+  //-------방법1------------
 
   // const form = new FormData();
   // form.append('name', 'veneas');
@@ -107,13 +85,9 @@ function App() {
   //     });
   // }, []);
   // console.log("pp");
-  return (
 
+  //-------방법2------------
 
-    <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
-      <FullpageWrapper />
-    </ThemeProvider>
-  )
   //   // message 초기값 설정 (""로 설정)
   //   const [message, setMessage] = useState("");
 

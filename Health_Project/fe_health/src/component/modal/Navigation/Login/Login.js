@@ -6,7 +6,6 @@ import Menubar from "../Menubar.js"
 import LoginModal from "react-modal"
 
 import { SignupTrue, MainPageTrue } from "../../../navigation.jsx"
-import { useEffect } from "react"
 import axios from "axios"
 
 const ModalContainer = styled.div`

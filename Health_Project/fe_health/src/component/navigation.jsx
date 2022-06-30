@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
 
@@ -24,9 +24,7 @@ import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
-import CalModal from "./modal/StrengthPage/Calendar/CalModal"
 
-import { useState } from "react"
 import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
 
 const NavigationStyle = styled.div`
@@ -90,10 +88,6 @@ export let LoginTrue,
   SquatTrue,
   SignupTrue,
   MainPageTrue
-
-function getKeyByValue(object, value) {
-  return Object.keys(object).find((key) => object[key] === value)
-}
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
