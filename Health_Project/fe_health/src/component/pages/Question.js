@@ -131,8 +131,7 @@ function QuestionSection() {
           slidesPerView={3}
           navigation
           pagination={{ clickable: true }}
-          // mousewheel={true}
-          // keyboard={{ enabled: true }}
+
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           loop={true}
         >

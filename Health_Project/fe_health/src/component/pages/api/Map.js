@@ -23,6 +23,7 @@ const ResultStyle = styled.div`
   color: #000000;
 `
 
+//필요함
 const Pagination = styled.div`
   margin-top: 3rem;
   a {
