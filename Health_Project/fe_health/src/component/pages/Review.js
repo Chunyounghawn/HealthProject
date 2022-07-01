@@ -29,8 +29,6 @@ import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 import "swiper/css/effect-cube"
 
-// lodash
-// import { throttle } from "lodash"
 
 SwiperCore.use([
   Navigation,
@@ -159,7 +157,7 @@ function ReviewSection() {
     <div className="section">
       <Container>
         <Swiper
-          // onSlideChange={(Swiper) => console.log(Swiper.realIndex + 1)}
+
           style={{
             backgroundColor: "#F0F0F0",
             width: "1600px",

@@ -102,7 +102,7 @@ const ListBox = styled.div`
 `
 
 const TimerIcon = styled.img`
-  widht: 100px;
+  width: 100px;
   height: 50px;
   position: absolute;
   top: 30px;

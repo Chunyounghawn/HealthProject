@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
 
@@ -24,9 +24,7 @@ import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
-import CalModal from "./modal/StrengthPage/Calendar/CalModal"
-import CalInModal from "./modal/StrengthPage/Calendar/CalInModal"
-import { useState } from "react"
+
 import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
 
 const NavigationStyle = styled.div`
@@ -89,19 +87,13 @@ export let LoginTrue,
   SitUpTrue,
   SquatTrue,
   SignupTrue,
-  MainPageTrue,
-  CalInModalTrue
-
-function getKeyByValue(object, value) {
-  return Object.keys(object).find((key) => object[key] === value)
-}
+  MainPageTrue
 
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
-  const [MyInformationModalIsOpen, setMyInformationModalOpen] = React.useState(
-    false
-  )
+  const [MyInformationModalIsOpen, setMyInformationModalOpen] =
+    React.useState(false)
   const [ChallengeModalIsOpen, setChallengeModalOpen] = React.useState(false)
   const [BoardModalIsOpen, setBoardModalOpen] = React.useState(false)
 
@@ -111,8 +103,6 @@ const Navigations = () => {
 
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
   const [MainPageModalIsOpen, setMainPageModalOpen] = React.useState(false)
-
-  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
 
   LoginTrue = function LoginModalTrue() {
     // 로그인 화면
@@ -243,12 +233,8 @@ const Navigations = () => {
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
-    setCalInModalIsOpen(false)
-    setSignupModalOpen(true)
-  }
 
-  CalInModalTrue = function CalInModalTrue() {
-    setMainPageModalOpen(false)
+    setSignupModalOpen(true)
   }
 
   MainPageTrue = function MainPageModalTrue() {
@@ -263,8 +249,6 @@ const Navigations = () => {
     setSquatModalOpen(false)
     setSignupModalOpen(false)
     setMainPageModalOpen(true)
-
-    setCalInModalIsOpen(false)
   }
   //,
   const theme = useSelector((state) => state.theme)
@@ -314,7 +298,6 @@ const Navigations = () => {
           setModal={setSignupModalOpen}
         />
 
-        <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
         <MainPageModal
           isModal={MainPageModalIsOpen}
           setModal={setMainPageModalOpen}

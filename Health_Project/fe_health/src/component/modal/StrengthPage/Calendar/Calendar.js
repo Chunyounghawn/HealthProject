@@ -4,49 +4,20 @@ import { Close } from "../../../../image/index.js"
 
 import CalendarModal from "react-modal"
 
-import HealthCalendar from "react-calendar"
-import moment from "moment"
-
-// import "react-calendar/dist/Calendar.css"
-import CCalendar from "../../../../test/containers/Calendar"
 import { useDispatch, useSelector } from "react-redux"
 
 import MakeCalendar from "./MakeCalendar.js"
 
-import { CalModalTrue } from "../../../navigation.jsx"
-import { DECREMENT, INCREMENT } from "../../../../redux/calendar.js"
+import { DECREMENT, INCREMENT, MODAL } from "../../../../redux/calendar.js"
 
-import CalInModal from "react-modal"
-import { CalInModalTrue } from "../../../navigation.jsx"
-
-const ModalContainer = styled.div`
-  position: absolute;
-  top: 0px;
-  right: 20px;
-  width: 1610px;
-  height: 890px;
-`
+import { CalInModalTrue } from "../../../pages/Strength.js"
 
 const ModalHead = styled.div`
-  width: 1610px;
+  width: 100%;
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-`
-
-const ModalBody = styled.div`
-  width: 1610px;
-  height: 690px;
-  position: absolute;
-  top: 150px;
-`
-
-const ModalFooter = styled.div`
-  position: absolute;
-  width: 1610px;
-  height: 50px;
-  bottom: 0px;
 `
 
 const Closebtn = styled.img`
@@ -59,11 +30,6 @@ const Closebtn = styled.img`
   &:hover {
     cursor: pointer;
   }
-`
-
-const Title = styled.div`
-  font-size: 50px;
-  color: #ff4646;
 `
 
 const CalendarStyle = styled.div`
@@ -185,7 +151,10 @@ const Calendar = ({ isModal, setModal }) => {
 
   // 일정
   const todo = state.schedule
-  console.log(todo)
+  //console.log(todo);
+
+  const index = state.modal.index
+  console.log(index)
 
   // Month 감소
   const onDecreases = () => {
@@ -202,6 +171,7 @@ const Calendar = ({ isModal, setModal }) => {
   const changeVisible = (key) => {
     setModal(false)
     CalInModalTrue()
+    dispatch(MODAL(key))
   }
 
   // 일정 입력
@@ -229,9 +199,9 @@ const Calendar = ({ isModal, setModal }) => {
       style={{
         content: {
           position: "relative",
-          width: "1610px",
+          width: "1500px",
           height: "850px",
-          left: "2%",
+          left: "5%",
           right: "10%",
           backgroundColor: "#FBF8F1",
         },
@@ -267,8 +237,6 @@ const Calendar = ({ isModal, setModal }) => {
               todo,
             })}
           </tbody>
-
-          {/* <button style={{ width: 70, height: 70 }} onClick={() => { CalModalTrue() }} /> */}
         </TableStyle>
       </CalendarStyle>
 

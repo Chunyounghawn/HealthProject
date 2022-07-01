@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, Trophy } from "../../../../image/index.js"
+import { Close } from "../../../../image/index.js"
 
 import Menubar from "../Menubar.js"
 import SitupModal from "react-modal"
@@ -91,10 +91,7 @@ const PushUpBg3 = styled.div`
   align-items: center;
 `
 
-const TrophyImage = styled.img`
-  width: 300px;
-  height: 400px;
-`
+
 
 const Mission = styled.div`
   width: 750px;
@@ -166,20 +163,7 @@ const MissionFailBtn1 = styled(MissionBtn)`
   background-color: ${(props) => props.color};
 `
 
-const MissionFailBtn2 = styled(MissionBtn)`
-  right: 30px;
-  background-color: ${(props) => props.color};
-`
 
-const MissionFailBtn3 = styled(MissionBtn)`
-  right: 30px;
-  background-color: ${(props) => props.color};
-`
-
-const MissionFailBtn4 = styled(MissionBtn)`
-  right: 30px;
-  background-color: ${(props) => props.color};
-`
 
 const MissionResult = styled.div`
   width: 300px;
