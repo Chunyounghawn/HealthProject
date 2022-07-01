@@ -1,8 +1,10 @@
+import { useState } from "react"
 import CalendarInModal from "react-modal"
 import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
 
-import { MODALCHECK } from "../../../../redux/calendar.js"
+import { MODALCHECK, MODAL_END_DATE, MODAL_SELECT_DATE } from "../../../../redux/calendar.js"
+import SelectDatePicker from "./DatePicker/SelectDatePicker.js"
 
 const ModalHead = styled.div`
   width: 100%;
@@ -108,30 +110,80 @@ const ContentBox = styled.textarea`
   top: 25%;
   left: 40px;
   width: 405px;
-  height: 180px;
+  height: 150px;
   background-color: pink;
 `
 
 const EndDateText = styled.p`
   position: absolute;
-  top: 70%;
+  top: 63%;
   right: 30px;
   color: yellow;
 `
 
-const EndCheckBox = styled.input`
+const EndDayCheckBox = styled.input`
    position: absolute;
-  top: 69.5%;
-  right: 150px;
+  top: 62.5%;
+  right: 31%;
   width: 17px;
   height: 17px;
   color: yellow;
+`
 
+const SelectDateText = styled.div`
+    position: absolute;
+  top: 63%;
+  left: 60px;
+  color: yellow;
+`
+
+const SelectDayCheckBox = styled.input`
+  position: absolute;
+  top: 62.5%;
+  left: 7.2%;
+  width: 17px;
+  height: 17px;
+  color: yellow;
+`
+
+const SelectDateSet = styled.input`
+  position: absolute;
+  top: 62.5%;
+  left: 7.2%;
+  width: 17px;
+  height: 17px;
+  color: yellow;
+`
+
+
+const FieldSet = styled.fieldset`
+   position: absolute;
+  top: 62.5%;
+  left: 7.2%;
+  min-width: 410px;
+  height: 50px;
+  color: yellow;
+  font-size: 20px;
+  font-family: sans-serif;
+  border: 5px solid red;
+  border-radius: 5px;
 `
 
 
 
 
+const DateInfoText = styled.legend`
+    margin-left: calc(50% - 35px - 8px);
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+`
+
+const RadioBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+`
 
 
 //-------------------------------------
@@ -153,9 +205,20 @@ const CalInModal = ({ isModal, setModal }) => {
   const yearMonth = date.year + "." + (date.month + 1);
 
   const EndDateSet = () => {
-    dispatch(MODALCHECK())
+    dispatch(MODAL_END_DATE())
     console.log();
   }
+
+  const SelectedDateSet = () => {
+    dispatch(MODAL_SELECT_DATE())
+  }
+
+
+  const settingDate = (e) => {
+    console.log(e.target.value);
+  }
+
+
 
 
 
@@ -188,8 +251,31 @@ const CalInModal = ({ isModal, setModal }) => {
         <RemoveButton>re</RemoveButton>
 
         <ContentBox placeholder="여기"></ContentBox>
-        <EndDateText>종료일 설정하기</EndDateText>
-        <EndCheckBox type="checkbox" onClick={EndDateSet} />
+
+
+
+        <FieldSet>
+          <DateInfoText align="center">날짜 설정</DateInfoText>
+          <RadioBox onChange={settingDate.bind(this)}>
+            <div>
+              <input type="radio" value="nowDate" name="date" /> 현재일
+            </div>
+            <div>
+              <input type="radio" value="selectedDate" name="date" /> 선택일
+            </div>
+            <div>
+              <input type="radio" value="endDate" name="date" /> 종료일
+            </div>
+
+
+          </RadioBox>
+        </FieldSet>
+
+        {/* <EndDateText>종료일 설정하기</EndDateText>
+        <SelectDayCheckBox type="checkbox" onClick={SelectedDateSet} />
+
+        <SelectDateText>선택일 설정하기</SelectDateText>
+        <EndDayCheckBox type="checkbox" onClick={EndDateSet} /> */}
       </SettingContainer>
 
 
