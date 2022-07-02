@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
-import Click from "../MainClick/Click.js"
+import Detail from "../Details/Detail.js"
 
 const Container = styled.div`
   width: 1740px;
@@ -84,7 +84,7 @@ function MainSection() {
           <source src={main_fisrt} type="video/mp4" />
         </Video>
         <MainBtn onClick={() => setClickModalOpen(true)}>상세 보기</MainBtn>
-        <Click isModal={ClickModalIsOpen} setModal={setClickModalOpen} />
+        <Detail isModal={ClickModalIsOpen} setModal={setClickModalOpen} />
       </Container>
     </div>
   )
