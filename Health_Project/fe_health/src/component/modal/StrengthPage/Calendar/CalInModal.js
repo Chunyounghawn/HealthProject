@@ -13,15 +13,15 @@ const ModalHead = styled.div`
   justify-content: center;
   align-items: center;
 
-  p{
+  p {
     font-size: 28px;
   }
 `
 
 const SettingContainer = styled.div`
-position: absolute;
-top: 15%;
-left: 2%;
+  position: absolute;
+  top: 15%;
+  left: 2%;
   width: 480px;
   height: 430px;
   background-color: purple;
@@ -41,66 +41,60 @@ const AddButton = styled.button`
   position: absolute;
   top: 30px;
   right: 300px;
-  
-  
+
   position: absolute;
-width: 80px;
-height: 30px;
+  width: 80px;
+  height: 30px;
   top: 10%;
   right: 130px;
 
-
   color: #fff;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
-  background: rgb(6,14,131);
+  background: rgb(6, 14, 131);
   background: linear-gradient(50deg, gray 10%, white 100%);
   border: none;
 
   :hover {
-   background: pink
-}
+    background: pink;
+  }
 `
 
-
 const RemoveButton = styled.button`
-position: absolute;
-width: 80px;
-height: 30px;
+  position: absolute;
+  width: 80px;
+  height: 30px;
   top: 10%;
   right: 30px;
 
-
   color: #fff;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
-  background: rgb(6,14,131);
+  background: rgb(6, 14, 131);
   background: linear-gradient(50deg, gray 10%, white 100%);
   border: none;
 
   :hover {
-   background: pink
-}
+    background: pink;
+  }
 `
 
 const ContentBox = styled.textarea`
@@ -120,44 +114,35 @@ const EndDateText = styled.p`
 `
 
 const EndCheckBox = styled.input`
-   position: absolute;
+  position: absolute;
   top: 69.5%;
   right: 150px;
   width: 17px;
   height: 17px;
   color: yellow;
-
 `
-
-
-
-
-
 
 //-------------------------------------
 
 const ScheduleContainer = styled.div`
-position: absolute;
-top: 15%;
-right: 2%;
-width: 480px;
+  position: absolute;
+  top: 15%;
+  right: 2%;
+  width: 480px;
   height: 430px;
   background-color: purple;
 `
 
 const CalInModal = ({ isModal, setModal }) => {
-
   const date = useSelector((state) => state.calendar)
   const dispatch = useDispatch()
 
-  const yearMonth = date.year + "." + (date.month + 1);
+  const yearMonth = date.year + "." + (date.month + 1)
 
   const EndDateSet = () => {
     dispatch(MODALCHECK())
-    console.log();
+    console.log()
   }
-
-
 
   return (
     <CalendarInModal
@@ -180,8 +165,6 @@ const CalInModal = ({ isModal, setModal }) => {
         <p>{yearMonth}</p>
       </ModalHead>
 
-
-
       <SettingContainer>
         <SelectedDay>2022.06.25</SelectedDay>
         <AddButton>ad</AddButton>
@@ -192,15 +175,7 @@ const CalInModal = ({ isModal, setModal }) => {
         <EndCheckBox type="checkbox" onClick={EndDateSet} />
       </SettingContainer>
 
-
-
-
-      <ScheduleContainer>
-
-      </ScheduleContainer>
-
-
-
+      <ScheduleContainer></ScheduleContainer>
     </CalendarInModal>
   )
 }

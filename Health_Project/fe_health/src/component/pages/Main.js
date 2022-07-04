@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
+import Detail from "../Details/Detail.js"
 
 const Container = styled.div`
   width: 1740px;
@@ -72,6 +73,8 @@ const MainBtn = styled.div`
   }
 `
 function MainSection() {
+  const [ClickModalIsOpen, setClickModalOpen] = React.useState(false)
+
   return (
     <div className="section">
       <Container>
@@ -80,7 +83,8 @@ function MainSection() {
         <Video id="myVideo" loop muted data-autoplay>
           <source src={main_fisrt} type="video/mp4" />
         </Video>
-        <MainBtn>Click</MainBtn>
+        <MainBtn onClick={() => setClickModalOpen(true)}>상세 보기</MainBtn>
+        <Detail isModal={ClickModalIsOpen} setModal={setClickModalOpen} />
       </Container>
     </div>
   )
