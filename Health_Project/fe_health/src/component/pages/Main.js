@@ -72,8 +72,11 @@ const MainBtn = styled.div`
   }
 `
 function MainSection() {
+
   return (
+
     <div className="section">
+
       <Container>
         <MainTitle>Ready to begin you health?</MainTitle>
         <Message>click on the button now</Message>
@@ -81,6 +84,7 @@ function MainSection() {
           <source src={main_fisrt} type="video/mp4" />
         </Video>
         <MainBtn>Click</MainBtn>
+
       </Container>
     </div>
   )

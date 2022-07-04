@@ -165,7 +165,7 @@ const Calendar = ({ isModal, setModal }) => {
 
 
   const index = state.modal.index
-  console.log(index);
+  //console.log(index);
 
   // Month 감소
   const onDecreases = () => {
