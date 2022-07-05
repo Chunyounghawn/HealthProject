@@ -31,7 +31,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
   width: 1740px;
-  height: 970px;
+  height: 962px;
   position: relative;
   background-color: ${(props) => props.theme.strengthPage.backgroundColor};
   @media screen and (min-width: 1920px) {

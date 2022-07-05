@@ -55,14 +55,6 @@ const Gender = require("../image/myinfo/gender.png")
 const Email = require("../image/myinfo/email.png")
 const Phone = require("../image/myinfo/phone-call.png")
 
-const StrengthImg = require("../image/ViewDetails/strength.jpg")
-const ReviewImg = require("../image/ViewDetails/reviewImg.jpg")
-const MapImg = require("../image/ViewDetails/mapImg.jpg")
-const ChatbotImg = require("../image/ViewDetails/chatbot.jpg")
-const NoticeImg = require("../image/ViewDetails/notice.jpg")
-const MyinfoImg = require("../image/ViewDetails/myinfo.jpg")
-const ChallengeImg = require("../image/ViewDetails/challenge.jpg")
-
 export {
   //상단 버튼두개
   Light,
@@ -121,12 +113,4 @@ export {
   Gender,
   Email,
   Phone,
-  // 메인 페이지 상세 보기
-  ReviewImg,
-  MapImg,
-  ChatbotImg,
-  NoticeImg,
-  MyinfoImg,
-  ChallengeImg,
-  StrengthImg,
 }

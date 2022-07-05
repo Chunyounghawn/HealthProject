@@ -92,8 +92,9 @@ export let LoginTrue,
 const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
-  const [MyInformationModalIsOpen, setMyInformationModalOpen] =
-    React.useState(false)
+  const [MyInformationModalIsOpen, setMyInformationModalOpen] = React.useState(
+    false
+  )
   const [ChallengeModalIsOpen, setChallengeModalOpen] = React.useState(false)
   const [BoardModalIsOpen, setBoardModalOpen] = React.useState(false)
 

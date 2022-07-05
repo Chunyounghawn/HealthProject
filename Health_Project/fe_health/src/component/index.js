@@ -3,10 +3,19 @@ import StrengthSection from './pages/Strength'
 import ReviewSection from './pages/Review'
 import QuestionSection from './pages/Question'
 import MapSection from './pages/Map'
+import Navigation from '../component/navigation'
+import { useState } from 'react'
+import React from 'react';
 
-const TotalPage = (fullpageApi) => {
+
+const TotalPage = () => {
+
+
+
   return (
+
     <>
+
       <MainSection content="Slide down!" />
       <StrengthSection content="StrengthSection" />
       <ReviewSection content="ReviewSection" />
@@ -15,5 +24,6 @@ const TotalPage = (fullpageApi) => {
     </>
   )
 }
+
 
 export default TotalPage

@@ -12,13 +12,18 @@ import { DECREMENT, INCREMENT, MODAL } from "../../../../redux/calendar.js"
 
 import { CalInModalTrue } from "../../../pages/Strength.js"
 
+
 const ModalHead = styled.div`
   width: 100%;
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+
 `
+
+
+
 
 const Closebtn = styled.img`
   width: 35px;
@@ -31,6 +36,7 @@ const Closebtn = styled.img`
     cursor: pointer;
   }
 `
+
 
 const CalendarStyle = styled.div`
   body {
@@ -49,7 +55,8 @@ const CalendarStyle = styled.div`
     justify-content: center;
   }
 
-  .header {
+.header {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -136,6 +143,9 @@ const TableStyle = styled.table`
   }
 `
 
+
+
+
 const Calendar = ({ isModal, setModal }) => {
   const state = useSelector((state) => state.calendar)
   const dispatch = useDispatch()
@@ -153,8 +163,9 @@ const Calendar = ({ isModal, setModal }) => {
   const todo = state.schedule
   //console.log(todo);
 
+
   const index = state.modal.index
-  console.log(index)
+  //console.log(index);
 
   // Month 감소
   const onDecreases = () => {
@@ -201,7 +212,7 @@ const Calendar = ({ isModal, setModal }) => {
           position: "relative",
           width: "1500px",
           height: "850px",
-          left: "5%",
+          left: "10%",
           right: "10%",
           backgroundColor: "#FBF8F1",
         },
@@ -237,6 +248,9 @@ const Calendar = ({ isModal, setModal }) => {
               todo,
             })}
           </tbody>
+
+
+
         </TableStyle>
       </CalendarStyle>
 

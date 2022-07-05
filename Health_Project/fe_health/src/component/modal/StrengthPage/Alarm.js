@@ -6,14 +6,28 @@ import AlarmModal from "react-modal"
 
 import { Water, Timer, WaterCup } from "../../../image/index.js"
 
-import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts"
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+  BarChart,
+  Bar,
+  Brush,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts"
 
-// TodoList
-import TodoTemplate from "./AlarmTodoList/TodoTemplate.js"
-import TodoHead from "./AlarmTodoList/TodoHead.js"
-import TodoList from "./AlarmTodoList/TodoList.js"
-import TodoCreate from "./AlarmTodoList/TodoCreate.js"
-import { TodoProvider } from "./AlarmTodoList/TodoContext.js"
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react" // basic
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
+import "swiper/scss"
+import "swiper/scss/navigation"
+import "swiper/scss/pagination"
+
+SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -25,16 +39,21 @@ const ModalContainer = styled.div`
 
 const ModalHead = styled.div`
   width: 1610px;
-  height: 80px;
+  height: 100px;
 `
 
 const ModalBody = styled.div`
   width: 1610px;
-  height: 790px;
+  height: 690px;
   position: absolute;
-  top: 80px;
-  border-radius: 30px;
-  background-color: skyblue;
+  top: 100px;
+`
+
+const ModalFooter = styled.div`
+  position: absolute;
+  width: 1610px;
+  height: 100px;
+  bottom: 0px;
 `
 
 const Closebtn = styled.img`
@@ -53,25 +72,32 @@ const Symbol = styled.img`
   width: 350px;
   height: 350px;
   position: absolute;
-  top: 200px;
+  top: 140px;
   left: 220px;
   &:hover {
     cursor: pointer;
   }
 `
 
-const TodoListContainer = styled.div`
+const AlarmList = styled.div`
   width: 600px;
   height: 600px;
-  position: absolute;
-  top: 100px;
-  right: 150px;
   border-radius: 30px;
-  border: 2px solid black;
-  background-color: #47ff9c;
+  background-color: gray;
+  position: absolute;
+  top: 50px;
+  right: 100px;
+`
+
+const ListBox = styled.div`
+  width: 560px;
+  height: 100px;
+  border-radius: 30px;
+  background-color: white;
+  position: absolute;
+  left: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-content: center;
 `
 
@@ -81,6 +107,23 @@ const TimerIcon = styled.img`
   position: absolute;
   top: 30px;
   left: 50px;
+`
+
+const TimerText = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  top: 40px;
+  left: 150px;
+`
+
+const WaterText = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  color: #b4b4b4;
+  position: absolute;
+  top: 40px;
+  right: 80px;
 `
 
 const CupIcon = styled.img`
@@ -95,6 +138,22 @@ const CupIcon = styled.img`
 const data = [
   { name: "잔여 물 섭취량", students: 300 },
   { name: "오늘 나의 물 섭취량", students: 1700 },
+]
+
+const data2 = [
+  { name: "1월", 월평균물섭취량: 861 },
+  { name: "2월", 월평균물섭취량: 862 },
+  { name: "3월", 월평균물섭취량: 343 },
+  { name: "4월", 월평균물섭취량: 454 },
+  { name: "5월", 월평균물섭취량: 435 },
+  { name: "6월", 월평균물섭취량: 653 },
+  { name: "6월", 월평균물섭취량: 734 },
+  { name: "7월", 월평균물섭취량: 845 },
+  { name: "8월", 월평균물섭취량: 932 },
+  { name: "9월", 월평균물섭취량: 133 },
+  { name: "10월", 월평균물섭취량: 222 },
+  { name: "11월", 월평균물섭취량: 332 },
+  { name: "12월", 월평균물섭취량: 545 },
 ]
 
 const COLORS = ["#FFB399", "#289AFF"]
@@ -122,44 +181,149 @@ const Alarm = ({ isModal, setModal }) => {
           <Closebtn src={Close} onClick={() => setModal(false)} />
         </ModalHead>
         <ModalBody>
-          <PieChart
-            width={700}
-            height={700}
+          <Swiper
+            direction="vertical"
+            spaceBetween={10}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
             style={{
-              position: "absolute",
-              top: "50px",
-              left: "50px",
+              width: "1610px",
+              height: "700px",
+              borderRadius: "30px",
+              backgroundColor: "#9986ee",
             }}
           >
-            <Pie
-              startAngle={-270}
-              data={data}
-              dataKey="students"
-              outerRadius={250}
-              innerRadius={230}
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
+            <SwiperSlide>
+              <PieChart
+                width={700}
+                height={700}
+                style={{
+                  position: "absolute",
+                  top: "0px",
+                  left: "50px",
+                }}
+              >
+                <Pie
+                  startAngle={-270}
+                  data={data}
+                  dataKey="students"
+                  outerRadius={250}
+                  innerRadius={230}
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
 
-            <Legend wrapperStyle={{ bottom: 50, left: 10, fontSize: 20 }} />
-            <Tooltip />
-          </PieChart>
-          <Symbol src={Water} />
-          <TodoListContainer>
-            <TodoProvider>
-              <TodoTemplate>
-                <TodoHead />
-                <TodoList />
-                <TodoCreate />
-              </TodoTemplate>
-            </TodoProvider>
-          </TodoListContainer>
+                <Legend wrapperStyle={{ bottom: 50, left: 10, fontSize: 20 }} />
+                <Tooltip />
+              </PieChart>
+              <Symbol src={Water} />
+              <AlarmList>
+                <Swiper
+                  direction="vertical"
+                  spaceBetween={10}
+                  slidesPerView={5}
+                  pagination={{ clickable: true }}
+                  style={{
+                    width: "600px",
+                    height: "600px",
+                    borderRadius: "30px",
+                    backgroundColor: "#dcdcdc",
+                  }}
+                >
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>10:30</TimerText>
+                      <WaterText>200mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>11:20</TimerText>
+                      <WaterText>100mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>12:45</TimerText>
+                      <WaterText>300mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>14:10</TimerText>
+                      <WaterText>100mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>15:30</TimerText>
+                      <WaterText>50mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>17:20</TimerText>
+                      <WaterText>100mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+
+                  <SwiperSlide>
+                    <ListBox>
+                      <TimerIcon src={Timer} />
+                      <TimerText>21:30</TimerText>
+                      <WaterText>100mL</WaterText>
+                      <CupIcon src={WaterCup} />
+                    </ListBox>
+                  </SwiperSlide>
+                </Swiper>
+              </AlarmList>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <BarChart
+                width={1550}
+                height={600}
+                data={data2}
+                style={{
+                  position: "absolute",
+                  top: "70px",
+                  left: "10px",
+                }}
+              >
+                <CartesianGrid />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Brush dataKey="name" height={30} stroke="#8884d8" />
+                <Bar dataKey="월평균물섭취량" fill="#2828CD" />
+                <Legend wrapperStyle={{ top: -50, left: 30, fontSize: 20 }} />
+                <Tooltip />
+              </BarChart>
+            </SwiperSlide>
+          </Swiper>
         </ModalBody>
+        <ModalFooter />
       </ModalContainer>
     </AlarmModal>
   )

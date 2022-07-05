@@ -20,7 +20,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]) // Swip
 
 const Container = styled.div`
   width: 1740px;
-  height: 970px;
+  height: 962px;
   position: relative;
   display: flex;
   justify-content: center;

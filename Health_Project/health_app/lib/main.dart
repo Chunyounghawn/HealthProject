@@ -1,33 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get.dart';
-import 'package:health/Map.dart';
-import 'package:health/controller.dart';
+
 import 'events_example.dart';
 import 'water.dart';
-import 'Map.dart';
 
 
-void main() => runApp(GetMaterialApp(
-  debugShowCheckedModeBanner: false,
-  theme: ThemeData(
-      brightness: Brightness.light,
-      primaryColor: Colors.blue,
-      accentColor: Colors.orange),
-  home: const MainPage(),
-  // home: MyApp(),
-));
-
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    Controller controller = Get.put(Controller());
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: "Health",
       home: const MainPage(),
       initialRoute: '/login',
@@ -178,7 +164,7 @@ class _MainPageState extends State<MainPage> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("Health Together"),
+            title: const Text("Health Togetehr"),
           ),
           body: const TabBarView(
             children: [
@@ -241,18 +227,15 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   ListTile(
                     title: const Text('루틴'),
-                    onTap: (){
-
-                    },
+                    onTap: (){},
                   ),
                   ListTile(
                     title: const Text('물'),
                     onTap: (){
-                      Get.to(const Water());
-                   //   Navigator.push(context, MaterialPageRoute(
-                    //      builder: (context) => const Water()
-                    //  )
-                     // );
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => const Water()
+                      )
+                      );
                     },
 
                   ),
@@ -272,12 +255,6 @@ class _HomeState extends State<Home> {
                     onTap: (){
                       //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => pedometers()));
                     },
-                  ),
-                  ListTile(
-                    title: const Text("주변 헬스장 찾기"),
-                    onTap: () {
-                      Get.to(const MapSample());
-                    },
                   )
                 ],
               )
@@ -286,7 +263,6 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
 
 class Challenge extends StatelessWidget {
   const Challenge({Key? key}) : super(key: key);
