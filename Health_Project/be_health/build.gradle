@@ -25,7 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Web
 	compileOnly 'org.projectlombok:lombok' // Lombok
 	runtimeOnly 'com.h2database:h2' // H2 Database
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client' // MariaDB Driver
+	// runtimeOnly 'org.mariadb.jdbc:mariadb-java-client' // MariaDB Driver
 	annotationProcessor 'org.projectlombok:lombok' // 기본
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'	//기본
 }
