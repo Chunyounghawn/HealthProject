@@ -89,7 +89,7 @@ export let LoginTrue,
   SignupTrue,
   MainPageTrue
 
-const Navigations = ({ fullpageApi }) => {
+const Navigations = () => {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
   const [MyInformationModalIsOpen, setMyInformationModalOpen] = React.useState(

@@ -8,6 +8,7 @@ import SignupModal from "react-modal"
 import { LoginTrue } from "../../../navigation.jsx"
 
 import ServiceCheckForm from "./ServiceCheckForm.js"
+import { useDispatch, useSelector } from "react-redux"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -179,11 +180,12 @@ function tooktak(event) {
 const Signup = ({ isModal, setModal }) => {
 
 
-
+  const modalTFselector = useSelector((state) => (state.modalTFselector))
+  const dispatch = useDispatch();
 
 
   const [ServiceCheckShow, setServiceCheckShow] = useState(true)
-  const [SignupFormShow, setSignupFormShow] = useState(false)
+  const [SignupFormShow, setSignupFormShow] = useState(true)
 
   const [Month, setMonth] = React.useState("")
   const [Date, setDate] = React.useState("")
@@ -246,7 +248,7 @@ const Signup = ({ isModal, setModal }) => {
 
     <SignupModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
 
       style={{
@@ -265,10 +267,9 @@ const Signup = ({ isModal, setModal }) => {
 
       <ModalContainer>
 
-        <ServiceCheckForm />
 
 
-        {SignupFormShow &&
+        {modalTFselector.signup ? (
           <>
             <ModalHead>
               <UserLabel htmlFor="UserImg">
@@ -426,7 +427,10 @@ const Signup = ({ isModal, setModal }) => {
               >
                 Login
               </SignupBtn>
-            </ModalBody><ModalFooter /></>}
+            </ModalBody><ModalFooter />
+          </>
+        ) : <ServiceCheckForm />
+        }
       </ModalContainer>
     </SignupModal>
   )
