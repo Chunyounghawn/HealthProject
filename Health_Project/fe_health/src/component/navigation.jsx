@@ -90,8 +90,6 @@ export let LoginTrue,
   MainPageTrue
 
 const Navigations = ({ fullpageApi }) => {
-  console.log("ffffffffffff")
-  console.log({ fullpageApi })
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
   const [MyInformationModalIsOpen, setMyInformationModalOpen] = React.useState(
@@ -266,10 +264,7 @@ const Navigations = ({ fullpageApi }) => {
           <ThemeButton src={Light} onClick={() => dispatch(lightTheme())} />
         )}
 
-        <UserButton
-          src={User}
-          onClick={() => (setLoginModalOpen(true), console.log(fullpageApi))}
-        />
+        <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
 
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
 

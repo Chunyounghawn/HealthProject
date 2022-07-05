@@ -10,7 +10,6 @@ import { ThemeProvider } from "styled-components"
 import { darkTheme, lightTheme } from "./theme"
 
 import { useDispatch, useSelector } from "react-redux"
-import { insert } from "./redux/apitest"
 
 
 const anchors = [
@@ -24,10 +23,9 @@ const anchors = [
 
 const FullpageWrapper = () => {
   const theme = useSelector((state) => state.theme)
-  const apitest = useSelector((state) => state.apitest)
+
   const dispatch = useDispatch();
 
-  var aa
 
   return (
     <>
@@ -50,13 +48,6 @@ const FullpageWrapper = () => {
         }}
         render={({ state, fullpageApi }) => {
 
-          //console.log(fullpageApi);
-          if ({ fullpageApi } === undefined) {
-            console.log("dd");
-          } else {
-            aa = { fullpageApi }
-            dispatch(insert(fullpageApi))
-          }
 
           return (
             <TotalPage />
