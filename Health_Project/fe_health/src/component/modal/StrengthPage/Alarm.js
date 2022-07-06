@@ -4,7 +4,7 @@ import { Close } from "../../../image/index.js"
 
 import AlarmModal from "react-modal"
 
-import { Water, Timer, WaterCup } from "../../../image/index.js"
+import { Water } from "../../../image/index.js"
 
 import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts"
 
@@ -73,22 +73,6 @@ const TodoListContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-`
-
-const TimerIcon = styled.img`
-  width: 100px;
-  height: 50px;
-  position: absolute;
-  top: 30px;
-  left: 50px;
-`
-
-const CupIcon = styled.img`
-  widht: 100px;
-  height: 50px;
-  position: absolute;
-  top: 30px;
-  right: 200px;
 `
 
 // Sample data

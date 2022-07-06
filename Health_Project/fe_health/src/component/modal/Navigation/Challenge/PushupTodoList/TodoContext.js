@@ -3,23 +3,23 @@ import React, { useReducer, createContext, useContext, useRef } from "react"
 const initialTodos = [
   {
     id: 1,
-    timertext: "07:30",
-    watertext: "200mL",
+    text: "팔굽혀펴기 연속 40개",
+    done: true,
   },
   {
     id: 2,
-    timertext: "09:40",
-    watertext: "100mL",
+    text: "팔굽혀펴기 연속 60개",
+    done: true,
   },
   {
     id: 3,
-    timertext: "12:30",
-    watertext: "250mL",
+    text: "팔굽혀펴기 연속 80개",
+    done: false,
   },
   {
     id: 4,
-    timertext: "16:10",
-    watertext: "100mL",
+    text: "팔굽혀펴기 연속 100개",
+    done: false,
   },
 ]
 
@@ -27,9 +27,9 @@ function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
       return state.concat(action.todo)
-    case "TOGGLE":
+    case "SUCCESS":
       return state.map((todo) =>
-        todo.id === action.id ? { ...todo, done: !todo.done } : todo
+        todo.id === action.id ? { ...todo, success: !todo.success } : todo
       )
     case "REMOVE":
       return state.filter((todo) => todo.id !== action.id)
