@@ -10,6 +10,10 @@ import { LoginTrue } from "../../../navigation.jsx"
 import ServiceCheckForm from "./ServiceCheckForm.js"
 import { useDispatch, useSelector } from "react-redux"
 
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'; //*
+import { useForm } from 'react-hook-form';
+
 const ModalContainer = styled.div`
   position: absolute;
   top: 0px;
@@ -31,77 +35,16 @@ const ModalHead = styled.div`
 
 const ModalBody = styled.div`
   width: 1350px;
-  height: 690px;
+  height: 620px;
   position: absolute;
   top: 150px;
   display: flex;
   justify-content: center;
+
+  background-color: blue;
 `
 
-const ModalFooter = styled.div`
-  position: absolute;
-  width: 1350px;
-  height: 50px;
-  bottom: 0px;
-`
 
-const Closebtn = styled.img`
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 3%;
-  right: 3%;
-  z-index: 1;
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-const GenderBtn = styled.button`
-  color: #333;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  border-radius: 10px;
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-const ManBtn = styled(GenderBtn)`
-  background-color: ${(props) => props.color};
-  width: 500px;
-  height: 50px;
-  margin-left: 5px;
-  font-size: 30px;
-  border-radius: 10px;
-`
-
-const WomanBtn = styled(GenderBtn)`
-  background-color: ${(props) => props.color};
-  width: 500px;
-  height: 50px;
-  position: absolute;
-  left: 505px;
-  top: 55px;
-  font-size: 30px;
-  border-radius: 10px;
-`
-
-const Certified = styled(GenderBtn)`
-  background-color: ${(props) => props.color};
-  width: 200px;
-  height: 55px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 30px;
-  border-radius: 10px;
-`
-
-const UserLabel = styled.label``
 
 const UserIcon = styled.img`
   width: 100px;
@@ -111,71 +54,72 @@ const UserIcon = styled.img`
   }
 `
 
-const SignupTop = styled.div`
-  width: 1010px;
-  height: 170px;
+const IDArea = styled.div`
   position: absolute;
-  top: 20px;
-  border: 3px solid black;
-  border-radius: 10px;
+  top:5%;
+  left: 5%;
+  width:700px;
+  height:120px;
+  background-color: purple;
 `
 
-const SignupMiddle = styled.div`
-  width: 1010px;
-  height: 220px;
+const NickNameArea = styled.div`
   position: absolute;
-  top: 230px;
-  border: 3px solid black;
-  border-radius: 10px;
+  top:30%;
+  left:5%;
+  width:700px;
+  height:120px;
+  background-color: black;
 `
 
-const SignupBottom = styled.div`
-  width: 1010px;
-  height: 110px;
+const PWArea = styled.div`
   position: absolute;
-  bottom: 90px;
-  border: 3px solid black;
-  border-radius: 10px;
+  top: 5%;
+  left: 60%;
+  width: 500px;
+  height: 120px;
+  background-color: red;
 `
 
-const Btn = styled.button`
-  background-color: #333;
-  color: #fff;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
+const PWCheckArea = styled.div`
+  position: absolute;
+  top: 30%;
+  left:60%;
+  width: 500px;
+  height: 120px;
+  background-color: yellow;
+`
+
+const BirthArea = styled.div`
+  position: absolute;
+  top:50%;
+  left:5%;
+  width: 300px;
+  height: 100px;
+  background-color: white;
+`
+
+
+
+
+
+const SubmitBtn = styled.button`
+  position: absolute;
+  top: 90%;
+  left: 41%;
   border-radius: 10px;
-  &:hover {
-    background-color: #fff;
-    color: #333;
+  background-color: #efdad7;
+
+  width: 250px;
+  height: 80px;
+  transition-duration: 0.3s;
+  :hover{
+    transition-duration: 0.3s;
+    background-color: #886f6f;
     cursor: pointer;
   }
 `
 
-const SignupBtn = styled(Btn)`
-  width: 150px;
-  height: 50px;
-  position: absolute;
-  bottom: 20px;
-  font-size: 30px;
-`
-
-const Birthdate = styled.div`
-  width: 130px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #fff;
-  border: 2px solid black;
-  font-size: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-`
-function tooktak(event) {
-  event.preventDefault();
-}
 
 const Signup = ({ isModal, setModal }) => {
 
@@ -184,35 +128,6 @@ const Signup = ({ isModal, setModal }) => {
   const dispatch = useDispatch();
 
 
-  const [ServiceCheckShow, setServiceCheckShow] = useState(true)
-  const [SignupFormShow, setSignupFormShow] = useState(true)
-
-  const [Month, setMonth] = React.useState("")
-  const [Date, setDate] = React.useState("")
-
-  const [ManColor, setManColor] = useState("#fff")
-  const [WomanColor, setWomanColor] = useState("#fff")
-
-  let ManCheck,
-    WomanCheck = false
-
-  const ManChoice = () =>
-    ManColor === "#fff"
-      ? (setManColor("#3CFBFF"),
-        setWomanColor("#fff"),
-        ((ManCheck = true), (WomanCheck = false)))
-      : (setManColor("#fff"),
-        setWomanColor("#fff"),
-        ((ManCheck = false), (WomanCheck = false)))
-
-  const WomanChoice = () =>
-    WomanColor === "#fff"
-      ? (setWomanColor("#FFB4B9"),
-        setManColor("#fff"),
-        ((WomanCheck = true), (ManCheck = false)))
-      : (setWomanColor("#fff"),
-        setManColor("#fff"),
-        ((WomanCheck = false), (ManCheck = false)))
 
   const ImageFile = `${SignupImg}`
   const setImageFile = React.useState("")
@@ -234,15 +149,35 @@ const Signup = ({ isModal, setModal }) => {
   }
 */
 
-  const onChange = React.useCallback((e) => {
-    setMonth(e.target.Month)
-    setDate(e.target.Date)
-  }, [])
 
-  const ShowSignupForm = () => {
-    setServiceCheckShow(false)
-    setSignupFormShow(true)
-  }
+
+
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    id: yup.string().required(),
+    nickname: yup.string().required(),
+    pw: yup.string().min(7).max(10).required(),
+    checkPw: yup
+      .string()
+      .oneOf([yup.ref('pw'), null])
+      .required(),
+    birth: yup.string().required(),
+    sex: yup.string().required()
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+
+  const submitForm = (data) => {
+    console.log(data);
+  }; //*
+
 
   return (
 
@@ -272,167 +207,74 @@ const Signup = ({ isModal, setModal }) => {
         {modalTFselector.signup ? (
           <>
             <ModalHead>
-              <UserLabel htmlFor="UserImg">
+              <label htmlFor="UserImg">
                 <UserIcon src={ImageFile} />
-              </UserLabel>
+              </label>
               <input
                 type="file"
                 accept="image/*"
                 id="UserImg"
                 style={{
                   display: "none",
-                }} />
-              <Closebtn src={Close} onClick={() => setModal(false)} />
-            </ModalHead><ModalBody>
-              <SignupTop>
-                <input
-                  type="text"
-                  name="userId"
-                  placeholder="UserID"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-                <input
-                  type="password"
-                  name="userPW"
-                  placeholder="PassWorld"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-                <input
-                  type="password"
-                  name="userPW"
-                  placeholder="Confirm PassWord"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-              </SignupTop>
-
-              <SignupMiddle>
-                <input
-                  type="text"
-                  name="userName"
-                  placeholder="User Name"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <ManBtn color={ManColor} onClick={ManChoice}>
-                  남자
-                </ManBtn>
-                <WomanBtn color={WomanColor} onClick={WomanChoice}>
-                  여자
-                </WomanBtn>
-
-                <Birthdate>생년월일</Birthdate>
-
-                <input
-                  type="text"
-                  name="year"
-                  placeholder="년 (4자)"
-                  style={{
-                    width: "120px",
-                    height: "50px",
-                    position: "absolute",
-                    top: "105px",
-                    left: "135px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-                <input
-                  type="text"
-                  name="month"
-                  defaultValue={Month}
-                  placeholder="월"
-                  onChange={onChange}
-                  style={{
-                    width: "363px",
-                    height: "50px",
-                    position: "absolute",
-                    top: "105px",
-                    left: "265px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <input
-                  type="text"
-                  name="date"
-                  defaultValue={Date}
-                  onChange={onChange}
-                  placeholder="일"
-                  style={{
-                    width: "363px",
-                    height: "50px",
-                    position: "absolute",
-                    top: "105px",
-                    right: "2px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <input
-                  type="text"
-                  placeholder="Phone Number"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-              </SignupMiddle>
-
-              <SignupBottom>
-                <input
-                  type="text"
-                  name="userEmail"
-                  placeholder="Email Address"
-                  style={{
-                    width: "800px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <Certified>인증</Certified>
-
-                <input
-                  type="text"
-                  name="userName"
-                  placeholder="인증번호"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-              </SignupBottom>
-              <SignupBtn
-                onClick={() => {
-                  setModal(false)
-                  LoginTrue()
                 }}
-              >
-                Login
-              </SignupBtn>
-            </ModalBody><ModalFooter />
+              />
+            </ModalHead>
+            <ModalBody>
+              <form onSubmit={handleSubmit(submitForm)}>
+
+
+                <IDArea>
+                  <label htmlFor="id">아이디</label>
+                  <input type="text" {...register('id')} />
+                  <span>{errors.id && '아이디 형식이 맞지 않습니다.'}</span>
+                </IDArea>
+
+                <NickNameArea>
+                  <label htmlFor="nickname">닉네임</label>
+                  <input type="text" {...register('nickname')} />
+                  <span>{errors.nickname && '닉네임 형식이 맞지 않습니다.'}</span>
+                </NickNameArea>
+
+                <PWArea>
+                  <label htmlFor="pw">비밀번호</label>
+                  <input type="password" {...register('pw')} />
+                  <span>{errors.pw && '비밀번호 형식이 맞지 않습니다.'}</span>
+                </PWArea>
+
+                <PWCheckArea>
+                  <label htmlFor="checkPw">비밀번호 확인</label>
+                  <input type="text" {...register('checkPw')} />
+                  <span>{errors.checkPw && '비밀번호가 맞지 않습니다.'}</span>
+                </PWCheckArea>
+
+                <BirthArea>
+                  <label htmlFor="birth">생년월일</label>
+                  <input type="date" {...register('birth')} />
+                  <span>{errors.birth && '생년월일을 입력해주세요.'}</span>
+                </BirthArea>
+
+                <label htmlFor="sex">남</label>
+                <input type="radio" name="sex" value="male" {...register('sex')} />
+                <label htmlFor="sex">여</label>
+                <input type="radio" name="sex" value="female" {...register('sex')} />
+                <span>{errors.sex && '성별을 체크해주세요.'}</span>
+
+                <label htmlFor="email">이메일</label>
+                <input type="email" {...register('email')} />
+                <span>{errors.email && '이메일 형식이 맞지 않습니다.'}</span>
+
+
+                <button type="submit">회원가입</button>
+              </form>
+            </ModalBody>
+
+            <SubmitBtn >가입</SubmitBtn>
           </>
+
         ) : <ServiceCheckForm />
         }
       </ModalContainer>
-    </SignupModal>
+    </SignupModal >
   )
 }
 
