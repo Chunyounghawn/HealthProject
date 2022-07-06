@@ -9,7 +9,6 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -23,13 +22,11 @@ const Video = styled.video`
   width: 1740px;
   height: 100%;
   background-size: 0% 0%;
-
   background-image: "./video/main_fisrt.mp4";
   background-position: center center;
   /*background-size: contain;*/
   object-fit: cover; /*cover video background */
   opacity: 0.2;
-
   @media screen and (min-width: 1920px) {
     width: 100%;
   }

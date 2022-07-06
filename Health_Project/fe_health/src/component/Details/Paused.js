@@ -33,7 +33,6 @@ const PausedOverlay = (props) => (
           text-align: center;
           font-weight: bold;
           font-size: 30px;
-
           h1 {
             color: #ff28a7;
           }

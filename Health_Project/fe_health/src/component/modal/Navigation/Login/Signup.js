@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { Close, SignupImg } from "../../../../image/index.js"
 
@@ -7,12 +7,17 @@ import SignupModal from "react-modal"
 
 import { LoginTrue } from "../../../navigation.jsx"
 
+import ServiceCheckForm from "./ServiceCheckForm.js"
+import { useDispatch, useSelector } from "react-redux"
+
 const ModalContainer = styled.div`
   position: absolute;
   top: 0px;
   right: 0px;
   width: 1350px;
   height: 890px;
+
+
 `
 
 const ModalHead = styled.div`
@@ -168,9 +173,20 @@ const Birthdate = styled.div`
   flex-wrap: wrap;
   align-content: center;
 `
-
+function tooktak(event) {
+  event.preventDefault();
+}
 
 const Signup = ({ isModal, setModal }) => {
+
+
+  const modalTFselector = useSelector((state) => (state.modalTFselector))
+  const dispatch = useDispatch();
+
+
+  const [ServiceCheckShow, setServiceCheckShow] = useState(true)
+  const [SignupFormShow, setSignupFormShow] = useState(true)
+
   const [Month, setMonth] = React.useState("")
   const [Date, setDate] = React.useState("")
 
@@ -223,11 +239,18 @@ const Signup = ({ isModal, setModal }) => {
     setDate(e.target.Date)
   }, [])
 
+  const ShowSignupForm = () => {
+    setServiceCheckShow(false)
+    setSignupFormShow(true)
+  }
+
   return (
+
     <SignupModal
       isOpen={isModal}
-      onRequestClose={() => setModal}
+      onRequestClose={() => setModal(false)}
       ariaHideApp={false}
+
       style={{
         content: {
           position: "relative",
@@ -243,178 +266,171 @@ const Signup = ({ isModal, setModal }) => {
       <Menubar />
 
       <ModalContainer>
-        <ModalHead>
-          <UserLabel htmlFor="UserImg">
-            <UserIcon src={ImageFile} />
-          </UserLabel>
-          <input
-            type="file"
-            accept="image/*"
-            id="UserImg"
-            style={{
-              display: "none",
-            }}
-          />
-          <Closebtn src={Close} onClick={() => setModal(false)} />
-        </ModalHead>
 
-        <ModalBody>
-          <SignupTop>
-            <input
-              type="text"
-              name="userId"
-              placeholder="UserID"
-              style={{
-                width: "1000px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-            <input
-              type="password"
-              name="userPW"
-              placeholder="PassWorld"
-              style={{
-                width: "1000px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-            <input
-              type="password"
-              name="userPW"
-              placeholder="Confirm PassWord"
-              style={{
-                width: "1000px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-          </SignupTop>
 
-          <SignupMiddle>
-            <input
-              type="text"
-              name="userName"
-              placeholder="User Name"
-              style={{
-                width: "1000px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
 
-            <ManBtn color={ManColor} onClick={ManChoice}>
-              남자
-            </ManBtn>
-            <WomanBtn color={WomanColor} onClick={WomanChoice}>
-              여자
-            </WomanBtn>
+        {modalTFselector.signup ? (
+          <>
+            <ModalHead>
+              <UserLabel htmlFor="UserImg">
+                <UserIcon src={ImageFile} />
+              </UserLabel>
+              <input
+                type="file"
+                accept="image/*"
+                id="UserImg"
+                style={{
+                  display: "none",
+                }} />
+              <Closebtn src={Close} onClick={() => setModal(false)} />
+            </ModalHead><ModalBody>
+              <SignupTop>
+                <input
+                  type="text"
+                  name="userId"
+                  placeholder="UserID"
+                  style={{
+                    width: "1000px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
+                <input
+                  type="password"
+                  name="userPW"
+                  placeholder="PassWorld"
+                  style={{
+                    width: "1000px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
+                <input
+                  type="password"
+                  name="userPW"
+                  placeholder="Confirm PassWord"
+                  style={{
+                    width: "1000px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
+              </SignupTop>
 
-            <Birthdate>생년월일</Birthdate>
+              <SignupMiddle>
+                <input
+                  type="text"
+                  name="userName"
+                  placeholder="User Name"
+                  style={{
+                    width: "1000px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
 
-            <input
-              type="text"
-              name="year"
-              placeholder="년 (4자)"
-              style={{
-                width: "120px",
-                height: "50px",
-                position: "absolute",
-                top: "105px",
-                left: "135px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-            <input
-              type="text"
-              name="month"
-              defaultValue={Month}
-              placeholder="월"
-              onChange={onChange}
-              style={{
-                width: "363px",
-                height: "50px",
-                position: "absolute",
-                top: "105px",
-                left: "265px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
+                <ManBtn color={ManColor} onClick={ManChoice}>
+                  남자
+                </ManBtn>
+                <WomanBtn color={WomanColor} onClick={WomanChoice}>
+                  여자
+                </WomanBtn>
 
-            <input
-              type="text"
-              name="date"
-              defaultValue={Date}
-              onChange={onChange}
-              placeholder="일"
-              style={{
-                width: "363px",
-                height: "50px",
-                position: "absolute",
-                top: "105px",
-                right: "2px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
+                <Birthdate>생년월일</Birthdate>
 
-            <input
-              type="text"
-              placeholder="Phone Number"
-              style={{
-                width: "1000px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-          </SignupMiddle>
+                <input
+                  type="text"
+                  name="year"
+                  placeholder="년 (4자)"
+                  style={{
+                    width: "120px",
+                    height: "50px",
+                    position: "absolute",
+                    top: "105px",
+                    left: "135px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
+                <input
+                  type="text"
+                  name="month"
+                  defaultValue={Month}
+                  placeholder="월"
+                  onChange={onChange}
+                  style={{
+                    width: "363px",
+                    height: "50px",
+                    position: "absolute",
+                    top: "105px",
+                    left: "265px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
 
-          <SignupBottom>
-            <input
-              type="text"
-              name="userEmail"
-              placeholder="Email Address"
-              style={{
-                width: "800px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
+                <input
+                  type="text"
+                  name="date"
+                  defaultValue={Date}
+                  onChange={onChange}
+                  placeholder="일"
+                  style={{
+                    width: "363px",
+                    height: "50px",
+                    position: "absolute",
+                    top: "105px",
+                    right: "2px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
 
-            <Certified>인증</Certified>
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  style={{
+                    width: "1000px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
+              </SignupMiddle>
 
-            <input
-              type="text"
-              name="userName"
-              placeholder="인증번호"
-              style={{
-                width: "1000px",
-                height: "50px",
-                fontSize: "30px",
-                borderRadius: "10px",
-              }}
-            />
-          </SignupBottom>
-          <SignupBtn
-            onClick={() => {
-              setModal(false)
-              LoginTrue()
-            }}
-          >
-            Login
-          </SignupBtn>
-        </ModalBody>
+              <SignupBottom>
+                <input
+                  type="text"
+                  name="userEmail"
+                  placeholder="Email Address"
+                  style={{
+                    width: "800px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
 
-        <ModalFooter />
+                <Certified>인증</Certified>
+
+                <input
+                  type="text"
+                  name="userName"
+                  placeholder="인증번호"
+                  style={{
+                    width: "1000px",
+                    height: "50px",
+                    fontSize: "30px",
+                    borderRadius: "10px",
+                  }} />
+              </SignupBottom>
+              <SignupBtn
+                onClick={() => {
+                  setModal(false)
+                  LoginTrue()
+                }}
+              >
+                Login
+              </SignupBtn>
+            </ModalBody><ModalFooter />
+          </>
+        ) : <ServiceCheckForm />
+        }
       </ModalContainer>
     </SignupModal>
   )

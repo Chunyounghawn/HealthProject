@@ -17,7 +17,6 @@ import AlarmModal from "../modal/StrengthPage/Alarm.js"
 import CalendarModal from "../modal/StrengthPage/Calendar/Calendar.js"
 import TrainingModal from "../modal/StrengthPage/Training.js"
 
-
 // Training modal
 import PushUpModal from "../modal/Training/PushUp.js"
 import PullUpModal from "../modal/Training/PullUp.js"
@@ -31,7 +30,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay]) // Swiper
 
 const Container = styled.div`
   width: 1740px;
-  height: 970px;
+  height: 962px;
   position: relative;
   background-color: ${(props) => props.theme.strengthPage.backgroundColor};
   @media screen and (min-width: 1920px) {
@@ -258,7 +257,6 @@ function StrengthSection() {
 
   const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
 
-
   PushUpTrue = function PushUpModalTrue() {
     setTrainingModalOpen(false)
     setPushUpModalOpen(true)
@@ -308,8 +306,6 @@ function StrengthSection() {
     setTrainingModalOpen(true)
     setPlankModalOpen(false)
   }
-
-
 
   CalInModalTrue = function CalInModalTrue() {
     setCalendarModalOpen(true)
@@ -451,7 +447,6 @@ function StrengthSection() {
         />
 
         <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
-
       </Container>
     </div>
   )

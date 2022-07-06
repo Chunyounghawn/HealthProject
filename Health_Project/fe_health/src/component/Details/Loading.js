@@ -7,7 +7,6 @@ const loadingOverlaySpinnerAnimation = keyframes`
   to {
     transform: rotate(360deg);
   }
-
 `
 
 const LoadingOverlay = () => (

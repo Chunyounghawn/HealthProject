@@ -52,11 +52,11 @@ export const Calendar = createSlice({
       }
 
     },
-    MODALTODO: (state) => {
+    MODAL_END_DATE: (state) => {
 
 
     },
-    MODALCHECK: (state) => {
+    MODAL_SELECT_DATE: (state) => {
 
 
     },
@@ -65,12 +65,13 @@ export const Calendar = createSlice({
 
     },
 
+
   }
 
 })
 
 
-export const { INCREMENT, DECREMENT, MODAL, MODALCHECK } = Calendar.actions;
+export const { INCREMENT, DECREMENT, MODAL, MODALCHECK, MODAL_END_DATE, MODAL_SELECT_DATE } = Calendar.actions;
 
 
 export default Calendar.reducer;
