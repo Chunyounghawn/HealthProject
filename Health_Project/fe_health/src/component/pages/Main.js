@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import main_fisrt from "../../video/main_fisrt.mp4"
+import Detail from "../Details/Detail.js"
 
 const Container = styled.div`
   width: 1740px;
@@ -8,7 +9,6 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
   @media screen and (min-width: 1920px) {
     width: 90%;
   }
@@ -22,13 +22,11 @@ const Video = styled.video`
   width: 1740px;
   height: 100%;
   background-size: 0% 0%;
-
   background-image: "./video/main_fisrt.mp4";
   background-position: center center;
   /*background-size: contain;*/
   object-fit: cover; /*cover video background */
   opacity: 0.2;
-
   @media screen and (min-width: 1920px) {
     width: 100%;
   }
@@ -72,22 +70,18 @@ const MainBtn = styled.div`
   }
 `
 function MainSection() {
-
-
+  const [ClickModalIsOpen, setClickModalOpen] = React.useState(false)
 
   return (
-
     <div className="section">
-
       <Container>
         <MainTitle>Ready to begin you health?</MainTitle>
         <Message>click on the button now</Message>
         <Video id="myVideo" loop muted data-autoplay>
-
           <source src={main_fisrt} type="video/mp4" />
         </Video>
-        <MainBtn>Click</MainBtn>
-
+        <MainBtn onClick={() => setClickModalOpen(true)}>상세 보기</MainBtn>
+        <Detail isModal={ClickModalIsOpen} setModal={setClickModalOpen} />
       </Container>
     </div>
   )
