@@ -7,6 +7,8 @@ import Alarm from "./Strength/Alarm.js"
 import Training from "./Strength/Training.js"
 import Calendar from "./Strength/Calendar.js"
 
+import CalInModal from "../modal/StrengthPage/Calendar/CalInModal.js"
+
 const Container = styled.div`
   width: 1740px;
   height: 1970px;

@@ -114,8 +114,8 @@ export let PushUpTrue,
   CrunchTrue,
   CrunchFalse,
   PlankTrue,
-  PlankFalse,
-  CalInModalTrue
+  PlankFalse
+
 
 const Training = () => {
   const [TrainingModalIsOpen, setTrainingModalOpen] = useState(false)

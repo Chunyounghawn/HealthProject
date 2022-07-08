@@ -10,7 +10,8 @@ import MakeCalendar from "./MakeCalendar.js"
 
 import { DECREMENT, INCREMENT, MODAL } from "../../../../redux/calendar.js"
 
-import { CalInModalTrue } from "../../../pages/Strength.js"
+
+import { CalInModalTrue } from "../../../pages/Strength/Calendar.js"
 
 
 const ModalHead = styled.div`
