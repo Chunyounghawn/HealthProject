@@ -31,6 +31,9 @@ const TodoItemBlock = styled.div`
   align-items: center;
   padding-top: 12px;
   padding-bottom: 12px;
+  background-color: #b4fbff;
+  border: 2px solid black;
+  border-radius: 10px;
   &:hover {
     ${Remove} {
       display: initial;

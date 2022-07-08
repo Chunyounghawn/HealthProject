@@ -1,3 +1,4 @@
+/*
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
@@ -453,3 +454,4 @@ function StrengthSection() {
 }
 
 export default StrengthSection
+*/

@@ -3,22 +3,38 @@ import styled from "styled-components"
 import { useTodoState } from "./TodoContext"
 
 const TodoHeadBlock = styled.div`
+  width: 485px;
+  height: 80px;
   padding-top: 10px;
   padding-left: 32px;
   padding-right: 32px;
   padding-bottom: 10px;
   border-bottom: 1px solid #e9ecef;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   h1 {
+    position: absolute;
+    top: 10px;
     margin: 0;
     font-size: 20px;
     color: #343a40;
+    font-size: 20px;
+    font-weight: bold;
   }
   .day {
+    position: absolute;
+    top: 40px;
     margin-top: 10px;
     color: #868e96;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: bold;
   }
   .tasks-left {
+    position: absolute;
+    top: 70px;
+    right: 30px;
     color: #20c997;
     font-size: 15px;
     margin-top: 10px;
