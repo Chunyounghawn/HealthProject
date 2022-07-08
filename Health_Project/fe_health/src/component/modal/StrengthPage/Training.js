@@ -17,7 +17,7 @@ import {
   DipsTrue,
   CrunchTrue,
   PlankTrue,
-} from "../../pages/Strength.js"
+} from "../../pages/Strength/Training.js"
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic

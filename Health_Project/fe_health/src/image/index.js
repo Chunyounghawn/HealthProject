@@ -63,6 +63,16 @@ const NoticeImg = require("../image/ViewDetails/notice.jpg")
 const MyinfoImg = require("../image/ViewDetails/myinfo.jpg")
 const ChallengeImg = require("../image/ViewDetails/challenge.jpg")
 
+const InBodyTitle = require("../image/strength/inbody.png")
+const AlarmTitle = require("../image/strength/alarm.png")
+const TrainingTitle = require("../image/strength/training.png")
+const CalendarTitle = require("../image/strength/calendar.png")
+
+const InBodyThumbnail = require("../image/strength/inbodyThumbnail.jpg")
+const TrainingThumbnail = require("../image/strength/trainingThumbnail.jpg")
+const CalendarThumbnail = require("../image/strength/calendarThumbnail.jpg")
+const AlarmThumbnail = require("../image/strength/alarmThumbnail.jpg")
+
 export {
   //상단 버튼두개
   Light,
@@ -129,4 +139,14 @@ export {
   MyinfoImg,
   ChallengeImg,
   StrengthImg,
+  // Strength TItle
+  InBodyTitle,
+  AlarmTitle,
+  TrainingTitle,
+  CalendarTitle,
+  // Strength Thumbnail
+  InBodyThumbnail,
+  TrainingThumbnail,
+  CalendarThumbnail,
+  AlarmThumbnail
 }
