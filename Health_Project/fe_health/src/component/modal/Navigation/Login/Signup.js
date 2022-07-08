@@ -10,6 +10,12 @@ import { LoginTrue } from "../../../navigation.jsx"
 import ServiceCheckForm from "./ServiceCheckForm.js"
 import { useDispatch, useSelector } from "react-redux"
 
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'; //*
+import { useForm } from 'react-hook-form';
+import axios from "axios"
+
+
 const ModalContainer = styled.div`
   position: absolute;
   top: 0px;
@@ -31,77 +37,15 @@ const ModalHead = styled.div`
 
 const ModalBody = styled.div`
   width: 1350px;
-  height: 690px;
+  height: 620px;
   position: absolute;
   top: 150px;
   display: flex;
   justify-content: center;
+
 `
 
-const ModalFooter = styled.div`
-  position: absolute;
-  width: 1350px;
-  height: 50px;
-  bottom: 0px;
-`
 
-const Closebtn = styled.img`
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 3%;
-  right: 3%;
-  z-index: 1;
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-const GenderBtn = styled.button`
-  color: #333;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  border-radius: 10px;
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-const ManBtn = styled(GenderBtn)`
-  background-color: ${(props) => props.color};
-  width: 500px;
-  height: 50px;
-  margin-left: 5px;
-  font-size: 30px;
-  border-radius: 10px;
-`
-
-const WomanBtn = styled(GenderBtn)`
-  background-color: ${(props) => props.color};
-  width: 500px;
-  height: 50px;
-  position: absolute;
-  left: 505px;
-  top: 55px;
-  font-size: 30px;
-  border-radius: 10px;
-`
-
-const Certified = styled(GenderBtn)`
-  background-color: ${(props) => props.color};
-  width: 200px;
-  height: 55px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 30px;
-  border-radius: 10px;
-`
-
-const UserLabel = styled.label``
 
 const UserIcon = styled.img`
   width: 100px;
@@ -111,71 +55,228 @@ const UserIcon = styled.img`
   }
 `
 
-const SignupTop = styled.div`
-  width: 1010px;
-  height: 170px;
+const LabelStyle = styled.label`
   position: absolute;
-  top: 20px;
-  border: 3px solid black;
-  border-radius: 10px;
+  top: 0%;
+  left: 5%;
+  font-size: 22px;
 `
 
-const SignupMiddle = styled.div`
-  width: 1010px;
-  height: 220px;
-  position: absolute;
-  top: 230px;
-  border: 3px solid black;
-  border-radius: 10px;
+
+
+const InputStyle = styled.input`
+
+position: absolute;
+  top: 18%;
+  left: 5%;
+ 
+outline: none;
+  padding: 10px 0px;
+  width: 500px;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
+
+  font-size: 35px;
 `
 
-const SignupBottom = styled.div`
-  width: 1010px;
-  height: 110px;
-  position: absolute;
-  bottom: 90px;
-  border: 3px solid black;
-  border-radius: 10px;
-`
 
-const Btn = styled.button`
-  background-color: #333;
-  color: #fff;
+
+
+const InputStyle2 = styled.input`
+
+position: absolute;
+  top: 40%;
+  left: 10%;
   font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
+`
+
+
+const RadioStyle = styled.input`
+  position: absolute;
+  top: 50%;
+`
+
+
+
+const IDArea = styled.div`
+  position: absolute;
+  top:5%;
+  left: 5%;
+  width:700px;
+  height:120px;
+  background-color: white;
+
+`
+
+const DoubleCheckBtn = styled.button`
+  position: absolute;
+  top: 40%;
+  right: 8%;
+  width: 90px;
+  height: 60px;
+
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    /*색상 */
+    background: #228be6;
+    &:hover{
+        background: #339af0;
+        opacity: 70%;
+    }
+    &:active{
+        background: #1c7ed6;
+    }
+
+`
+
+const EmailCheckBtn = styled.button`
+  position: absolute;
+  top: 40%;
+  right: 8%;
+  width: 90px;
+  height: 60px;
+
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    /*색상 */
+    background: #228be6;
+    &:hover{
+        background: #339af0;
+        opacity: 70%;
+    }
+    &:active{
+        background: #1c7ed6;
+    }
+
+`
+
+
+
+const NickNameArea = styled.div`
+  position: absolute;
+  top:30%;
+  left:5%;
+  width:700px;
+  height:120px;
+  background-color: white;
+`
+
+const PWArea = styled.div`
+  position: absolute;
+  top: 5%;
+  left: 60%;
+  width: 500px;
+  height: 120px;
+  background-color: white;
+`
+
+const PWCheckArea = styled.div`
+  position: absolute;
+  top: 30%;
+  left:60%;
+  width: 500px;
+  height: 120px;
+  background-color: white;
+`
+
+const BirthArea = styled.div`
+  position: absolute;
+  top:50%;
+  left:5%;
+  width: 300px;
+  height: 70px;
+  background-color: white;
+`
+
+const SexArea = styled.div`
+  position: absolute;
+  top:50%;
+  left:30%;
+  width: 200px;
+  height: 70px;
+  background-color: white ;
+
+  span{
+    position: absolute;
+    width: 200px;
+    left:60%;
+    top:50%;
+    color:red
+    
+  }
+`
+
+const EmailArea = styled.div`
+position: absolute;
+  top:63%;
+  left:5%;
+  width: 700px;
+  height: 110px;
+  background-color: white ;
+`
+
+
+const EmailCheckArea = styled.div`
+position: absolute;
+  top:83%;
+  left:5%;
+  width: 700px;
+  height: 110px;
+  background-color: white ;
+`
+
+const ErrMsgStyle = styled.span`
+  position: absolute;
+  top: 85%;
+  right: 24%;
+  color: red;
+
+`
+
+
+
+const SubmitBtn = styled.button`
+  position: absolute;
+  top: 104%;
+  left: 41%;
   border-radius: 10px;
-  &:hover {
-    background-color: #fff;
-    color: #333;
+  background-color: #efdad7;
+
+  width: 250px;
+  height: 80px;
+  transition-duration: 0.3s;
+  :hover{
+    transition-duration: 0.3s;
+    background-color: #886f6f;
     cursor: pointer;
   }
 `
 
-const SignupBtn = styled(Btn)`
-  width: 150px;
-  height: 50px;
-  position: absolute;
-  bottom: 20px;
-  font-size: 30px;
+
+const SignupText = styled.p`
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
 `
 
-const Birthdate = styled.div`
-  width: 130px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #fff;
-  border: 2px solid black;
-  font-size: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-`
-function tooktak(event) {
-  event.preventDefault();
-}
 
 const Signup = ({ isModal, setModal }) => {
 
@@ -184,38 +285,15 @@ const Signup = ({ isModal, setModal }) => {
   const dispatch = useDispatch();
 
 
-  const [ServiceCheckShow, setServiceCheckShow] = useState(true)
-  const [SignupFormShow, setSignupFormShow] = useState(true)
+  const [email, setEmail] = useState()
 
-  const [Month, setMonth] = React.useState("")
-  const [Date, setDate] = React.useState("")
-
-  const [ManColor, setManColor] = useState("#fff")
-  const [WomanColor, setWomanColor] = useState("#fff")
-
-  let ManCheck,
-    WomanCheck = false
-
-  const ManChoice = () =>
-    ManColor === "#fff"
-      ? (setManColor("#3CFBFF"),
-        setWomanColor("#fff"),
-        ((ManCheck = true), (WomanCheck = false)))
-      : (setManColor("#fff"),
-        setWomanColor("#fff"),
-        ((ManCheck = false), (WomanCheck = false)))
-
-  const WomanChoice = () =>
-    WomanColor === "#fff"
-      ? (setWomanColor("#FFB4B9"),
-        setManColor("#fff"),
-        ((WomanCheck = true), (ManCheck = false)))
-      : (setWomanColor("#fff"),
-        setManColor("#fff"),
-        ((WomanCheck = false), (ManCheck = false)))
 
   const ImageFile = `${SignupImg}`
   const setImageFile = React.useState("")
+
+  const test = () => {
+    console.log("Asdfasdf");
+  }
 
   /*
   // 파일 저장
@@ -234,15 +312,45 @@ const Signup = ({ isModal, setModal }) => {
   }
 */
 
-  const onChange = React.useCallback((e) => {
-    setMonth(e.target.Month)
-    setDate(e.target.Date)
-  }, [])
 
-  const ShowSignupForm = () => {
-    setServiceCheckShow(false)
-    setSignupFormShow(true)
-  }
+
+
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    id: yup.string().required().max(10),
+    nickname: yup.string().required().max(10),
+    pw: yup.string().min(7).max(15).required(),
+    checkPw: yup
+      .string()
+      .oneOf([yup.ref('pw'), null])
+      .required(),
+    birth: yup.string().required(),
+    sex: yup.string().required()
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+
+  const submitForm = (data) => {
+    console.log(data);
+  }; //*
+
+
+
+  const form = new FormData();
+  form.append('name', 'veneas');
+  form.append('food', 'cake');
+
+
+
+
+
 
   return (
 
@@ -272,167 +380,92 @@ const Signup = ({ isModal, setModal }) => {
         {modalTFselector.signup ? (
           <>
             <ModalHead>
-              <UserLabel htmlFor="UserImg">
+              <label htmlFor="UserImg">
                 <UserIcon src={ImageFile} />
-              </UserLabel>
+              </label>
               <input
                 type="file"
                 accept="image/*"
                 id="UserImg"
                 style={{
                   display: "none",
-                }} />
-              <Closebtn src={Close} onClick={() => setModal(false)} />
-            </ModalHead><ModalBody>
-              <SignupTop>
-                <input
-                  type="text"
-                  name="userId"
-                  placeholder="UserID"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-                <input
-                  type="password"
-                  name="userPW"
-                  placeholder="PassWorld"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-                <input
-                  type="password"
-                  name="userPW"
-                  placeholder="Confirm PassWord"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-              </SignupTop>
-
-              <SignupMiddle>
-                <input
-                  type="text"
-                  name="userName"
-                  placeholder="User Name"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <ManBtn color={ManColor} onClick={ManChoice}>
-                  남자
-                </ManBtn>
-                <WomanBtn color={WomanColor} onClick={WomanChoice}>
-                  여자
-                </WomanBtn>
-
-                <Birthdate>생년월일</Birthdate>
-
-                <input
-                  type="text"
-                  name="year"
-                  placeholder="년 (4자)"
-                  style={{
-                    width: "120px",
-                    height: "50px",
-                    position: "absolute",
-                    top: "105px",
-                    left: "135px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-                <input
-                  type="text"
-                  name="month"
-                  defaultValue={Month}
-                  placeholder="월"
-                  onChange={onChange}
-                  style={{
-                    width: "363px",
-                    height: "50px",
-                    position: "absolute",
-                    top: "105px",
-                    left: "265px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <input
-                  type="text"
-                  name="date"
-                  defaultValue={Date}
-                  onChange={onChange}
-                  placeholder="일"
-                  style={{
-                    width: "363px",
-                    height: "50px",
-                    position: "absolute",
-                    top: "105px",
-                    right: "2px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <input
-                  type="text"
-                  placeholder="Phone Number"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-              </SignupMiddle>
-
-              <SignupBottom>
-                <input
-                  type="text"
-                  name="userEmail"
-                  placeholder="Email Address"
-                  style={{
-                    width: "800px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-
-                <Certified>인증</Certified>
-
-                <input
-                  type="text"
-                  name="userName"
-                  placeholder="인증번호"
-                  style={{
-                    width: "1000px",
-                    height: "50px",
-                    fontSize: "30px",
-                    borderRadius: "10px",
-                  }} />
-              </SignupBottom>
-              <SignupBtn
-                onClick={() => {
-                  setModal(false)
-                  LoginTrue()
                 }}
-              >
-                Login
-              </SignupBtn>
-            </ModalBody><ModalFooter />
+              />
+            </ModalHead>
+
+
+            <ModalBody>
+              <form onSubmit={handleSubmit(submitForm)}>
+
+
+                <IDArea>
+                  <LabelStyle htmlFor="id">아이디</LabelStyle>
+                  <InputStyle type="text" {...register('id')} />
+                  <ErrMsgStyle>{errors.id && '아이디 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                  <DoubleCheckBtn type="button" onClick={test}>중복체크</DoubleCheckBtn>
+                </IDArea>
+
+                <NickNameArea>
+                  <LabelStyle htmlFor="nickname">닉네임</LabelStyle>
+                  <InputStyle type="text" {...register('nickname')} />
+                  <ErrMsgStyle>{errors.nickname && '닉네임 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                  <DoubleCheckBtn type="button" onClick={test}>중복체크</DoubleCheckBtn>
+                </NickNameArea>
+
+                <PWArea>
+                  <LabelStyle htmlFor="pw">비밀번호</LabelStyle>
+                  <InputStyle style={{ width: "450px" }} type="password" {...register('pw')} />
+                  <ErrMsgStyle style={{ right: "6%" }}>{errors.pw && '비밀번호 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                </PWArea>
+
+                <PWCheckArea>
+                  <LabelStyle htmlFor="checkPw">비밀번호 확인</LabelStyle>
+                  <InputStyle style={{ width: "450px" }} type="password" {...register('checkPw')} />
+                  <ErrMsgStyle style={{ right: "6%" }}>{errors.checkPw && '비밀번호가 맞지 않습니다.'}</ErrMsgStyle>
+                </PWCheckArea>
+
+                <BirthArea>
+                  <LabelStyle style={{ left: "10%" }} htmlFor="birth">생년월일</LabelStyle>
+                  <InputStyle2 type="date" {...register('birth')} />
+                  <LabelStyle style={{ left: "10%", color: "red" }}>{errors.birth && '생년월일'}</LabelStyle>
+                </BirthArea>
+
+                <SexArea>
+                  <LabelStyle style={{ left: "5%" }} htmlFor="sex">남</LabelStyle>
+                  <RadioStyle style={{ left: "5%" }} type="radio" name="sex" value="male" {...register('sex')} />
+                  <LabelStyle style={{ left: "30%" }} htmlFor="sex">여</LabelStyle>
+                  <RadioStyle style={{ left: "30%" }} type="radio" name="sex" value="female" {...register('sex')} />
+                  <span >{errors.sex && '성별을 체크해주세요.'}</span>
+                </SexArea>
+
+                <EmailArea>
+                  <LabelStyle htmlFor="email">이메일</LabelStyle>
+                  <InputStyle onKeyUp={(e) => setEmail(e.target.value)} type="text" {...register('email')} />
+                  <ErrMsgStyle>{errors.email && '이메일 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                  <DoubleCheckBtn type="button" onClick={test}>인증번호 전송</DoubleCheckBtn>
+                </EmailArea>
+
+                <EmailCheckArea>
+                  <LabelStyle htmlFor="emailCheck">이메일 확인</LabelStyle>
+                  <InputStyle type="text" />
+                  <ErrMsgStyle>{errors.email && '인증번호가 맞지 않습니다.'}</ErrMsgStyle>
+                  <EmailCheckBtn type="button" onClick={test}>인증확인</EmailCheckBtn>
+                </EmailCheckArea>
+
+                <SubmitBtn type="submit">
+                  <SignupText>가입하기</SignupText>
+                </SubmitBtn>
+
+              </form>
+            </ModalBody>
+
+
           </>
+
         ) : <ServiceCheckForm />
         }
       </ModalContainer>
-    </SignupModal>
+    </SignupModal >
   )
 }
 
