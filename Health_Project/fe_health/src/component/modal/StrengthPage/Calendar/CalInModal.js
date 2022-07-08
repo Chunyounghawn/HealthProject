@@ -6,6 +6,10 @@ import styled from "styled-components"
 import { MODALCHECK, MODAL_END_DATE, MODAL_SELECT_DATE } from "../../../../redux/calendar.js"
 import SelectDatePicker from "./DatePicker/SelectDatePicker.js"
 
+import DatePicker, { DateObject, getAllDatesInRange } from "react-multi-date-picker"
+import DatePanel from "react-multi-date-picker/plugins/date_panel"
+
+
 const ModalHead = styled.div`
   width: 100%;
   height: 40px;
@@ -26,7 +30,7 @@ top: 15%;
 left: 2%;
   width: 480px;
   height: 430px;
-  background-color: purple;
+  background-color: skyblue;
 `
 
 const SelectedDay = styled.div`
@@ -39,14 +43,14 @@ const SelectedDay = styled.div`
   color: white;
 `
 
-const AddButton = styled.button`
+const PrevButton = styled.button`
   position: absolute;
   top: 30px;
   right: 300px;
   
   
   position: absolute;
-width: 80px;
+width: 100px;
 height: 30px;
   top: 10%;
   right: 130px;
@@ -66,7 +70,7 @@ height: 30px;
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
   background: rgb(6,14,131);
-  background: linear-gradient(50deg, gray 10%, white 100%);
+  background: linear-gradient(50deg, brown 10%, white 100%);
   border: none;
 
   :hover {
@@ -75,7 +79,7 @@ height: 30px;
 `
 
 
-const RemoveButton = styled.button`
+const NextButton = styled.button`
 position: absolute;
 width: 80px;
 height: 30px;
@@ -97,7 +101,7 @@ height: 30px;
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
   background: rgb(6,14,131);
-  background: linear-gradient(50deg, gray 10%, white 100%);
+  background: linear-gradient(50deg, brown 10%, white 100%);
   border: none;
 
   :hover {
@@ -185,6 +189,23 @@ const RadioBox = styled.div`
   margin-top: 5px;
 `
 
+const CalendarBox = styled.div`
+  position: absolute;
+  top: 77%;
+  left: 8%;
+  height: 100px;
+  width: 20px;
+  
+`
+
+const AddButton = styled.button`
+  position: absolute;
+  top: 85%;
+  left: 35%;
+  height: 50px;
+  width: 150px;
+`
+
 
 //-------------------------------------
 
@@ -204,6 +225,27 @@ const CalInModal = ({ isModal, setModal }) => {
 
   const yearMonth = date.year + "." + (date.month + 1);
 
+  const [dates, setDates] = useState([
+    new Date(),
+    new DateObject({ year: 2020, month: 9, day: 8 }),
+    "December 09 2020",
+    1597994736000 //unix time in milliseconds (August 21 2020)
+  ])
+  const [dates2, setDates2] = useState([])
+  const [allDates, setAllDates2] = useState([])
+
+  const [changeVisible, setChangeVisible] = useState()
+
+  let ddd = [];
+  const datecal = () => {
+    ddd = date.modal.index
+    console.log(ddd);
+  }
+
+  //console.log(dates.map((dates) => dates.format())); //선택일 배열
+  //console.log(allDates.map((date2) => date2.format())); //종료일 배열
+
+
   const EndDateSet = () => {
     dispatch(MODAL_END_DATE())
     console.log();
@@ -215,8 +257,25 @@ const CalInModal = ({ isModal, setModal }) => {
 
 
   const settingDate = (e) => {
-    console.log(e.target.value);
+    switch (e.target.value) {
+      case "nowDate":
+        setChangeVisible("1")
+        break;
+
+      case "selectedDate":
+        setChangeVisible("2")
+        break;
+
+      case "endDate":
+        setChangeVisible("3")
+        break;
+
+      default:
+        break;
+    }
   }
+
+
 
 
 
@@ -247,8 +306,8 @@ const CalInModal = ({ isModal, setModal }) => {
 
       <SettingContainer>
         <SelectedDay>2022.06.25</SelectedDay>
-        <AddButton>ad</AddButton>
-        <RemoveButton>re</RemoveButton>
+        <PrevButton>이전날</PrevButton>
+        <NextButton>다음날</NextButton>
 
         <ContentBox placeholder="여기"></ContentBox>
 
@@ -271,11 +330,45 @@ const CalInModal = ({ isModal, setModal }) => {
           </RadioBox>
         </FieldSet>
 
+        {changeVisible == "1" ?
+          datecal()
+          : (changeVisible == "2" ?
+            <CalendarBox>
+              <DatePicker
+                value={dates}
+                onChange={setDates}
+                format="MMMM DD YYYY"
+                sort
+                plugins={[
+                  <DatePanel />
+                ]}
+              /></CalendarBox> : (changeVisible == "3" ?
+                <CalendarBox><DatePicker
+                  range
+                  calendarPosition="top-left"
+                  fixMainPosition
+                  value={dates2}
+                  minDate={new DateObject().toFirstOfMonth()}
+                  maxDate={new DateObject().toLastOfMonth()}
+                  onChange={dateObjects => {
+                    setDates2(dateObjects)
+                    setAllDates2(getAllDatesInRange(dateObjects))
+                  }}
+                  plugins={[
+                    <DatePanel eachDaysInRange />
+                  ]}
+                /></CalendarBox> : null))}
+
+
+
         {/* <EndDateText>종료일 설정하기</EndDateText>
         <SelectDayCheckBox type="checkbox" onClick={SelectedDateSet} />
 
         <SelectDateText>선택일 설정하기</SelectDateText>
         <EndDayCheckBox type="checkbox" onClick={EndDateSet} /> */}
+
+        <AddButton>추가하기</AddButton>
+
       </SettingContainer>
 
 
