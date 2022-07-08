@@ -55,6 +55,24 @@ const Gender = require("../image/myinfo/gender.png")
 const Email = require("../image/myinfo/email.png")
 const Phone = require("../image/myinfo/phone-call.png")
 
+const StrengthImg = require("../image/ViewDetails/strength.jpg")
+const ReviewImg = require("../image/ViewDetails/reviewImg.jpg")
+const MapImg = require("../image/ViewDetails/mapImg.jpg")
+const ChatbotImg = require("../image/ViewDetails/chatbot.jpg")
+const NoticeImg = require("../image/ViewDetails/notice.jpg")
+const MyinfoImg = require("../image/ViewDetails/myinfo.jpg")
+const ChallengeImg = require("../image/ViewDetails/challenge.jpg")
+
+const InBodyTitle = require("../image/strength/inbody.png")
+const AlarmTitle = require("../image/strength/alarm.png")
+const TrainingTitle = require("../image/strength/training.png")
+const CalendarTitle = require("../image/strength/calendar.png")
+
+const InBodyThumbnail = require("../image/strength/inbodyThumbnail.jpg")
+const TrainingThumbnail = require("../image/strength/trainingThumbnail.jpg")
+const CalendarThumbnail = require("../image/strength/calendarThumbnail.jpg")
+const AlarmThumbnail = require("../image/strength/alarmThumbnail.jpg")
+
 export {
   //상단 버튼두개
   Light,
@@ -113,4 +131,22 @@ export {
   Gender,
   Email,
   Phone,
+  // 메인 페이지 상세 보기
+  ReviewImg,
+  MapImg,
+  ChatbotImg,
+  NoticeImg,
+  MyinfoImg,
+  ChallengeImg,
+  StrengthImg,
+  // Strength TItle
+  InBodyTitle,
+  AlarmTitle,
+  TrainingTitle,
+  CalendarTitle,
+  // Strength Thumbnail
+  InBodyThumbnail,
+  TrainingThumbnail,
+  CalendarThumbnail,
+  AlarmThumbnail
 }

@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import { Close } from "../../../image/index.js"
 
-import { PushUpFalse } from "../../pages/Strength.js"
+import { PushUpFalse } from "../../pages/Strength/Training.js"
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic

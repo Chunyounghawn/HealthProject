@@ -1,3 +1,4 @@
+/*
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper"
@@ -16,7 +17,6 @@ import AlarmModal from "../modal/StrengthPage/Alarm.js"
 //import ScheduleModal from "../modal/StrengthPage/Schedule.js"
 import CalendarModal from "../modal/StrengthPage/Calendar/Calendar.js"
 import TrainingModal from "../modal/StrengthPage/Training.js"
-
 
 // Training modal
 import PushUpModal from "../modal/Training/PushUp.js"
@@ -258,7 +258,6 @@ function StrengthSection() {
 
   const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
 
-
   PushUpTrue = function PushUpModalTrue() {
     setTrainingModalOpen(false)
     setPushUpModalOpen(true)
@@ -308,8 +307,6 @@ function StrengthSection() {
     setTrainingModalOpen(true)
     setPlankModalOpen(false)
   }
-
-
 
   CalInModalTrue = function CalInModalTrue() {
     setCalendarModalOpen(true)
@@ -451,10 +448,10 @@ function StrengthSection() {
         />
 
         <CalInModal isModal={CalInModalIsOpen} setModal={setCalInModalIsOpen} />
-
       </Container>
     </div>
   )
 }
 
 export default StrengthSection
+*/
