@@ -295,6 +295,20 @@ const Signup = ({ isModal, setModal }) => {
     console.log("Asdfasdf");
   }
 
+  const IDCheck = () => {
+    axios({
+      url: '/test',
+      method: 'post',
+      data: 'test용'
+    })
+      .then(function a(response) {
+        console.log("서버에서 내려온값:", response)
+      })
+      .catch(function (error) {
+        console.log("에러내용:", error);
+      });
+  }
+
   /*
   // 파일 저장
   const saveFileImage = (e) => {
@@ -331,6 +345,7 @@ const Signup = ({ isModal, setModal }) => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -339,16 +354,44 @@ const Signup = ({ isModal, setModal }) => {
 
   const submitForm = (data) => {
     console.log(data);
+
+    const form = new FormData();
+    Object.keys(data).forEach(function (k) {
+      form.append(k, data[k])
+    })
+
+    axios({
+      url: '/test',
+      method: 'post',
+      data: form
+    })
+      .then(function a(response) {
+        console.log("서버에서 내려온값:", response)
+      })
+      .catch(function (error) {
+        console.log("에러내용:", error);
+      });
+
   }; //*
 
 
 
-  const form = new FormData();
-  form.append('name', 'veneas');
-  form.append('food', 'cake');
 
 
+  const hihi = (data) => {
+    console.log(data);
+  }
 
+
+  const [text, setText] = useState('');
+
+  const onChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const onReset = () => {
+    console.log(text);
+  };
 
 
 
@@ -400,9 +443,12 @@ const Signup = ({ isModal, setModal }) => {
 
                 <IDArea>
                   <LabelStyle htmlFor="id">아이디</LabelStyle>
-                  <InputStyle type="text" {...register('id')} />
+                  <InputStyle type="text"   {...register('id')} />
                   <ErrMsgStyle>{errors.id && '아이디 형식이 맞지 않습니다.'}</ErrMsgStyle>
-                  <DoubleCheckBtn type="button" onClick={test}>중복체크</DoubleCheckBtn>
+                  <DoubleCheckBtn type="button" onClick={() => {
+                    const value = getValues("id");
+                    console.log(value);
+                  }}>중복체크</DoubleCheckBtn>
                 </IDArea>
 
                 <NickNameArea>
