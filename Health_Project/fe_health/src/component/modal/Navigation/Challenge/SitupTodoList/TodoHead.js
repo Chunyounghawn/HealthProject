@@ -46,19 +46,13 @@ const TodoHeadBlock = styled.div`
   }
 `
 
-let array = new Array(3)
 let battery = 0,
-  result = 0,
-  rs = 0
+  result = 0
 
 function Bat(gauge, total, success) {
+  // 성공 갯수를 퍼샌트로 변환하는 함수
   gauge = Math.floor((parseInt(success) / parseInt(total)) * 100)
   return gauge
-}
-
-function Result() {
-  rs = Bat(array[0], array[1], array[2])
-  return rs
 }
 
 function TodoHead() {
@@ -66,8 +60,7 @@ function TodoHead() {
   const undoneTasks = todos.filter((todo) => todo.id)
   const success = todos.filter((todo) => todo.success)
 
-  array = [battery, undoneTasks.length, success.length]
-  result = Result()
+  result = Bat(battery, undoneTasks.length, success.length)
 
   const today = new Date()
   const dateString = today.toLocaleDateString("ko-KR", {

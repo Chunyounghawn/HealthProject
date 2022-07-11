@@ -21,7 +21,6 @@ import MainPageModal from "react-modal"
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 
-
 const ModalContainer = styled.div`
   position: absolute;
   top: 80px;
@@ -131,14 +130,24 @@ const MainPage = ({ isModal, setModal }) => {
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
+        overlay: {
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          height: "100%",
+          width: "90%",
+        },
+
         content: {
-          position: "relative",
+          position: "fixed",
+          top: "0px",
+          bottom: "0px",
+          left: "-200px",
+          right: "0px",
+          margin: "auto",
           width: "1610px",
           height: "850px",
-          left: "2%",
-          right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#FBF8F1",
         },
       }}
     >

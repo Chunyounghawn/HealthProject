@@ -11,7 +11,6 @@ import React from "react"
 const TotalPage = () => {
   return (
     <>
-      {console.log(window.scrollY)}
       <MainSection content="Slide down!" />
       <StrengthSection content="StrengthSection" />
       <ReviewSection content="ReviewSection" />

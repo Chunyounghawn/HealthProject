@@ -20,7 +20,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard, Mousewheel]) // Swip
 
 const Container = styled.div`
   width: 1740px;
-  height: 962px;
+  height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -131,7 +131,6 @@ function QuestionSection() {
           slidesPerView={3}
           navigation
           pagination={{ clickable: true }}
-
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           loop={true}
         >

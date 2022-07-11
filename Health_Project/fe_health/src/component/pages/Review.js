@@ -29,7 +29,6 @@ import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 import "swiper/css/effect-cube"
 
-
 SwiperCore.use([
   Navigation,
   Pagination,
@@ -45,7 +44,7 @@ SwiperCore.use([
 
 const Container = styled.div`
   width: 1740px;
-  height: 962px;
+  height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -60,7 +59,7 @@ const ReviewBottom = styled.div`
   top: 89%;
   width: 1580px;
   height: 85px;
-  background-color:${(props) => props.theme.reviewPage.bottomBackgroundColor};
+  background-color: ${(props) => props.theme.reviewPage.bottomBackgroundColor};
   border-radius: 30px;
 `
 
@@ -97,7 +96,7 @@ const Comments = styled.div`
   position: absolute;
   text-align: center;
   font-size: 20px;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 `
 
 const Comments1 = styled(Comments)`
@@ -105,7 +104,6 @@ const Comments1 = styled(Comments)`
   right: 10%;
   color: #b4b4b4;
   font-size: 40px;
-  
 `
 
 const Comments2 = styled(Comments)`
@@ -157,7 +155,6 @@ function ReviewSection() {
     <div className="section">
       <Container>
         <Swiper
-
           style={{
             backgroundColor: "#F0F0F0",
             width: "1600px",

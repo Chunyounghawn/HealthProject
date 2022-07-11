@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import BatteryGauge from "react-battery-gauge"
 import { PushUp, SitUp, Squat } from "../../../../image/index.js"
+import { Pushupgauge } from "../Challenge/PushupTodoList/PushupGauge.js"
+import { Situpgauge } from "../Challenge/SitupTodoList/SitupGauge.js"
+import { Squatgauge } from "../Challenge/SquatTodoList/SquatGauge.js"
 
 const ChallengeIcon = styled.img`
   width: 100px;
@@ -38,7 +41,7 @@ const ChallengeInfo = () => {
         <ChallengeIcon src={PushUp} />
         <TitleText>팔굽혀펴기</TitleText>
         <BatteryGauge
-          value={25}
+          maxValue={Pushupgauge === 0 ? 1000000 : Pushupgauge}
           animated={true}
           style={{
             height: "70px",
@@ -53,7 +56,7 @@ const ChallengeInfo = () => {
         <ChallengeIcon src={SitUp} />
         <TitleText>윗몸일으키기</TitleText>
         <BatteryGauge
-          value={50}
+          maxValue={Situpgauge === 0 ? 1000000 : Situpgauge}
           animated={true}
           style={{
             height: "70px",
@@ -68,7 +71,7 @@ const ChallengeInfo = () => {
         <ChallengeIcon src={Squat} />
         <TitleText>스쿼트</TitleText>
         <BatteryGauge
-          value={75}
+          maxValue={Squatgauge === 0 ? 1000000 : Squatgauge}
           animated={true}
           style={{
             height: "70px",

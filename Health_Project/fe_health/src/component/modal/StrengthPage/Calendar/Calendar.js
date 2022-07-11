@@ -10,8 +10,7 @@ import MakeCalendar from "./MakeCalendar.js"
 
 import { DECREMENT, INCREMENT, MODAL } from "../../../../redux/calendar.js"
 
-import { CalInModalTrue } from "../../../pages/Strength.js"
-
+import { CalInModalTrue } from "../../../pages/Strength/Calendar.js"
 
 const ModalHead = styled.div`
   width: 100%;
@@ -19,11 +18,7 @@ const ModalHead = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `
-
-
-
 
 const Closebtn = styled.img`
   width: 35px;
@@ -36,7 +31,6 @@ const Closebtn = styled.img`
     cursor: pointer;
   }
 `
-
 
 const CalendarStyle = styled.div`
   body {
@@ -55,8 +49,7 @@ const CalendarStyle = styled.div`
     justify-content: center;
   }
 
-.header {
-
+  .header {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -143,9 +136,6 @@ const TableStyle = styled.table`
   }
 `
 
-
-
-
 const Calendar = ({ isModal, setModal }) => {
   const state = useSelector((state) => state.calendar)
   const dispatch = useDispatch()
@@ -162,7 +152,6 @@ const Calendar = ({ isModal, setModal }) => {
   // 일정
   const todo = state.schedule
   //console.log(todo);
-
 
   const index = state.modal.index
   //console.log(index);
@@ -248,9 +237,6 @@ const Calendar = ({ isModal, setModal }) => {
               todo,
             })}
           </tbody>
-
-
-
         </TableStyle>
       </CalendarStyle>
 

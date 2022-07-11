@@ -15,12 +15,16 @@ const Container = styled.div`
   align-items: center;
 `
 
+export let Situpgauge = 0
+
 const SitupGauge = (props) => {
+  Situpgauge = props.total === 0 ? 1000000 : 5000 / props.value
+
   return (
     <>
       <Container>
         <BatteryGauge
-          maxValue={props.total === 0 ? 1000000 : 5000 / props.value}
+          maxValue={Situpgauge}
           orientation={"vertical"}
           animated={true}
           style={{

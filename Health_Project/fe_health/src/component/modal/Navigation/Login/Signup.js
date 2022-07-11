@@ -16,8 +16,6 @@ const ModalContainer = styled.div`
   right: 0px;
   width: 1350px;
   height: 890px;
-
-
 `
 
 const ModalHead = styled.div`
@@ -174,15 +172,12 @@ const Birthdate = styled.div`
   align-content: center;
 `
 function tooktak(event) {
-  event.preventDefault();
+  event.preventDefault()
 }
 
 const Signup = ({ isModal, setModal }) => {
-
-
-  const modalTFselector = useSelector((state) => (state.modalTFselector))
-  const dispatch = useDispatch();
-
+  const modalTFselector = useSelector((state) => state.modalTFselector)
+  const dispatch = useDispatch()
 
   const [ServiceCheckShow, setServiceCheckShow] = useState(true)
   const [SignupFormShow, setSignupFormShow] = useState(true)
@@ -245,30 +240,35 @@ const Signup = ({ isModal, setModal }) => {
   }
 
   return (
-
     <SignupModal
       isOpen={isModal}
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
-
       style={{
+        overlay: {
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          height: "100%",
+          width: "90%",
+        },
+
         content: {
-          position: "relative",
+          position: "fixed",
+          top: "0px",
+          bottom: "0px",
+          left: "-200px",
+          right: "0px",
+          margin: "auto",
           width: "1610px",
           height: "850px",
-          left: "2%",
-          right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#FBF8F1",
         },
       }}
     >
       <Menubar />
 
       <ModalContainer>
-
-
-
         {modalTFselector.signup ? (
           <>
             <ModalHead>
@@ -281,9 +281,11 @@ const Signup = ({ isModal, setModal }) => {
                 id="UserImg"
                 style={{
                   display: "none",
-                }} />
+                }}
+              />
               <Closebtn src={Close} onClick={() => setModal(false)} />
-            </ModalHead><ModalBody>
+            </ModalHead>
+            <ModalBody>
               <SignupTop>
                 <input
                   type="text"
@@ -294,7 +296,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
                 <input
                   type="password"
                   name="userPW"
@@ -304,7 +307,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
                 <input
                   type="password"
                   name="userPW"
@@ -314,7 +318,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
               </SignupTop>
 
               <SignupMiddle>
@@ -327,7 +332,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
 
                 <ManBtn color={ManColor} onClick={ManChoice}>
                   남자
@@ -350,7 +356,8 @@ const Signup = ({ isModal, setModal }) => {
                     left: "135px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
                 <input
                   type="text"
                   name="month"
@@ -365,7 +372,8 @@ const Signup = ({ isModal, setModal }) => {
                     left: "265px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
 
                 <input
                   type="text"
@@ -381,7 +389,8 @@ const Signup = ({ isModal, setModal }) => {
                     right: "2px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
 
                 <input
                   type="text"
@@ -391,7 +400,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
               </SignupMiddle>
 
               <SignupBottom>
@@ -404,7 +414,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
 
                 <Certified>인증</Certified>
 
@@ -417,7 +428,8 @@ const Signup = ({ isModal, setModal }) => {
                     height: "50px",
                     fontSize: "30px",
                     borderRadius: "10px",
-                  }} />
+                  }}
+                />
               </SignupBottom>
               <SignupBtn
                 onClick={() => {
@@ -427,10 +439,12 @@ const Signup = ({ isModal, setModal }) => {
               >
                 Login
               </SignupBtn>
-            </ModalBody><ModalFooter />
+            </ModalBody>
+            <ModalFooter />
           </>
-        ) : <ServiceCheckForm />
-        }
+        ) : (
+          <ServiceCheckForm />
+        )}
       </ModalContainer>
     </SignupModal>
   )

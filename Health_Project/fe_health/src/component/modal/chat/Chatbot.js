@@ -232,20 +232,31 @@ const Chatbot = ({ isModal, setModal }) => {
       ariaHideApp={false}
       shouldCloseOnOverlayClick={false}
       style={{
+        overlay: {
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          height: "100%",
+          width: "90%",
+        },
+
         content: {
+          position: "fixed",
+          top: "0px",
+          bottom: "0px",
+          left: "-200px",
+          right: "0px",
+          margin: "auto",
           width: "320px",
           height: "500px",
-          position: "relative",
-          top: "200px",
-          left: "680px",
-          display: "flex",
+          borderRadius: "30px",
           overflow: "hidden",
           border: "medium none black",
+          backgroundColor: "transparent",
+          display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
           alignContent: "center",
-          borderRadius: "20px",
-          backgroundColor: "transparent",
         },
       }}
     >

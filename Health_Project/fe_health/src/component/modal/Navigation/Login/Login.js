@@ -95,16 +95,14 @@ const Login = ({ isModal, setModal }) => {
   const [PW, setPW] = React.useState("")
 
   const IDOnChange = React.useCallback((e) => {
-    console.log(e);
+    console.log(e)
     setID(e.target.value)
   }, [])
 
   const PASSOnChange = React.useCallback((e) => {
-    console.log(e);
+    console.log(e)
     setPW(e.target.value)
   }, [])
-
-
 
   return (
     <LoginModal
@@ -112,14 +110,24 @@ const Login = ({ isModal, setModal }) => {
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
+        overlay: {
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          height: "100%",
+          width: "90%",
+        },
+
         content: {
-          position: "relative",
+          position: "fixed",
+          top: "0px",
+          bottom: "0px",
+          left: "-200px",
+          right: "0px",
+          margin: "auto",
           width: "1610px",
           height: "850px",
-          left: "2%",
-          right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#FBF8F1",
         },
       }}
     >
@@ -151,7 +159,7 @@ const Login = ({ isModal, setModal }) => {
               <input
                 type="password"
                 name="userPW"
-                value={PW || ''}
+                value={PW || ""}
                 onChange={PASSOnChange}
                 style={{
                   width: "200px",
@@ -164,25 +172,22 @@ const Login = ({ isModal, setModal }) => {
               <br />
               <LoginBtn
                 onClick={() => {
-
                   //나중에 setState로 일정조건 안될시 버튼 안눌리게 변경해야함
-
 
                   if (PW == "" || ID == "") {
                     alert("빈칸 채워주세요")
-                    console.log(ID);
-                    console.log(PW);
+                    console.log(ID)
+                    console.log(PW)
                   } else {
-                    const LoginDataForm = new FormData();
-                    LoginDataForm.append('user_id', ID);
-                    LoginDataForm.append('user_pw', PW);
+                    const LoginDataForm = new FormData()
+                    LoginDataForm.append("user_id", ID)
+                    LoginDataForm.append("user_pw", PW)
                     axios({
-                      url: '/test',
-                      method: 'post',
-                      data: LoginDataForm
+                      url: "/test",
+                      method: "post",
+                      data: LoginDataForm,
                     })
                       .then(function a(response) {
-
                         setID("")
                         setPW("")
 
@@ -190,22 +195,17 @@ const Login = ({ isModal, setModal }) => {
                           console.log(response)
                           setModal(false)
                           MainPageTrue()
-                          console.log("성공인듯?");
+                          console.log("성공인듯?")
                         } else {
                           console.log(response)
                           alert("스프링에서 아이디 없다함")
                         }
-
                       })
-                      .catch(function (error) {
-                        console.log(error);
+                      .catch(function(error) {
+                        console.log(error)
                         alert("서버통신에러")
-                      });
+                      })
                   }
-
-
-
-
                 }}
               >
                 Login
