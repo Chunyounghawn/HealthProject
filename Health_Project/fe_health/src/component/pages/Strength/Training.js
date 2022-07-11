@@ -116,7 +116,6 @@ export let PushUpTrue,
   PlankTrue,
   PlankFalse
 
-
 const Training = () => {
   const [TrainingModalIsOpen, setTrainingModalOpen] = useState(false)
 

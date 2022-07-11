@@ -73,6 +73,8 @@ const TrainingThumbnail = require("../image/strength/trainingThumbnail.jpg")
 const CalendarThumbnail = require("../image/strength/calendarThumbnail.jpg")
 const AlarmThumbnail = require("../image/strength/alarmThumbnail.jpg")
 
+const DefaultImage = require("../image/board/default-image.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -148,5 +150,7 @@ export {
   InBodyThumbnail,
   TrainingThumbnail,
   CalendarThumbnail,
-  AlarmThumbnail
+  AlarmThumbnail,
+  // Boader
+  DefaultImage,
 }

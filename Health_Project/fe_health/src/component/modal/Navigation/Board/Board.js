@@ -1,9 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import { Close } from "../../../../image/index.js"
+import Header from "./Header.js"
+import Home from "./Home.js"
 
 import Menubar from "../Menubar.js"
 import BoardModal from "react-modal"
+import { ReferenceDot } from "recharts"
+import { red } from "@mui/material/colors"
+import { Grow } from "@mui/material"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -11,6 +16,7 @@ const ModalContainer = styled.div`
   right: 0px;
   width: 1350px;
   height: 890px;
+  background-color: rgb(231, 235, 240);
 `
 
 const ModalHead = styled.div`
@@ -20,16 +26,10 @@ const ModalHead = styled.div`
 
 const ModalBody = styled.div`
   width: 1350px;
-  height: 690px;
+  height: 790px;
+
   position: absolute;
   top: 100px;
-`
-
-const ModalFooter = styled.div`
-  position: absolute;
-  width: 1350px;
-  height: 100px;
-  bottom: 0px;
 `
 
 const Closebtn = styled.img`
@@ -44,29 +44,58 @@ const Closebtn = styled.img`
   }
 `
 
-const Text = styled.div`
+const CustomStyle = styled(BoardModal)`
+  width: 1610px;
+  height: 850px;
   position: absolute;
-  top: 45%;
-  left: 45%;
-  font-size: 30px;
+  top: 4%;
+  left: 2%;
+  border-radius: 30px;
+  background-color: red;
+  @media screen and (min-width: 1920px) {
+  }
 `
 
-const Board = ({ isModal, setModal }, props) => {
+const Container = styled.div`
+  width: 1730px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: -10;
+  opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  //  background-color: orange;
+`
 
+const Board = ({ isModal, setModal }) => {
   return (
     <BoardModal
       isOpen={isModal}
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
       style={{
+        overlay: {
+          position: "absolute",
+          top: "0px",
+          left: "0px",
+          height: "100%",
+          width: "90%",
+        },
+
         content: {
-          position: "relative",
+          position: "fixed",
+          top: "0px",
+          bottom: "0px",
+          left: "-200px",
+          right: "0px",
+          margin: "auto",
           width: "1610px",
           height: "850px",
-          left: "2%",
-          right: "10%",
           borderRadius: "30px",
-          backgroundColor: "#FBF8F1",
         },
       }}
     >
@@ -77,9 +106,9 @@ const Board = ({ isModal, setModal }, props) => {
           <Closebtn src={Close} onClick={() => setModal(false)} />
         </ModalHead>
         <ModalBody>
-          <Text>BoardModal</Text>
+          <Header />
+          <Home />
         </ModalBody>
-        <ModalFooter />
       </ModalContainer>
     </BoardModal>
   )

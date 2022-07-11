@@ -4,7 +4,7 @@ import Map from "./api/Map"
 
 const Container = styled.div`
   width: 1740px;
-  height: 962px;
+  height: 100%;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@ const MapContainer = styled.div`
   height: 820px;
   border-width: thick;
   border-color: pink;
-  bordr-style: solid;
+  border-style: solid;
   border-radius: 30px;
   position: relative;
 `

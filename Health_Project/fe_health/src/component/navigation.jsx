@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
 
@@ -20,12 +20,16 @@ import NoticeModal from "./modal/Navigation/Notice/Notice.js"
 import MyInformationModal from "./modal/Navigation/MyInfo/MyInformation.js"
 import ChallengeModal from "./modal/Navigation/Challenge/Challenge.js"
 import BoardModal from "./modal/Navigation/Board/Board.js"
+import AddBoardModal from "./modal/Navigation/Board/Addboard.js"
+import BoardList from "./modal/Navigation/Board/BoardList.js"
 import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
 
 import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
+
+const Container = styled.div``
 
 const NavigationStyle = styled.div`
   position: fixed;
@@ -83,6 +87,8 @@ export let LoginTrue,
   InformationTrue,
   ChallengeTrue,
   BoardTrue,
+  AddBoardTrue,
+  BoardListTrue,
   PushUpTrue,
   SitUpTrue,
   SquatTrue,
@@ -105,17 +111,21 @@ const Navigations = () => {
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
   const [MainPageModalIsOpen, setMainPageModalOpen] = React.useState(false)
 
+  const [AddBoaderModalIsOpen, setAddBoaderModalOpen] = React.useState(false)
+  const [BoardListModalIsOpen, setBoardListModalOpen] = React.useState(false)
+
   LoginTrue = function LoginModalTrue() {
     // 로그인 화면
     setNoticeModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
     setLoginModalOpen(true)
-
     setMainPageModalOpen(false)
   }
 
@@ -126,11 +136,12 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-
     setMainPageModalOpen(false)
   }
 
@@ -141,11 +152,12 @@ const Navigations = () => {
     setMyInformationModalOpen(true)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-
     setMainPageModalOpen(false)
   }
 
@@ -156,11 +168,12 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(true)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-
     setMainPageModalOpen(false)
   }
 
@@ -171,11 +184,44 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(true)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
+    setMainPageModalOpen(false)
+  }
 
+  AddBoardTrue = function AddBoardModalTrue() {
+    // 글쓰기 화면
+    setLoginModalOpen(false)
+    setNoticeModalOpen(false)
+    setMyInformationModalOpen(false)
+    setChallengeModalOpen(false)
+    setBoardModalOpen(false)
+    setAddBoaderModalOpen(true)
+    setBoardListModalOpen(false)
+    setPushUpModalOpen(false)
+    setSitUpModalOpen(false)
+    setSquatModalOpen(false)
+    setSignupModalOpen(false)
+    setMainPageModalOpen(false)
+  }
+
+  BoardListTrue = function CardModalTrue() {
+    // 게시판 조회 화면
+    setLoginModalOpen(false)
+    setNoticeModalOpen(false)
+    setMyInformationModalOpen(false)
+    setChallengeModalOpen(false)
+    setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(true)
+    setPushUpModalOpen(false)
+    setSitUpModalOpen(false)
+    setSquatModalOpen(false)
+    setSignupModalOpen(false)
     setMainPageModalOpen(false)
   }
 
@@ -186,11 +232,12 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(true)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-
     setMainPageModalOpen(false)
   }
 
@@ -201,11 +248,12 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(true)
     setSquatModalOpen(false)
     setSignupModalOpen(false)
-
     setMainPageModalOpen(false)
   }
 
@@ -216,11 +264,12 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(true)
     setSignupModalOpen(false)
-
     setMainPageModalOpen(false)
   }
 
@@ -231,10 +280,11 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
-
     setSignupModalOpen(true)
   }
 
@@ -245,6 +295,8 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
+    setAddBoaderModalOpen(false)
+    setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
     setSquatModalOpen(false)
@@ -257,15 +309,7 @@ const Navigations = () => {
 
   return (
     <>
-      <NavigationStyle>
-        {!theme.darkmode ? (
-          <ThemeButton src={Light} onClick={() => dispatch(darkTheme())} />
-        ) : (
-          <ThemeButton src={Light} onClick={() => dispatch(lightTheme())} />
-        )}
-
-        <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
-
+      <Container>
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
 
         <NoticeModal
@@ -285,6 +329,16 @@ const Navigations = () => {
 
         <BoardModal isModal={BoardModalIsOpen} setModal={setBoardModalOpen} />
 
+        <AddBoardModal
+          isModal={AddBoaderModalIsOpen}
+          setModal={setAddBoaderModalOpen}
+        />
+
+        <BoardList
+          isModal={BoardListModalIsOpen}
+          setModal={setBoardListModalOpen}
+        />
+
         <PushUpModal
           isModal={PushUpModalIsOpen}
           setModal={setPushUpModalOpen}
@@ -303,6 +357,16 @@ const Navigations = () => {
           isModal={MainPageModalIsOpen}
           setModal={setMainPageModalOpen}
         />
+      </Container>
+
+      <NavigationStyle>
+        {!theme.darkmode ? (
+          <ThemeButton src={Light} onClick={() => dispatch(darkTheme())} />
+        ) : (
+          <ThemeButton src={Light} onClick={() => dispatch(lightTheme())} />
+        )}
+
+        <UserButton src={User} onClick={() => setLoginModalOpen(true)} />
 
         <ul>
           <li data-menuanchor="MainPage">
