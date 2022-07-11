@@ -103,11 +103,12 @@ export let CalInModalTrue
 
 const Calendar = () => {
   const [CalendarModalIsOpen, setCalendarModalOpen] = useState(false)
-  const [CalInModalIsOpen, setCalInModalIsOpen] = React.useState(false)
+  const [CalInModalIsOpen, setCalInModalIsOpen] = useState(false)
 
   CalInModalTrue = function CalInModalTrue() {
     setCalendarModalOpen(true)
     setCalInModalIsOpen(true)
+
   }
 
   return (

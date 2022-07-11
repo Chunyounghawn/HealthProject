@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const ModalTFselector = createSlice({
   name: "ModalTFselector",
   initialState: {
-    signup: false
+    signup: true
   },
   reducers: {
     signUpTrue: (state) => {
