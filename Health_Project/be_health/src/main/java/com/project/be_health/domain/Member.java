@@ -54,14 +54,14 @@ public class Member{
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK의 생성 규칙을 나타냄
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20, unique = true)
     private String userId; // 아이디
 
     @Column(nullable = false, length = 100)
     private String password;
 
-    //    @Column(nullable = false, unique = true)
-//    private String nickname;  //닉네임
+    @Column(nullable = false, unique = true)
+    private String nickname;  //닉네임
     @Column(nullable = false, length = 30)
     private String name; // 사용자 이름
 
@@ -82,10 +82,11 @@ public class Member{
     private Role role;
 
     @Builder
-    public Member(String userId, String password, String name, String gender,
+    public Member(String userId, String password,String nickname, String name, String gender,
                   String year, String month, String day, String email, Role role) {
         this.userId = userId;
         this.password = password;
+        this.nickname = nickname;
         this.name = name;
         this.gender = gender;
 //        this.year = year;
@@ -93,5 +94,16 @@ public class Member{
 //        this.day = day;   // error
         this.email = email;
         this.role = role;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
+    public void update(String password, String nickname) {
+        this.password = password;
+        this.nickname = nickname;
     }
 }
