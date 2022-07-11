@@ -1,23 +1,13 @@
 package com.project.be_health.repository;
 
 import com.project.be_health.domain.Member;
+import com.project.be_health.domain.Posts;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    /* Security */
-    Optional<Member> findByUsername(String username);
-
-    /* OAuth */
-    Optional<Member> findByEmail(String email);
-
-    /* user GET */
-    Member findByNickname(String nickname);
-
-    /* 중복 검사> 중복인 경우 true, 중복되지 않은경우 false 리턴 */
-    boolean existsByUsername(String username);
-    boolean existsByNickname(String nickname);
-    boolean existsByEmail(String email);
+//    @Query("select m from Member m order by m.id desc")
+//    List<Member> findAllDesc();
 }
-
