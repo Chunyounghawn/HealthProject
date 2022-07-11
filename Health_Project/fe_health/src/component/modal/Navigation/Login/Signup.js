@@ -68,6 +68,7 @@ const InputStyle = styled.input`
   border: none;
   border-bottom: 1px solid #ddd;
   margin-bottom: 5px;
+
   font-size: 35px;
 `
 
@@ -98,6 +99,7 @@ const DoubleCheckBtn = styled.button`
   right: 8%;
   width: 90px;
   height: 60px;
+
   align-items: center;
   outline: none;
   border: none;
@@ -107,6 +109,7 @@ const DoubleCheckBtn = styled.button`
   cursor: pointer;
   padding-left: 1rem;
   padding-right: 1rem;
+
   /*색상 */
   background: #228be6;
   &:hover {
@@ -124,6 +127,7 @@ const EmailCheckBtn = styled.button`
   right: 8%;
   width: 90px;
   height: 60px;
+
   align-items: center;
   outline: none;
   border: none;
@@ -133,6 +137,7 @@ const EmailCheckBtn = styled.button`
   cursor: pointer;
   padding-left: 1rem;
   padding-right: 1rem;
+
   /*색상 */
   background: #228be6;
   &:hover {
@@ -187,6 +192,7 @@ const SexArea = styled.div`
   width: 200px;
   height: 70px;
   background-color: white;
+
   span {
     position: absolute;
     width: 200px;
@@ -227,6 +233,7 @@ const SubmitBtn = styled.button`
   left: 41%;
   border-radius: 10px;
   background-color: #efdad7;
+
   width: 250px;
   height: 80px;
   transition-duration: 0.3s;
@@ -256,16 +263,32 @@ const Signup = ({ isModal, setModal }) => {
     console.log("Asdfasdf")
   }
 
+  const IDCheck = () => {
+    axios({
+      url: "/test",
+      method: "post",
+      data: "test용",
+    })
+      .then(function a(response) {
+        console.log("서버에서 내려온값:", response)
+      })
+      .catch(function(error) {
+        console.log("에러내용:", error)
+      })
+  }
+
   /*
   // 파일 저장
   const saveFileImage = (e) => {
     //    setImageFile(URL.createObjectURL(e.target.ImageFile))
   }
+
   // 파일 삭제
   const deleteFileImage = () => {
     URL.revokeObjectURL(ImageFile)
     //    setImageFile("")
   }
+
   const onImageChange = (e) => {
     setImageFile(e.target.ImageFile)
   }
@@ -300,6 +323,7 @@ const Signup = ({ isModal, setModal }) => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -307,11 +331,38 @@ const Signup = ({ isModal, setModal }) => {
 
   const submitForm = (data) => {
     console.log(data)
+
+    const form = new FormData()
+    Object.keys(data).forEach(function(k) {
+      form.append(k, data[k])
+    })
+
+    axios({
+      url: "/test",
+      method: "post",
+      data: form,
+    })
+      .then(function a(response) {
+        console.log("서버에서 내려온값:", response)
+      })
+      .catch(function(error) {
+        console.log("에러내용:", error)
+      })
   } //*
 
-  const form = new FormData()
-  form.append("name", "veneas")
-  form.append("food", "cake")
+  const hihi = (data) => {
+    console.log(data)
+  }
+
+  const [text, setText] = useState("")
+
+  const onChange = (e) => {
+    setText(e.target.value)
+  }
+
+  const onReset = () => {
+    console.log(text)
+  }
 
   return (
     <SignupModal
@@ -357,7 +408,13 @@ const Signup = ({ isModal, setModal }) => {
                   <ErrMsgStyle>
                     {errors.id && "아이디 형식이 맞지 않습니다."}
                   </ErrMsgStyle>
-                  <DoubleCheckBtn type="button" onClick={test}>
+                  <DoubleCheckBtn
+                    type="button"
+                    onClick={() => {
+                      const value = getValues("id")
+                      console.log(value)
+                    }}
+                  >
                     중복체크
                   </DoubleCheckBtn>
                 </IDArea>

@@ -1,6 +1,5 @@
 import CalendarModal from "react-modal"
 
-
 const CalModal = ({ isModal, setModal }) => {
   return (
     <CalendarModal
@@ -18,9 +17,7 @@ const CalModal = ({ isModal, setModal }) => {
           backgroundColor: "hotpink",
         },
       }}
-    >
-
-    </CalendarModal>
+    ></CalendarModal>
   )
 }
 
