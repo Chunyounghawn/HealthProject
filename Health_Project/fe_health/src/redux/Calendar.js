@@ -9,9 +9,11 @@ export const Calendar = createSlice({
     year: today.getFullYear(),
     month: today.getMonth(),
     modal: {
-      index: ''
+      index: '',
+      schedule: []
     },
-    schedule: []
+
+
   },
   reducers: {
     INCREMENT: (state) => {

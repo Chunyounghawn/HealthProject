@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { Close, SignupImg } from "../../../../image/index.js"
 
@@ -10,10 +10,15 @@ import { LoginTrue } from "../../../navigation.jsx"
 import ServiceCheckForm from "./ServiceCheckForm.js"
 import { useDispatch, useSelector } from "react-redux"
 
-import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup" //*
-import { useForm } from "react-hook-form"
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'; //*
+import { useForm } from 'react-hook-form';
 import axios from "axios"
+
+import emailjs from '@emailjs/browser';
+
+
+
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -21,6 +26,8 @@ const ModalContainer = styled.div`
   right: 0px;
   width: 1350px;
   height: 890px;
+
+
 `
 
 const ModalHead = styled.div`
@@ -39,7 +46,10 @@ const ModalBody = styled.div`
   top: 150px;
   display: flex;
   justify-content: center;
+
 `
+
+
 
 const UserIcon = styled.img`
   width: 100px;
@@ -56,12 +66,15 @@ const LabelStyle = styled.label`
   font-size: 22px;
 `
 
+
+
 const InputStyle = styled.input`
-  position: absolute;
+
+position: absolute;
   top: 18%;
   left: 5%;
-
-  outline: none;
+ 
+outline: none;
   padding: 10px 0px;
   width: 500px;
   height: 50px;
@@ -72,25 +85,33 @@ const InputStyle = styled.input`
   font-size: 35px;
 `
 
+
+
+
 const InputStyle2 = styled.input`
-  position: absolute;
+
+position: absolute;
   top: 40%;
   left: 10%;
   font-size: 20px;
 `
+
 
 const RadioStyle = styled.input`
   position: absolute;
   top: 50%;
 `
 
+
+
 const IDArea = styled.div`
   position: absolute;
-  top: 5%;
+  top:5%;
   left: 5%;
-  width: 700px;
-  height: 120px;
+  width:700px;
+  height:120px;
   background-color: white;
+
 `
 
 const DoubleCheckBtn = styled.button`
@@ -100,25 +121,26 @@ const DoubleCheckBtn = styled.button`
   width: 90px;
   height: 60px;
 
-  align-items: center;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  padding-left: 1rem;
-  padding-right: 1rem;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
-  /*색상 */
-  background: #228be6;
-  &:hover {
-    background: #339af0;
-    opacity: 70%;
-  }
-  &:active {
-    background: #1c7ed6;
-  }
+    /*색상 */
+    background: #228be6;
+    &:hover{
+        background: #339af0;
+        opacity: 70%;
+    }
+    &:active{
+        background: #1c7ed6;
+    }
+
 `
 
 const EmailCheckBtn = styled.button`
@@ -128,33 +150,36 @@ const EmailCheckBtn = styled.button`
   width: 90px;
   height: 60px;
 
-  align-items: center;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  padding-left: 1rem;
-  padding-right: 1rem;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
-  /*색상 */
-  background: #228be6;
-  &:hover {
-    background: #339af0;
-    opacity: 70%;
-  }
-  &:active {
-    background: #1c7ed6;
-  }
+    /*색상 */
+    background: #228be6;
+    &:hover{
+        background: #339af0;
+        opacity: 70%;
+    }
+    &:active{
+        background: #1c7ed6;
+    }
+
 `
+
+
 
 const NickNameArea = styled.div`
   position: absolute;
-  top: 30%;
-  left: 5%;
-  width: 700px;
-  height: 120px;
+  top:30%;
+  left:5%;
+  width:700px;
+  height:120px;
   background-color: white;
 `
 
@@ -170,7 +195,7 @@ const PWArea = styled.div`
 const PWCheckArea = styled.div`
   position: absolute;
   top: 30%;
-  left: 60%;
+  left:60%;
   width: 500px;
   height: 120px;
   background-color: white;
@@ -178,8 +203,8 @@ const PWCheckArea = styled.div`
 
 const BirthArea = styled.div`
   position: absolute;
-  top: 50%;
-  left: 5%;
+  top:50%;
+  left:5%;
   width: 300px;
   height: 70px;
   background-color: white;
@@ -187,37 +212,39 @@ const BirthArea = styled.div`
 
 const SexArea = styled.div`
   position: absolute;
-  top: 50%;
-  left: 30%;
+  top:50%;
+  left:30%;
   width: 200px;
   height: 70px;
-  background-color: white;
+  background-color: white ;
 
-  span {
+  span{
     position: absolute;
     width: 200px;
-    left: 60%;
-    top: 50%;
-    color: red;
+    left:60%;
+    top:50%;
+    color:red
+    
   }
 `
 
 const EmailArea = styled.div`
-  position: absolute;
-  top: 63%;
-  left: 5%;
+position: absolute;
+  top:63%;
+  left:5%;
   width: 700px;
   height: 110px;
-  background-color: white;
+  background-color: white ;
 `
 
+
 const EmailCheckArea = styled.div`
-  position: absolute;
-  top: 83%;
-  left: 5%;
+position: absolute;
+  top:83%;
+  left:5%;
   width: 700px;
   height: 110px;
-  background-color: white;
+  background-color: white ;
 `
 
 const ErrMsgStyle = styled.span`
@@ -225,7 +252,10 @@ const ErrMsgStyle = styled.span`
   top: 85%;
   right: 24%;
   color: red;
+
 `
+
+
 
 const SubmitBtn = styled.button`
   position: absolute;
@@ -237,12 +267,13 @@ const SubmitBtn = styled.button`
   width: 250px;
   height: 80px;
   transition-duration: 0.3s;
-  :hover {
+  :hover{
     transition-duration: 0.3s;
     background-color: #886f6f;
     cursor: pointer;
   }
 `
+
 
 const SignupText = styled.p`
   color: white;
@@ -250,31 +281,39 @@ const SignupText = styled.p`
   font-weight: bold;
 `
 
+
+
+
+
 const Signup = ({ isModal, setModal }) => {
-  const modalTFselector = useSelector((state) => state.modalTFselector)
-  const dispatch = useDispatch()
+
+
+  const modalTFselector = useSelector((state) => (state.modalTFselector))
+  const dispatch = useDispatch();
+
 
   const [email, setEmail] = useState()
+
 
   const ImageFile = `${SignupImg}`
   const setImageFile = React.useState("")
 
   const test = () => {
-    console.log("Asdfasdf")
+    console.log("Asdfasdf");
   }
 
   const IDCheck = () => {
     axios({
-      url: "/test",
-      method: "post",
-      data: "test용",
+      url: '/test',
+      method: 'post',
+      data: 'test용'
     })
       .then(function a(response) {
         console.log("서버에서 내려온값:", response)
       })
-      .catch(function(error) {
-        console.log("에러내용:", error)
-      })
+      .catch(function (error) {
+        console.log("에러내용:", error);
+      });
   }
 
   /*
@@ -294,31 +333,21 @@ const Signup = ({ isModal, setModal }) => {
   }
 */
 
+
+
+
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email()
-      .required(),
-    id: yup
-      .string()
-      .required()
-      .max(10),
-    nickname: yup
-      .string()
-      .required()
-      .max(10),
-    pw: yup
-      .string()
-      .min(7)
-      .max(15)
-      .required(),
+    email: yup.string().email().required(),
+    userId: yup.string().required().max(10),
+    nickname: yup.string().required().max(10),
+    password: yup.string().min(7).max(15).required(),
     checkPw: yup
       .string()
-      .oneOf([yup.ref("pw"), null])
+      .oneOf([yup.ref('password'), null])
       .required(),
     birth: yup.string().required(),
-    sex: yup.string().required(),
-  })
+    gender: yup.string().required()
+  });
 
   const {
     register,
@@ -327,48 +356,46 @@ const Signup = ({ isModal, setModal }) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-  })
+  });
+
 
   const submitForm = (data) => {
-    console.log(data)
+    console.log(data);
 
-    const form = new FormData()
-    Object.keys(data).forEach(function(k) {
-      form.append(k, data[k])
-    })
+
+    const JsonData = {
+
+      "userId": `${data.userId}`,
+      "password": `${data.password}`,
+      "nickname": `${data.name}`,
+      "birth": (`${data.birth}`).replaceAll('-', '.'),
+      "gender": `${data.gender}`,
+      "email": `${data.email}`
+    }
 
     axios({
-      url: "/test",
-      method: "post",
-      data: form,
+      url: '/test',
+      method: 'post',
+      data: JsonData
     })
       .then(function a(response) {
         console.log("서버에서 내려온값:", response)
       })
-      .catch(function(error) {
-        console.log("에러내용:", error)
-      })
-  } //*
+      .catch(function (error) {
+        console.log("에러내용:", error);
+      });
 
-  const hihi = (data) => {
-    console.log(data)
-  }
+  }; //*
 
-  const [text, setText] = useState("")
 
-  const onChange = (e) => {
-    setText(e.target.value)
-  }
-
-  const onReset = () => {
-    console.log(text)
-  }
 
   return (
+
     <SignupModal
       isOpen={isModal}
       onRequestClose={() => setModal(false)}
       ariaHideApp={false}
+
       style={{
         content: {
           position: "relative",
@@ -384,6 +411,9 @@ const Signup = ({ isModal, setModal }) => {
       <Menubar />
 
       <ModalContainer>
+
+
+
         {modalTFselector.signup ? (
           <>
             <ModalHead>
@@ -400,131 +430,136 @@ const Signup = ({ isModal, setModal }) => {
               />
             </ModalHead>
 
+
             <ModalBody>
               <form onSubmit={handleSubmit(submitForm)}>
+
+
                 <IDArea>
-                  <LabelStyle htmlFor="id">아이디</LabelStyle>
-                  <InputStyle type="text" {...register("id")} />
-                  <ErrMsgStyle>
-                    {errors.id && "아이디 형식이 맞지 않습니다."}
-                  </ErrMsgStyle>
-                  <DoubleCheckBtn
-                    type="button"
-                    onClick={() => {
-                      const value = getValues("id")
-                      console.log(value)
-                    }}
-                  >
-                    중복체크
-                  </DoubleCheckBtn>
+                  <LabelStyle htmlFor="userId">아이디</LabelStyle>
+                  <InputStyle type="text"   {...register('userId')} />
+                  <ErrMsgStyle>{errors.userId && '아이디 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                  <DoubleCheckBtn type="button" onClick={() => {
+                    const value = getValues("userId");
+                    axios({
+                      url: '/test',
+                      method: 'post',
+                      data: value
+                    })
+                      .then(function a(response) {
+                        console.log("서버에서 내려온값:", response)
+                        alert('사용가능')
+                      })
+                      .catch(function (error) {
+                        console.log("에러내용:", error);
+                        alert('사용불가능')
+                      });
+                  }}>중복체크</DoubleCheckBtn>
                 </IDArea>
 
                 <NickNameArea>
                   <LabelStyle htmlFor="nickname">닉네임</LabelStyle>
-                  <InputStyle type="text" {...register("nickname")} />
-                  <ErrMsgStyle>
-                    {errors.nickname && "닉네임 형식이 맞지 않습니다."}
-                  </ErrMsgStyle>
-                  <DoubleCheckBtn type="button" onClick={test}>
-                    중복체크
-                  </DoubleCheckBtn>
+                  <InputStyle type="text" {...register('nickname')} />
+                  <ErrMsgStyle>{errors.nickname && '닉네임 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                  <DoubleCheckBtn type="button" onClick={() => {
+                    const value = getValues("nickname");
+                    axios({
+                      url: '/test',
+                      method: 'post',
+                      data: value
+                    })
+                      .then(function a(response) {
+                        console.log("서버에서 내려온값:", response)
+                        alert('사용가능')
+                      })
+                      .catch(function (error) {
+                        console.log("에러내용:", error);
+                        alert('사용불가능')
+                      });
+
+
+                  }}>중복체크</DoubleCheckBtn>
                 </NickNameArea>
 
                 <PWArea>
-                  <LabelStyle htmlFor="pw">비밀번호</LabelStyle>
-                  <InputStyle
-                    style={{ width: "450px" }}
-                    type="password"
-                    {...register("pw")}
-                  />
-                  <ErrMsgStyle style={{ right: "6%" }}>
-                    {errors.pw && "비밀번호 형식이 맞지 않습니다."}
-                  </ErrMsgStyle>
+                  <LabelStyle htmlFor="password">비밀번호</LabelStyle>
+                  <InputStyle style={{ width: "450px" }} type="password" {...register('password')} />
+                  <ErrMsgStyle style={{ right: "6%" }}>{errors.password && '비밀번호 형식이 맞지 않습니다.'}</ErrMsgStyle>
                 </PWArea>
 
                 <PWCheckArea>
                   <LabelStyle htmlFor="checkPw">비밀번호 확인</LabelStyle>
-                  <InputStyle
-                    style={{ width: "450px" }}
-                    type="password"
-                    {...register("checkPw")}
-                  />
-                  <ErrMsgStyle style={{ right: "6%" }}>
-                    {errors.checkPw && "비밀번호가 맞지 않습니다."}
-                  </ErrMsgStyle>
+                  <InputStyle style={{ width: "450px" }} type="password" {...register('checkPw')} />
+                  <ErrMsgStyle style={{ right: "6%" }}>{errors.checkPw && '비밀번호가 맞지 않습니다.'}</ErrMsgStyle>
                 </PWCheckArea>
 
                 <BirthArea>
-                  <LabelStyle style={{ left: "10%" }} htmlFor="birth">
-                    생년월일
-                  </LabelStyle>
-                  <InputStyle2 type="date" {...register("birth")} />
-                  <LabelStyle style={{ left: "10%", color: "red" }}>
-                    {errors.birth && "생년월일"}
-                  </LabelStyle>
+                  <LabelStyle style={{ left: "10%" }} htmlFor="birth">생년월일</LabelStyle>
+                  <InputStyle2 type="date" {...register('birth')} />
+                  <LabelStyle style={{ left: "10%", color: "red" }}>{errors.birth && '생년월일'}</LabelStyle>
                 </BirthArea>
 
                 <SexArea>
-                  <LabelStyle style={{ left: "5%" }} htmlFor="sex">
-                    남
-                  </LabelStyle>
-                  <RadioStyle
-                    style={{ left: "5%" }}
-                    type="radio"
-                    name="sex"
-                    value="male"
-                    {...register("sex")}
-                  />
-                  <LabelStyle style={{ left: "30%" }} htmlFor="sex">
-                    여
-                  </LabelStyle>
-                  <RadioStyle
-                    style={{ left: "30%" }}
-                    type="radio"
-                    name="sex"
-                    value="female"
-                    {...register("sex")}
-                  />
-                  <span>{errors.sex && "성별을 체크해주세요."}</span>
+                  <LabelStyle style={{ left: "5%" }} htmlFor="gender">남</LabelStyle>
+                  <RadioStyle style={{ left: "5%" }} type="radio" name="gender" value="male" {...register('gender')} />
+                  <LabelStyle style={{ left: "30%" }} htmlFor="gender">여</LabelStyle>
+                  <RadioStyle style={{ left: "30%" }} type="radio" name="gender" value="female" {...register('gender')} />
+                  <span >{errors.gender && '성별을 체크해주세요.'}</span>
                 </SexArea>
 
                 <EmailArea>
                   <LabelStyle htmlFor="email">이메일</LabelStyle>
-                  <InputStyle
-                    onKeyUp={(e) => setEmail(e.target.value)}
-                    type="text"
-                    {...register("email")}
-                  />
-                  <ErrMsgStyle>
-                    {errors.email && "이메일 형식이 맞지 않습니다."}
-                  </ErrMsgStyle>
-                  <DoubleCheckBtn type="button" onClick={test}>
-                    인증번호 전송
-                  </DoubleCheckBtn>
+                  <InputStyle onKeyUp={(e) => setEmail(e.target.value)} type="text" {...register('email')} />
+                  <ErrMsgStyle>{errors.email && '이메일 형식이 맞지 않습니다.'}</ErrMsgStyle>
+                  <DoubleCheckBtn type="button" onClick={(e) => {
+
+
+                    console.log("그냥");
+
+                    // let fform = {
+
+                    //   from_name: 'zing0982@naver.com',
+                    //   to_name: 'zing0982@naver.com',
+                    //   message: 'hihi'
+                    // }
+
+                    // console.log(process.env.REACT_APP_RANDOM);
+
+
+                    // emailjs.send(process.env.REAC2T_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, fform, process.env.REACT_APP_EMAIL_API_KEY)
+                    //   .then((result) => {
+                    //     console.log(result.text);
+                    //   }, (error) => {
+                    //     console.log(error.text);
+                    //   });
+
+
+
+
+                  }}>인증번호 전송</DoubleCheckBtn>
                 </EmailArea>
 
                 <EmailCheckArea>
                   <LabelStyle htmlFor="emailCheck">이메일 확인</LabelStyle>
                   <InputStyle type="text" />
-                  <ErrMsgStyle>
-                    {errors.email && "인증번호가 맞지 않습니다."}
-                  </ErrMsgStyle>
-                  <EmailCheckBtn type="button" onClick={test}>
-                    인증확인
-                  </EmailCheckBtn>
+                  <ErrMsgStyle>{errors.email && '인증번호가 맞지 않습니다.'}</ErrMsgStyle>
+                  <EmailCheckBtn type="button" onClick={test}>인증확인</EmailCheckBtn>
                 </EmailCheckArea>
 
                 <SubmitBtn type="submit">
                   <SignupText>가입하기</SignupText>
                 </SubmitBtn>
+
               </form>
             </ModalBody>
+
+
           </>
-        ) : (
-          <ServiceCheckForm />
-        )}
+
+        ) : <ServiceCheckForm />
+        }
       </ModalContainer>
-    </SignupModal>
+    </SignupModal >
   )
 }
 

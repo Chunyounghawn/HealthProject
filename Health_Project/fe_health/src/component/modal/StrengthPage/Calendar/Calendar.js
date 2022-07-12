@@ -150,7 +150,7 @@ const Calendar = ({ isModal, setModal }) => {
   const firstDay = parseInt(new Date(year, month, 1).getDay())
 
   // 일정
-  const todo = state.schedule
+  const todo = state.modal.schedule
   //console.log(todo);
 
   const index = state.modal.index
@@ -174,22 +174,7 @@ const Calendar = ({ isModal, setModal }) => {
     dispatch(MODAL(key))
   }
 
-  // 일정 입력
-  const onConfirm = ({ index, todo, color, todos }) => {
-    if (todos.length != 0) {
-      todos.map((item) => {
-        dispatch({ type: "INSERT", index: item, todo: todo, color: color })
-      })
-    } else {
-      dispatch({ type: "INSERT", index: index, todo: todo, color: color })
-    }
-    //dispatch({type: "MODAL"})
-  }
 
-  // 일정 입력 취소 모달꺼라 굳이필요없음 아직
-  const onCancel = () => {
-    dispatch({ type: "MODAL" })
-  }
 
   return (
     <CalendarModal
