@@ -59,7 +59,6 @@ const Text = styled.div`
 
 function TodoItem({ id, timertext, watertext }) {
   const dispatch = useTodoDispatch()
-  //  const onToggle = () => dispatch({ type: "TOGGLE", id })
   const onRemove = () => dispatch({ type: "REMOVE", id })
 
   return (
@@ -68,7 +67,7 @@ function TodoItem({ id, timertext, watertext }) {
       <Text>{timertext}</Text>
 
       <Icon src={WaterCup} />
-      <Text>{watertext}</Text>
+      <Text>{watertext}mL</Text>
       <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
