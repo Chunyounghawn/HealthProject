@@ -16,7 +16,7 @@ import { useForm } from 'react-hook-form';
 import axios from "axios"
 
 import emailjs from '@emailjs/browser';
-import crypto from 'crypto-js';
+
 
 
 
@@ -282,13 +282,6 @@ const SignupText = styled.p`
 `
 
 
-const encrypt = (text) => {
-  const cipher = crypto.createCipheriv('aes-128-ecb', process.env.REACT_APP_EMAIL_AUTH_KEY, '');
-  let result = cipher.update(text, 'utf8', 'base64');
-  result += cipher.final('base64');
-
-  return result;
-}
 
 
 
