@@ -4,22 +4,22 @@ const initialTodos = [
   {
     id: 1,
     timertext: "07:30",
-    watertext: "200mL",
+    watertext: "200",
   },
   {
     id: 2,
     timertext: "09:40",
-    watertext: "100mL",
+    watertext: "100",
   },
   {
     id: 3,
     timertext: "12:30",
-    watertext: "250mL",
+    watertext: "250",
   },
   {
     id: 4,
     timertext: "16:10",
-    watertext: "100mL",
+    watertext: "100",
   },
 ]
 

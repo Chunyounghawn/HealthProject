@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled, { css } from "styled-components"
 import { MdAdd } from "react-icons/md"
 import { useTodoDispatch, useTodoNextId } from "./TodoContext"
+import TimePicker from "react-time-picker"
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -74,33 +75,40 @@ const Input = styled.input`
   position: absolute;
 `
 
-const TimerInput = styled(Input)`
-  left: 0px;
+const TimerInput = styled(TimePicker)`
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  box-sizing: border-box;
+  background: #f8f9fa;
 `
 
 const WaterInput = styled(Input)`
   right: 0px;
 `
 
-const handleOnClick = () => {}
+// const handleOnClick = () => {}
 
-const handleOnKeyPress = (e) => {
-  if (e.key === "Enter") {
-    handleOnClick()
-  }
-}
+// const handleOnKeyPress = (e) => {
+//   if (e.key === "Enter") {
+//     handleOnClick()
+//   }
+// }
 
 function TodoCreate() {
   const [open, setOpen] = useState(false)
-  const [Timervalue, setTimerValue] = useState("")
   const [Watervalue, setWaterValue] = useState("")
+  const [Timervalue, setTimerValue] = useState("10:00")
 
   const dispatch = useTodoDispatch()
   const nextId = useTodoNextId()
 
   const onToggle = () => setOpen(!open)
-  const onTimerChange = (e) => setTimerValue(e.target.value)
   const onWaterChange = (e) => setWaterValue(e.target.value)
+
   const onSubmit = (e) => {
     e.preventDefault() // 새로고침 방지
     dispatch({
@@ -121,20 +129,19 @@ function TodoCreate() {
     <>
       {open && (
         <InsertFormPositioner>
-          <InsertForm onSubmit={onSubmit}>
-            <TimerInput
-              autoFocus
-              placeholder="추가할 시간을 입력하세요"
-              onChange={onTimerChange}
-              value={Timervalue}
-            />
-          </InsertForm>
+          <TimerInput
+            onSubmit={onSubmit}
+            onChange={setTimerValue}
+            minuteStep={5}
+            value={Timervalue}
+          />
           <InsertForm onSubmit={onSubmit}>
             <WaterInput
               autoFocus
-              placeholder="추가할 물의양을 입력하세요"
+              placeholder="추가할 물의양을 입력하세요 단위(mL)"
               onChange={onWaterChange}
               value={Watervalue}
+              onSubmit={onSubmit}
             />
           </InsertForm>
         </InsertFormPositioner>

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import styled from "styled-components"
 import { Close, DefaultImage } from "../../../../image/index.js"
 import { Button } from "@mui/material"
@@ -7,6 +7,7 @@ import Menubar from "../Menubar.js"
 import Header from "./Header.js"
 import ImageUploader from "./ImageUploader.js"
 import TextArea from "./TextArea.js"
+import axios from "axios"
 
 // import { jwtUtils } from "../../utils/jwtUtils"
 import { toast } from "react-toastify"
@@ -31,7 +32,6 @@ const ModalHead = styled.div`
 const ModalBody = styled.div`
   width: 1350px;
   height: 790px;
-
   position: absolute;
   top: 100px;
 `
@@ -59,7 +59,6 @@ const AddBoardWrapper = styled.div`
       transform: translateY(0);
     }
   }
-
   opacity: 0;
   animation: smoothAppear 1s forwards;
   animation-delay: 0.5s;
@@ -109,17 +108,29 @@ const AddBoard = ({ isModal, setModal }) => {
     return image.image_file !== "" && content !== "" && title !== ""
   }, [image, title, content])
 
+  const JsonData = {
+    title: `${title}`,
+    content: `${content}`,
+    file: `${image.image_file}`,
+  }
+
   const handleSubmit = useCallback(async () => {
     try {
-      const formData = new FormData()
-      formData.append("title", title)
-      formData.append("content", content)
-      formData.append("file", image.image_file)
-      //      formData.append("user_id", jwtUtils.getId(token))
+      console.log(JSON.stringify(JsonData))
 
-      //      await api.post("/api/board", formData)
+      axios({
+        url: "/api/posts",
+        method: "post",
+        data: JsonData,
+      })
+        .then(function a(response) {
+          console.log("서버에서 내려온값:", response)
+        })
+        .catch(function(error) {
+          console.log("에러내용:", error)
+        })
+
       window.alert("😎등록이 완료되었습니다😎")
-      //      navigate("/board-list")
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
       toast.error(
