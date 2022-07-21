@@ -26,11 +26,13 @@ const initialTodos = [
 function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
-      return state.concat(action.todo)
-    case "TOGGLE":
-      return state.map((todo) =>
-        todo.id === action.id ? { ...todo, done: !todo.done } : todo
-      )
+      return action.todo.timertext === "" ||
+        action.todo.watertext === "" ||
+        isNaN(parseInt(action.todo.watertext)) // 숫자가 아니면 true
+        ? (alert("잘못된 입력 입니다."),
+          state.filter((todo) => todo.id !== action.id))
+        : state.concat(action.todo)
+
     case "REMOVE":
       return state.filter((todo) => todo.id !== action.id)
     default:

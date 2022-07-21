@@ -138,7 +138,7 @@ function TodoCreate() {
           <InsertForm onSubmit={onSubmit}>
             <WaterInput
               autoFocus
-              placeholder="추가할 물의양을 입력하세요 단위(mL)"
+              placeholder="추가할 물의양을 입력하세요, 단위(mL)"
               onChange={onWaterChange}
               value={Watervalue}
               onSubmit={onSubmit}

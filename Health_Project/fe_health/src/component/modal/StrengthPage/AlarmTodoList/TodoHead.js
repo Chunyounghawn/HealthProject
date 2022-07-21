@@ -25,15 +25,14 @@ const TodoHeadBlock = styled.div`
   }
   .day {
     position: absolute;
-    top: 40px;
-    margin-top: 10px;
+    top: 50px;
     color: #868e96;
     font-size: 17px;
     font-weight: bold;
   }
-  .tasks-left {
+  .tasks-right {
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 30px;
     color: #20c997;
     font-size: 15px;
@@ -58,7 +57,7 @@ function TodoHead() {
     <TodoHeadBlock>
       <h1>{dateString}</h1>
       <div className="day">{dayName}</div>
-      <div className="tasks-left">
+      <div className="tasks-right">
         추가한 물 알람 갯수: {undoneTasks.length}
       </div>
     </TodoHeadBlock>
