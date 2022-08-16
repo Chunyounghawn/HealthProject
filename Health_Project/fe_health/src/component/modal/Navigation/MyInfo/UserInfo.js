@@ -80,11 +80,11 @@ const UserInfo = () => {
       </GenderBox>
       <EmailBox>
         <Icon src={Email} />
-        <Text>wlsdnjs156@naver.com</Text>
+        <Text>abcd123@naver.com</Text>
       </EmailBox>
       <PhoneBox>
         <Icon src={Phone} />
-        <Text>010-3690-7822</Text>
+        <Text>010-1234-5678</Text>
       </PhoneBox>
     </>
   )

@@ -94,12 +94,12 @@ const Card = ({ board_id, title, content, img_url, username, date }) => {
           <img alt="" src={DefaultImage} />
         </div>
         <div className="card-body-text">
-          <div className="card-body-text-title">뚱이</div>
-          <div className="card-body-text-content">"스폰지밥"</div>
+          <div className="card-body-text-title">제목</div>
+          <div className="card-body-text-content">"내용"</div>
         </div>
 
         <div className="card-footer">
-          <div className="username">장진원</div>
+          <div className="username">홍길동</div>
           <div className="date">{date}</div>
         </div>
       </CardWrapper>
