@@ -93,9 +93,9 @@ const Home = () => {
         </HomeContents>
 
         <AboutProject>
-          이 게시판은 레퍼런스로 쓰기위해
+          이 게시판은 사용자들간의
           <br />
-          <span>React</span>와<span> TypeORM</span>으로 만들었습니다😎
+          <span> 소통을 위해</span> 만들었습니다😎
         </AboutProject>
         <MyWebsite>
           <div className="my-website-title">Welcome to Health Together.</div>
