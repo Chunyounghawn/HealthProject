@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Close } from "../../../image/index.js"
-
-import ScanModal from "react-modal"
+//
+import OutputModal from "react-modal"
 
 // Chart
 import {
@@ -14,14 +14,6 @@ import {
   Tooltip,
   Line,
   CartesianGrid,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  PieChart,
-  Pie,
-  Cell,
 } from "recharts"
 
 // Swiper
@@ -140,26 +132,6 @@ const HeadContainer = styled.div`
   border-radius: 50px;
 `
 
-const LeftContainer = styled.div`
-  width: 750px;
-  height: 580px;
-  position: absolute;
-  top: 100px;
-  left: 30px;
-  background-color: #d2d2d2;
-  border-radius: 50px;
-`
-
-const RightContainer = styled.div`
-  width: 750px;
-  height: 580px;
-  position: absolute;
-  top: 100px;
-  right: 30px;
-  background-color: #d2d2d2;
-  border-radius: 50px;
-`
-
 const Titles = styled.div`
   font-size: 25px;
   font-family: fantasy;
@@ -169,20 +141,6 @@ const Titles = styled.div`
 const HeadTitle = styled(Titles)`
   position: absolute;
   top: 130px;
-  color: #3c3c3c;
-`
-
-const LeftTitle = styled(Titles)`
-  position: absolute;
-  top: 50px;
-  left: 330px;
-  color: #3c3c3c;
-`
-
-const RightTitle = styled(Titles)`
-  position: absolute;
-  top: 50px;
-  right: 350px;
   color: #3c3c3c;
 `
 
@@ -250,51 +208,9 @@ const InBodyData = [
   },
 ]
 
-const expData = [
-  {
-    subject: "체수분",
-    A: 100,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "단백질",
-    A: 100,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "무기질",
-    A: 100,
-    B: 80,
-    fullMark: 150,
-  },
-  {
-    subject: "체지방",
-    A: 100,
-    B: 120,
-    fullMark: 150,
-  },
-  {
-    subject: "골격근량",
-    A: 100,
-    B: 85,
-    fullMark: 150,
-  },
-]
-
-const expData2 = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-]
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"]
-
-const Scan = ({ isModal, setModal }) => {
+const Output = ({ isModal, setModal }) => {
   return (
-    <ScanModal
+    <OutputModal
       isOpen={isModal}
       onRequestClose={() => setModal}
       ariaHideApp={false}
@@ -372,64 +288,11 @@ const Scan = ({ isModal, setModal }) => {
               </ResponsiveContainer>
             </HeadContainer>
           </SwiperSlide>
-
-          <SwiperSlide>
-            <LeftTitle>체성분 분석</LeftTitle>
-            <LeftContainer>
-              <RadarChart
-                outerRadius={250}
-                width={750}
-                height={700}
-                data={expData}
-              >
-                <PolarGrid stroke="black" />
-                <PolarAngleAxis dataKey="subject" />
-                <PolarRadiusAxis angle={30} domain={[0, 150]} />
-                <Radar
-                  name="표준"
-                  dataKey="A"
-                  stroke="#8884d8"
-                  fill="#8884d8"
-                  fillOpacity={0.6}
-                />
-                <Radar
-                  name="나"
-                  dataKey="B"
-                  stroke="#82ca9d"
-                  fill="#82ca9d"
-                  fillOpacity={0.6}
-                />
-                <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
-                <Tooltip />
-              </RadarChart>
-            </LeftContainer>
-
-            <RightTitle>?</RightTitle>
-            <RightContainer>
-              <PieChart width={800} height={650}>
-                <Pie
-                  data={expData2}
-                  dataKey="value"
-                  outerRadius={230}
-                  fill="green"
-                >
-                  {expData2.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
-                <Tooltip />
-              </PieChart>
-            </RightContainer>
-          </SwiperSlide>
         </Swiper>
       </ModalBody>
       <ModalFooter />
-    </ScanModal>
+    </OutputModal>
   )
 }
 
-export default Scan
+export default Output

@@ -1,6 +1,6 @@
 const Light = require("../image/nav_icon/light.png")
 const User = require("../image/nav_icon/user.png")
-
+//
 const Main = require("../image/nav_icon/main.png")
 const Thumbs_up = require("../image/nav_icon/thumbs_up.png")
 const Placeholder = require("../image/nav_icon/placeholder.png")
@@ -74,6 +74,8 @@ const CalendarThumbnail = require("../image/strength/calendarThumbnail.jpg")
 const AlarmThumbnail = require("../image/strength/alarmThumbnail.jpg")
 
 const DefaultImage = require("../image/board/default-image.png")
+
+const BodyFatImage = require("../image/inbody/BodyFat.png")
 
 export {
   //상단 버튼두개
@@ -153,4 +155,6 @@ export {
   AlarmThumbnail,
   // Boader
   DefaultImage,
+  // InBody
+  BodyFatImage,
 }
