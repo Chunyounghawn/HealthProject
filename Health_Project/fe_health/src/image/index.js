@@ -75,6 +75,8 @@ const AlarmThumbnail = require("../image/strength/alarmThumbnail.jpg")
 
 const DefaultImage = require("../image/board/default-image.png")
 
+const BodyFatImage = require("../image/inbody/BodyFat.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -153,4 +155,6 @@ export {
   AlarmThumbnail,
   // Boader
   DefaultImage,
+  // InBody
+  BodyFatImage,
 }

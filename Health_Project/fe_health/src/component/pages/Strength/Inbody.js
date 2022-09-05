@@ -1,18 +1,13 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import ScanModal from "../../modal/StrengthPage/Scan.js"
+
+import InputtModal from "../../modal/InBody/Input.js"
 import HoverVideoPlayer from "react-hover-video-player"
 import inbody from "../../../video/Strength/inbody.mp4"
-import {
-  ChallengeImg,
-  InBodyTitle,
-  InBodyThumbnail,
-} from "../../../image/index.js"
+import { InBodyTitle, InBodyThumbnail } from "../../../image/index.js"
 import PausedOverlay from "./Video/Paused.js"
 import LoadingOverlay from "./Video/Loading.js"
 import { Timeline, Tween } from "react-gsap"
-import { Controller, Scene } from "react-scrollmagic"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 const Container = styled.div`
   width: 1700px;
@@ -101,7 +96,7 @@ const Btn = styled.button`
 `
 
 const InBody = () => {
-  const [ScanModalIsOpen, setScanModalOpen] = useState(false)
+  const [InputModalIsOpen, setInputModalOpen] = useState(false)
 
   return (
     <>
@@ -151,7 +146,7 @@ const InBody = () => {
                 카메라로 진단표를 스캔하여 나의 인다비 정보를 확인할 수
                 있습니다.
               </Text>
-              <Btn onClick={() => setScanModalOpen(true)}>바로가기</Btn>
+              <Btn onClick={() => setInputModalOpen(true)}>바로가기</Btn>
             </TextContainer>
           }
         >
@@ -162,7 +157,7 @@ const InBody = () => {
           />
         </Timeline>
       </Container>
-      <ScanModal isModal={ScanModalIsOpen} setModal={setScanModalOpen} />
+      <InputtModal isModal={InputModalIsOpen} setModal={setInputModalOpen} />
     </>
   )
 }
