@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-
+//
 import InputtModal from "../../modal/InBody/Input.js"
 import HoverVideoPlayer from "react-hover-video-player"
 import inbody from "../../../video/Strength/inbody.mp4"

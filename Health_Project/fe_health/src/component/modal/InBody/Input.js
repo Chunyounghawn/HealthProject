@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import styled from "styled-components"
 import { Close } from "../../../image/index.js"
-
+//
 import InputModal from "react-modal"
 import OutputModal from "../../modal/InBody/Output.js"
 import DefaultInfo from "./DefaultInfo.js"

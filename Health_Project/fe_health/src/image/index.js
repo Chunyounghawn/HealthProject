@@ -1,6 +1,6 @@
 const Light = require("../image/nav_icon/light.png")
 const User = require("../image/nav_icon/user.png")
-
+//
 const Main = require("../image/nav_icon/main.png")
 const Thumbs_up = require("../image/nav_icon/thumbs_up.png")
 const Placeholder = require("../image/nav_icon/placeholder.png")

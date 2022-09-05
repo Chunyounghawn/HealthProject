@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Close } from "../../../image/index.js"
-
+//
 import OutputModal from "react-modal"
 
 // Chart
