@@ -12,8 +12,8 @@ const loadingOverlaySpinnerAnimation = keyframes`
 const LoadingOverlay = () => (
   <div
     className={css`
-      width: 700px;
-      height: 350px;
+      width: 300px;
+      height: 280px;
       top: 0;
       left: 0;
       border-radius: 30px;

@@ -75,6 +75,11 @@ const AlarmThumbnail = require("../image/strength/alarmThumbnail.jpg")
 
 const DefaultImage = require("../image/board/default-image.png")
 
+const MapIcon = require("../image/Detail/google-maps.png")
+const ChatBotIcon = require("../image/Detail/chatbot.png")
+const ChallengeIcon = require("../image/Detail/challenge.png")
+const BoardIcon = require("../image/Detail/board.png")
+
 export {
   //상단 버튼두개
   Light,
@@ -153,4 +158,9 @@ export {
   AlarmThumbnail,
   // Boader
   DefaultImage,
+  // Detail
+  MapIcon,
+  ChatBotIcon,
+  ChallengeIcon,
+  BoardIcon,
 }
