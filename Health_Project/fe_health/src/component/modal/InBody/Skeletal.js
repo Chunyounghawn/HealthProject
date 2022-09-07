@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import styled from "styled-components"
-//
+
 const MonthBox = styled.div`
   width: 90px;
   height: 130px;
@@ -34,7 +34,7 @@ const UserInput = styled.input`
   text-align: right;
 `
 
-let Months = new Array(12)
+export let Months = new Array(12)
 
 const Skeletal = () => {
   const [January, setJanuary] = useState("")
@@ -50,19 +50,6 @@ const Skeletal = () => {
   const [October, setOctober] = useState("")
   const [November, setNovember] = useState("")
   const [December, setDecember] = useState("")
-
-  Months[0] = January
-  Months[1] = February
-  Months[2] = March
-  Months[3] = April
-  Months[4] = May
-  Months[5] = June
-  Months[6] = July
-  Months[7] = August
-  Months[8] = September
-  Months[9] = October
-  Months[10] = November
-  Months[11] = December
 
   const onJanuaryChange = useCallback((e) => {
     setJanuary(e.target.January)
@@ -112,6 +99,22 @@ const Skeletal = () => {
     setDecember(e.target.December)
   })
 
+  Months[0] = January
+  Months[1] = February
+  Months[2] = March
+  Months[3] = April
+  Months[4] = May
+  Months[5] = June
+  Months[6] = July
+  Months[7] = August
+  Months[8] = September
+  Months[9] = October
+  Months[10] = November
+  Months[11] = December
+
+  let abc = January
+  Month[0] = parseInt(abc)
+
   return (
     <>
       <MonthBox>
@@ -119,11 +122,13 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={January || undefined}
+          value={Month[0] || undefined}
           placeholder="kg"
           onChange={onJanuaryChange}
         />
+        {Months[0]}
       </MonthBox>
+
       <MonthBox>
         <Month>2월</Month>
         <UserInput
