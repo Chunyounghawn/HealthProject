@@ -11,8 +11,8 @@ const Chatbot = () => {
     <HoverVideoPlayer
       videoSrc={chatbot}
       videoStyle={{
-        width: "700px",
-        height: "350px",
+        width: "300px",
+        height: "280px",
         borderRadius: "30px",
       }}
       pausedOverlay={<PausedOverlay image={ChatbotImg} />}
