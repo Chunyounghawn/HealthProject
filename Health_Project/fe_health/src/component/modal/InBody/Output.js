@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import { Close } from "../../../image/index.js"
-//
+
 import OutputModal from "react-modal"
+import { Months } from "./Skeletal.js"
 
 // Chart
 import {
@@ -149,62 +150,62 @@ const InBodyData = [
   {
     name: "1월",
     체지방: 11,
-    골격근량: 16,
+    골격근량: parseInt(Months[0]),
   },
   {
     name: "2월",
     체지방: 15,
-    골격근량: 12,
+    골격근량: Months[1],
   },
   {
     name: "3월",
     체지방: 5,
-    골격근량: 10,
+    골격근량: Months[2],
   },
   {
     name: "4월",
     체지방: 10,
-    골격근량: 5,
+    골격근량: Months[3],
   },
   {
     name: "5월",
     체지방: 9,
-    골격근량: 4,
+    골격근량: Months[4],
   },
   {
     name: "6월",
     체지방: 10,
-    골격근량: 8,
+    골격근량: Months[5],
   },
   {
     name: "7월",
     체지방: 11,
-    골격근량: 19,
+    골격근량: Months[6],
   },
   {
     name: "8월",
     체지방: 15,
-    골격근량: 12,
+    골격근량: Months[7],
   },
   {
     name: "9월",
     체지방: 5,
-    골격근량: 10,
+    골격근량: Months[8],
   },
   {
     name: "10월",
     체지방: 10,
-    골격근량: 5,
+    골격근량: Months[9],
   },
   {
     name: "11월",
     체지방: 9,
-    골격근량: 4,
+    골격근량: Months[10],
   },
   {
     name: "12월",
     체지방: 10,
-    골격근량: 8,
+    골격근량: Months[11],
   },
 ]
 

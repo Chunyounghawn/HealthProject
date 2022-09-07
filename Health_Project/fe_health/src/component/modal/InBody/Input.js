@@ -1,15 +1,12 @@
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Close } from "../../../image/index.js"
-//
+
 import InputModal from "react-modal"
 import OutputModal from "../../modal/InBody/Output.js"
 import DefaultInfo from "./DefaultInfo.js"
 import Skeletal from "./Skeletal.js"
 import BodyFat from "./BodyFat.js"
-
-import { BodyFatImage } from "../../../image/index.js"
-import { style } from "@mui/system"
 
 const ModalHead = styled.div`
   width: 1610px;
@@ -47,6 +44,27 @@ const Title = styled.div`
   color: #ff4646;
 `
 
+const TitleBox = styled.div`
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  left: 60px;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+`
+
+const SubTitle = styled.div`
+  font-size: 29px;
+  line-height: 2;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  font-family: "Jua", sans-serif;
+`
+
 const Closebtn = styled.img`
   width: 35px;
   height: 35px;
@@ -57,22 +75,6 @@ const Closebtn = styled.img`
   &:hover {
     cursor: pointer;
   }
-`
-
-const ImageBox = styled.div`
-  width: 130px;
-  height: 130px;
-  border-radius: 30px;
-  display: flex;
-  position: absolute;
-  left: 60px;
-  justify-content: center;
-  align-items: center;
-`
-
-const BodyFatImg = styled.img`
-  width: 200px;
-  height: 100px;
 `
 
 const BodyContainer = styled.div`
@@ -123,7 +125,11 @@ const Titles = styled.div`
 const BodyTitle = styled(Titles)`
   position: absolute;
   top: 40px;
-  color: #3c3c3c;
+  font-size: 30px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  font-family: "Jua", sans-serif;
 `
 
 const Input = ({ isModal, setModal }) => {
@@ -164,22 +170,29 @@ const Input = ({ isModal, setModal }) => {
 
         <ModalBody>
           <BodyTitle>본인의 인바디 정보를 입력하세요</BodyTitle>
+
           <BodyContainer>
+            <TitleBox>
+              <SubTitle>기본 정보 입력</SubTitle>
+            </TitleBox>
             <Container>
               <DefaultInfo />
             </Container>
           </BodyContainer>
 
           <BodyContainer>
-            <ImageBox>
-              <BodyFatImg src={BodyFatImage} />
-            </ImageBox>
+            <TitleBox>
+              <SubTitle>체지방량 입력</SubTitle>
+            </TitleBox>
             <Container>
               <BodyFat />
             </Container>
           </BodyContainer>
 
           <BodyContainer>
+            <TitleBox>
+              <SubTitle>골격근량 입력</SubTitle>
+            </TitleBox>
             <Container>
               <Skeletal />
             </Container>
