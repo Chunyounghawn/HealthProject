@@ -1,9 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { Close } from "../../../image/index.js"
-
 import OutputModal from "react-modal"
-import { Months } from "./Skeletal.js"
+
+// InBody
+import { DefaultInfoArray } from "./DefaultInfo.js"
+import { BodyFatMonths } from "./BodyFat.js"
+import { SkeletalMonths } from "./Skeletal.js"
 
 // Chart
 import {
@@ -142,74 +145,77 @@ const Titles = styled.div`
 const HeadTitle = styled(Titles)`
   position: absolute;
   top: 130px;
-  color: #3c3c3c;
+  color: #333;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Jua", sans-serif;
 `
 
-// Sample chart data
-const InBodyData = [
-  {
-    name: "1월",
-    체지방: 11,
-    골격근량: parseInt(Months[0]),
-  },
-  {
-    name: "2월",
-    체지방: 15,
-    골격근량: Months[1],
-  },
-  {
-    name: "3월",
-    체지방: 5,
-    골격근량: Months[2],
-  },
-  {
-    name: "4월",
-    체지방: 10,
-    골격근량: Months[3],
-  },
-  {
-    name: "5월",
-    체지방: 9,
-    골격근량: Months[4],
-  },
-  {
-    name: "6월",
-    체지방: 10,
-    골격근량: Months[5],
-  },
-  {
-    name: "7월",
-    체지방: 11,
-    골격근량: Months[6],
-  },
-  {
-    name: "8월",
-    체지방: 15,
-    골격근량: Months[7],
-  },
-  {
-    name: "9월",
-    체지방: 5,
-    골격근량: Months[8],
-  },
-  {
-    name: "10월",
-    체지방: 10,
-    골격근량: Months[9],
-  },
-  {
-    name: "11월",
-    체지방: 9,
-    골격근량: Months[10],
-  },
-  {
-    name: "12월",
-    체지방: 10,
-    골격근량: Months[11],
-  },
-]
-
 const Output = ({ isModal, setModal }) => {
+  // Sample chart data
+  const InBodyData = [
+    {
+      name: "1월",
+      체지방: BodyFatMonths[0],
+      골격근량: SkeletalMonths[0],
+    },
+    {
+      name: "2월",
+      체지방: BodyFatMonths[1],
+      골격근량: SkeletalMonths[1],
+    },
+    {
+      name: "3월",
+      체지방: BodyFatMonths[2],
+      골격근량: SkeletalMonths[2],
+    },
+    {
+      name: "4월",
+      체지방: BodyFatMonths[3],
+      골격근량: SkeletalMonths[3],
+    },
+    {
+      name: "5월",
+      체지방: BodyFatMonths[4],
+      골격근량: SkeletalMonths[4],
+    },
+    {
+      name: "6월",
+      체지방: BodyFatMonths[5],
+      골격근량: SkeletalMonths[5],
+    },
+    {
+      name: "7월",
+      체지방: BodyFatMonths[6],
+      골격근량: SkeletalMonths[6],
+    },
+    {
+      name: "8월",
+      체지방: BodyFatMonths[7],
+      골격근량: SkeletalMonths[7],
+    },
+    {
+      name: "9월",
+      체지방: BodyFatMonths[8],
+      골격근량: SkeletalMonths[8],
+    },
+    {
+      name: "10월",
+      체지방: BodyFatMonths[9],
+      골격근량: SkeletalMonths[9],
+    },
+    {
+      name: "11월",
+      체지방: BodyFatMonths[10],
+      골격근량: SkeletalMonths[10],
+    },
+    {
+      name: "12월",
+      체지방: BodyFatMonths[11],
+      골격근량: SkeletalMonths[11],
+    },
+  ]
+
   return (
     <OutputModal
       isOpen={isModal}
@@ -268,10 +274,10 @@ const Output = ({ isModal, setModal }) => {
               <TopText4>체중</TopText4>
             </MenuTop>
             <MenuBottom>
-              <BottomText1>남자</BottomText1>
-              <BottomText2>24</BottomText2>
-              <BottomText3>173.0</BottomText3>
-              <BottomText4>60</BottomText4>
+              <BottomText1>{DefaultInfoArray[0]}</BottomText1>
+              <BottomText2>{DefaultInfoArray[1]}</BottomText2>
+              <BottomText3>{DefaultInfoArray[2]}</BottomText3>
+              <BottomText4>{DefaultInfoArray[3]}</BottomText4>
             </MenuBottom>
 
             <HeadTitle>월별 체지방 및 골격근 분석</HeadTitle>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 const MonthBox = styled.div`
@@ -34,86 +34,82 @@ const UserInput = styled.input`
   text-align: right;
 `
 
-export let Months = new Array(12)
+export let SkeletalMonths = new Array(12)
 
 const Skeletal = () => {
-  const [January, setJanuary] = useState("")
-  const [February, setFebruary] = useState("")
-  const [March, setMarch] = useState("")
-  const [April, setApril] = useState("")
-  const [May, setMay] = useState("")
-  const [June, setJune] = useState("")
+  const [January, setJanuary] = useState()
+  const [February, setFebruary] = useState()
+  const [March, setMarch] = useState()
+  const [April, setApril] = useState()
+  const [May, setMay] = useState()
+  const [June, setJune] = useState()
 
-  const [July, setJuly] = useState("")
-  const [August, setAugust] = useState("")
-  const [September, setSeptember] = useState("")
-  const [October, setOctober] = useState("")
-  const [November, setNovember] = useState("")
-  const [December, setDecember] = useState("")
+  const [July, setJuly] = useState()
+  const [August, setAugust] = useState()
+  const [September, setSeptember] = useState()
+  const [October, setOctober] = useState()
+  const [November, setNovember] = useState()
+  const [December, setDecember] = useState()
 
-  const onJanuaryChange = useCallback((e) => {
-    setJanuary(e.target.January)
-  })
+  const onJanuaryChange = (e) => {
+    SkeletalMonths[0] = e.target.value
+    setJanuary(SkeletalMonths[0])
+  }
 
-  const onFebruaryChange = useCallback((e) => {
-    setFebruary(e.target.February)
-  })
+  const onFebruaryChange = (e) => {
+    SkeletalMonths[1] = e.target.value
+    setFebruary(SkeletalMonths[1])
+  }
 
-  const onMarchChange = useCallback((e) => {
-    setMarch(e.target.March)
-  })
+  const onMarchChange = (e) => {
+    SkeletalMonths[2] = e.target.value
+    setMarch(SkeletalMonths[2])
+  }
 
-  const onAprilChange = useCallback((e) => {
-    setApril(e.target.April)
-  })
+  const onAprilChange = (e) => {
+    SkeletalMonths[3] = e.target.value
+    setApril(SkeletalMonths[3])
+  }
 
-  const onMayChange = useCallback((e) => {
-    setMay(e.target.May)
-  })
+  const onMayChange = (e) => {
+    SkeletalMonths[4] = e.target.value
+    setMay(SkeletalMonths[4])
+  }
 
-  const onJuneChange = useCallback((e) => {
-    setJune(e.target.June)
-  })
+  const onJuneChange = (e) => {
+    SkeletalMonths[5] = e.target.value
+    setJune(SkeletalMonths[5])
+  }
 
-  const onJulyChange = useCallback((e) => {
-    setJuly(e.target.July)
-  })
+  const onJulyChange = (e) => {
+    SkeletalMonths[6] = e.target.value
+    setJuly(SkeletalMonths[6])
+  }
 
-  const onAugustChange = useCallback((e) => {
-    setAugust(e.target.August)
-  })
+  const onAugustChange = (e) => {
+    SkeletalMonths[7] = e.target.value
+    setAugust(SkeletalMonths[7])
+  }
 
-  const onSeptemberChange = useCallback((e) => {
-    setSeptember(e.target.September)
-  })
+  const onSeptemberChange = (e) => {
+    SkeletalMonths[8] = e.target.value
+    setSeptember(SkeletalMonths[8])
+  }
 
-  const onOctoberChange = useCallback((e) => {
-    setOctober(e.target.October)
-  })
+  const onOctoberChange = (e) => {
+    SkeletalMonths[9] = e.target.value
+    setOctober(SkeletalMonths[9])
+  }
 
-  const onNovemberChange = useCallback((e) => {
-    setNovember(e.target.November)
-  })
+  const onNovemberChange = (e) => {
+    SkeletalMonths[10] = e.target.value
+    setNovember(SkeletalMonths[10])
+  }
 
-  const onDecemberChange = useCallback((e) => {
-    setDecember(e.target.December)
-  })
-
-  Months[0] = January
-  Months[1] = February
-  Months[2] = March
-  Months[3] = April
-  Months[4] = May
-  Months[5] = June
-  Months[6] = July
-  Months[7] = August
-  Months[8] = September
-  Months[9] = October
-  Months[10] = November
-  Months[11] = December
-
-  let abc = January
-  Month[0] = parseInt(abc)
+  const onDecemberChange = (e) => {
+    SkeletalMonths[11] = e.target.value
+    setDecember(SkeletalMonths[11])
+  }
 
   return (
     <>
@@ -122,11 +118,10 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={Month[0] || undefined}
+          value={January || ""}
           placeholder="kg"
-          onChange={onJanuaryChange}
+          onChange={(e) => onJanuaryChange(e)}
         />
-        {Months[0]}
       </MonthBox>
 
       <MonthBox>
@@ -134,9 +129,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={February || undefined}
+          value={February || ""}
           placeholder="kg"
-          onChange={onFebruaryChange}
+          onChange={(e) => onFebruaryChange(e)}
         />
       </MonthBox>
 
@@ -145,9 +140,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={March || undefined}
+          value={March || ""}
           placeholder="kg"
-          onChange={onMarchChange}
+          onChange={(e) => onMarchChange(e)}
         />
       </MonthBox>
 
@@ -156,9 +151,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={April || undefined}
+          value={April || ""}
           placeholder="kg"
-          onChange={onAprilChange}
+          onChange={(e) => onAprilChange(e)}
         />
       </MonthBox>
 
@@ -167,9 +162,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={May || undefined}
+          value={May || ""}
           placeholder="kg"
-          onChange={onMayChange}
+          onChange={(e) => onMayChange(e)}
         />
       </MonthBox>
 
@@ -178,9 +173,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={June || undefined}
+          value={June || ""}
           placeholder="kg"
-          onChange={onJuneChange}
+          onChange={(e) => onJuneChange(e)}
         />
       </MonthBox>
 
@@ -189,9 +184,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={July || undefined}
+          value={July || ""}
           placeholder="kg"
-          onChange={onJulyChange}
+          onChange={(e) => onJulyChange(e)}
         />
       </MonthBox>
 
@@ -200,9 +195,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={August || undefined}
+          value={August || ""}
           placeholder="kg"
-          onChange={onAugustChange}
+          onChange={(e) => onAugustChange(e)}
         />
       </MonthBox>
 
@@ -211,9 +206,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={September || undefined}
+          value={September || ""}
           placeholder="kg"
-          onChange={onSeptemberChange}
+          onChange={(e) => onSeptemberChange(e)}
         />
       </MonthBox>
 
@@ -222,9 +217,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={October || undefined}
+          value={October || ""}
           placeholder="kg"
-          onChange={onOctoberChange}
+          onChange={(e) => onOctoberChange(e)}
         />
       </MonthBox>
       <MonthBox>
@@ -232,9 +227,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={November || undefined}
+          value={November || ""}
           placeholder="kg"
-          onChange={onNovemberChange}
+          onChange={(e) => onNovemberChange(e)}
         />
       </MonthBox>
       <MonthBox>
@@ -242,9 +237,9 @@ const Skeletal = () => {
         <UserInput
           type="text"
           name="height"
-          value={December || undefined}
+          value={December || ""}
           placeholder="kg"
-          onChange={onDecemberChange}
+          onChange={(e) => onDecemberChange(e)}
         />
       </MonthBox>
     </>
