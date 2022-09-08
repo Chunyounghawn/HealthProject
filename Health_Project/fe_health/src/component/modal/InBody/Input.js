@@ -198,7 +198,14 @@ const Input = ({ isModal, setModal }) => {
             </Container>
           </BodyContainer>
 
-          <Btn onClick={() => setOutputModalOpen(true)}>확인하기</Btn>
+          <Btn
+            onClick={() => {
+              setOutputModalOpen(true)
+              // console.log(Months[0])
+            }}
+          >
+            확인하기
+          </Btn>
         </ModalBody>
         <ModalFooter />
       </InputModal>

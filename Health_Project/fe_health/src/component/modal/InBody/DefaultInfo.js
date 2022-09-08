@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import styled from "styled-components"
-//
+
 const UserInfo = styled.div`
   margin-top: 30px;
   width: 200px;
@@ -57,22 +57,37 @@ const UserInput = styled.input`
   text-align: right;
 `
 
+export let DefaultInfoArray = new Array(4)
+
 const DefaultInfo = () => {
-  const [AgeValue, setAgeValue] = useState("")
-  const [HeightValue, setHeightValue] = useState("")
-  const [WeightValue, setWeightValue] = useState("")
+  const [Gender, setGender] = useState()
+  const [AgeValue, setAgeValue] = useState()
+  const [HeightValue, setHeightValue] = useState()
+  const [WeightValue, setWeightValue] = useState()
 
-  const onAgeChange = useCallback((e) => {
-    setAgeValue(e.target.AgeValue)
-  })
+  const onGenderChange = (e) => {
+    if (e.target.id === "male") {
+      DefaultInfoArray[0] = "남자"
+    } else if (e.target.id === "female") {
+      DefaultInfoArray[0] = "여자"
+    }
+    setGender(DefaultInfoArray[0])
+  }
 
-  const onHeightChange = useCallback((e) => {
-    setHeightValue(e.target.HeightValue)
-  })
+  const onAgeChange = (e) => {
+    DefaultInfoArray[1] = e.target.value
+    setAgeValue(DefaultInfoArray[1])
+  }
 
-  const onWeightChange = useCallback((e) => {
-    setWeightValue(e.target.WeightValue)
-  })
+  const onHeightChange = (e) => {
+    DefaultInfoArray[2] = e.target.value
+    setHeightValue(DefaultInfoArray[2])
+  }
+
+  const onWeightChange = (e) => {
+    DefaultInfoArray[3] = e.target.value
+    setWeightValue(DefaultInfoArray[3])
+  }
 
   return (
     <>
@@ -82,9 +97,21 @@ const DefaultInfo = () => {
         </MenuTop>
         <MenuBottom>
           <RadioBox>
-            <GenderBtn type="radio" name="gender" value="male" />
+            <GenderBtn
+              type="radio"
+              id="male"
+              name="gender"
+              value={Gender || ""}
+              onChange={(e) => onGenderChange(e)}
+            />
             남자
-            <GenderBtn type="radio" name="gender" value="female" />
+            <GenderBtn
+              type="radio"
+              id="female"
+              name="gender"
+              value={Gender || ""}
+              onChange={(e) => onGenderChange(e)}
+            />
             여자
           </RadioBox>
         </MenuBottom>
@@ -98,9 +125,9 @@ const DefaultInfo = () => {
           <UserInput
             type="text"
             name="age"
-            value={AgeValue || undefined}
+            value={AgeValue || ""}
             placeholder="세(만)"
-            onChange={onAgeChange}
+            onChange={(e) => onAgeChange(e)}
           />
         </MenuBottom>
       </UserInfo>
@@ -113,9 +140,9 @@ const DefaultInfo = () => {
           <UserInput
             type="text"
             name="height"
-            value={HeightValue || undefined}
+            value={HeightValue || ""}
             placeholder="cm"
-            onChange={onHeightChange}
+            onChange={(e) => onHeightChange(e)}
           />
         </MenuBottom>
       </UserInfo>
@@ -128,9 +155,9 @@ const DefaultInfo = () => {
           <UserInput
             type="text"
             name="weight"
-            value={WeightValue || undefined}
+            value={WeightValue || ""}
             placeholder="kg"
-            onChange={onWeightChange}
+            onChange={(e) => onWeightChange(e)}
           />
         </MenuBottom>
       </UserInfo>
