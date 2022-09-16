@@ -1,31 +1,37 @@
+// TodoList.js
 import React from "react"
 import styled from "styled-components"
-import TodoItem from "./TodoItem"
-import { useTodoState } from "./TodoContext"
+import Card from "./Card"
+import { useTodoState } from "./BaordContext"
 
 const TodoListBlock = styled.div`
   flex: 1;
+  border-radius: 30px;
   padding: 20px 32px;
   padding-bottom: 48px;
-  overflow-y: auto;
-  //  background: gray; /* 사이즈 조정이 잘 되고 있는지 확인하기 위한 임시 스타일 */
+  overflow-x: auto;
+  display: flex;
 `
 
-function TodoList() {
+function CardList() {
   const todos = useTodoState()
 
   return (
     <TodoListBlock>
       {todos.map((todo) => (
-        <TodoItem
+        <Card
           key={todo.id}
           id={todo.id}
-          text={todo.text}
           done={todo.done}
+          img_url={todo.img_url}
+          title={todo.title}
+          content={todo.content}
+          username={todo.username}
+          date={todo.date}
         />
       ))}
     </TodoListBlock>
   )
 }
 
-export default TodoList
+export default CardList

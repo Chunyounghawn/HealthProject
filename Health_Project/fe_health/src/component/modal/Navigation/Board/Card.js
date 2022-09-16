@@ -1,8 +1,23 @@
-import styled from "styled-components"
-import { useNavigate } from "react-router-dom"
-import { DefaultImage } from "../../../../image/index.js"
-// import { img_url } from "./ImageUploader.js"
-// import { Title, Content } from "./TextArea.js"
+// TodoItem.js
+import styled, { css } from "styled-components"
+import { MdDelete } from "react-icons/md"
+import { useTodoDispatch } from "./BaordContext.js"
+import React from "react"
+
+const Remove = styled.div`
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dee2e6;
+  font-size: 40px;
+  cursor: pointer;
+  &:hover {
+    color: #ff6b6b;
+  }
+  display: none;
+`
 
 const CardWrapper = styled.div`
   flex-shrink: 0;
@@ -17,6 +32,12 @@ const CardWrapper = styled.div`
   justify-content: space-between;
   transition: width 1s, height 1s, box-shadow 1s;
   cursor: pointer;
+
+  &:hover {
+    ${Remove} {
+      display: initial;
+    }
+  }
 
   @media all and (min-width: 1024px) {
     width: 300px;
@@ -38,6 +59,17 @@ const CardWrapper = styled.div`
       height: 450px;
       box-shadow: rgba(0, 0, 0, 0.9) 0px 22px 70px 4px;
     }
+  }
+
+  .card-header {
+    width: 100%;
+    height: 10%;
+    border-radius: 10px 10px 0px 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
   .card-body-img {
@@ -81,30 +113,34 @@ const CardWrapper = styled.div`
   }
 `
 
-const Card = ({ board_id, title, content, img_url, username, date }) => {
-  // const navigate = useNavigate()
-  return (
-    <>
-      <CardWrapper
-        onClick={() => {
-          // navigate(`/board/${board_id}`)
-        }}
-      >
-        <div className="card-body-img">
-          <img alt="" src={DefaultImage} />
-        </div>
-        <div className="card-body-text">
-          <div className="card-body-text-title">제목</div>
-          <div className="card-body-text-content">"내용"</div>
-        </div>
+const Card = ({ id, img_url, title, content, username, date }) => {
+  const dispatch = useTodoDispatch()
+  const onRemove = () => dispatch({ type: "REMOVE", id })
 
-        <div className="card-footer">
-          <div className="username">홍길동</div>
-          <div className="date">{date}</div>
-        </div>
-      </CardWrapper>
-    </>
+  return (
+    <CardWrapper
+      onClick={() => {
+        console.log("Detail")
+      }}
+    >
+      <div className="card-header">
+        <Remove onClick={onRemove}>
+          <MdDelete />
+        </Remove>
+      </div>
+      <div className="card-body-img">
+        <img alt="" src={img_url} />
+      </div>
+      <div className="card-body-text">
+        <div className="card-body-text-title">{title}</div>
+        <div className="card-body-text-content">{content}</div>
+      </div>
+      <div className="card-footer">
+        <div className="username">{username}</div>
+        <div className="date">{date}</div>
+      </div>
+    </CardWrapper>
   )
 }
 
-export default Card
+export default React.memo(Card)
