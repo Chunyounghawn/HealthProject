@@ -1,50 +1,26 @@
-import React, { useState, useCallback, useEffect } from "react"
-import styled, { css } from "styled-components"
-import { Close, DefaultImage } from "../../../../image/index.js"
+import React, { useState, useCallback } from "react"
+import styled from "styled-components"
+import { useTodoDispatch, useTodoNextId } from "./BaordContext"
 import { Button } from "@mui/material"
-import BoardModal from "react-modal"
-import Menubar from "../Menubar.js"
-import Header from "./Header.js"
+import { toast } from "react-toastify"
 import ImageUploader from "./ImageUploader.js"
 import TextArea from "./TextArea.js"
 import axios from "axios"
-import { useTodoDispatch } from "./BaordContext.js"
-import { toast } from "react-toastify"
 
-const ModalContainer = styled.div`
+const InsertFormPositioner = styled.div`
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 1350px;
-  height: 890px;
-  background-color: rgb(231, 235, 240);
-`
-
-const ModalHead = styled.div`
-  width: 1350px;
-  height: 100px;
-`
-
-const ModalBody = styled.div`
-  width: 1350px;
-  height: 790px;
-  position: absolute;
-  top: 100px;
-`
-
-const Closebtn = styled.img`
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 3%;
-  right: 3%;
-  z-index: 1;
-  &:hover {
-    cursor: pointer;
-  }
+  background-color: #ffbec3;
+  border-radius: 30px;
 `
 
 const AddBoardWrapper = styled.div`
+  position: relative;
+  top: 0px;
+  z-index: 1;
   @keyframes smoothAppear {
     from {
       opacity: 0;
@@ -88,37 +64,33 @@ const AddBoardWrapper = styled.div`
   }
 `
 
-export let BoardArray = new Array(5)
+const Btn = styled.button`
+  border-radius: 30px;
+  position: absolute;
+  top: -146px;
+  right: 130px;
+  color: #333;
+  background-color: #fff;
+  p {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration-line: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: "Noto Sans KR", sans-serif;
+    flex-shrink: 0;
+    margin: 0 1rem;
+  }
+  :hover {
+    color: #333;
+    background-color: pink;
+    cursor: pointer;
+  }
+`
 
-// 현재 시간 값을 반환하는 함수
-const TodayTime = () => {
-  let now = new Date() // 현재 날짜 및 시간
-  let todayMonth = now.getMonth() + 1 // 월
-  let todayDate = now.getDate() // 일
-  const week = ["일", "월", "화", "수", "목", "금", "토"]
-  let dayOfWeek = week[now.getDay()] // 요일
-  let hours = now.getHours() // 시간
-  let minutes = now.getMinutes() // 분
-
-  return (
-    todayMonth +
-    "월" +
-    todayDate +
-    "일 " +
-    dayOfWeek +
-    "요일 " +
-    hours +
-    "시" +
-    minutes +
-    "분"
-  )
-}
-
-const AddBoard = ({ isModal, setModal }) => {
-  //  const token = useSelector((state) => state.Auth.token)
-  //  const navigate = useNavigate()
-
-  // 게시판 사진, 제목, 내용
+function BoardCreate() {
+  const [open, setOpen] = useState(false)
   const [image, setImage] = useState({
     image_file: "",
     preview_URL: "",
@@ -127,24 +99,49 @@ const AddBoard = ({ isModal, setModal }) => {
   const [content, setContent] = useState("")
 
   const dispatch = useTodoDispatch()
+  const nextId = useTodoNextId()
 
+  const onToggle = () => setOpen(!open)
   const onSubmit = (e) => {
-    // e.preventDefault() // 새로고침 방지
     dispatch({
       type: "CREATE",
       todo: {
-        id: "",
+        id: nextId.current,
         done: false,
-        img_url: DefaultImage,
+        img_url: image.preview_URL,
         title: title,
         content: content,
         username: "홍길동",
         date: TodayTime(),
       },
     })
+    setOpen(false)
+    nextId.current += 1
   }
 
-  /////////////////////////
+  // 현재 시간 값을 반환하는 함수
+  const TodayTime = () => {
+    let now = new Date() // 현재 날짜 및 시간
+    let todayMonth = now.getMonth() + 1 // 월
+    let todayDate = now.getDate() // 일
+    const week = ["일", "월", "화", "수", "목", "금", "토"]
+    let dayOfWeek = week[now.getDay()] // 요일
+    let hours = now.getHours() // 시간
+    let minutes = now.getMinutes() // 분
+
+    return (
+      todayMonth +
+      "월" +
+      todayDate +
+      "일 " +
+      dayOfWeek +
+      "요일 " +
+      hours +
+      "시" +
+      minutes +
+      "분"
+    )
+  }
 
   const canSubmit = useCallback(() => {
     return image.image_file !== "" && content !== "" && title !== ""
@@ -171,12 +168,6 @@ const AddBoard = ({ isModal, setModal }) => {
           console.log("에러내용:", error)
         })
 
-      BoardArray[0] = image.preview_URL
-      BoardArray[1] = title
-      BoardArray[2] = content
-      BoardArray[3] = "홍길동"
-      BoardArray[4] = TodayTime()
-
       window.alert("😎등록이 완료되었습니다😎")()
     } catch (e) {
       // 서버에서 받은 에러 메시지 출력
@@ -190,41 +181,9 @@ const AddBoard = ({ isModal, setModal }) => {
   }, [canSubmit])
 
   return (
-    <BoardModal
-      isOpen={isModal}
-      onRequestClose={() => setModal(false)}
-      ariaHideApp={false}
-      style={{
-        overlay: {
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          height: "100%",
-          width: "90%",
-        },
-
-        content: {
-          position: "fixed",
-          top: "0px",
-          bottom: "0px",
-          left: "-200px",
-          right: "0px",
-          margin: "auto",
-          width: "1610px",
-          height: "850px",
-          borderRadius: "30px",
-        },
-      }}
-    >
-      <Menubar />
-
-      <ModalContainer>
-        <ModalHead>
-          <Closebtn src={Close} onClick={() => setModal(false)} />
-        </ModalHead>
-        <ModalBody>
-          <Header />
-
+    <>
+      {open && (
+        <InsertFormPositioner>
           <AddBoardWrapper>
             <div className="addBoard-header">게시물 등록하기 🖊️</div>
 
@@ -264,10 +223,13 @@ const AddBoard = ({ isModal, setModal }) => {
               />
             </div>
           </AddBoardWrapper>
-        </ModalBody>
-      </ModalContainer>
-    </BoardModal>
+        </InsertFormPositioner>
+      )}
+      <Btn onClick={onToggle} open={open}>
+        <p>글쓰기</p>
+      </Btn>
+    </>
   )
 }
 
-export default React.memo(AddBoard)
+export default React.memo(BoardCreate)

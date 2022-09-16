@@ -6,16 +6,8 @@ import Menubar from "../Menubar.js"
 import InformationModal from "react-modal"
 
 import UserInfo from "./UserInfo.js"
-import InbodyInfo from "./InbodyInfo.js"
 import ChallengeInfo from "./ChallengeInfo.js"
-import WaterInfo from "./WaterInfo.js"
-
-// TodoList
-import TodoTemplate from "./TodoTemplate.js"
-import TodoHead from "./TodoHead.js"
-import TodoList from "./TodoList.js"
-import TodoCreate from "./TodoCreate.js"
-import { TodoProvider } from "./TodoContext.js"
+import CalendarInfo from "./CalendarInfo.js"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -65,12 +57,6 @@ const UserContainer = styled(BasicContainer)`
   justify-content: center;
 `
 
-const InBodyContainer = styled(BasicContainer)`
-  width: 850px;
-  top: 30px;
-  right: 30px;
-`
-
 const ChallengeContainer = styled(BasicContainer)`
   width: 410px;
   left: 30px;
@@ -81,20 +67,15 @@ const ChallengeContainer = styled(BasicContainer)`
   align-content: center;
 `
 
-const AlarmContainer = styled(BasicContainer)`
-  width: 410px;
-  left: 470px;
-  bottom: 30px;
-`
-
-const TodoListContainer = styled(BasicContainer)`
-  width: 410px;
+const CalendarContainer = styled.div`
+  width: 850px;
+  height: 765px;
+  position: absolute;
+  top: 30px;
   right: 30px;
-  bottom: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  border-radius: 30px;
+  border: 2px solid black;
+  background-color: #47ff9c;
 `
 
 const MyInformation = ({ isModal, setModal }) => {
@@ -137,27 +118,13 @@ const MyInformation = ({ isModal, setModal }) => {
             <UserInfo />
           </UserContainer>
 
-          <InBodyContainer>
-            <InbodyInfo />
-          </InBodyContainer>
+          <CalendarContainer>
+            <CalendarInfo />
+          </CalendarContainer>
 
           <ChallengeContainer>
             <ChallengeInfo />
           </ChallengeContainer>
-
-          <AlarmContainer>
-            <WaterInfo />
-          </AlarmContainer>
-
-          <TodoListContainer>
-            <TodoProvider>
-              <TodoTemplate>
-                <TodoHead />
-                <TodoList />
-                <TodoCreate />
-              </TodoTemplate>
-            </TodoProvider>
-          </TodoListContainer>
         </ModalBody>
       </ModalContainer>
     </InformationModal>

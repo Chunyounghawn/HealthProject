@@ -1,5 +1,9 @@
+import zIndex from "@mui/material/styles/zIndex"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { AddBoardTrue, BoardListTrue } from "../../../navigation"
+import Board from "./Board"
+import BoardCreate from "./BoardCreate"
 
 const HeaderWrapper = styled.div`
   padding: 1.2rem 4rem;
@@ -48,6 +52,9 @@ const Btn = styled.button`
 `
 
 const Header = () => {
+  const [open, setOpen] = useState(false)
+  const onToggle = () => setOpen(!open)
+
   return (
     <>
       <HeaderWrapper>
@@ -57,9 +64,6 @@ const Header = () => {
         <div className="header-menu">
           <Btn onClick={() => BoardListTrue()}>
             <p>게시판</p>
-          </Btn>
-          <Btn onClick={() => AddBoardTrue()}>
-            <p>글쓰기</p>
           </Btn>
         </div>
       </HeaderWrapper>

@@ -3,12 +3,8 @@ import styled from "styled-components"
 import { Close } from "../../../../image/index.js"
 import Header from "./Header.js"
 import Home from "./Home.js"
-
 import Menubar from "../Menubar.js"
 import BoardModal from "react-modal"
-import { ReferenceDot } from "recharts"
-import { red } from "@mui/material/colors"
-import { Grow } from "@mui/material"
 
 const ModalContainer = styled.div`
   position: absolute;
