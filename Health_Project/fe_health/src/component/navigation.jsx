@@ -20,7 +20,6 @@ import NoticeModal from "./modal/Navigation/Notice/Notice.js"
 import MyInformationModal from "./modal/Navigation/MyInfo/MyInformation.js"
 import ChallengeModal from "./modal/Navigation/Challenge/Challenge.js"
 import BoardModal from "./modal/Navigation/Board/Board.js"
-import AddBoardModal from "./modal/Navigation/Board/Addboard.js"
 import BoardList from "./modal/Navigation/Board/BoardList.js"
 import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
@@ -111,7 +110,6 @@ const Navigations = () => {
   const [SignupModalIsOpen, setSignupModalOpen] = React.useState(false)
   const [MainPageModalIsOpen, setMainPageModalOpen] = React.useState(false)
 
-  const [AddBoaderModalIsOpen, setAddBoaderModalOpen] = React.useState(false)
   const [BoardListModalIsOpen, setBoardListModalOpen] = React.useState(false)
 
   LoginTrue = function LoginModalTrue() {
@@ -119,7 +117,6 @@ const Navigations = () => {
     setNoticeModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -136,7 +133,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -152,7 +148,6 @@ const Navigations = () => {
     setMyInformationModalOpen(true)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -168,7 +163,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(true)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -184,7 +178,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(true)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -200,7 +193,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(true)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -216,7 +208,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(true)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -232,7 +223,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(true)
     setSitUpModalOpen(false)
@@ -248,7 +238,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(true)
@@ -264,7 +253,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -280,7 +268,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -295,7 +282,6 @@ const Navigations = () => {
     setMyInformationModalOpen(false)
     setChallengeModalOpen(false)
     setBoardModalOpen(false)
-    setAddBoaderModalOpen(false)
     setBoardListModalOpen(false)
     setPushUpModalOpen(false)
     setSitUpModalOpen(false)
@@ -328,11 +314,6 @@ const Navigations = () => {
         />
 
         <BoardModal isModal={BoardModalIsOpen} setModal={setBoardModalOpen} />
-
-        <AddBoardModal
-          isModal={AddBoaderModalIsOpen}
-          setModal={setAddBoaderModalOpen}
-        />
 
         <BoardList
           isModal={BoardListModalIsOpen}
