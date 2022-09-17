@@ -3,15 +3,11 @@ import styled from "styled-components"
 
 // modal
 import InBody from "./Strength/Inbody.js"
-import Alarm from "./Strength/Alarm.js"
 import Training from "./Strength/Training.js"
-import Calendar from "./Strength/Calendar.js"
-
-import CalInModal from "../modal/StrengthPage/Calendar/CalInModal.js"
 
 const Container = styled.div`
   width: 1740px;
-  height: 1970px;
+  height: 100%;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -28,9 +24,7 @@ function StrengthSection() {
     <div className="section">
       <Container>
         <InBody />
-        <Alarm />
         <Training />
-        <Calendar />
       </Container>
     </div>
   )

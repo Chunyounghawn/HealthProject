@@ -75,7 +75,7 @@ const CalendarContainer = styled.div`
   right: 30px;
   border-radius: 30px;
   border: 2px solid black;
-  background-color: #47ff9c;
+  background-color: #fad291;
 `
 
 const MyInformation = ({ isModal, setModal }) => {

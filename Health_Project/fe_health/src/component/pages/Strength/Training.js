@@ -35,7 +35,7 @@ const ImageContainer = styled.div`
   height: 350px;
   border-radius: 30px;
   position: absolute;
-  right: -900px;
+  left: -900px;
 `
 
 const TitleContainer = styled.div`
@@ -49,7 +49,7 @@ const TitleContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  left: 150px;
+  right: 150px;
 `
 
 const TitleImage = styled.img`
@@ -64,7 +64,7 @@ const TextContainer = styled.div`
   height: 230px;
   border-radius: 0px 0px 30px 30px;
   position: absolute;
-  left: 150px;
+  right: 150px;
   bottom: -330px;
   background-color: #47ff9c;
   display: flex;
@@ -196,7 +196,7 @@ const Training = () => {
         >
           <Tween
             from={{ opacity: 0 }}
-            to={{ opacity: 1, x: "-1050px" }}
+            to={{ opacity: 1, x: "1050px" }}
             duration={3}
           />
         </Timeline>

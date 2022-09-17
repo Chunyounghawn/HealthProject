@@ -1,5 +1,12 @@
+import React from "react"
+import CalendarModal from "./Calendar/Calendar.js"
+
 const CalendarInfo = () => {
-  return <></>
+  return (
+    <>
+      <CalendarModal />
+    </>
+  )
 }
 
 export default CalendarInfo
