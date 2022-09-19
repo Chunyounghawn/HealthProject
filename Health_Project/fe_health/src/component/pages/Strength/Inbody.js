@@ -17,6 +17,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin-right: 1%;
   background-color: #dcdcdc;
 `
 
