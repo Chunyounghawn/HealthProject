@@ -153,7 +153,9 @@ const Click = ({ isModal, setModal }) => {
             </BasicBody>
             <BasicFooter>
               <Content>
-                사용자가 검색한 장소를 마커표시 및 리스트형식으로 보여줍니다.
+                사용자가 검색한 장소를
+                <br />
+                마커표시 및 리스트형식으로 보여줍니다.
               </Content>
             </BasicFooter>
           </BasicContainer>
@@ -168,7 +170,10 @@ const Click = ({ isModal, setModal }) => {
             </BasicBody>
             <BasicFooter>
               <Content>
-                관리자를 대신하여 쳇봇이 사용자의 문의사항을 상담해줍니다.
+                관리자를 대신하여 쳇봇이
+                <br />
+                사용자의 문의사항을 상담 해줍니다.
+                <br />
               </Content>
             </BasicFooter>
           </BasicContainer>
@@ -183,8 +188,9 @@ const Click = ({ isModal, setModal }) => {
             </BasicBody>
             <BasicFooter>
               <Content>
-                사용자가 직접 첼린지를 추가 및 삭제 할 수 있으며 첼린지 성공률을
-                배터리 게이지로 보여줍니다.
+                사용자가 직접 첼린지를
+                <br /> 추가 및 삭제 할 수 있으며 첼린지 성공률을 배터리
+                <br /> 게이지로 보여줍니다.
               </Content>
             </BasicFooter>
           </BasicContainer>
@@ -200,7 +206,8 @@ const Click = ({ isModal, setModal }) => {
             <BasicFooter>
               <Content>
                 사용자가 직접 헬스 후기를 작성하여 사진과 함께 등록할 수 있으며
-                사용자간에 댓글 작성이 가능합니다.
+                사용자간에
+                <br /> 댓글 작성이 가능합니다.
               </Content>
             </BasicFooter>
           </BasicContainer>
