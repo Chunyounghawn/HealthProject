@@ -4,7 +4,7 @@ import Map from "./api/Map"
 
 const Container = styled.div`
   width: 1740px;
-  height: 100%;
+  height: 970px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -58,7 +58,7 @@ const SearchBtn = styled.button`
 
 function MapSection() {
   const [InputText, setInputText] = useState("")
-  const [Place, setPlace] = useState()
+  const [Place, setPlace] = useState("")
 
   const onChange = (e) => {
     setInputText(e.target.value)

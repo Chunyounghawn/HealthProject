@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-
+// Test
 const { kakao } = window
 
 const Divstyle = styled.div`
@@ -23,7 +23,6 @@ const ResultStyle = styled.div`
   color: #000000;
 `
 
-//필요함
 const Pagination = styled.div`
   margin-top: 3rem;
   a {
@@ -54,9 +53,7 @@ const Map = ({ searchPlace }) => {
 
     const ps = new kakao.maps.services.Places()
 
-    if (searchPlace != null)
-      ps.keywordSearch(searchPlace, placesSearchCB)
-
+    ps.keywordSearch(searchPlace, placesSearchCB)
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -68,6 +65,7 @@ const Map = ({ searchPlace }) => {
         }
 
         map.setBounds(bounds)
+
         // 페이지 목록 보여주는 displayPagination() 추가
         displayPagination(pagination)
         setPlaces(data)
@@ -93,8 +91,8 @@ const Map = ({ searchPlace }) => {
         if (i === pagination.current) {
           el.className = "on"
         } else {
-          el.onclick = (function (i) {
-            return function () {
+          el.onclick = (function(i) {
+            return function() {
               pagination.gotoPage(i)
             }
           })(i)
@@ -111,11 +109,11 @@ const Map = ({ searchPlace }) => {
         position: new kakao.maps.LatLng(place.y, place.x),
       })
 
-      kakao.maps.event.addListener(marker, "click", function () {
+      kakao.maps.event.addListener(marker, "click", function() {
         infowindow.setContent(
           '<div style="padding:5px;font-size:12px;">' +
-          place.place_name +
-          "</div>"
+            place.place_name +
+            "</div>"
         )
         infowindow.open(map, marker)
       })
