@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-// Test
+
 const { kakao } = window
 
 const Divstyle = styled.div`
@@ -23,6 +23,7 @@ const ResultStyle = styled.div`
   color: #000000;
 `
 
+//필요함
 const Pagination = styled.div`
   margin-top: 3rem;
   a {
@@ -53,7 +54,7 @@ const Map = ({ searchPlace }) => {
 
     const ps = new kakao.maps.services.Places()
 
-    ps.keywordSearch(searchPlace, placesSearchCB)
+    if (searchPlace != null) ps.keywordSearch(searchPlace, placesSearchCB)
 
     function placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -65,7 +66,6 @@ const Map = ({ searchPlace }) => {
         }
 
         map.setBounds(bounds)
-
         // 페이지 목록 보여주는 displayPagination() 추가
         displayPagination(pagination)
         setPlaces(data)

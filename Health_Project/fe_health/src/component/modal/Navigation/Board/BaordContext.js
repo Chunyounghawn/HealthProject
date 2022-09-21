@@ -5,8 +5,9 @@ const initialTodos = []
 function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
-      return state.concat(action.todo)
+      return state.concat(action.todo) // concat => 배열 끝에 새로운 요소 추가
     case "TOGGLE":
+      // map => 함수의 반환값으로 새로운 배열을 만든다
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       )
@@ -23,7 +24,7 @@ const TodoNextIdContext = createContext()
 
 export function BoardProvider({ children }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos)
-  const nextId = useRef(2)
+  const nextId = useRef(1)
 
   return (
     <TodoStateContext.Provider value={state}>

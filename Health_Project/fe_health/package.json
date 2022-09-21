@@ -10,6 +10,7 @@
     "@fullpage/react-fullpage": "^0.1.22",
     "@hookform/resolvers": "^2.9.3",
     "@iconify/react": "^4.0.0",
+    "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.8.7",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.3",

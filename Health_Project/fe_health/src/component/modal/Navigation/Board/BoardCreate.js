@@ -89,6 +89,8 @@ const Btn = styled.button`
   }
 `
 
+// export let CardCount = 0
+
 function BoardCreate() {
   const [open, setOpen] = useState(false)
   const [image, setImage] = useState({
@@ -117,6 +119,7 @@ function BoardCreate() {
     })
     setOpen(false)
     nextId.current += 1
+    window.alert("😎등록이 완료되었습니다😎")
   }
 
   // 현재 시간 값을 반환하는 함수
@@ -147,38 +150,40 @@ function BoardCreate() {
     return image.image_file !== "" && content !== "" && title !== ""
   }, [image, title, content])
 
-  const JsonData = {
-    title: `${title}`,
-    content: `${content}`,
-    file: `${image.preview_URL}`,
-  }
+  /*
+   const JsonData = {
+     title: `${title}`,
+     content: `${content}`,
+     file: `${image.preview_URL}`,
+   }
 
   const handleSubmit = useCallback(async () => {
     try {
-      console.log(JSON.stringify(JsonData))
-      axios({
-        url: "/api/posts",
-        method: "post",
-        data: JsonData,
-      })
-        .then(function a(response) {
-          console.log("서버에서 내려온값:", response)
-        })
-        .catch(function(error) {
-          console.log("에러내용:", error)
-        })
+       console.log(JSON.stringify(JsonData))
+       axios({
+         url: "/api/posts",
+         method: "post",
+          data: JsonData,
+       })
+         .then(function a(response) {
+           console.log("서버에서 내려온값:", response)
+         })
+         .catch(function(error) {
+           console.log("에러내용:", error)
+         })
 
-      window.alert("😎등록이 완료되었습니다😎")()
+       window.alert("😎등록이 완료되었습니다😎")()
     } catch (e) {
-      // 서버에서 받은 에러 메시지 출력
-      toast.error(
-        "오류발생! 이모지를 사용하면 오류가 발생할 수 있습니다" + "😭",
-        {
-          position: "top-center",
-        }
-      )
+       서버에서 받은 에러 메시지 출력
+       toast.error(
+         "오류발생! 이모지를 사용하면 오류가 발생할 수 있습니다" + "😭",
+         {
+           position: "top-center",
+         }
+       )
     }
   }, [canSubmit])
+*/
 
   return (
     <>
@@ -191,7 +196,7 @@ function BoardCreate() {
               {canSubmit() ? (
                 <Button
                   onClick={() => {
-                    handleSubmit()
+                    // handleSubmit()
                     onSubmit()
                   }}
                   className="success-button"

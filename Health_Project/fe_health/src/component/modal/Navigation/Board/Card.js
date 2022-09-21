@@ -1,8 +1,9 @@
 // TodoItem.js
-import styled, { css } from "styled-components"
+import React from "react"
+import styled from "styled-components"
 import { MdDelete } from "react-icons/md"
 import { useTodoDispatch } from "./BaordContext.js"
-import React from "react"
+import DetailModal from "./BoardDetail.js"
 
 const Remove = styled.div`
   position: absolute;
@@ -12,8 +13,8 @@ const Remove = styled.div`
   justify-content: center;
   color: #dee2e6;
   font-size: 40px;
-  cursor: pointer;
   &:hover {
+    cursor: pointer;
     color: #ff6b6b;
   }
   display: none;
@@ -87,7 +88,7 @@ const CardWrapper = styled.div`
 
   .card-body-text {
     flex-grow: 1;
-
+    overflow-y: scroll;
     word-break: break-all;
     padding: 0.6rem;
 
@@ -99,6 +100,8 @@ const CardWrapper = styled.div`
       font-size: 1.3rem;
       color: darkslategray;
       font-weight: bold;
+    }
+    .card-body-text-content {
     }
   }
 
@@ -114,32 +117,51 @@ const CardWrapper = styled.div`
 `
 
 const Card = ({ id, img_url, title, content, username, date }) => {
+  const [DetailModalIsOpen, setDetailModalOpen] = React.useState(false)
   const dispatch = useTodoDispatch()
-  const onRemove = () => dispatch({ type: "REMOVE", id })
+  const onRemove = (e) => {
+    dispatch({ type: "REMOVE", id })
+  }
+  const onSelect = (e) => {
+    dispatch({ type: "TOGGLE", id })
+  }
 
   return (
-    <CardWrapper
-      onClick={() => {
-        console.log("Detail")
-      }}
-    >
-      <div className="card-header">
-        <Remove onClick={onRemove}>
-          <MdDelete />
-        </Remove>
-      </div>
-      <div className="card-body-img">
-        <img alt="" src={img_url} />
-      </div>
-      <div className="card-body-text">
-        <div className="card-body-text-title">{title}</div>
-        <div className="card-body-text-content">{content}</div>
-      </div>
-      <div className="card-footer">
-        <div className="username">{username}</div>
-        <div className="date">{date}</div>
-      </div>
-    </CardWrapper>
+    <>
+      <CardWrapper
+        onClick={() => {
+          setDetailModalOpen(true)
+        }}
+      >
+        <div className="card-header">
+          <Remove onClick={onRemove}>
+            <MdDelete />
+          </Remove>
+        </div>
+        <div className="card-body-img">
+          <img alt="" src={img_url} />
+        </div>
+        <div className="card-body-text">
+          <div className="card-body-text-title">{title}</div>
+          <div className="card-body-text-content">{content}</div>
+        </div>
+        <div className="card-footer">
+          <div className="username">{username}</div>
+          <div className="date">{date}</div>
+        </div>
+      </CardWrapper>
+
+      <DetailModal
+        id={id}
+        img_url={img_url}
+        title={title}
+        content={content}
+        username={username}
+        date={date}
+        isModal={DetailModalIsOpen}
+        setModal={setDetailModalOpen}
+      />
+    </>
   )
 }
 
