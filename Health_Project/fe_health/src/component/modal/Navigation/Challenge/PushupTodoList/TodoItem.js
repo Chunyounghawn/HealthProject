@@ -84,12 +84,7 @@ function TodoItem({ id, success, text }) {
         <Icon src={PushUp} />
         <Text>{text}</Text>
 
-        <SuccessBtn
-          success={success}
-          onClick={() => {
-            onSuccess()
-          }}
-        >
+        <SuccessBtn success={success} onClick={() => onSuccess()}>
           {success && <MdDone />} 성공
         </SuccessBtn>
 
