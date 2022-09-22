@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../../../../image/index.js"
+import { Close } from "../../../../../image/index.js"
 import Header from "./Header.js"
 import Home from "./Home.js"
-import Menubar from "../Menubar.js"
+import Menubar from "../../Menubar.js"
 import BoardModal from "react-modal"
 
 const ModalContainer = styled.div`

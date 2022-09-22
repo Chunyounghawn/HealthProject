@@ -3,7 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { MdDelete } from "react-icons/md"
 import { useTodoDispatch } from "./BaordContext.js"
-import DetailModal from "./BoardDetail.js"
+import DetailModal from "../Detail/BoardDetail.js"
 
 const Remove = styled.div`
   position: absolute;

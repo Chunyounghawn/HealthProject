@@ -1,9 +1,6 @@
-import zIndex from "@mui/material/styles/zIndex"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { AddBoardTrue, BoardListTrue } from "../../../navigation"
-import Board from "./Board"
-import BoardCreate from "./BoardCreate"
+import { BoardListTrue } from "../../../../navigation"
 
 const HeaderWrapper = styled.div`
   padding: 1.2rem 4rem;
