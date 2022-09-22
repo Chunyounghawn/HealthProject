@@ -1,15 +1,15 @@
 // App.js
 import React from "react"
 import styled from "styled-components"
-import { Close } from "../../../../image/index.js"
-import Header from "./Header.js"
-import Menubar from "../Menubar.js"
+import { Close } from "../../../../../image/index.js"
+import Header from "../Main/Header.js"
+import Menubar from "../../Menubar.js"
 import BoardModal from "react-modal"
 import { BoardProvider } from "./BaordContext.js"
 import BoardTemplate from "./BoardTemplate.js"
 import BoardHead from "./BoardHead.js"
 import CardList from "./CardList.js"
-import BoardCreate from "./BoardCreate.js"
+import BoardCreate from "../Create/BoardCreate.js"
 
 const ModalContainer = styled.div`
   position: absolute;

@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react"
 import EditModal from "react-modal"
 import styled from "styled-components"
-import { Close } from "../../../../image"
+import { Close } from "../../../../../image"
 import { Button } from "@mui/material"
-import ImageUploader from "./ImageUploader"
-import TextArea from "./TextArea"
+import ImageUploader from "../Create/ImageUploader"
+import TextArea from "../Create/TextArea"
 import BoardDetail from "./BoardDetail"
 
 const ModalContainer = styled.div`
