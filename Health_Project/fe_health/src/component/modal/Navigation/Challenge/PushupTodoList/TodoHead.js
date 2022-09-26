@@ -1,7 +1,12 @@
-import React from "react"
+import React, { useState, useEffect, useId } from "react"
 import styled from "styled-components"
 import { useTodoState } from "./TodoContext"
 import PushupGauge from "./PushupGauge.js"
+
+// 파이어베이서 파일에서 import 해온 db
+import { db } from "../../../../../service/firebase"
+// db에 데이터에 접근을 도와줄 친구들
+import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
 
 const TodoHeadBlock = styled.div`
   width: 640px;

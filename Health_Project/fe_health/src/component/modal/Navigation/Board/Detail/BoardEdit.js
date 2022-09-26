@@ -149,8 +149,8 @@ const BoardEdit = ({
     console.log(date)
     BoardDetail.id = { id }
     // BoardDetail.img_url = {Image.preview_URL}
-    BoardDetail.title = { Title }
-    BoardDetail.content = { Content }
+    BoardDetail.setTitle = { Title }
+    BoardDetail.setContent = { Content }
     BoardDetail.username = { username }
     BoardDetail.date = { date }
 

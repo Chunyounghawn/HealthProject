@@ -179,7 +179,7 @@ const Comments = ({ id, username }) => {
       </CommentsWrapper>
 
       {/*modal*/}
-      <Dialog open={show}>
+      {/* <Dialog open={show}>
         <DialogContent style={{ position: "relative" }}>
           <IconButton
             style={{ position: "absolute", top: "0", right: "0" }}
@@ -214,7 +214,7 @@ const Comments = ({ id, username }) => {
             </div>
           </Modal>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </>
   )
 }

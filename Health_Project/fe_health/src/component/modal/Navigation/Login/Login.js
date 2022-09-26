@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { Close, UserImg } from "../../../../image/index.js"
 
 import Menubar from "../Menubar.js"
 import LoginModal from "react-modal"
-
+import { authService, firebaseInstance } from "../../../../service/firebase.js"
 import { SignupTrue, MainPageTrue } from "../../../navigation.jsx"
-import axios from "axios"
+import { getAuth } from "firebase/auth"
+// import { useRecoilState } from "recoil"
+// import LoginCheck from "./recoil/LoginCheck.js"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -26,6 +28,8 @@ const ModalBody = styled.div`
   height: 690px;
   position: absolute;
   top: 100px;
+  display: flex;
+  justify-content: center;
 `
 
 const ModalFooter = styled.div`
@@ -47,18 +51,45 @@ const Closebtn = styled.img`
   }
 `
 
+const LoginContainer = styled.div`
+  width: 400px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`
+
 const UserLogin = styled.div`
+  width: 250px;
+  height: 120px;
   position: absolute;
-  top: 35%;
-  left: 45%;
+  top: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+
+const BtnContainer = styled.div`
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
 `
 
 const UserIcon = styled.img`
   width: 100px;
   height: 100px;
   position: absolute;
-  top: -100%;
-  left: 30%;
+  top: 10%;
+`
+
+const Input = styled.input`
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  margin: 10px;
+  border-radius: 10px;
 `
 
 const Btn = styled.div`
@@ -81,28 +112,127 @@ const Btn = styled.div`
 `
 
 const LoginBtn = styled(Btn)`
-  top: 120%;
-  left: 15%;
+  top: 0%;
 `
 
 const SignupBtn = styled(Btn)`
-  top: 180%;
-  left: 15%;
+  top: 20%;
 `
+
+const SocialBtn = styled.button`
+  width: 240px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const GoogleBtn = styled(SocialBtn)`
+  top: 50%;
+  color: red;
+  :hover {
+    cursor: pointer;
+    background-color: red;
+    color: #fff;
+  }
+`
+
+const FacebookBtn = styled(SocialBtn)`
+  top: 75%;
+  color: blue;
+  :hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #fff;
+  }
+`
+/*
+export class Check {
+  constructor() {
+    this.IsLogin = false
+  }
+  get GetIsLogin() {
+    return {
+      isLogin: this.IsLogin,
+    }
+  }
+  set SetIsLogin(bol) {
+    this.IsLogin = bol
+  }
+}
+*/
+
+export let IsLogin = false
+export let PhoneNumber, UserName, UserEmail, UserImage
 
 const Login = ({ isModal, setModal }) => {
   const [ID, setID] = React.useState("")
   const [PW, setPW] = React.useState("")
+  // const [isLogin, setisLogin] = useRecoilState(LoginCheck)
 
   const IDOnChange = React.useCallback((e) => {
-    console.log(e)
     setID(e.target.value)
   }, [])
 
   const PASSOnChange = React.useCallback((e) => {
-    console.log(e)
     setPW(e.target.value)
   }, [])
+
+  // const onLoginChange = () => {
+  //   setisLogin(true)
+  // }
+
+  // 로그인 상태 유지
+
+  // 일반 이메일 로그인
+  const onSubmit = async (event) => {
+    try {
+      let data
+      // login => 로그인 화면
+      data = await authService.signInWithEmailAndPassword(ID, PW)
+      window.alert("로그인 성공")
+      IsLogin = true
+      MainPageTrue()
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+      window.alert("이메일과 비밀번호를 다시 확인해주세요")
+    }
+  }
+
+  // 소셜 로그인 Google & Facebook
+  const auth = getAuth()
+  const user = auth.currentUser
+
+  const onSocialClick = async (event) => {
+    const {
+      target: { name },
+    } = event
+    let provider, data
+    // console.log(name)
+    if (name === "google") {
+      provider = new firebaseInstance.auth.GoogleAuthProvider()
+      data = await authService.signInWithPopup(provider)
+      IsLogin = true
+      MainPageTrue()
+    } else if (name === "facebook") {
+      provider = new firebaseInstance.auth.FacebookAuthProvider()
+      await authService.signInWithPopup(provider)
+      IsLogin = true
+      MainPageTrue()
+    }
+    console.log(data)
+    window.alert("로그인 성공")
+
+    UserImage = user.photoURL // 프로필 사진 URL
+    UserName = user.displayName // 표시 이름
+    UserEmail = user.email // 이메일
+  }
 
   return (
     <LoginModal
@@ -127,6 +257,7 @@ const Login = ({ isModal, setModal }) => {
           margin: "auto",
           width: "1610px",
           height: "850px",
+          backgroundColor: "#FBF8F1",
           borderRadius: "30px",
         },
       }}
@@ -139,73 +270,27 @@ const Login = ({ isModal, setModal }) => {
         </ModalHead>
 
         <ModalBody>
-          <UserLogin>
-            <UserIcon src={UserImg}></UserIcon>
-            <form>
-              <input
+          <LoginContainer>
+            <UserIcon src={UserImg} />
+            <UserLogin>
+              <Input
                 type="text"
                 name="userId"
                 value={ID || ""}
                 onChange={IDOnChange}
-                style={{
-                  width: "200px",
-                  height: "30px",
-                  fontSize: "20px",
-                  margin: "10px",
-                  borderRadius: "10px",
-                }}
               />
-              <br />
-              <input
+              <Input
                 type="password"
                 name="userPW"
                 value={PW || ""}
                 onChange={PASSOnChange}
-                style={{
-                  width: "200px",
-                  height: "30px",
-                  fontSize: "20px",
-                  margin: "10px",
-                  borderRadius: "10px",
-                }}
               />
-              <br />
+            </UserLogin>
+
+            <BtnContainer>
               <LoginBtn
                 onClick={() => {
-                  //나중에 setState로 일정조건 안될시 버튼 안눌리게 변경해야함
-
-                  if (PW == "" || ID == "") {
-                    alert("빈칸 채워주세요")
-                    console.log(ID)
-                    console.log(PW)
-                  } else {
-                    const LoginDataForm = new FormData()
-                    LoginDataForm.append("user_id", ID)
-                    LoginDataForm.append("user_pw", PW)
-                    axios({
-                      url: "/test",
-                      method: "post",
-                      data: LoginDataForm,
-                    })
-                      .then(function a(response) {
-                        setID("")
-                        setPW("")
-
-                        if (response.data == "TestLoginTrue") {
-                          console.log(response)
-                          setModal(false)
-                          MainPageTrue()
-                          console.log("성공인듯?")
-                        } else {
-                          console.log(response)
-                          alert("스프링에서 아이디 없다함")
-                        }
-                      })
-                      .catch(function(error) {
-                        console.log(error)
-                        alert("서버통신에러")
-                      })
-                  }
+                  onSubmit()
                 }}
               >
                 Login
@@ -218,8 +303,14 @@ const Login = ({ isModal, setModal }) => {
               >
                 Sign Up
               </SignupBtn>
-            </form>
-          </UserLogin>
+              <GoogleBtn name="google" onClick={onSocialClick}>
+                Google로 로그인
+              </GoogleBtn>
+              <FacebookBtn name="facebook" onClick={onSocialClick}>
+                Facebook으로 로그인
+              </FacebookBtn>
+            </BtnContainer>
+          </LoginContainer>
         </ModalBody>
 
         <ModalFooter />

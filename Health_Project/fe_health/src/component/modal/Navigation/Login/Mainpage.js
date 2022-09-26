@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import {
   Close,
@@ -14,9 +14,14 @@ import {
 } from "../../../../image/index.js"
 
 import { LoginTrue } from "../../../navigation.jsx"
-
+import { authService } from "../../../../service/firebase.js"
 import Menubar from "../Menubar.js"
 import MainPageModal from "react-modal"
+import { UserImage, PhoneNumber, UserName, UserEmail } from "./Login.js"
+import { Location } from "react-router-dom"
+
+// import { useRecoilState } from "recoil"
+// import LoginCheck from "./recoil/LoginCheck.js"
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
@@ -123,7 +128,23 @@ const Poster = styled.img`
   background-color: yellow;
 `
 
+export let IsLogOut = false
+
 const MainPage = ({ isModal, setModal }) => {
+  // const [isLogin, setisLogin] = useRecoilState(LoginCheck)
+
+  // const onLoginChange = () => {
+  //   setisLogin(false)
+  // }
+
+  // 로그아웃
+  const onLogOutClick = () => {
+    authService.signOut()
+    IsLogOut = true
+    window.alert("로그아웃")
+    LoginTrue()
+  }
+
   return (
     <MainPageModal
       isOpen={isModal}
@@ -152,16 +173,17 @@ const MainPage = ({ isModal, setModal }) => {
       }}
     >
       <Menubar />
+
       <Closebtn src={Close} onClick={() => setModal(false)} />
       <ModalContainer>
         <ModalHead>
-          <UserIcon src={SignupImg}></UserIcon>
-          <NameText>홍길동</NameText>
+          <UserIcon src={UserImage}></UserIcon>
+          <NameText>{UserName}</NameText>
           <AgeText>24세</AgeText>
           <GenderText>남자</GenderText>
-          <EmailText>wlsdnjs156@naver.com</EmailText>
-          <PhoneText>010-3690-7822</PhoneText>
-          <LogoutIcon src={Logout} onClick={() => LoginTrue()} />
+          <EmailText>{UserEmail}</EmailText>
+          <PhoneText>010-1234-5678</PhoneText>
+          <LogoutIcon src={Logout} onClick={() => onLogOutClick()} />
         </ModalHead>
 
         <ModalBody>

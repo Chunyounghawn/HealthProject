@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState, useId } from "react"
 import styled from "styled-components"
 
 import {
@@ -10,6 +10,10 @@ import {
   Good,
   Click,
 } from "../../image/index"
+
+import IsLogin from "../../../src/component/modal/Navigation/Login/Login.js"
+import { db } from "../../service/firebase"
+import { collection, getDocs } from "firebase/firestore"
 
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, {
@@ -151,6 +155,40 @@ const Review = styled.img`
 `
 
 function ReviewSection() {
+  // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
+  const [users, setUsers] = useState([])
+  // db의 users 컬렉션을 가져옴
+  const usersCollectionRef = collection(db, "Board")
+
+  // 유니크 id를 만들기 위한 useId(); - react 18 기능으로, 이 훅을 이렇게 사용하는게 맞고 틀린지는 모른다.
+  const uniqueId = useId()
+
+  // 시작될때 한번만 실행
+  useEffect(() => {
+    // 비동기로 데이터 받을준비
+    const getUsers = async () => {
+      // getDocs로 컬렉션안에 데이터 가져오기
+      const data = await getDocs(usersCollectionRef)
+      // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    getUsers()
+  }, [])
+
+  const showUsers = users.map((value) => (
+    <>
+      <div key={uniqueId}>
+        {/* {console.log(value.id)} */}
+        {console.log(value.image)}
+        {console.log(value.title)}
+        {console.log(value.content)}
+        {console.log(value.username)}
+        {console.log(value.date)}
+      </div>
+    </>
+  ))
+
   return (
     <div className="section">
       <Container>
@@ -180,6 +218,7 @@ function ReviewSection() {
           mousewheel={true}
         >
           <SwiperSlide>
+            {console.log({ showUsers })}
             <Review src={Review1} />
 
             <ReviewBottom>
