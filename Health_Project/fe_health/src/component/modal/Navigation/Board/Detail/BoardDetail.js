@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState, useId } from "react"
 import styled from "styled-components"
 import { Button, Dialog, DialogContent, IconButton } from "@mui/material"
 import BuildOutlinedIcon from "@mui/icons-material/BuildOutlined"
@@ -9,6 +9,19 @@ import DetailModal from "react-modal"
 import { Close } from "../../../../../image/index.js"
 import BoardEdit from "./BoardEdit.js"
 import Comments from "./Comments.js"
+
+// 파이어베이서 파일에서 import 해온 db
+import { db } from "../../../../../service/firebase.js"
+// db에 데이터에 접근을 도와줄 친구들
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore"
+import { async } from "@firebase/util"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -155,6 +168,42 @@ const BoardDetail = ({
     setModal(false)
   }
 
+  // input으로 받을 새로운 사람의 이름과 나이
+  const [newName, setNewName] = useState("")
+  const [newAge, setNewAge] = useState(0)
+
+  console.log(newName, newAge)
+
+  // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
+  const [users, setUsers] = useState([])
+  // db의 users 컬렉션을 가져옴
+  const usersCollectionRef = collection(db, "Board")
+
+  // 유니크 id를 만들기 위한 useId(); - react 18 기능으로, 이 훅을 이렇게 사용하는게 맞고 틀린지는 모른다.
+  const uniqueId = useId()
+  //console.log(uniqueId)
+
+  // 시작될때 한번만 실행 // 읽어오기 - R
+  useEffect(() => {
+    // 비동기로 데이터 받을준비
+    const getUsers = async () => {
+      // getDocs로 컬렉션안에 데이터 가져오기
+      const data = await getDocs(usersCollectionRef)
+      // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    getUsers()
+  }, [])
+
+  // 삭제 - D
+  const deleteUser = async (id) => {
+    // 내가 삭제하고자 하는 db의 컬렉션의 id를 뒤지면서 데이터를 찾는다
+    const userDoc = doc(db, "Board", id)
+    // deleteDoc을 이용해서 삭제
+    await deleteDoc(userDoc)
+  }
+
   return (
     <>
       <DetailModal
@@ -251,16 +300,21 @@ const BoardDetail = ({
               <Modal>
                 <div className="modal-title"> 정말 삭제하시겠습니까 ?</div>
                 <div className="modal-button">
-                  <Button
-                    className="button"
-                    variant="outlined"
-                    color="error"
-                    onClick={() => {
-                      onRemove()
-                    }}
-                  >
-                    예
-                  </Button>
+                  {users.map((value) => (
+                    <div key={uniqueId}>
+                      <Button
+                        className="button"
+                        variant="outlined"
+                        color="error"
+                        onClick={() => {
+                          onRemove()
+                          deleteUser(value.id)
+                        }}
+                      >
+                        예
+                      </Button>
+                    </div>
+                  ))}
                   <Button
                     className="button"
                     variant="outlined"

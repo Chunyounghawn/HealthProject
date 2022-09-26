@@ -1,11 +1,12 @@
-import React, { useState, useCallback } from "react"
+import React, { useEffect, useState, useCallback, useId } from "react"
 import styled from "styled-components"
 import { useTodoDispatch, useTodoNextId } from "../List/BaordContext.js"
 import { Button } from "@mui/material"
-import { toast } from "react-toastify"
 import ImageUploader from "./ImageUploader.js"
 import TextArea from "./TextArea.js"
-import axios from "axios"
+import { db } from "../../../../../service/firebase.js"
+import { collection, getDocs, addDoc } from "firebase/firestore"
+import { UserName } from "../../Login/Login.js"
 
 const InsertFormPositioner = styled.div`
   width: 100%;
@@ -93,34 +94,20 @@ const Btn = styled.button`
 
 function BoardCreate() {
   const [open, setOpen] = useState(false)
+  const [boardId, setboardId] = useState(1)
   const [image, setImage] = useState({
     image_file: "",
     preview_URL: "",
   })
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
+  const [username, setUserName] = useState("")
+  const [date, setDate] = useState("")
 
   const dispatch = useTodoDispatch()
   const nextId = useTodoNextId()
 
-  const onToggle = () => setOpen(!open)
-  const onSubmit = (e) => {
-    dispatch({
-      type: "CREATE",
-      todo: {
-        id: nextId.current,
-        done: false,
-        img_url: image.preview_URL,
-        title: title,
-        content: content,
-        username: "홍길동",
-        date: TodayTime(),
-      },
-    })
-    setOpen(false)
-    nextId.current += 1
-    window.alert("😎등록이 완료되었습니다😎")
-  }
+  // console.log(boardId, image.preview_URL, title, content, UserName, date)
 
   // 현재 시간 값을 반환하는 함수
   const TodayTime = () => {
@@ -146,9 +133,70 @@ function BoardCreate() {
     )
   }
 
+  const onToggle = () => setOpen(!open)
+  const onDateChange = () => setDate(TodayTime())
+  const onNameChange = () => setUserName(UserName)
+
+  const onSubmit = (e) => {
+    onDateChange()
+    onNameChange()
+    // console.log(username)
+    // console.log(date)
+    dispatch({
+      type: "CREATE",
+      todo: {
+        id: boardId,
+        done: false,
+        img_url: image.preview_URL,
+        title: title,
+        content: content,
+        username: UserName,
+        date: TodayTime(),
+      },
+    })
+    setOpen(false)
+    setboardId((nextId.current += 1))
+    window.alert("😎등록이 완료되었습니다😎")
+  }
+
   const canSubmit = useCallback(() => {
     return image.image_file !== "" && content !== "" && title !== ""
   }, [image, title, content])
+
+  // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
+  const [users, setUsers] = useState([])
+  // db의 users 컬렉션을 가져옴
+  const usersCollectionRef = collection(db, "Board")
+
+  // 유니크 id를 만들기 위한 useId(); - react 18 기능으로, 이 훅을 이렇게 사용하는게 맞고 틀린지는 모른다.
+  const uniqueId = useId()
+  //console.log(uniqueId)
+
+  // 시작될때 한번만 실행
+  useEffect(() => {
+    // 비동기로 데이터 받을준비
+    const getUsers = async () => {
+      // getDocs로 컬렉션안에 데이터 가져오기
+      const data = await getDocs(usersCollectionRef)
+      // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    getUsers()
+  }, [])
+
+  const createUsers = async () => {
+    onSubmit()
+    // addDoc을 이용해서 내가 원하는 collection에 내가 원하는 key로 값을 추가한다.
+    await addDoc(usersCollectionRef, {
+      id: boardId,
+      Image: image.preview_URL,
+      title: title,
+      content: content,
+      username: username,
+      date: date,
+    })
+  }
 
   /*
    const JsonData = {
@@ -196,8 +244,7 @@ function BoardCreate() {
               {canSubmit() ? (
                 <Button
                   onClick={() => {
-                    // handleSubmit()
-                    onSubmit()
+                    createUsers()
                   }}
                   className="success-button"
                   variant="outlined"

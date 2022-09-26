@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react"
-
+import React, { useEffect, useState, useId } from "react"
 import ReactFullpage from "@fullpage/react-fullpage"
-
 import TotalPage from "./component"
 import Navigation from "./component/navigation"
-
 import { ThemeProvider } from "styled-components"
-
 import { darkTheme, lightTheme } from "./theme"
-
 import { useDispatch, useSelector } from "react-redux"
-
 
 const anchors = [
   "MainPage",
@@ -20,17 +14,12 @@ const anchors = [
   "QuestionPage",
 ]
 
-
 const FullpageWrapper = () => {
   const theme = useSelector((state) => state.theme)
-
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch()
 
   return (
     <>
-
-
       <ReactFullpage
         slidesNavigation="true"
         slidesNavPosition="bottom"
@@ -43,23 +32,13 @@ const FullpageWrapper = () => {
           `${theme.backgroundColor}`,
           `${theme.backgroundColor}`,
         ]}
-        onLeave={(origin, destination, direction) => {
-
-        }}
+        onLeave={(origin, destination, direction) => {}}
         render={({ state, fullpageApi }) => {
-
-
-          return (
-            <TotalPage />
-          )
+          return <TotalPage />
         }}
-
       />
 
       <Navigation />
-
-
-
     </>
   )
 }
@@ -67,17 +46,9 @@ const FullpageWrapper = () => {
 function App() {
   const theme = useSelector((state) => state.theme)
 
-
-
-
   return (
-
-
     <ThemeProvider theme={theme.darkmode === true ? darkTheme : lightTheme}>
       <FullpageWrapper />
-
-
-
     </ThemeProvider>
   )
 

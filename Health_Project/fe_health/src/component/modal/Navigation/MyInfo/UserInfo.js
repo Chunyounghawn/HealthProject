@@ -8,6 +8,8 @@ import {
   Phone,
 } from "../../../../image/index.js"
 
+import { UserImage, UserName, UserEmail, PhoneNumber } from "../Login/Login.js"
+
 const UserIcon = styled.img`
   width: 100px;
   height: 100px;
@@ -66,7 +68,7 @@ const Text = styled.div`
 const UserInfo = () => {
   return (
     <>
-      <UserIcon src={SignupImg} />
+      <UserIcon src={UserImage} />
       <NameBox>
         <Text>홍길동</Text>
       </NameBox>
@@ -80,7 +82,7 @@ const UserInfo = () => {
       </GenderBox>
       <EmailBox>
         <Icon src={Email} />
-        <Text>abcd123@naver.com</Text>
+        <Text>{UserEmail}</Text>
       </EmailBox>
       <PhoneBox>
         <Icon src={Phone} />

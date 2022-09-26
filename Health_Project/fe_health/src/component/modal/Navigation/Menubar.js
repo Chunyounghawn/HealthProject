@@ -7,9 +7,13 @@ import {
   InformationTrue,
   ChallengeTrue,
   BoardTrue,
+  MainPageTrue,
 } from "../../navigation.jsx"
-
 import { Logo } from "../../../image/index.js"
+import { IsLogin } from "./Login/Login.js"
+import { IsLogOut } from "./Login/Mainpage.js"
+// import { useRecoilState } from "recoil"
+// import LoginCheck from "./Login/recoil/LoginCheck.js"
 
 const MenuBar = styled.div`
   position: absolute;
@@ -17,7 +21,7 @@ const MenuBar = styled.div`
   left: 0%;
   width: 300px;
   height: 890px;
-  background-color: #EFDAD7;
+  background-color: #efdad7;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -34,10 +38,10 @@ const Symbol = styled.img`
 const MenuBtn = styled.button`
   width: 300px;
   height: 100px;
-  background-color: #886F6F;
+  background-color: #886f6f;
   color: #fff;
   font-size: 30px;
-  border-color: #C1A3A3;
+  border-color: #c1a3a3;
   font-family: ${(props) => props.theme.font};
   &:hover {
     background-color: #fff;
@@ -57,12 +61,18 @@ const MenuBtn4 = styled(MenuBtn)``
 const MenuBtn5 = styled(MenuBtn)``
 
 const Menubar = () => {
+  // const [isLogin, setisLogin] = useRecoilState(LoginCheck)
+
   return (
     <MenuBar>
       <Symbol src={Logo} />
       <MenuBtn1
         onClick={() => {
-          LoginTrue()
+          // isLogin === true ? MainPageTrue() : LoginTrue()
+          if (IsLogOut === true) LoginTrue()
+          else {
+            IsLogin === true ? MainPageTrue() : LoginTrue()
+          }
         }}
       >
         로그인
@@ -76,21 +86,48 @@ const Menubar = () => {
       </MenuBtn2>
       <MenuBtn3
         onClick={() => {
-          InformationTrue()
+          // isLogin === true
+          //   ? InformationTrue()
+          //   : window.alert("로그인이 필요한 페이지 입니다.")
+
+          if (IsLogOut === true) window.alert("로그인이 필요한 페이지 입니다.")
+          else {
+            IsLogin === true
+              ? InformationTrue()
+              : window.alert("로그인이 필요한 페이지 입니다.")
+          }
         }}
       >
         내정보
       </MenuBtn3>
       <MenuBtn4
         onClick={() => {
-          ChallengeTrue()
+          // isLogin === true
+          //   ? ChallengeTrue()
+          //   : window.alert("로그인이 필요한 페이지 입니다.")
+
+          if (IsLogOut === true) window.alert("로그인이 필요한 페이지 입니다.")
+          else {
+            IsLogin === true
+              ? ChallengeTrue()
+              : window.alert("로그인이 필요한 페이지 입니다.")
+          }
         }}
       >
         챌린지
       </MenuBtn4>
       <MenuBtn5
         onClick={() => {
-          BoardTrue()
+          //   isLogin === true
+          //     ? BoardTrue()
+          //     : window.alert("로그인이 필요한 페이지 입니다.")
+
+          if (IsLogOut === true) window.alert("로그인이 필요한 페이지 입니다.")
+          else {
+            IsLogin === true
+              ? BoardTrue()
+              : window.alert("로그인이 필요한 페이지 입니다.")
+          }
         }}
       >
         소통 게시판
