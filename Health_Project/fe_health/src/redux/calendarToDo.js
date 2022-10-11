@@ -1,13 +1,11 @@
-
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from "@reduxjs/toolkit"
 
 export const CalendarToDo = createSlice({
   name: "CalendarToDo",
   initialState: {
-    todo: '',
-    todos: '',
-    date: ''
+    todo: "",
+    todos: "",
+    date: "",
   },
   reducers: {
     INSERT: (state, index, todo) => {
@@ -15,20 +13,10 @@ export const CalendarToDo = createSlice({
         ...state,
       }
     },
-    DELETE: (state, date) => {
-
-    }
-
-
-
-
-
-  }
-
+    DELETE: (state, date) => {},
+  },
 })
 
+export const { INSERT, DELETE } = CalendarToDo.actions
 
-export const { INSERT, DELETE } = CalendarToDo.actions;
-
-
-export default CalendarToDo.reducer;
+export default CalendarToDo.reducer

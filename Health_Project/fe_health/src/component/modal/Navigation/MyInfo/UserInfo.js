@@ -70,7 +70,7 @@ const UserInfo = () => {
     <>
       <UserIcon src={UserImage} />
       <NameBox>
-        <Text>홍길동</Text>
+        <Text>{UserName}</Text>
       </NameBox>
       <AgeBox>
         <Icon src={Age} />

@@ -20,6 +20,7 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  FieldValue,
 } from "firebase/firestore"
 import { async } from "@firebase/util"
 
@@ -151,7 +152,7 @@ const Modal = styled.div`
 `
 
 const BoardDetail = ({
-  id,
+  index,
   img_url,
   title,
   content,
@@ -164,7 +165,7 @@ const BoardDetail = ({
   const [EditModalIsOpen, setEditModalOpen] = React.useState(false)
   const dispatch = useTodoDispatch()
   const onRemove = (e) => {
-    dispatch({ type: "REMOVE", id })
+    dispatch({ type: "REMOVE", index })
     setModal(false)
   }
 
@@ -172,7 +173,7 @@ const BoardDetail = ({
   const [newName, setNewName] = useState("")
   const [newAge, setNewAge] = useState(0)
 
-  console.log(newName, newAge)
+  // console.log(newName, newAge)
 
   // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
   const [users, setUsers] = useState([])
@@ -300,21 +301,19 @@ const BoardDetail = ({
               <Modal>
                 <div className="modal-title"> 정말 삭제하시겠습니까 ?</div>
                 <div className="modal-button">
-                  {users.map((value) => (
-                    <div key={uniqueId}>
-                      <Button
-                        className="button"
-                        variant="outlined"
-                        color="error"
-                        onClick={() => {
-                          onRemove()
-                          deleteUser(value.id)
-                        }}
-                      >
-                        예
-                      </Button>
-                    </div>
-                  ))}
+                  <Button
+                    className="button"
+                    variant="outlined"
+                    color="error"
+                    onClick={() => {
+                      onRemove()
+                      users.map((value) =>
+                        value.index === index ? deleteUser(value.id) : 0
+                      )
+                    }}
+                  >
+                    예
+                  </Button>
                   <Button
                     className="button"
                     variant="outlined"
@@ -333,7 +332,7 @@ const BoardDetail = ({
       </DetailModal>
 
       <BoardEdit
-        id={id}
+        index={index}
         img_url={img_url}
         title={title}
         content={content}

@@ -8,6 +8,8 @@ import DefaultInfo from "./DefaultInfo.js"
 import Skeletal from "./Skeletal.js"
 import BodyFat from "./BodyFat.js"
 
+import { CreateBodyFat } from "./BodyFat.js"
+
 const ModalHead = styled.div`
   width: 1610px;
   height: 150px;
@@ -201,7 +203,7 @@ const Input = ({ isModal, setModal }) => {
           <Btn
             onClick={() => {
               setOutputModalOpen(true)
-              // console.log(Months[0])
+              CreateBodyFat()
             }}
           >
             확인하기

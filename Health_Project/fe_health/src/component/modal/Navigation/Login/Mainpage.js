@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import {
   Close,
@@ -18,13 +18,13 @@ import { authService } from "../../../../service/firebase.js"
 import Menubar from "../Menubar.js"
 import MainPageModal from "react-modal"
 import { UserImage, PhoneNumber, UserName, UserEmail } from "./Login.js"
+import { useDispatch } from "react-redux"
 import { Location } from "react-router-dom"
-
-// import { useRecoilState } from "recoil"
-// import LoginCheck from "./recoil/LoginCheck.js"
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react" // basic
+
+import { authAction } from "../../../../redux/auth.js"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -128,21 +128,15 @@ const Poster = styled.img`
   background-color: yellow;
 `
 
-export let IsLogOut = false
-
 const MainPage = ({ isModal, setModal }) => {
-  // const [isLogin, setisLogin] = useRecoilState(LoginCheck)
-
-  // const onLoginChange = () => {
-  //   setisLogin(false)
-  // }
+  const dispatch = useDispatch()
 
   // 로그아웃
   const onLogOutClick = () => {
     authService.signOut()
-    IsLogOut = true
-    window.alert("로그아웃")
     LoginTrue()
+    window.alert("로그아웃")
+    dispatch(authAction.logout())
   }
 
   return (
@@ -183,7 +177,7 @@ const MainPage = ({ isModal, setModal }) => {
           <GenderText>남자</GenderText>
           <EmailText>{UserEmail}</EmailText>
           <PhoneText>010-1234-5678</PhoneText>
-          <LogoutIcon src={Logout} onClick={() => onLogOutClick()} />
+          <LogoutIcon src={Logout} onClick={onLogOutClick} />
         </ModalHead>
 
         <ModalBody>

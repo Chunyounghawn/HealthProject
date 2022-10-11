@@ -116,15 +116,8 @@ const CardWrapper = styled.div`
   }
 `
 
-const Card = ({ id, img_url, title, content, username, date }) => {
+const Card = ({ index, img_url, title, content, username, date }) => {
   const [DetailModalIsOpen, setDetailModalOpen] = React.useState(false)
-  const dispatch = useTodoDispatch()
-  const onRemove = (e) => {
-    dispatch({ type: "REMOVE", id })
-  }
-  const onSelect = (e) => {
-    dispatch({ type: "TOGGLE", id })
-  }
 
   return (
     <>
@@ -134,9 +127,7 @@ const Card = ({ id, img_url, title, content, username, date }) => {
         }}
       >
         <div className="card-header">
-          <Remove onClick={onRemove}>
-            <MdDelete />
-          </Remove>
+          <h1>{index}</h1>
         </div>
         <div className="card-body-img">
           <img alt="" src={img_url} />
@@ -152,7 +143,7 @@ const Card = ({ id, img_url, title, content, username, date }) => {
       </CardWrapper>
 
       <DetailModal
-        id={id}
+        index={index}
         img_url={img_url}
         title={title}
         content={content}

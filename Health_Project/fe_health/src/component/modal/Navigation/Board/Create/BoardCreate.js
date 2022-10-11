@@ -7,6 +7,7 @@ import TextArea from "./TextArea.js"
 import { db } from "../../../../../service/firebase.js"
 import { collection, getDocs, addDoc } from "firebase/firestore"
 import { UserName } from "../../Login/Login.js"
+import { User } from "../../../../../image/index.js"
 
 const InsertFormPositioner = styled.div`
   width: 100%;
@@ -68,8 +69,8 @@ const AddBoardWrapper = styled.div`
 const Btn = styled.button`
   border-radius: 30px;
   position: absolute;
-  top: -146px;
-  right: 130px;
+  top: -24.5%;
+  right: 11%;
   color: #333;
   background-color: #fff;
   p {
@@ -107,8 +108,6 @@ function BoardCreate() {
   const dispatch = useTodoDispatch()
   const nextId = useTodoNextId()
 
-  // console.log(boardId, image.preview_URL, title, content, UserName, date)
-
   // 현재 시간 값을 반환하는 함수
   const TodayTime = () => {
     let now = new Date() // 현재 날짜 및 시간
@@ -134,43 +133,14 @@ function BoardCreate() {
   }
 
   const onToggle = () => setOpen(!open)
-  const onDateChange = () => setDate(TodayTime())
-  const onNameChange = () => setUserName(UserName)
-
-  const onSubmit = (e) => {
-    onDateChange()
-    onNameChange()
-    // console.log(username)
-    // console.log(date)
-    dispatch({
-      type: "CREATE",
-      todo: {
-        id: boardId,
-        done: false,
-        img_url: image.preview_URL,
-        title: title,
-        content: content,
-        username: UserName,
-        date: TodayTime(),
-      },
-    })
-    setOpen(false)
-    setboardId((nextId.current += 1))
-    window.alert("😎등록이 완료되었습니다😎")
-  }
 
   const canSubmit = useCallback(() => {
     return image.image_file !== "" && content !== "" && title !== ""
   }, [image, title, content])
 
-  // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
   const [users, setUsers] = useState([])
   // db의 users 컬렉션을 가져옴
   const usersCollectionRef = collection(db, "Board")
-
-  // 유니크 id를 만들기 위한 useId(); - react 18 기능으로, 이 훅을 이렇게 사용하는게 맞고 틀린지는 모른다.
-  const uniqueId = useId()
-  //console.log(uniqueId)
 
   // 시작될때 한번만 실행
   useEffect(() => {
@@ -185,53 +155,36 @@ function BoardCreate() {
     getUsers()
   }, [])
 
-  const createUsers = async () => {
-    onSubmit()
-    // addDoc을 이용해서 내가 원하는 collection에 내가 원하는 key로 값을 추가한다.
-    await addDoc(usersCollectionRef, {
-      id: boardId,
-      Image: image.preview_URL,
-      title: title,
-      content: content,
-      username: username,
-      date: date,
+  const onSubmit = (e) => {
+    dispatch({
+      type: "CREATE",
+      todo: {
+        index: boardId,
+        done: false,
+        img_url: image.preview_URL,
+        title: title,
+        content: content,
+        username: UserName,
+        date: TodayTime(),
+      },
     })
   }
 
-  /*
-   const JsonData = {
-     title: `${title}`,
-     content: `${content}`,
-     file: `${image.preview_URL}`,
-   }
-
-  const handleSubmit = useCallback(async () => {
-    try {
-       console.log(JSON.stringify(JsonData))
-       axios({
-         url: "/api/posts",
-         method: "post",
-          data: JsonData,
-       })
-         .then(function a(response) {
-           console.log("서버에서 내려온값:", response)
-         })
-         .catch(function(error) {
-           console.log("에러내용:", error)
-         })
-
-       window.alert("😎등록이 완료되었습니다😎")()
-    } catch (e) {
-       서버에서 받은 에러 메시지 출력
-       toast.error(
-         "오류발생! 이모지를 사용하면 오류가 발생할 수 있습니다" + "😭",
-         {
-           position: "top-center",
-         }
-       )
-    }
-  }, [canSubmit])
-*/
+  const createUsers = async () => {
+    onSubmit()
+    // addDoc을 이용해서 내가 원하는 collection에 내가 원하는 index로 값을 추가한다.
+    await addDoc(usersCollectionRef, {
+      index: boardId,
+      Image: image.preview_URL,
+      title: title,
+      content: content,
+      username: UserName,
+      date: TodayTime(),
+    })
+    setOpen(false)
+    setboardId((nextId.current += 1))
+    window.alert("😎등록이 완료되었습니다😎")
+  }
 
   return (
     <>

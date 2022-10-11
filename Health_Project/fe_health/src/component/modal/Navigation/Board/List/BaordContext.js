@@ -9,10 +9,10 @@ function todoReducer(state, action) {
     case "TOGGLE":
       // map => 함수의 반환값으로 새로운 배열을 만든다
       return state.map((todo) =>
-        todo.id === action.id ? { ...todo, done: !todo.done } : todo
+        todo.index === action.index ? { ...todo, done: !todo.done } : todo
       )
     case "REMOVE":
-      return state.filter((todo) => todo.id !== action.id)
+      return state.filter((todo) => todo.index !== action.index)
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }
