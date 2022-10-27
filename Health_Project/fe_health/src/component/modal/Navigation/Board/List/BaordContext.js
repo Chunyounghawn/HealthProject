@@ -6,10 +6,10 @@ function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
       return state.concat(action.todo) // concat => 배열 끝에 새로운 요소 추가
-    case "TOGGLE":
+    case "UPDATE":
       // map => 함수의 반환값으로 새로운 배열을 만든다
       return state.map((todo) =>
-        todo.index === action.index ? { ...todo, done: !todo.done } : todo
+        todo.index === action.todo.index ? todo : console.log(0)
       )
     case "REMOVE":
       return state.filter((todo) => todo.index !== action.index)

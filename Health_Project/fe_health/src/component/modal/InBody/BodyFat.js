@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useId } from "react"
 import styled from "styled-components"
-import { db } from "../../../service/firebase"
-import { collection, getDocs, addDoc } from "firebase/firestore"
+// import { db } from "../../../service/firebase"
+// import { collection, getDocs, addDoc } from "firebase/firestore"
 
 const MonthBox = styled.div`
   width: 90px;
@@ -114,6 +114,7 @@ const BodyFat = () => {
     setDecember(BodyFatMonths[11])
   }
 
+  /*
   // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
   const [users, setUsers] = useState([])
   // db의 users 컬렉션을 가져옴
@@ -155,7 +156,7 @@ const BodyFat = () => {
   }
 
   CreateBodyFat = createBodyFat
-
+  */
   return (
     <>
       <MonthBox>

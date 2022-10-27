@@ -6,6 +6,8 @@ import { Button } from "@mui/material"
 import ImageUploader from "../Create/ImageUploader"
 import TextArea from "../Create/TextArea"
 import BoardDetail from "./BoardDetail"
+import { useTodoDispatch, useTodoNextId } from "../List/BaordContext.js"
+import { UserName } from "../../Login/Login.js"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -132,31 +134,40 @@ const BoardEdit = ({
   isModal,
   setModal,
 }) => {
+  const [boardId, setboardId] = useState(1)
   const [Title, setTitle] = useState(title)
   const [Content, setContent] = useState(content)
   const [Image, setImage] = useState({
     image_file: "",
     preview_URL: img_url,
   })
-  // const [DetailModalIsOpen, setDetailModalOpen] = useState(false)
+  
+  const dispatch = useTodoDispatch()
 
-  const EditSubit = () => {
-    date = TodayTime()
+  const onSubmit = (e) => {
+    dispatch({
+      type: "UPDATE",
+      todo: {
+        index: boardId,
+        done: false,
+        img_url: Image.preview_URL,
+        title: Title,
+        content: Content,
+        username: UserName,
+        date: TodayTime(),
+      },
+    })
     console.log(Title)
     console.log(Content)
     console.log(Image.preview_URL)
     console.log(username)
     console.log(date)
-    BoardDetail.id = { id }
-    // BoardDetail.img_url = {Image.preview_URL}
-    BoardDetail.setTitle = { Title }
-    BoardDetail.setContent = { Content }
-    BoardDetail.username = { username }
-    BoardDetail.date = { date }
+  }
 
+  const EditSubit = () => {
+    onSubmit()
     window.alert("😎수정이 완료되었습니다😎")
     setModal(false)
-    // setDetailModalOpen(true)
   }
 
   const canSubmit = useCallback(() => {
@@ -238,16 +249,6 @@ const BoardEdit = ({
           </ModalBody>
         </ModalContainer>
       </EditModal>
-      {/* <BoardDetail
-        id={id}
-        img_url={Image.preview_URL}
-        title={Title}
-        content={Content}
-        username={username}
-        date={date}
-        isModal={DetailModalIsOpen}
-        setModal={setDetailModalOpen}
-      /> */}
     </>
   )
 }

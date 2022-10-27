@@ -126,9 +126,7 @@ const Card = ({ index, img_url, title, content, username, date }) => {
           setDetailModalOpen(true)
         }}
       >
-        <div className="card-header">
-          <h1>{index}</h1>
-        </div>
+        <div className="card-header"></div>
         <div className="card-body-img">
           <img alt="" src={img_url} />
         </div>

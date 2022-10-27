@@ -154,6 +154,7 @@ const HeadTitle = styled(Titles)`
 `
 
 const Output = ({ isModal, setModal }) => {
+  /*
   // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
   const [users, setUsers] = useState([])
   // db의 users 컬렉션을 가져옴
@@ -176,6 +177,7 @@ const Output = ({ isModal, setModal }) => {
   }, [])
 
   BodyFatMonths[3] = users.map((value) => value.BodyApril)
+  */
 
   // Sample chart data
   const InBodyData = [

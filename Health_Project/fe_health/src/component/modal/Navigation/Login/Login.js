@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Close, UserImg } from "../../../../image/index.js"
+import { Close, UserImg, User } from "../../../../image/index.js"
 import { useDispatch } from "react-redux"
 
 import Menubar from "../Menubar.js"
@@ -200,9 +200,12 @@ function Login({ isModal, setModal }) {
       dispatch(authAction.login())
       provider = new firebaseInstance.auth.GoogleAuthProvider()
       await authService.signInWithPopup(provider)
-      UserImage = user.photoURL // 프로필 사진 URL
-      UserName = user.displayName // 표시 이름
-      UserEmail = user.email // 이메일
+      // UserImage = user.photoURL // 프로필 사진 URL
+      // UserName = user.displayName // 표시 이름
+      // UserEmail = user.email // 이메일
+      UserImage = User // 프로필 사진 URL
+      UserName = "장진원" // 표시 이름
+      UserEmail = "eunhee15627@gmail.com" // 이메일
       MainPageTrue()
     } else if (name === "facebook") {
       dispatch(authAction.login())
