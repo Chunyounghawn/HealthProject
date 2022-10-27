@@ -141,7 +141,7 @@ const BoardEdit = ({
     image_file: "",
     preview_URL: img_url,
   })
-  
+
   const dispatch = useTodoDispatch()
 
   const onSubmit = (e) => {
