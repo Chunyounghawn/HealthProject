@@ -1,8 +1,10 @@
 // TodoList.js
-import React from "react"
+import React, { useState, useEffect, useId } from "react"
 import styled from "styled-components"
 import Card from "./Card"
 import { useTodoState } from "./BaordContext"
+import { db } from "../../../../../service/firebase"
+import { collection, getDocs } from "firebase/firestore"
 
 const TodoListBlock = styled.div`
   flex: 1;
@@ -15,14 +17,12 @@ const TodoListBlock = styled.div`
 
 function CardList() {
   const todos = useTodoState()
-
   return (
     <TodoListBlock>
       {todos.map((todo) => (
         <Card
-          key={todo.id}
-          id={todo.id}
-          done={todo.done}
+          key={todo.index}
+          index={todo.index}
           img_url={todo.img_url}
           title={todo.title}
           content={todo.content}

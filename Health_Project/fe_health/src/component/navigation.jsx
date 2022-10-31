@@ -1,6 +1,7 @@
-import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect, useState } from "react"
+import { Provider, useDispatch, useSelector } from "react-redux"
 import { darkTheme, lightTheme } from "../redux/themeSelector"
+import { createStore } from "redux"
 
 import {
   Light,
@@ -25,7 +26,6 @@ import PushUpModal from "./modal/Navigation/Challenge/Pushup.js"
 import SitupModal from "./modal/Navigation/Challenge/Situp.js"
 import SquatModal from "./modal/Navigation/Challenge/Squat.js"
 import SignupModal from "./modal/Navigation/Login/Signup.js"
-
 import MainPageModal from "./modal/Navigation/Login/Mainpage.js"
 
 const Container = styled.div``
@@ -94,7 +94,8 @@ export let LoginTrue,
   SignupTrue,
   MainPageTrue
 
-const Navigations = () => {
+// const Navigations = () => {
+function Navigations() {
   const [LoginModalIsOpen, setLoginModalOpen] = React.useState(false)
   const [NoticeModalIsOpen, setNoticeModalOpen] = React.useState(false)
   const [MyInformationModalIsOpen, setMyInformationModalOpen] = React.useState(
@@ -124,6 +125,7 @@ const Navigations = () => {
     setSignupModalOpen(false)
     setLoginModalOpen(true)
     setMainPageModalOpen(false)
+    setMyInformationModalOpen(false)
   }
 
   NoticeTrue = function NoteiceModalTrue() {
@@ -293,19 +295,51 @@ const Navigations = () => {
   const theme = useSelector((state) => state.theme)
   const dispatch = useDispatch()
 
+  // 문제 원인
+  // 로그인, 로그아웃 버튼을 클릭 해야지만 dispatch로 reducer로 상태값을 변경할 수 있기 때문에
+  // 버튼을 클릭하지 않으면 다시 navigation 컴포넌트가 리 랜더링 되어 IsLogin값이 false로 고정 된다.
+
+  // 해결 방안
+  // Navigation 컴포넌트가 리 랜더링 되더라도 로그아웃하기 전까지는 상태값을 계속 가지고 있거나 또는 IsLogin이 false로 초기화 되는 것을 막아야 한다.
+  /// Login Redux
+  // 으악 제발 누가좀 살려줘.... ㅠ.ㅠ
+  // const IsLogin = false
+  const initState = { isLogin: false }
+  // useEffect(() => {}, [])
+  function reducer(state = initState, action) {
+    // state 상태 변경
+    if (action.type === "로그인") {
+      console.log("Redux state:", state)
+      return {
+        isLogin: true,
+      }
+    }
+    if (action.type === "로그아웃") {
+      LoginTrue()
+      console.log(state)
+      return {
+        isLogin: false,
+      }
+    }
+    return state
+  }
+
+  const store = createStore(reducer)
+  ///
+
   return (
     <>
       <Container>
         <LoginModal isModal={LoginModalIsOpen} setModal={setLoginModalOpen} />
 
+        <MainPageModal
+          isModal={MainPageModalIsOpen}
+          setModal={setMainPageModalOpen}
+        />
+
         <NoticeModal
           isModal={NoticeModalIsOpen}
           setModal={setNoticeModalOpen}
-        />
-
-        <MyInformationModal
-          isModal={MyInformationModalIsOpen}
-          setModal={setMyInformationModalOpen}
         />
 
         <ChallengeModal
@@ -333,12 +367,12 @@ const Navigations = () => {
           isModal={SignupModalIsOpen}
           setModal={setSignupModalOpen}
         />
-
-        <MainPageModal
-          isModal={MainPageModalIsOpen}
-          setModal={setMainPageModalOpen}
-        />
       </Container>
+
+      <MyInformationModal
+        isModal={MyInformationModalIsOpen}
+        setModal={setMyInformationModalOpen}
+      />
 
       <NavigationStyle>
         {!theme.darkmode ? (

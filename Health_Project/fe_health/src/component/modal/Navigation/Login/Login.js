@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import styled from "styled-components"
-import { Close, UserImg } from "../../../../image/index.js"
+import { Close, UserImg, User } from "../../../../image/index.js"
+import { useDispatch } from "react-redux"
 
 import Menubar from "../Menubar.js"
 import LoginModal from "react-modal"
 import { authService, firebaseInstance } from "../../../../service/firebase.js"
-import { SignupTrue, MainPageTrue } from "../../../navigation.jsx"
+import { MainPageTrue, SignupTrue } from "../../../navigation.jsx"
 import { getAuth } from "firebase/auth"
-// import { useRecoilState } from "recoil"
-// import LoginCheck from "./recoil/LoginCheck.js"
+import { authAction } from "../../../../redux/auth.js"
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -151,29 +151,12 @@ const FacebookBtn = styled(SocialBtn)`
     color: #fff;
   }
 `
-/*
-export class Check {
-  constructor() {
-    this.IsLogin = false
-  }
-  get GetIsLogin() {
-    return {
-      isLogin: this.IsLogin,
-    }
-  }
-  set SetIsLogin(bol) {
-    this.IsLogin = bol
-  }
-}
-*/
 
-export let IsLogin = false
 export let PhoneNumber, UserName, UserEmail, UserImage
 
-const Login = ({ isModal, setModal }) => {
+function Login({ isModal, setModal }) {
   const [ID, setID] = React.useState("")
   const [PW, setPW] = React.useState("")
-  // const [isLogin, setisLogin] = useRecoilState(LoginCheck)
 
   const IDOnChange = React.useCallback((e) => {
     setID(e.target.value)
@@ -183,20 +166,19 @@ const Login = ({ isModal, setModal }) => {
     setPW(e.target.value)
   }, [])
 
-  // const onLoginChange = () => {
-  //   setisLogin(true)
-  // }
-
-  // 로그인 상태 유지
+  // 로그인 상태 변화 (dispatch)
+  const dispatch = useDispatch()
 
   // 일반 이메일 로그인
   const onSubmit = async (event) => {
     try {
       let data
-      // login => 로그인 화면
+      dispatch(authAction.login())
       data = await authService.signInWithEmailAndPassword(ID, PW)
       window.alert("로그인 성공")
-      IsLogin = true
+      UserImage = user.photoURL // 프로필 사진 URL
+      UserName = user.displayName // 표시 이름
+      UserEmail = user.email // 이메일
       MainPageTrue()
       console.log(data)
     } catch (error) {
@@ -213,109 +195,114 @@ const Login = ({ isModal, setModal }) => {
     const {
       target: { name },
     } = event
-    let provider, data
-    // console.log(name)
+    let provider
     if (name === "google") {
+      dispatch(authAction.login())
       provider = new firebaseInstance.auth.GoogleAuthProvider()
-      data = await authService.signInWithPopup(provider)
-      IsLogin = true
+      await authService.signInWithPopup(provider)
+      // UserImage = user.photoURL // 프로필 사진 URL
+      // UserName = user.displayName // 표시 이름
+      // UserEmail = user.email // 이메일
+      UserImage = User // 프로필 사진 URL
+      UserName = "장진원" // 표시 이름
+      UserEmail = "eunhee15627@gmail.com" // 이메일
       MainPageTrue()
     } else if (name === "facebook") {
+      dispatch(authAction.login())
       provider = new firebaseInstance.auth.FacebookAuthProvider()
       await authService.signInWithPopup(provider)
-      IsLogin = true
+      UserImage = user.photoURL // 프로필 사진 URL
+      UserName = user.displayName // 표시 이름
+      UserEmail = user.email // 이메일
       MainPageTrue()
     }
-    console.log(data)
     window.alert("로그인 성공")
-
-    UserImage = user.photoURL // 프로필 사진 URL
-    UserName = user.displayName // 표시 이름
-    UserEmail = user.email // 이메일
   }
 
   return (
-    <LoginModal
-      isOpen={isModal}
-      onRequestClose={() => setModal(false)}
-      ariaHideApp={false}
-      style={{
-        overlay: {
-          position: "absolute",
-          top: "0px",
-          left: "0px",
-          height: "100%",
-          width: "90%",
-        },
+    <>
+      <LoginModal
+        isOpen={isModal}
+        onRequestClose={() => setModal(false)}
+        ariaHideApp={false}
+        style={{
+          overlay: {
+            position: "absolute",
+            top: "0px",
+            left: "0px",
+            height: "100%",
+            width: "90%",
+          },
 
-        content: {
-          position: "fixed",
-          top: "0px",
-          bottom: "0px",
-          left: "-200px",
-          right: "0px",
-          margin: "auto",
-          width: "1610px",
-          height: "850px",
-          backgroundColor: "#FBF8F1",
-          borderRadius: "30px",
-        },
-      }}
-    >
-      <Menubar />
+          content: {
+            position: "fixed",
+            top: "0px",
+            bottom: "0px",
+            left: "-200px",
+            right: "0px",
+            margin: "auto",
+            width: "1610px",
+            height: "850px",
+            backgroundColor: "#FBF8F1",
+            borderRadius: "30px",
+          },
+        }}
+      >
+        <Menubar />
 
-      <ModalContainer>
-        <ModalHead>
-          <Closebtn src={Close} onClick={() => setModal(false)} />
-        </ModalHead>
+        <ModalContainer>
+          <ModalHead>
+            <Closebtn src={Close} onClick={() => setModal(false)} />
+          </ModalHead>
 
-        <ModalBody>
-          <LoginContainer>
-            <UserIcon src={UserImg} />
-            <UserLogin>
-              <Input
-                type="text"
-                name="userId"
-                value={ID || ""}
-                onChange={IDOnChange}
-              />
-              <Input
-                type="password"
-                name="userPW"
-                value={PW || ""}
-                onChange={PASSOnChange}
-              />
-            </UserLogin>
+          <ModalBody>
+            <LoginContainer>
+              <UserIcon src={UserImg} />
+              <UserLogin>
+                <Input
+                  type="text"
+                  name="userId"
+                  value={ID || ""}
+                  onChange={IDOnChange}
+                />
+                <Input
+                  type="password"
+                  name="userPW"
+                  value={PW || ""}
+                  onChange={PASSOnChange}
+                />
+              </UserLogin>
 
-            <BtnContainer>
-              <LoginBtn
-                onClick={() => {
-                  onSubmit()
-                }}
-              >
-                Login
-              </LoginBtn>
-              <SignupBtn
-                onClick={() => {
-                  setModal(false)
-                  SignupTrue()
-                }}
-              >
-                Sign Up
-              </SignupBtn>
-              <GoogleBtn name="google" onClick={onSocialClick}>
-                Google로 로그인
-              </GoogleBtn>
-              <FacebookBtn name="facebook" onClick={onSocialClick}>
-                Facebook으로 로그인
-              </FacebookBtn>
-            </BtnContainer>
-          </LoginContainer>
-        </ModalBody>
+              <BtnContainer>
+                <LoginBtn
+                  onClick={() => {
+                    onSubmit()
+                  }}
+                >
+                  Login
+                </LoginBtn>
+                <SignupBtn
+                  onClick={() => {
+                    setModal(false)
+                    SignupTrue()
+                  }}
+                >
+                  Sign Up
+                </SignupBtn>
+                <GoogleBtn name="google" onClick={onSocialClick}>
+                  Google로 로그인
+                </GoogleBtn>
+                <FacebookBtn name="facebook" onClick={onSocialClick}>
+                  Facebook으로 로그인
+                </FacebookBtn>
+              </BtnContainer>
+            </LoginContainer>
+          </ModalBody>
 
-        <ModalFooter />
-      </ModalContainer>
-    </LoginModal>
+          <ModalFooter />
+        </ModalContainer>
+      </LoginModal>
+    </>
   )
 }
 

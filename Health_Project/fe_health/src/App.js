@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useId } from "react"
+import React from "react"
 import ReactFullpage from "@fullpage/react-fullpage"
 import TotalPage from "./component"
 import Navigation from "./component/navigation"

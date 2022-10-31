@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
+import { useSelector, useDispatch } from "react-redux"
 
 import {
   LoginTrue,
@@ -10,10 +11,6 @@ import {
   MainPageTrue,
 } from "../../navigation.jsx"
 import { Logo } from "../../../image/index.js"
-import { IsLogin } from "./Login/Login.js"
-import { IsLogOut } from "./Login/Mainpage.js"
-// import { useRecoilState } from "recoil"
-// import LoginCheck from "./Login/recoil/LoginCheck.js"
 
 const MenuBar = styled.div`
   position: absolute;
@@ -60,80 +57,70 @@ const MenuBtn4 = styled(MenuBtn)``
 
 const MenuBtn5 = styled(MenuBtn)``
 
-const Menubar = () => {
-  // const [isLogin, setisLogin] = useRecoilState(LoginCheck)
+function Menubar() {
+  const isLogin = useSelector((state) => state.authentificate).isLogin
+  console.log(isLogin)
+  //const [data, setData] = useState(selectorData)
+
+  // let data = useSelector((state) => state)
+  // useEffect(() => {
+  //   setData(selectorData)
+  //   console.log("Menubar:", selectorData)
+  // }, [selectorData])
 
   return (
-    <MenuBar>
-      <Symbol src={Logo} />
-      <MenuBtn1
-        onClick={() => {
-          // isLogin === true ? MainPageTrue() : LoginTrue()
-          if (IsLogOut === true) LoginTrue()
-          else {
-            IsLogin === true ? MainPageTrue() : LoginTrue()
-          }
-        }}
-      >
-        로그인
-      </MenuBtn1>
-      <MenuBtn2
-        onClick={() => {
-          NoticeTrue()
-        }}
-      >
-        공지사항
-      </MenuBtn2>
-      <MenuBtn3
-        onClick={() => {
-          // isLogin === true
-          //   ? InformationTrue()
-          //   : window.alert("로그인이 필요한 페이지 입니다.")
-
-          if (IsLogOut === true) window.alert("로그인이 필요한 페이지 입니다.")
-          else {
-            IsLogin === true
+    <>
+      <MenuBar>
+        <Symbol src={Logo} />
+        <MenuBtn1
+          onClick={() => {
+            // LoginTrue()
+            isLogin ? MainPageTrue() : LoginTrue()
+          }}
+        >
+          로그인
+        </MenuBtn1>
+        <MenuBtn2
+          onClick={() => {
+            NoticeTrue()
+          }}
+        >
+          공지사항
+        </MenuBtn2>
+        <MenuBtn3
+          onClick={() => {
+            // InformationTrue()
+            isLogin
               ? InformationTrue()
               : window.alert("로그인이 필요한 페이지 입니다.")
-          }
-        }}
-      >
-        내정보
-      </MenuBtn3>
-      <MenuBtn4
-        onClick={() => {
-          // isLogin === true
-          //   ? ChallengeTrue()
-          //   : window.alert("로그인이 필요한 페이지 입니다.")
-
-          if (IsLogOut === true) window.alert("로그인이 필요한 페이지 입니다.")
-          else {
-            IsLogin === true
+          }}
+        >
+          내정보
+        </MenuBtn3>
+        <MenuBtn4
+          onClick={() => {
+            // ChallengeTrue()
+            isLogin
               ? ChallengeTrue()
               : window.alert("로그인이 필요한 페이지 입니다.")
-          }
-        }}
-      >
-        챌린지
-      </MenuBtn4>
-      <MenuBtn5
-        onClick={() => {
-          //   isLogin === true
-          //     ? BoardTrue()
-          //     : window.alert("로그인이 필요한 페이지 입니다.")
-
-          if (IsLogOut === true) window.alert("로그인이 필요한 페이지 입니다.")
-          else {
-            IsLogin === true
+          }}
+        >
+          챌린지
+        </MenuBtn4>
+        <MenuBtn5
+          onClick={() => {
+            // BoardTrue()
+            isLogin
               ? BoardTrue()
               : window.alert("로그인이 필요한 페이지 입니다.")
-          }
-        }}
-      >
-        소통 게시판
-      </MenuBtn5>
-    </MenuBar>
+          }}
+        >
+          소통 게시판
+        </MenuBtn5>
+      </MenuBar>
+    </>
   )
 }
 
 export default Menubar
+// export default React.memo(Menubar) //  컴포넌트에서 리 렌더링이 필요한 상황에서만 해주도록 설정을 할 수 있는데 이때 사용하는 함수가 바로 React.memo 함수입니다.

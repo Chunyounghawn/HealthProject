@@ -1,5 +1,7 @@
-import React, { useCallback, useState } from "react"
+import React, { useEffect, useState, useId } from "react"
 import styled from "styled-components"
+// import { db } from "../../../service/firebase"
+// import { collection, getDocs, addDoc } from "firebase/firestore"
 
 const MonthBox = styled.div`
   width: 90px;
@@ -35,6 +37,7 @@ const UserInput = styled.input`
 `
 
 export let BodyFatMonths = new Array(12)
+export let CreateBodyFat
 
 const BodyFat = () => {
   const [January, setJanuary] = useState()
@@ -111,6 +114,49 @@ const BodyFat = () => {
     setDecember(BodyFatMonths[11])
   }
 
+  /*
+  // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
+  const [users, setUsers] = useState([])
+  // db의 users 컬렉션을 가져옴
+  const usersCollectionRef = collection(db, "BodyFat")
+
+  // 유니크 id를 만들기 위한 useId(); - react 18 기능으로, 이 훅을 이렇게 사용하는게 맞고 틀린지는 모른다.
+  const uniqueId = useId()
+  //console.log(uniqueId)
+
+  // 시작될때 한번만 실행
+  useEffect(() => {
+    // 비동기로 데이터 받을준비
+    const getUsers = async () => {
+      // getDocs로 컬렉션안에 데이터 가져오기
+      const data = await getDocs(usersCollectionRef)
+      // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    getUsers()
+  }, [])
+
+  const createBodyFat = async () => {
+    // addDoc을 이용해서 내가 원하는 collection에 내가 원하는 key로 값을 추가한다.
+    await addDoc(usersCollectionRef, {
+      BodyJanuary: January,
+      BodyFebruary: February,
+      BodyMarch: March,
+      BodyApril: April,
+      BodyMay: May,
+      BodyJune: June,
+      BodyJuly: July,
+      BodyAugust: August,
+      BodySeptember: September,
+      BodyOctober: October,
+      BodyNovember: November,
+      BodyDecember: December,
+    })
+  }
+
+  CreateBodyFat = createBodyFat
+  */
   return (
     <>
       <MonthBox>

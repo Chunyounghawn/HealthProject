@@ -7,13 +7,9 @@ import {
   Review3,
   Review4,
   Review5,
-  Good,
-  Click,
+  User,
+  CalendarTitle,
 } from "../../image/index"
-
-import IsLogin from "../../../src/component/modal/Navigation/Login/Login.js"
-import { db } from "../../service/firebase"
-import { collection, getDocs } from "firebase/firestore"
 
 import { Swiper, SwiperSlide } from "swiper/react" // basic
 import SwiperCore, {
@@ -59,41 +55,57 @@ const Container = styled.div`
 `
 const ReviewBottom = styled.div`
   position: relative;
-  left: 0.5%;
-  top: 89%;
-  width: 1580px;
+  left: 0%;
+  top: 88%;
+  width: 1590px;
   height: 85px;
+  display: flex;
+  align-items: center;
   background-color: ${(props) => props.theme.reviewPage.bottomBackgroundColor};
-  border-radius: 30px;
+  border-radius: 0px 0px 30px 30px;
 `
 
-const Best = styled.img`
+const NameBox = styled.div`
   position: absolute;
   left: 3%;
-  bottom: 5%;
-  width: 70px;
-  height: 70px;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
-const BestText = styled.div`
-  position: absolute;
-  left: 9%;
-  bottom: 25%;
-  font-size: 30px;
+const Name = styled.img`
+  width: 50px;
+  height: 50px;
 `
 
-const Vist = styled.img`
-  position: absolute;
-  left: 17%;
-  bottom: 5%;
-  width: 70px;
-  height: 70px;
-`
-const VistText = styled.div`
-  position: absolute;
-  left: 23%;
-  bottom: 25%;
+const NameText = styled.div`
+  margin-top: 5px;
+  margin-left: 15px;
   font-size: 30px;
+  font-family: "Jua", sans-serif;
+`
+
+const TimeBox = styled.div`
+  position: absolute;
+  right: 3%;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Time = styled.img`
+  /* margin-top: 3px; */
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+`
+const TimeText = styled.div`
+  font-size: 30px;
+  font-family: "Jua", sans-serif;
 `
 
 const Comments = styled.div`
@@ -154,41 +166,31 @@ const Review = styled.img`
   height: 720px;
 `
 
+// 현재 시간 값을 반환하는 함수
+const TodayTime = () => {
+  let now = new Date() // 현재 날짜 및 시간
+  let todayMonth = now.getMonth() + 1 // 월
+  let todayDate = now.getDate() // 일
+  const week = ["일", "월", "화", "수", "목", "금", "토"]
+  let dayOfWeek = week[now.getDay()] // 요일
+  let hours = now.getHours() // 시간
+  let minutes = now.getMinutes() // 분
+
+  return (
+    todayMonth +
+    "월" +
+    todayDate +
+    "일 " +
+    dayOfWeek +
+    "요일 " +
+    hours +
+    "시" +
+    minutes +
+    "분"
+  )
+}
+
 function ReviewSection() {
-  // 이따가 users 추가하고 삭제하는거 진행을 도와줄 state
-  const [users, setUsers] = useState([])
-  // db의 users 컬렉션을 가져옴
-  const usersCollectionRef = collection(db, "Board")
-
-  // 유니크 id를 만들기 위한 useId(); - react 18 기능으로, 이 훅을 이렇게 사용하는게 맞고 틀린지는 모른다.
-  const uniqueId = useId()
-
-  // 시작될때 한번만 실행
-  useEffect(() => {
-    // 비동기로 데이터 받을준비
-    const getUsers = async () => {
-      // getDocs로 컬렉션안에 데이터 가져오기
-      const data = await getDocs(usersCollectionRef)
-      // users에 data안의 자료 추가. 객체에 id 덮어씌우는거
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
-
-    getUsers()
-  }, [])
-
-  const showUsers = users.map((value) => (
-    <>
-      <div key={uniqueId}>
-        {/* {console.log(value.id)} */}
-        {console.log(value.image)}
-        {console.log(value.title)}
-        {console.log(value.content)}
-        {console.log(value.username)}
-        {console.log(value.date)}
-      </div>
-    </>
-  ))
-
   return (
     <div className="section">
       <Container>
@@ -217,15 +219,23 @@ function ReviewSection() {
           direction="vertical"
           mousewheel={true}
         >
-          <SwiperSlide>
-            {console.log({ showUsers })}
+          <SwiperSlide
+            style={{
+              marginTop: ".1%",
+              marginLeft: ".3%",
+            }}
+          >
             <Review src={Review1} />
 
             <ReviewBottom>
-              <Best src={Good}></Best>
-              <BestText>1,500</BestText>
-              <Vist src={Click}></Vist>
-              <VistText>조회수 2,782회</VistText>
+              <NameBox>
+                <Name src={User}></Name>
+                <NameText>홍길동</NameText>
+              </NameBox>
+              <TimeBox>
+                <Time src={CalendarTitle}></Time>
+                <TimeText>{TodayTime()}</TimeText>
+              </TimeBox>
             </ReviewBottom>
 
             <Comments1>오늘부터 시작합니다!</Comments1>
@@ -243,14 +253,23 @@ function ReviewSection() {
             <Comments7>오늘부터 몸짱 될 것 같네요~</Comments7>
           </SwiperSlide>
 
-          <SwiperSlide>
+          <SwiperSlide
+            style={{
+              marginTop: ".1%",
+              marginLeft: ".3%",
+            }}
+          >
             <Review src={Review2} />
 
             <ReviewBottom>
-              <Best src={Good}></Best>
-              <BestText>700</BestText>
-              <Vist src={Click}></Vist>
-              <VistText>조회수 1,352회</VistText>
+              <NameBox>
+                <Name src={User}></Name>
+                <NameText>홍길동</NameText>
+              </NameBox>
+              <TimeBox>
+                <Time src={CalendarTitle}></Time>
+                <TimeText>{TodayTime()}</TimeText>
+              </TimeBox>
             </ReviewBottom>
 
             <Comments1>여로모로 잘 사용중 이예요~</Comments1>
@@ -266,14 +285,23 @@ function ReviewSection() {
             <Comments7>제 친구한테도 이 웹 추천하니 좋다고 하네요~</Comments7>
           </SwiperSlide>
 
-          <SwiperSlide>
+          <SwiperSlide
+            style={{
+              marginTop: ".1%",
+              marginLeft: ".3%",
+            }}
+          >
             <Review src={Review3} />
 
             <ReviewBottom>
-              <Best src={Good}></Best>
-              <BestText>1,002</BestText>
-              <Vist src={Click}></Vist>
-              <VistText>조회수 1,385회</VistText>
+              <NameBox>
+                <Name src={User}></Name>
+                <NameText>홍길동</NameText>
+              </NameBox>
+              <TimeBox>
+                <Time src={CalendarTitle}></Time>
+                <TimeText>{TodayTime()}</TimeText>
+              </TimeBox>
             </ReviewBottom>
 
             <Comments1>오늘부터 시작합니다!</Comments1>
@@ -291,14 +319,23 @@ function ReviewSection() {
             <Comments7>오늘부터 몸짱 될 것 같네요~</Comments7>
           </SwiperSlide>
 
-          <SwiperSlide>
+          <SwiperSlide
+            style={{
+              marginTop: ".1%",
+              marginLeft: ".3%",
+            }}
+          >
             <Review src={Review4} />
 
             <ReviewBottom>
-              <Best src={Good}></Best>
-              <BestText>1.2만</BestText>
-              <Vist src={Click}></Vist>
-              <VistText>조회수 22,782회</VistText>
+              <NameBox>
+                <Name src={User}></Name>
+                <NameText>홍길동</NameText>
+              </NameBox>
+              <TimeBox>
+                <Time src={CalendarTitle}></Time>
+                <TimeText>{TodayTime()}</TimeText>
+              </TimeBox>
             </ReviewBottom>
 
             <Comments1>여로모로 잘 사용중 이예요~</Comments1>
@@ -314,14 +351,23 @@ function ReviewSection() {
             <Comments7>제 친구한테도 이 웹 추천하니 좋다고 하네요~</Comments7>
           </SwiperSlide>
 
-          <SwiperSlide>
+          <SwiperSlide
+            style={{
+              marginTop: ".1%",
+              marginLeft: ".3%",
+            }}
+          >
             <Review src={Review5} />
 
             <ReviewBottom>
-              <Best src={Good}></Best>
-              <BestText>3.2만</BestText>
-              <Vist src={Click}></Vist>
-              <VistText>조회수 42,782회</VistText>
+              <NameBox>
+                <Name src={User}></Name>
+                <NameText>홍길동</NameText>
+              </NameBox>
+              <TimeBox>
+                <Time src={CalendarTitle}></Time>
+                <TimeText>{TodayTime()}</TimeText>
+              </TimeBox>
             </ReviewBottom>
 
             <Comments1>오늘부터 시작합니다!</Comments1>
